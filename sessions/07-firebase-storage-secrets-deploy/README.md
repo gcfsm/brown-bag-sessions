@@ -25,9 +25,9 @@ Session 6
   - Where Cloud Run sits as a middle ground (containerized, still scales to zero)
 - **Firebase Cloud Functions**
   - **Trigger types — clear distinctions:**
-    - **HTTP-triggered** — plain HTTP endpoint, called via fetch/axios from anywhere, you handle auth/CORS yourself
+    - **Triggers (event-triggered)** — the function fires *automatically* when something happens to data on the backend: a document created/updated/deleted in Firestore, a file uploaded to Storage, a user created in Auth. Nobody calls it directly — it reacts to a change. This is what "trigger" means when used precisely; teach this definition first since the term gets used loosely elsewhere.
+    - **HTTP-triggered** — plain HTTP endpoint, called via fetch/axios from anywhere, you handle auth/CORS yourself. Confusingly also has "triggered" in the name, but it's *called*, not reactive — worth flagging this naming overlap explicitly so attendees don't conflate it with true event triggers.
     - **onCall (Callable functions)** — Firebase SDK handles auth token passing and serialization for you; called via `httpsCallable()` from the client, not a raw URL; preferred for client-app-to-backend calls
-    - **Event-triggered (Firestore/Storage/Auth)** — fires automatically on a data event (onCreate/onUpdate/onDelete for Firestore, file upload for Storage, new user for Auth); no direct client call, runs in response to a change
     - **Scheduled functions** — runs on a cron-like schedule via Cloud Scheduler / Pub/Sub, not triggered by a client or a data event at all (e.g. nightly cleanup, daily digest email)
   - When to use which — client-initiated action → onCall; reacting to data changes → event-triggered; time-based/recurring job → scheduled; public webhook or third-party integration → HTTP
   - Local emulation and testing before deploy
