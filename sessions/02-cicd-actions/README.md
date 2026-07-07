@@ -15,6 +15,8 @@ Session 1 (Git/PR)
 - What CI/CD is and why it matters
 - GitHub Actions basics (free-tier features)
 - Writing a simple lint/test workflow
+- CI Lint — running a linter as a required check, reading and fixing lint failures, why lint gates matter before merge
+- Dependabot — automatic dependency update PRs, reading a Dependabot PR, security alerts vs. version bumps, safely merging vs. deferring
 - What "passing checks" means before merge
 - Reading a failed Actions run
 
