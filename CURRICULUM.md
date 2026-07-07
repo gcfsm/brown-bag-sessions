@@ -21,7 +21,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 | # | Session | Status | Folder |
 |---|---|---|---|
 | 6 | Firebase / Firestore / Auth Basics (incl. Indexes intro) | [ ] | [`06-firebase-firestore-auth-basics`](./sessions/06-firebase-firestore-auth-basics) |
-| 7 | Firebase Deeper — Storage, Secret Manager, Custom Domain, Deploy CI/CD | [ ] | [`07-firebase-storage-secrets-deploy`](./sessions/07-firebase-storage-secrets-deploy) |
+| 7 | Firebase Deeper — Storage, Secret Manager, Custom Domain, Cloud Functions, Deploy CI/CD | [ ] | [`07-firebase-storage-secrets-deploy`](./sessions/07-firebase-storage-secrets-deploy) |
 | 8 | Multi-Tenant Architecture | [ ] | [`08-multi-tenant-architecture`](./sessions/08-multi-tenant-architecture) |
 
 ## Block C — Security
@@ -68,6 +68,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 - Session 3 (Vibe Coding) is placed early intentionally — it's the momentum/hook session, not a reward for finishing fundamentals.
 - Session 5 (Data Modeling) is placed before Firebase proper — most Firestore mistakes are modeling mistakes, not API mistakes.
 - Session 8 (Multi-Tenant) gets its own session rather than being folded into Firebase basics — it is genuinely advanced.
+- Session 7 now includes a serverless-vs-servers comparison plus Cloud Functions on top of Storage/Secrets/Domain/Deploy — flagged in its README as a candidate to split into two parts if running strict 1hr sessions.
 - Session 10 (Security/Cloudflare/RBAC-adjacent) is placed after Block A/B so attendees have something real to secure.
 - Session 16 (Cost Awareness) builds on the indexes intro from Session 6 rather than re-teaching what an index is.
 - Session 19 (Epics & ACs) is the unlock, not just "another topic" — attendees can informally start pairing on real tickets as soon as they're ready, even before Session 20 formally happens.
