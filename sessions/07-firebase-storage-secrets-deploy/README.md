@@ -24,8 +24,12 @@ Session 6
   - When serverless makes sense (event-driven, bursty, low-maintenance) vs. when it doesn't (long-running processes, heavy compute, predictable high load)
   - Where Cloud Run sits as a middle ground (containerized, still scales to zero)
 - **Firebase Cloud Functions**
-  - Writing a simple HTTP-triggered function
-  - Firestore-triggered functions (onCreate/onUpdate/onDelete)
+  - **Trigger types — clear distinctions:**
+    - **HTTP-triggered** — plain HTTP endpoint, called via fetch/axios from anywhere, you handle auth/CORS yourself
+    - **onCall (Callable functions)** — Firebase SDK handles auth token passing and serialization for you; called via `httpsCallable()` from the client, not a raw URL; preferred for client-app-to-backend calls
+    - **Event-triggered (Firestore/Storage/Auth)** — fires automatically on a data event (onCreate/onUpdate/onDelete for Firestore, file upload for Storage, new user for Auth); no direct client call, runs in response to a change
+    - **Scheduled functions** — runs on a cron-like schedule via Cloud Scheduler / Pub/Sub, not triggered by a client or a data event at all (e.g. nightly cleanup, daily digest email)
+  - When to use which — client-initiated action → onCall; reacting to data changes → event-triggered; time-based/recurring job → scheduled; public webhook or third-party integration → HTTP
   - Local emulation and testing before deploy
   - Cold start behavior in practice
 - Deploy CI/CD — wiring Firebase deploy into GitHub Actions from Session 2
