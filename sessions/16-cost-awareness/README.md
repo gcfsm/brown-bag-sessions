@@ -15,6 +15,7 @@ Session 6 (indexes), Session 7
 - Firestore read/write cost patterns
 - Index cost and build-time implications (builds on Session 6)
 - Cloud Function cold starts
+- reCAPTCHA / App Check free tier quota limits (builds on Session 10)
 - Reading a cloud billing dashboard
 - Common expensive mistakes and how to avoid them
 

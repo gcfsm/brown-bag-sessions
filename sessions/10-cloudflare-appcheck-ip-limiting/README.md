@@ -14,6 +14,10 @@ Sessions 6-9 (needs something real to secure)
 
 - Cloudflare basics (WAF, rules)
 - Firebase App Check — what it protects against
+- **reCAPTCHA as an App Check provider**
+  - reCAPTCHA v3 (web) vs. Play Integrity/App Attest (mobile) — why reCAPTCHA is the relevant one for web apps
+  - How reCAPTCHA + App Check work together (App Check is the mechanism, reCAPTCHA is one way it verifies "this is a real user/browser")
+  - **Free tier quota** — reCAPTCHA Enterprise vs. classic reCAPTCHA quota limits, what happens when you exceed free tier, monitoring usage before it becomes a cost surprise (cross-reference Session 16 — Cost Awareness)
 - IP limiting / rate limiting patterns
 - Applying these to the sandbox app from earlier sessions
 
