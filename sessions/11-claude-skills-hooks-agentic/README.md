@@ -16,6 +16,7 @@ Session 3 (Vibe Coding), comfort with Git
 - Claude Hooks
 - Githooks (pre-commit, pre-push) vs. Claude Hooks — how they differ
 - Agentic loops — what "agentic" means in practice
+- **`git worktree` for parallel agentic work** (introduced conceptually in Session 1; hands-on here) — checking out multiple branches into separate folders at once, running a Claude session per worktree, avoiding constant branch-switching/stashing when juggling multiple AI-assisted changes in parallel
 - Building a small repeatable AI-assisted workflow
 - **MCP Servers — Creating an Application with an MCP Server**
   - What MCP (Model Context Protocol) is and why it exists — giving Claude tools to call, not just text to read

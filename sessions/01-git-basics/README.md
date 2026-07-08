@@ -106,6 +106,29 @@ trustworthy rather than chaotic. Session 3 (Vibe Coding) and Session 11
 (Agentic workflows) both lean directly on the Git fundamentals from today —
 this isn't a side skill, it's the foundation the rest of the hub sits on.
 
+**A concrete example, right here:** the way this very curriculum was built —
+iterating with Claude turn by turn, adding a topic, committing, adding
+another, committing again, a dozen small changes in sequence — is itself a
+demonstration of the point. Without Git, that process would mean re-sending
+whole files back and forth, manually tracking which version had which
+addition, and hoping nothing got overwritten (exactly the `_FINAL_v2` chaos
+from earlier, just at AI speed instead of human speed). With Git, every
+iteration is a clean, reviewable, revertable commit. **What we're doing right
+now to build this hub would be largely impossible, or painfully slow, without
+version control.** That's not a hypothetical — it's the actual mechanism
+behind the repo you'll be working in.
+
+**Advanced/optional — `git worktree`:** as you get further into AI-assisted
+and agentic workflows (Session 11), you'll often want to work on more than
+one branch *at the same time* — for example, letting an AI agent work on one
+branch while you keep your main working copy untouched on another, without
+constantly stashing or switching. `git worktree` lets you check out multiple
+branches into separate folders simultaneously from the same repo, instead of
+one branch at a time in one folder. Not needed for today's basics, but worth
+knowing the name now — we'll come back to it hands-on when we get to agentic
+workflows, where running multiple parallel Claude sessions on different
+branches becomes genuinely useful.
+
 Keep this comparison in mind as we go through the technical steps — every
 Git concept below exists specifically to solve one of the problems in that
 file-naming mess, and several exist specifically because Git chose a
