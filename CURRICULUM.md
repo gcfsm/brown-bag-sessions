@@ -72,6 +72,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 - Disaster Recovery / Firestore backups placed in Session 15 rather than Session 7 — paired with Observability since detection and recovery are two halves of the same production-readiness concern, not a Firestore feature tour.
 - reCAPTCHA placed in Session 10 (App Check) since it's specifically an App Check verification provider; its free tier quota angle is cross-referenced in Session 16 (Cost Awareness) rather than duplicated.
 - MCP Servers added to Session 11 rather than a new session — it's the natural next step after Skills/Hooks/Agentic Loops (giving Claude callable tools, not just instructions). Also flagged as a split candidate given the session's growing density.
+- Session 1 opens with a "why Git exists" hook — the pre-Git file-naming pain (`proposal_FINAL_v2_ACTUALLY_FINAL.docx`) — before any commands are introduced, so every technical concept that follows has a concrete problem it's solving.
 - Session 10 (Security/Cloudflare/RBAC-adjacent) is placed after Block A/B so attendees have something real to secure.
 - Session 16 (Cost Awareness) builds on the indexes intro from Session 6 rather than re-teaching what an index is.
 - Session 19 (Epics & ACs) is the unlock, not just "another topic" — attendees can informally start pairing on real tickets as soon as they're ready, even before Session 20 formally happens.

@@ -6,6 +6,44 @@
 
 ---
 
+## Why Git Exists — The Problem Before Version Control
+
+Before diving into commands, it helps to feel the pain Git was built to solve.
+Ask the room: has anyone worked with files like these?
+
+```
+proposal.docx
+proposal_v2.docx
+proposal_v2_edited.docx
+proposal_FINAL.docx
+proposal_FINAL_v2.docx
+proposal_FINAL_v2_ACTUALLY_FINAL.docx
+proposal_FINAL_v2_ACTUALLY_FINAL_useThisOne.docx
+```
+
+This is how file versioning worked (and often still works) without a proper
+version control system — manual naming conventions, shared drives, emailing
+files back and forth, USB sticks, "did you get my latest copy?" This breaks
+down fast:
+
+- **No real history** — you can't see *what* changed between versions, only that a new file exists
+- **No safe collaboration** — two people editing the same file at the same time means someone's changes get overwritten, or you end up with `proposal_v2_JOHN.docx` and `proposal_v2_MARIA.docx` that now need to be manually merged by eye
+- **No accountability** — who changed what, and why, gets lost immediately
+- **No safe experimentation** — there's no cheap way to "try something" without risking the working version, so people either don't experiment or they duplicate the whole file "just in case"
+- **Fragile "final" concept** — "final" is really just whoever renamed the file last
+
+**Git solves all of this:**
+- Every change is tracked with *who* changed it, *when*, and *what exactly* changed (down to the line)
+- Multiple people can work on the same files at the same time, safely, using branches
+- You can always go back to any previous point in history — no need to keep manually renamed backup copies
+- "Merging" is a real, structured process (Section 7 below) instead of manually eyeballing two files and copy-pasting the right bits
+
+Keep this comparison in mind as we go through the technical steps — every
+Git concept below exists specifically to solve one of the problems in that
+file-naming mess.
+
+---
+
 ## 0. Setup Check (do before session or first 5 min)
 
 - [ ] GitHub account created
