@@ -10,7 +10,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 
 | # | Session | Status | Folder |
 |---|---|---|---|
-| 1 | Git Basics — Fork, Clone, Branch, Push, PR, Code Review, Conflict Resolution | [x] | [`01-git-basics`](./sessions/01-git-basics) |
+| 1 | Git Basics — Fork, Clone, npm Packages, Branch, Push, PR, Code Review, Conflict Resolution | [x] | [`01-git-basics`](./sessions/01-git-basics) |
 | 2 | CI/CD & GitHub Actions (free-tier features, lint/test workflows, CI Lint, Dependabot) | [ ] | [`02-cicd-actions`](./sessions/02-cicd-actions) |
 | 3 | Vibe Coding Your First App (with Claude) | [ ] | [`03-vibe-coding-first-app`](./sessions/03-vibe-coding-first-app) |
 | 4 | React / Vite / Next.js Basics | [ ] | [`04-react-vite-nextjs-basics`](./sessions/04-react-vite-nextjs-basics) |
@@ -73,6 +73,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 - reCAPTCHA placed in Session 10 (App Check) since it's specifically an App Check verification provider; its free tier quota angle is cross-referenced in Session 16 (Cost Awareness) rather than duplicated.
 - MCP Servers added to Session 11 rather than a new session — it's the natural next step after Skills/Hooks/Agentic Loops (giving Claude callable tools, not just instructions). Also flagged as a split candidate given the session's growing density.
 - Session 1 opens with a "why Git exists" hook — the pre-Git file-naming pain (`proposal_FINAL_v2_ACTUALLY_FINAL.docx`) — before any commands are introduced, so every technical concept that follows has a concrete problem it's solving.
+- npm packages added to Session 1 (right after Fork/Clone) rather than Session 4 — it's the practical next step after cloning any repo, and `node_modules` being gitignored is a natural extension of the Git "source of truth vs. regeneratable output" concept already being taught.
 - Session 10 (Security/Cloudflare/RBAC-adjacent) is placed after Block A/B so attendees have something real to secure.
 - Session 16 (Cost Awareness) builds on the indexes intro from Session 6 rather than re-teaching what an index is.
 - Session 19 (Epics & ACs) is the unlock, not just "another topic" — attendees can informally start pairing on real tickets as soon as they're ready, even before Session 20 formally happens.

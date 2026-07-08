@@ -81,6 +81,44 @@ cd repo-name
 
 ---
 
+## 1.5 npm Packages — What Happens Right After You Clone
+
+Most repos you clone won't run immediately — they depend on external packages
+that aren't stored in Git itself. This is the first thing you'll hit after
+cloning, so it's worth understanding now.
+
+```bash
+npm install    # reads package.json and package-lock.json, downloads dependencies into node_modules/
+```
+
+**Key files:**
+
+| File | Committed to Git? | What it is |
+|---|---|---|
+| `package.json` | Yes | The list of dependencies your project needs, plus scripts (`npm run dev`, etc.) |
+| `package-lock.json` | Yes | The *exact* versions of every dependency (and their dependencies) actually installed — ensures everyone gets identical versions |
+| `node_modules/` | **No** — gitignored | The actual downloaded package code — can always be regenerated from the two files above, so there's no reason to commit it (it's huge and machine-specific) |
+
+**Why `node_modules` is gitignored:** this connects directly back to what we covered — Git tracks *source of truth*, not *regeneratable output*. `package.json` + `package-lock.json` are the source of truth; `node_modules` is just the result of running `npm install` against them, the same way a build folder is the result of compiling source code. Committing it would bloat the repo for no benefit.
+
+**dependencies vs. devDependencies:**
+- `dependencies` — needed to actually run the app (e.g. React itself)
+- `devDependencies` — only needed while developing (e.g. a linter, a test runner) — not shipped to production
+
+**Practical flow after cloning any repo:**
+```bash
+git clone <url>
+cd <repo>
+npm install     # always do this before trying to run anything
+npm run dev      # or whatever the project's start script is (check package.json "scripts")
+```
+
+If `npm install` fails or acts strange, check your Node.js version first —
+many projects require a specific major version (check for an `.nvmrc` file
+or the `engines` field in `package.json`).
+
+---
+
 ## 2. Local Basics — Just Enough to Orient
 
 ```bash
@@ -186,6 +224,8 @@ If you forget `-u` the first time, Git will tell you exactly what command to run
 
 ```
 git clone <url>
+cd <repo>
+npm install               # install dependencies before doing anything else
 git checkout -b <branch-name>
 git add .
 git commit -m "message"
@@ -208,5 +248,6 @@ git push
 
 - [ ] Fork the practice repo (link: _______________)
 - [ ] Clone your fork locally
+- [ ] Run `npm install` and get the project running locally
 - [ ] Make one small change, commit it, push it, open a PR
 - [ ] If comfortable, try deliberately creating a conflict with a partner and resolving it together
