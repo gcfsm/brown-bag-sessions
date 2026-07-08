@@ -66,6 +66,46 @@ If you ever hear someone reference "the good old days of SVN conflicts,"
 this is why — centralized version control made exactly the kind of safe,
 frequent branching we're about to practice much harder to do well.
 
+### Why This Matters Even More in the Age of Vibe Coding
+
+Here's the part that ties this history directly to why we're doing this
+hub at all: **AI-assisted coding makes Git more important, not less.**
+
+Think about what changes when you code with Claude instead of typing every
+line by hand:
+- Changes happen **faster** — an AI can rewrite a whole file in seconds, far
+  faster than the manual-file-naming era or even a solo human coder
+- Changes can be **larger** — an AI assistant might touch many files at once
+  in a single request
+- It's **easier to accept something you haven't fully reviewed** — the
+  convenience of AI-generated code makes it tempting to skip the careful
+  read-through
+
+Every one of those makes Git's core guarantees *more* valuable, not less:
+
+- **History as a safety net** — if an AI-assisted change breaks something,
+  Git lets you see exactly what changed and revert it, the same way it
+  would for a human-made change. Without version control, an AI mistake is
+  just as unrecoverable as the old `_FINAL_v2` file chaos — except it
+  happened in seconds instead of over weeks.
+- **Branches as a sandbox** — you can let Claude make sweeping changes on a
+  branch, review the diff, and throw it away entirely if it's wrong, with
+  zero risk to your working code. This is what makes "vibe coding" safe to
+  do at all rather than reckless.
+- **Diffs as the review mechanism** — reading a Git diff is *how* you review
+  AI-generated code responsibly. The PR/code-review workflow you're about to
+  learn isn't just for human-to-human collaboration — it's the exact same
+  discipline you'll apply when reviewing what Claude wrote for you.
+- **Commits as accountability** — even when Claude writes the code, *you*
+  are the one committing it. Git keeps that responsibility clear and
+  auditable, which matters more, not less, as more code gets AI-generated.
+
+In short: the distributed, branch-heavy, diff-reviewable model Git introduced
+over CVS/SVN is exactly the infrastructure that makes AI-assisted development
+trustworthy rather than chaotic. Session 3 (Vibe Coding) and Session 11
+(Agentic workflows) both lean directly on the Git fundamentals from today —
+this isn't a side skill, it's the foundation the rest of the hub sits on.
+
 Keep this comparison in mind as we go through the technical steps — every
 Git concept below exists specifically to solve one of the problems in that
 file-naming mess, and several exist specifically because Git chose a
