@@ -38,9 +38,38 @@ down fast:
 - You can always go back to any previous point in history — no need to keep manually renamed backup copies
 - "Merging" is a real, structured process (Section 7 below) instead of manually eyeballing two files and copy-pasting the right bits
 
+### A Quick Word on CVS and SVN — the Step Before Git
+
+Git wasn't the first version control system — it's worth knowing what came
+before, especially for anyone who's worked in older IT shops:
+
+- **CVS (Concurrent Versions System)** — one of the earliest widely-used
+  version control tools. Tracked file history and allowed multiple people to
+  work on a codebase, but had a **centralized** model: there was one single
+  server holding the "real" history, and everyone talked directly to it.
+- **SVN (Subversion)** — came after CVS as an improvement (better handling
+  of renames, directory versioning, atomic commits), but kept the same
+  **centralized** model — still one central server as the single source of truth.
+
+**The centralized model's core limitation:** you needed a constant connection
+to the central server to commit, see history, or create most branches.
+Branching and merging in SVN was heavy and often avoided in practice — teams
+would work directly on a shared trunk rather than branch freely, because
+merging branches back together was painful.
+
+**What Git changed — distributed version control:**
+- Every clone is a **full copy of the entire history** — no constant connection to a central server needed
+- Branching and merging are cheap and fast, which is why Git-based workflows (branch → PR → merge) are actually usable day-to-day, unlike heavy SVN branching
+- This is *why* the fork/clone/branch workflow you're about to learn is even possible the way it is — it's a direct consequence of Git being distributed, not centralized
+
+If you ever hear someone reference "the good old days of SVN conflicts,"
+this is why — centralized version control made exactly the kind of safe,
+frequent branching we're about to practice much harder to do well.
+
 Keep this comparison in mind as we go through the technical steps — every
 Git concept below exists specifically to solve one of the problems in that
-file-naming mess.
+file-naming mess, and several exist specifically because Git chose a
+distributed model over the CVS/SVN centralized one.
 
 ---
 
