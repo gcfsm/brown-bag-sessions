@@ -40,33 +40,78 @@ down fast:
 - You can always go back to any previous point in history — no need to keep manually renamed backup copies
 - "Merging" is a real, structured process (Section 7 below) instead of manually eyeballing two files and copy-pasting the right bits
 
-### A Quick Word on CVS and SVN — the Step Before Git
+### The Ladder Before Git — CVS, Then SVN, Then Git
 
-Git wasn't the first version control system — it's worth knowing what came
-before, especially for anyone who's worked in older IT shops:
+Git wasn't the first version control system, and it didn't appear out of
+nowhere — it's the third rung of a ladder, and each rung exists because the
+one before it had a specific, concrete problem. Worth knowing, especially
+for anyone who's worked in older IT shops:
 
-- **CVS (Concurrent Versions System)** — one of the earliest widely-used
-  version control tools. Tracked file history and allowed multiple people to
-  work on a codebase, but had a **centralized** model: there was one single
-  server holding the "real" history, and everyone talked directly to it.
-- **SVN (Subversion)** — came after CVS as an improvement (better handling
-  of renames, directory versioning, atomic commits), but kept the same
-  **centralized** model — still one central server as the single source of truth.
+**Rung 1 — CVS (Concurrent Versions System), early 1990s.** One of the
+earliest widely-used version control tools. **Centralized** model: one
+server holds the "real" history, everyone talks directly to it. But it had
+structural problems beyond just being centralized:
+- Commits were tracked **per file**, not as a single atomic change — a
+  commit touching 5 files was really 5 separate mini-commits. If it failed
+  partway through, you could end up with an inconsistent, half-committed
+  state.
+- Revision numbers were **per file** (`file.c` at 1.7, `file.h` at 1.3) —
+  there was no single number representing "the whole project at this
+  moment."
+- Directories weren't really versioned, and renames/moves were poorly
+  supported (usually just delete+add, losing history).
 
-**The centralized model's core limitation:** you needed a constant connection
-to the central server to commit, see history, or create most branches.
-Branching and merging in SVN was heavy and often avoided in practice — teams
-would work directly on a shared trunk rather than branch freely, because
-merging branches back together was painful.
+**Rung 2 — SVN (Subversion), early 2000s, built explicitly to fix CVS.**
+Kept the same **centralized** model, but fixed CVS's structural sloppiness:
 
-**What Git changed — distributed version control:**
-- Every clone is a **full copy of the entire history** — no constant connection to a central server needed
-- Branching and merging are cheap and fast, which is why Git-based workflows (branch → PR → merge) are actually usable day-to-day, unlike heavy SVN branching
-- This is *why* the fork/clone/branch workflow you're about to learn is even possible the way it is — it's a direct consequence of Git being distributed, not centralized
+| | CVS | SVN |
+|---|---|---|
+| Commit atomicity | Per-file — can end up half-committed | Atomic — whole changeset succeeds or fails together |
+| Revision numbers | Per-file, scattered | One global number per repo (e.g. r4521 = the entire tree at that instant) |
+| Directories | Not really versioned | Versioned like everything else |
+| Renames/moves | Usually lost (delete+add) | Tracked as copy+delete, history mostly preserved |
+
+So SVN is a real improvement over CVS — but it's still centralized, and that
+brings its own core limitation, independent of anything CVS got wrong:
+**you needed a constant connection to the central server to commit, see
+history, or create most branches.** Branching and merging in SVN was heavy
+and often avoided in practice — teams would work directly on a shared trunk
+rather than branch freely, because merging branches back together was
+painful.
+
+**The detail that matters most for later:** in SVN, "commit" and "publish
+to the shared history" are the same action. There's no local-only commit
+step — `svn commit` always requires being online, because it *is* the write
+to the central server.
+
+**Rung 3 — Git, distributed.** Git's core change wasn't "better CVS/SVN,"
+it was a different model entirely:
+- Every clone is a **full copy of the entire history** — no constant
+  connection to a central server needed
+- **Commit and publish are two separate steps** — this is the single
+  clearest artifact of the distributed model, and it's worth seeing
+  side-by-side:
+
+  | | Git | SVN |
+  |---|---|---|
+  | Record a change locally | `git commit` — offline, instant, private | *(doesn't exist as a separate step)* |
+  | Publish to shared history | `git push` — separate, explicit, online | `svn commit` — does both at once, always online |
+
+  In Git you can commit ten times on a plane with no signal — checkpoints,
+  WIP, "let me try this" — and only touch the network once, when you
+  `push`. In SVN, the moment you commit *is* the moment it's live for
+  everyone, so there was never a private, offline phase at all.
+- Branching and merging are cheap and fast, which is why Git-based
+  workflows (branch → PR → merge) are actually usable day-to-day, unlike
+  heavy SVN branching
+- This is *why* the fork/clone/branch workflow you're about to learn is
+  even possible the way it is — it's a direct consequence of Git being
+  distributed, not centralized
 
 If you ever hear someone reference "the good old days of SVN conflicts,"
 this is why — centralized version control made exactly the kind of safe,
-frequent branching we're about to practice much harder to do well.
+frequent branching (and offline, low-stakes committing) we're about to
+practice much harder to do well.
 
 ### Why This Matters Even More in the Age of Vibe Coding
 
@@ -110,11 +155,12 @@ model:
 
 - **Instant, local commits with no network round-trip.** AI-assisted
   iteration means committing constantly — sometimes every few seconds — to
-  create checkpoints you can fall back to. In Git that's a local, offline,
-  sub-second operation. In SVN, every commit *is* a write to the shared
-  central server; there's no local history to checkpoint against. Rapid-fire
-  AI iteration would either hammer the central server or, more realistically,
-  nobody would bother — and the safety net disappears.
+  create checkpoints you can fall back to. That only works because of the
+  `commit`/`push` split covered above — Git lets you checkpoint locally and
+  offline as often as you want. SVN has no equivalent: every commit is a
+  write to the shared central server, so rapid-fire AI iteration would
+  either hammer the central server or, more realistically, nobody would
+  bother — and the safety net disappears.
 - **Cheap, disposable branches.** "Let Claude go wild on a branch, review the
   diff, throw it away if it's wrong" only works because Git branches are
   free and local. SVN branching is heavy and server-side, and merging back
