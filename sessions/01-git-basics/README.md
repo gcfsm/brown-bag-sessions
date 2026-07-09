@@ -102,11 +102,50 @@ Every one of those makes Git's core guarantees *more* valuable, not less:
   are the one committing it. Git keeps that responsibility clear and
   auditable, which matters more, not less, as more code gets AI-generated.
 
+### If We Were Still on SVN, None of This Would Work
+
+This isn't just "Git is nicer than SVN" — walk through what vibe coding and
+agentic workflows actually *require*, and check it against SVN's centralized
+model:
+
+- **Instant, local commits with no network round-trip.** AI-assisted
+  iteration means committing constantly — sometimes every few seconds — to
+  create checkpoints you can fall back to. In Git that's a local, offline,
+  sub-second operation. In SVN, every commit *is* a write to the shared
+  central server; there's no local history to checkpoint against. Rapid-fire
+  AI iteration would either hammer the central server or, more realistically,
+  nobody would bother — and the safety net disappears.
+- **Cheap, disposable branches.** "Let Claude go wild on a branch, review the
+  diff, throw it away if it's wrong" only works because Git branches are
+  free and local. SVN branching is heavy and server-side, and merging back
+  was painful enough that teams avoided it entirely and worked directly on a
+  shared trunk. An AI agent proposing a throwaway experimental branch every
+  time it tries something would have been a non-starter, both mechanically
+  and culturally.
+- **Multiple parallel agent sessions on separate branches (`git worktree`).**
+  Running several Claude sessions at once, each on its own branch and
+  working copy, is a natural extension of Git being distributed. SVN's
+  centralized, trunk-heavy workflow made even *one* long-lived branch
+  expensive — running several in parallel purely for AI experimentation
+  would have been impractical.
+- **Reverting a bad AI change in seconds.** `git revert` / `git reset` are
+  local and instant. Undoing a change in SVN means operating against the
+  shared central history — slower and riskier — so every "try it, back out
+  if it's wrong" cycle carries more weight and more hesitation.
+
+**The takeaway:** vibe coding and agentic workflows don't just work *better*
+with Git — they depend on properties (local commits, cheap branches, easy
+parallel worktrees, instant revert) that a centralized system like SVN
+never had. If this hub were still running on SVN, most of what Session 3
+and Session 11 teach either wouldn't work the way it's designed, or would be
+painful enough in practice that no one would actually do it.
+
 In short: the distributed, branch-heavy, diff-reviewable model Git introduced
 over CVS/SVN is exactly the infrastructure that makes AI-assisted development
-trustworthy rather than chaotic. Session 3 (Vibe Coding) and Session 11
-(Agentic workflows) both lean directly on the Git fundamentals from today —
-this isn't a side skill, it's the foundation the rest of the hub sits on.
+trustworthy — and even *possible* in the way we're about to practice it —
+rather than chaotic. Session 3 (Vibe Coding) and Session 11 (Agentic
+workflows) both lean directly on the Git fundamentals from today — this
+isn't a side skill, it's the foundation the rest of the hub sits on.
 
 **A concrete example, right here:** the way this very curriculum was built —
 iterating with Claude turn by turn, adding a topic, committing, adding
