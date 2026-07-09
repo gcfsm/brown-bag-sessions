@@ -143,9 +143,12 @@ Every one of those makes Git's core guarantees *more* valuable, not less:
   AI-generated code responsibly. The PR/code-review workflow you're about to
   learn isn't just for human-to-human collaboration — it's the exact same
   discipline you'll apply when reviewing what Claude wrote for you.
-- **Commits as accountability** — even when Claude writes the code, *you*
-  are the one committing it. Git keeps that responsibility clear and
-  auditable, which matters more, not less, as more code gets AI-generated.
+- **Commits as accountability** — even when Claude runs `git commit` (and
+  `git push`) itself, the name on that commit is yours — set once in
+  `git config --global user.name`/`user.email` (Section 0). Accountability
+  lives in identity and approval, not in who literally typed the command —
+  which matters more, not less, as more of the typing itself gets handed
+  to Claude.
 
 ### If We Were Still on SVN, None of This Would Work
 
@@ -363,6 +366,13 @@ If you forget `-u` the first time, Git will tell you exactly what command to run
 - Leave comments on specific lines
 - Choose: **Comment** (just a note) / **Approve** / **Request changes** (blocking, needs a fix)
 - Be specific: "this could cause a null error if X is empty" is more useful than "this looks off"
+
+**Why you can't just skip this and push to `main`:** on most real projects,
+`main` is a **protected branch** — GitHub is configured to reject direct
+pushes and require every change to come in through a reviewed PR. The
+fork → branch → PR → review flow above isn't just a courtesy convention;
+it's frequently the *only* door in. We'll set this up hands-on in Session 2
+(CI/CD), once there's an automated check worth requiring before merge.
 
 ---
 
