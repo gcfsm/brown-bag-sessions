@@ -2,9 +2,9 @@
 
 **Status:** [x] Ready
 
-**Goal:** By the end of this session, you can read and write a GitHub Actions workflow, understand why a "passing check" gates a merge, set up branch protection that requires it, read a failed Actions run well enough to fix it, and have actually watched a merge deploy itself — all on the free tier.
+**Goal:** By the end of this session, you can read and write a GitHub Actions workflow, understand why a "passing check" gates a merge, set up branch protection that requires it, read a failed Actions run well enough to fix it, and have actually watched a merge deploy itself — all on the free tier, capped off by watching a resolved conflict trigger both the check and the deploy at once.
 
-**Contents:** [Why CI/CD Exists](#why-cicd-exists--integration-hell) · [GitHub Actions Basics](#1-github-actions-basics) · [Your First Workflow](#2-your-first-workflow-lintest) · [Free-Tier Limits](#3-free-tier-limits--what-they-mean-in-practice) · [Branch Protection](#4-branch-protection--making-checks-mandatory) · [Reading a Failed Run](#5-reading-a-failed-actions-run) · [Dependabot](#6-dependabot--automatic-dependency-prs) · [Your First Deploy](#7-your-first-deploy--experiencing-cd) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+**Contents:** [Why CI/CD Exists](#why-cicd-exists--integration-hell) · [GitHub Actions Basics](#1-github-actions-basics) · [Your First Workflow](#2-your-first-workflow-lintest) · [Free-Tier Limits](#3-free-tier-limits--what-they-mean-in-practice) · [Branch Protection](#4-branch-protection--making-checks-mandatory) · [Reading a Failed Run](#5-reading-a-failed-actions-run) · [Dependabot](#6-dependabot--automatic-dependency-prs) · [Your First Deploy](#7-your-first-deploy--experiencing-cd) · [Full Loop](#8-full-loop--replay-the-conflict-now-watch-everything-react) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
 
 ---
 
@@ -360,6 +360,35 @@ sentence.
 
 ---
 
+## 8. Full Loop — Replay the Conflict, Now Watch Everything React
+
+Session 1 ended with a hands-on activity: pair up, both branch off the
+same line in the same file at the same time, first merge is clean, second
+collides, resolve it together. Do it **again**, with the same partner —
+except this time, you have a `lint-and-test` check and a `deploy` job
+that Session 1 didn't. Watch what's different.
+
+1. Same setup as Session 1's activity: partner as collaborator (if you
+   dropped it, re-add them), agree on one line in one file
+2. Both branch from `main` at the same time, edit that line differently,
+   commit, push
+3. First partner opens a PR — **watch the Checks section**: `lint-and-test`
+   runs live, same as any other PR now. Merge it — and this time also
+   watch the **deploy** job fire and the live site update
+4. Second partner opens a PR against the now-updated `main` — conflict,
+   same as before. Resolve it together, same Steps as Session 1
+5. Merge the resolved PR — **two things happen automatically**: the check
+   verifies the resolution didn't break anything, and the site deploys
+   again with the merged result
+
+**Say out loud what's different from Session 1:** the conflict-resolution
+skill didn't change at all — what changed is everything wrapped around
+it. A merge that used to just update `main` now also gets verified and
+shipped, with zero extra effort from either of you. That's Sessions 1 and
+2, together, doing their actual job at the same time.
+
+---
+
 ## Quick Reference Card (keep this open while working)
 
 ```
@@ -431,3 +460,4 @@ jobs:
 - [ ] Deliberately break a test or lint rule on a branch, push it, and read the failed run before fixing it
 - [ ] Add `.github/dependabot.yml` and, if a PR shows up before next session, read (don't necessarily merge) it
 - [ ] Set up `.github/workflows/deploy.yml` with GitHub Pages and merge a PR — watch it deploy itself, then visit the live URL
+- [ ] If you didn't finish it live: the Section 8 "Full Loop" replay with your Session 1 partner — cause a conflict again, resolve it, and watch the check and the deploy both react

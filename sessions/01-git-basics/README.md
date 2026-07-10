@@ -439,6 +439,50 @@ it's frequently the *only* door in. We'll set this up hands-on in Session 2
 
 **Note:** This is intentionally the *manual* way. Merge tools in your editor (VS Code, etc.) can help highlight conflicts, but you should be able to read and resolve the raw markers by hand — this is often where AI tools and GUI clients oversimplify or get it wrong.
 
+### Hands-On Activity: Manufacture a Real Conflict, With a Partner
+
+Reading about conflicts isn't the same as causing one. This is a paired
+exercise — two real people, touching the same line, at the same time, on
+purpose.
+
+**Setup (one-time, ~2 min):**
+1. Pair up. Pick one partner's fork to be **home base** for this exercise.
+2. Home base owner: **Settings → Collaborators → Add people** → invite
+   your partner → they accept. (This is a genuinely useful real-world
+   skill on its own — small teams often work directly on one shared repo
+   this way, not just via forks.)
+3. Both of you clone (or add as a remote) the **home base** fork locally.
+
+**The collision (~5 min):**
+4. Agree on one target: a specific line in a specific file (e.g. the
+   title line of `README.md`, or a scratch file you both create just for
+   this, like `CHALLENGE.md`).
+5. **At the same time**, each of you, starting from the *same* `main`:
+   ```bash
+   git checkout main
+   git pull
+   git checkout -b <your-name>-conflict-demo
+   ```
+   Edit that exact line to say something different — your name, your
+   guess at the answer to something, anything — then commit and push
+   your own branch.
+6. **First partner:** open a PR, merge it. No conflict yet — you were
+   first to touch that line since the shared starting point.
+7. **Second partner:** open a PR against `main` *now*. This one conflicts
+   — your branch's starting point is stale on that exact line, because
+   your partner's merge already changed it.
+
+**Resolve it together (~3 min):**
+8. Follow the Steps above as a pair: pull `main` into the second
+   branch, open the file, read both versions side by side, **decide
+   together** what the final line should actually say, delete the
+   markers, commit, push, merge.
+
+**Debrief:** this is exactly the process from the Steps section above —
+the only difference is it just happened to you, for real, instead of
+being described in the abstract. That's the muscle memory this session
+is for.
+
 ---
 
 ## Quick Reference Card (keep this open while working)
@@ -471,4 +515,4 @@ git push
 - [ ] Clone your fork locally
 - [ ] Run `npm install` and get the project running locally
 - [ ] Make one small change, commit it, push it, open a PR
-- [ ] If comfortable, try deliberately creating a conflict with a partner and resolving it together
+- [ ] Do the "Manufacture a Real Conflict" activity (Section 7) with a partner if you didn't finish it live
