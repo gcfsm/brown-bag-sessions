@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Session 2 — CI/CD &amp; GitHub Actions</title>
+<style>
+  /*
+    Design note: same "ink and archive" world as the Session 1 deck,
+    reused deliberately — one visual system across the curriculum reads as
+    a single course, not fourteen unrelated decks. Presented in a room,
+    not read solo on a phone, so no light theme.
+  */
+  @font-face {
+    font-family: 'ui-serif-stack';
+  }
+
+  :root {
+    --ink-900: #0e1116;
+    --ink-800: #161b23;
+    --ink-700: #202733;
+    --ink-600: #2b3340;
+    --parchment: #e8e1cf;
+    --parchment-dim: #b9b3a1;
+    --muted: #8791a1;
+    --gold: #d9a441;
+    --gold-dim: #a67d34;
+    --moss: #7ba17e;
+    --moss-bg: rgba(123, 161, 126, 0.14);
+    --rust: #c06a4f;
+    --rust-bg: rgba(192, 106, 79, 0.14);
+
+    --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', 'Times New Roman', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace;
+
+    --rail-w: 3rem;
+    --pad-x: clamp(2rem, 6vw, 6rem);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--ink-900);
+    color: var(--parchment);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink-900); }
+
+  *:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  p { margin: 0; }
+
+  a { color: var(--gold); }
+
+  code, .mono { font-family: var(--font-mono); }
+
+  /* ---------- layout shell ---------- */
+
+  main.deck {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    padding-left: var(--rail-w);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    main.deck { scroll-behavior: auto; }
+  }
+
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+    padding: 5.5rem var(--pad-x) 4rem;
+    position: relative;
+    border-bottom: 1px solid var(--ink-700);
+  }
+
+  .slide::before {
+    content: attr(data-index) " / " attr(data-total);
+    position: absolute;
+    top: 1.9rem;
+    right: var(--pad-x);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
+
+  .slide::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 1.9rem;
+    left: var(--pad-x);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gold-dim);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+  }
+
+  h1.headline { font-size: clamp(2.6rem, 5.4vw, 4.4rem); line-height: 1.06; }
+  h2.headline { font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.1; max-width: 24ch; }
+
+  .subhead {
+    font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+    color: var(--parchment-dim);
+    max-width: 56ch;
+    line-height: 1.55;
+  }
+
+  .lede {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    max-width: 64rem;
+    color: var(--parchment-dim);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    max-width: 74rem;
+  }
+
+  @media (min-width: 900px) {
+    .content-grid.split { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
+  }
+
+  /* ---------- rail nav ---------- */
+
+  .rail {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: var(--rail-w);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    z-index: 10;
+  }
+
+  .rail__line {
+    position: absolute;
+    left: 50%;
+    top: 8%;
+    bottom: 8%;
+    width: 1px;
+    background: var(--ink-600);
+    transform: translateX(-50%);
+  }
+
+  .rail__dots {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.55rem, 3.2vh, 1.3rem);
+  }
+
+  .dot {
+    appearance: none;
+    background: var(--ink-700);
+    border: 1px solid var(--ink-600);
+    border-radius: 50%;
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .dot:hover { border-color: var(--gold-dim); }
+
+  .dot.is-active {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.6);
+  }
+
+  /* ---------- hud ---------- */
+
+  .hud {
+    position: fixed;
+    top: 1.9rem;
+    left: var(--rail-w);
+    padding-left: var(--pad-x);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* ---------- ledger / checklists ---------- */
+
+  .ledger { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; max-width: 46rem; }
+
+  .ledger li {
+    display: grid;
+    grid-template-columns: 1.4rem 1fr;
+    gap: 0.9rem;
+    align-items: baseline;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--ink-700);
+  }
+
+  .ledger li:last-child { border-bottom: none; }
+
+  .ledger .mark { font-family: var(--font-mono); color: var(--rust); }
+
+  .ledger strong { color: var(--parchment); font-weight: 600; }
+  .ledger span.note { color: var(--parchment-dim); }
+
+  /* ---------- cards ---------- */
+
+  .cards { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(15.5rem, 1fr)); max-width: 68rem; }
+
+  .card {
+    background: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    border-radius: 3px;
+    padding: 1.3rem 1.4rem;
+  }
+
+  .card h3 { font-size: 1.05rem; color: var(--gold); font-family: var(--font-body); font-weight: 600; margin-bottom: 0.5rem; }
+  .card p { color: var(--parchment-dim); font-size: 0.95rem; line-height: 1.55; }
+
+  /* ---------- tables ---------- */
+
+  .table-wrap { overflow-x: auto; max-width: 74rem; }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 0.75rem 1.4rem 0.75rem 0;
+    border-bottom: 1px solid var(--ink-700);
+    vertical-align: top;
+  }
+
+  th {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  td.hi { color: var(--gold); }
+  td { color: var(--parchment-dim); }
+  td strong { color: var(--parchment); }
+
+  /* ---------- code / terminal blocks ---------- */
+
+  .term {
+    background: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    border-radius: 4px;
+    max-width: 44rem;
+    overflow: hidden;
+  }
+
+  .term__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.9rem;
+    background: var(--ink-700);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  .term__bar span.p { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-600); }
+
+  .term pre {
+    margin: 0;
+    padding: 1rem 1.2rem 1.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--parchment);
+    overflow-x: auto;
+  }
+
+  .term .cmt { color: var(--muted); }
+  .term .gold { color: var(--gold); }
+  .term .moss { color: var(--moss); }
+
+  /* ---------- svg diagrams ---------- */
+
+  .diagram { max-width: 100%; height: auto; }
+  .diagram .node { fill: var(--ink-800); stroke: var(--ink-600); stroke-width: 1.5; }
+  .diagram .node.hi { fill: var(--gold); stroke: var(--gold); }
+  .diagram .node.bad { fill: var(--rust); stroke: var(--rust); }
+  .diagram .edge { stroke: var(--ink-600); stroke-width: 1.5; fill: none; }
+  .diagram .edge.hi { stroke: var(--gold-dim); }
+  .diagram .edge.bad { stroke: var(--rust); }
+  .diagram text { font-family: var(--font-mono); fill: var(--parchment-dim); font-size: 11px; }
+  .diagram text.lbl-hi { fill: var(--gold); }
+  .diagram text.lbl-bad { fill: var(--rust); }
+  .diagram text.sub { fill: var(--muted); font-size: 9px; }
+
+  /* ---------- misc ---------- */
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem; max-width: 62rem; }
+  .flow .step {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    padding: 0.5rem 0.9rem;
+    border-radius: 3px;
+    color: var(--parchment);
+    white-space: nowrap;
+  }
+  .flow .step.hi { border-color: var(--gold-dim); color: var(--gold); }
+  .flow .arrow { color: var(--gold-dim); }
+
+  .two-col { display: grid; gap: 2.4rem; grid-template-columns: 1fr; max-width: 62rem; }
+  @media (min-width: 780px) { .two-col { grid-template-columns: 1fr 1fr; } }
+  .two-col h3 { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.8rem; }
+  .two-col ul { margin: 0; padding-left: 1.1rem; color: var(--parchment-dim); line-height: 1.7; font-size: 0.96rem; }
+  .two-col ul li::marker { color: var(--gold-dim); }
+  .two-col.bad h3 { color: var(--rust); }
+  .two-col.good h3 { color: var(--moss); }
+
+  .footline { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
+
+  .pull {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    line-height: 1.35;
+    max-width: 34ch;
+    color: var(--parchment);
+  }
+  .pull em { color: var(--gold); font-style: normal; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--ink-900); }
+  ::-webkit-scrollbar-thumb { background: var(--ink-700); border-radius: 5px; }
+</style>
+</head>
+<body>
+
+  <nav class="rail" aria-label="Slide navigation">
+    <div class="rail__line" aria-hidden="true"></div>
+    <div class="rail__dots" id="railDots"></div>
+  </nav>
+
+  <div class="hud" id="hud">01 / 14 · title</div>
+
+  <main class="deck" id="deck">
+
+    <!-- 1 -->
+    <section class="slide" data-label="title" id="s1">
+      <p class="eyebrow">IT Group Hub — Session 2</p>
+      <h1 class="headline">CI/CD &amp;<br />GitHub Actions</h1>
+      <p class="subhead">Session 1 made merging cheap. This session makes merging <em>often</em> safe — automatic verification on every single merge, and a mandatory gate that enforces it.</p>
+
+      <svg class="diagram" viewBox="0 0 640 90" width="640" role="img" aria-label="From cheap merging to automatic verification to automatic shipping">
+        <path class="edge hi" d="M40,60 L280,30 L520,15" />
+        <path class="edge" d="M520,15 L600,10" />
+        <g>
+          <circle class="node hi" cx="40" cy="60" r="6"></circle>
+          <circle class="node hi" cx="280" cy="30" r="6"></circle>
+          <circle class="node" cx="520" cy="15" r="6"></circle>
+          <circle class="node" cx="600" cy="10" r="5"></circle>
+        </g>
+        <text x="40" y="80" text-anchor="start" class="lbl-hi">s1 · cheap merging</text>
+        <text x="280" y="50" text-anchor="middle" class="lbl-hi">s2 · auto verification</text>
+        <text x="520" y="35" text-anchor="middle">s7 · auto shipping</text>
+        <text x="600" y="28" text-anchor="middle" class="sub">later</text>
+      </svg>
+
+      <p class="footline">Church IT Discipleship &amp; Career Track — Session 2 of 20</p>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide" data-label="cold open" id="s2">
+      <p class="eyebrow">Before we touch Actions</p>
+      <h2 class="headline">Ten people branch Monday. Everyone merges Friday.</h2>
+      <svg class="diagram" viewBox="0 0 640 190" width="640" role="img" aria-label="Five branches, each fine alone, converging Friday afternoon into an unknown outcome">
+        <path class="edge" d="M40,20 C 300,20 460,90 560,105" />
+        <path class="edge" d="M40,55 C 300,55 460,95 560,105" />
+        <path class="edge" d="M40,90 L560,105" />
+        <path class="edge" d="M40,125 C 300,125 460,115 560,105" />
+        <path class="edge" d="M40,160 C 300,160 460,120 560,105" />
+        <circle class="node" cx="40" cy="20" r="5"></circle>
+        <circle class="node" cx="40" cy="55" r="5"></circle>
+        <circle class="node" cx="40" cy="90" r="5"></circle>
+        <circle class="node" cx="40" cy="125" r="5"></circle>
+        <circle class="node" cx="40" cy="160" r="5"></circle>
+        <circle class="node bad" cx="560" cy="105" r="9"></circle>
+        <text x="40" y="10" text-anchor="middle" class="sub">mon</text>
+        <text x="0" y="24" class="sub">alice</text>
+        <text x="0" y="59" class="sub">bob</text>
+        <text x="0" y="94" class="sub">carol</text>
+        <text x="0" y="129" class="sub">dana</text>
+        <text x="0" y="164" class="sub">eli</text>
+        <text x="560" y="90" text-anchor="middle" class="lbl-bad">fri, 4pm</text>
+        <text x="600" y="108" text-anchor="middle" class="lbl-bad">???</text>
+      </svg>
+      <p class="lede">Each branch works fine, alone, all week. Friday, everyone merges into <code>main</code> at once. Now find out — together, for the first time — whether any of it actually fits.</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide" data-label="what breaks" id="s3">
+      <p class="eyebrow">What breaks without CI</p>
+      <h2 class="headline">Five ways "it worked on my branch" fails you</h2>
+      <ul class="ledger">
+        <li><span class="mark">01</span><span><strong>No shared truth until merge</strong> — <span class="note">every branch is only ever tested against its own, increasingly stale copy of <code>main</code></span></span></li>
+        <li><span class="mark">02</span><span><strong>Breaks are anonymous</strong> — <span class="note">ten changes land at once; which one broke the build is now a mystery to solve, not a fact you already know</span></span></li>
+        <li><span class="mark">03</span><span><strong>Fixes get expensive</strong> — <span class="note">the bug is found days or weeks after it was written, not minutes — the author has moved on, context is gone</span></span></li>
+        <li><span class="mark">04</span><span><strong>Merging gets scarier, not safer</strong> — <span class="note">teams merge less often "to avoid the mess," which only makes the eventual mess bigger</span></span></li>
+        <li><span class="mark">05</span><span><strong>Review can't catch it</strong> — <span class="note">a human reading a diff cannot run the whole test suite in their head</span></span></li>
+      </ul>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide" data-label="the fix" id="s4">
+      <p class="eyebrow">The direct fix — coined late 1990s, Extreme Programming</p>
+      <h2 class="headline">Continuous Integration: merge early and often, verify every time</h2>
+      <div class="two-col">
+        <div class="bad">
+          <h3>Without CI</h3>
+          <ul>
+            <li>Branches live for weeks</li>
+            <li>Verification happens by eye, at review time</li>
+            <li>A break surfaces on integration day — for everyone, at once</li>
+          </ul>
+        </div>
+        <div class="good">
+          <h3>With CI</h3>
+          <ul>
+            <li>Merge the same day work starts</li>
+            <li>Every merge is built, linted, tested — automatically</li>
+            <li>A break surfaces in minutes, on the one change that caused it</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lede">This is the missing half of Session 1. Cheap merging (Git) plus automatic verification on every merge (CI) is what actually makes "branch → PR → merge, all day" safe at team scale — Git alone gives you the <em style="color:var(--gold)">ability</em>; CI is what makes doing so <em style="color:var(--gold)">not reckless</em>.</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide" data-label="cd, briefly" id="s5">
+      <p class="eyebrow">One step further — Session 7 goes here properly</p>
+      <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
+      <p class="lede">Once every merge is verified, you can trust that <code>main</code> is always in a shippable state — so shipping stops being its own dreaded event and becomes one click, or no clicks at all. That's Continuous Delivery / Deployment. Today is the CI half: the automated gate that makes every merge trustworthy in the first place.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide" data-label="the vibe coding thread" id="s6">
+      <p class="eyebrow">The other half of the Session 1 thread</p>
+      <p class="pull">A lint/test workflow doesn't care whether a human or <em>Claude</em> wrote the diff. It checks the result — every time, without getting tired, without skipping a step because the code "looked fine."</p>
+      <p class="lede">If Claude can propose a change and you can merge it in minutes, CI is what stops "fast" from becoming "fast and broken."</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide" data-label="actions vocabulary" id="s7">
+      <p class="eyebrow">The vocabulary that matters</p>
+      <h2 class="headline">Workflow, trigger, job, step, action, runner</h2>
+      <div class="table-wrap">
+        <table style="max-width:60rem;">
+          <thead><tr><th>Term</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Workflow</strong></td><td>The whole <code>.yml</code> file — one automated process</td></tr>
+            <tr><td><strong>Trigger</strong> (<code>on:</code>)</td><td>The event that starts it — <code>push</code>, <code>pull_request</code>, a schedule, or manual</td></tr>
+            <tr><td><strong>Job</strong></td><td>A group of steps on one runner. Multiple jobs run in parallel by default</td></tr>
+            <tr><td><strong>Step</strong></td><td>One command or one reusable action, run in order inside a job</td></tr>
+            <tr><td><strong>Action</strong></td><td>A packaged, reusable step someone else wrote — like an npm package, but for CI steps</td></tr>
+            <tr><td><strong>Runner</strong></td><td>The disposable virtual machine your job actually executes on</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide" data-label="anatomy of a workflow" id="s8" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+      <p class="eyebrow">One file: <code>.github/workflows/ci.yml</code></p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Anatomy of a workflow</h2>
+      <div class="term" style="max-width:40rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;.github/workflows/ci.yml</div>
+        <pre style="font-size:0.8rem; line-height:1.5; padding:0.85rem 1.1rem 1rem;"><span class="cmt"># shows up in the Actions tab</span>
+<span class="gold">name:</span> CI
+
+<span class="gold">on:</span>                     <span class="cmt"># what triggers this</span>
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+
+<span class="gold">jobs:</span>                   <span class="cmt"># parallel by default</span>
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:                 <span class="cmt"># run in order</span>
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm install
+      - run: npm run lint
+      - run: npm test</pre>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-label="hands-on · first workflow" id="s9">
+      <p class="eyebrow">Hands-on</p>
+      <h2 class="headline">From zero to a check on your PR</h2>
+      <div class="term" style="max-width:34rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
+        <pre>mkdir -p .github/workflows
+<span class="cmt"># save the file from the previous slide, then:</span>
+git checkout -b add-ci-workflow
+git add .github/workflows/ci.yml
+git commit -m "Add CI workflow: lint + test on push and PR"
+git push -u origin add-ci-workflow</pre>
+      </div>
+      <div class="flow">
+        <span class="step">open a PR</span><span class="arrow">→</span>
+        <span class="step hi">"Checks" section appears</span><span class="arrow">→</span>
+        <span class="step">runs live</span><span class="arrow">→</span>
+        <span class="step">green ✓ or red ✕ on the PR</span>
+      </div>
+      <p class="lede">A human reviewer no longer has to manually run <code>npm test</code> locally to find out if a PR is broken — the PR tells you before anyone even opens it.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide" data-label="free-tier limits" id="s10">
+      <p class="eyebrow">Know the ceiling before you hit it</p>
+      <h2 class="headline">Free-tier limits</h2>
+      <div class="table-wrap">
+        <table style="max-width:52rem;">
+          <thead><tr><th></th><th>Public repos</th><th>Private repos (Free)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Actions minutes</strong></td><td class="hi">Unlimited</td><td>2,000 / month</td></tr>
+            <tr><td><strong>Storage</strong></td><td class="hi">Unlimited</td><td>500 MB</td></tr>
+            <tr><td><strong>Concurrent jobs</strong></td><td>20</td><td>20 (5 macOS)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Linux runners are cheapest — <code>ubuntu-latest</code> by default; macOS costs 10× the minutes, Windows 2×. A lint/test job runs ~1–3 minutes, so 2,000 free minutes is several hundred runs — plenty for a small church project, but the ceiling is real (Session 16 comes back to this).</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="slide" data-label="branch protection" id="s11">
+      <p class="eyebrow">The follow-through on Session 1's note</p>
+      <h2 class="headline">Making the check mandatory</h2>
+      <ul class="ledger" style="max-width:52rem;">
+        <li><span class="mark">□</span><span>Repo → <strong>Settings → Branches → Add rule</strong>, pattern <code>main</code></span></li>
+        <li><span class="mark">□</span><span><strong>Require a pull request before merging</strong> — no direct pushes to <code>main</code>, ever</span></li>
+        <li><span class="mark">□</span><span><strong>Require approvals</strong> — at least 1 reviewer, even on a small team</span></li>
+        <li><span class="mark">□</span><span><strong>Require status checks to pass</strong> — select <code>lint-and-test</code> (only listed once the workflow has run at least once)</span></li>
+        <li><span class="mark">□</span><span><strong>Require branches to be up to date before merging</strong> — the "merge often" half of Section 4, enforced automatically</span></li>
+      </ul>
+      <p class="lede">The PR's <strong style="color:var(--parchment)">Merge</strong> button itself goes gray until the check passes and a reviewer approves. Not discipline. Not a reminder. GitHub mechanically refuses the merge.</p>
+    </section>
+
+    <!-- 12 -->
+    <section class="slide" data-label="reading a failed run" id="s12">
+      <p class="eyebrow">Everyone hits a red X eventually</p>
+      <h2 class="headline">Reading a failed Actions run</h2>
+      <div class="two-col">
+        <div>
+          <h3>The workflow</h3>
+          <ul>
+            <li>Click the failed check on the PR (or the Actions tab)</li>
+            <li>Click into the failing job, then the failing step</li>
+            <li>Read from the <strong style="color:var(--parchment)">bottom up</strong> — the error is the last few lines</li>
+            <li>Reproduce locally (<code>npm install &amp;&amp; npm run lint &amp;&amp; npm test</code>) before pushing a fix</li>
+            <li>Push — the same PR re-runs automatically</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Common first-timer failures</h3>
+          <ul>
+            <li>Node version mismatch vs. <code>node-version:</code></li>
+            <li>A file that works locally but was never committed</li>
+            <li>An env var / secret the runner doesn't have (Session 7)</li>
+            <li>A flaky test under CI's tighter resources</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 -->
+    <section class="slide" data-label="dependabot" id="s13">
+      <p class="eyebrow">Automatic dependency PRs</p>
+      <h2 class="headline">Dependabot: security alerts vs. routine bumps</h2>
+      <div class="term" style="max-width:30rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;.github/dependabot.yml</div>
+        <pre>version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"</pre>
+      </div>
+      <div class="table-wrap">
+        <table style="max-width:56rem;">
+          <thead><tr><th></th><th>Security alert</th><th>Routine version bump</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Why it opened</strong></td><td class="hi">A known CVE in a dependency</td><td>A newer version just exists</td></tr>
+            <tr><td><strong>Urgency</strong></td><td class="hi">Review and merge promptly</td><td>Merge when convenient, or batch</td></tr>
+            <tr><td><strong>Safe default</strong></td><td colspan="2">CI passes + no breaking changes in the changelog → merge it</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 14 -->
+    <section class="slide" data-label="homework" id="s14">
+      <p class="eyebrow">Before next session</p>
+      <h2 class="headline">Homework</h2>
+      <ul class="ledger" style="max-width:52rem;">
+        <li><span class="mark">□</span><span>Add <code>.github/workflows/ci.yml</code> (lint + test) to your fork of the sandbox repo</span></li>
+        <li><span class="mark">□</span><span>Open a PR and watch the check run live on it</span></li>
+        <li><span class="mark">□</span><span>Turn on branch protection: require the PR, require the check, require up to date</span></li>
+        <li><span class="mark">□</span><span>Deliberately break a lint rule on a branch, push it, read the failed run before fixing it</span></li>
+        <li><span class="mark">□</span><span class="note">Add <code>.github/dependabot.yml</code> — read (not necessarily merge) any PR it opens</span></li>
+      </ul>
+      <p class="footline">Next — Session 3: Vibe Coding Your First App</p>
+    </section>
+
+  </main>
+
+  <script>
+    (function () {
+      var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+      var total = slides.length;
+      var railDots = document.getElementById('railDots');
+      var hud = document.getElementById('hud');
+      var deck = document.getElementById('deck');
+
+      slides.forEach(function (s, i) {
+        s.setAttribute('data-index', String(i + 1).padStart(2, '0'));
+        s.setAttribute('data-total', total);
+      });
+
+      var dots = slides.map(function (s, i) {
+        var b = document.createElement('button');
+        b.className = 'dot';
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Go to slide ' + (i + 1) + ': ' + s.getAttribute('data-label'));
+        b.addEventListener('click', function () {
+          s.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+        });
+        railDots.appendChild(b);
+        return b;
+      });
+
+      function reducedMotion() {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      }
+
+      function setActive(i) {
+        dots.forEach(function (d, j) { d.classList.toggle('is-active', j === i); });
+        var s = slides[i];
+        hud.textContent = String(i + 1).padStart(2, '0') + ' / ' + total + ' · ' + s.getAttribute('data-label');
+      }
+
+      var current = 0;
+      setActive(0);
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && e.intersectionRatio > 0.55) {
+            var idx = slides.indexOf(e.target);
+            if (idx !== -1) { current = idx; setActive(idx); }
+          }
+        });
+      }, { root: deck, threshold: [0.55] });
+
+      slides.forEach(function (s) { io.observe(s); });
+
+      document.addEventListener('keydown', function (ev) {
+        var goTo = null;
+        if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].indexOf(ev.key) !== -1) {
+          goTo = Math.min(total - 1, current + 1);
+        } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].indexOf(ev.key) !== -1) {
+          goTo = Math.max(0, current - 1);
+        } else if (ev.key === 'Home') {
+          goTo = 0;
+        } else if (ev.key === 'End') {
+          goTo = total - 1;
+        }
+        if (goTo !== null) {
+          ev.preventDefault();
+          slides[goTo].scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
