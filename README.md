@@ -14,8 +14,11 @@ contributing to real church software projects.
 - **Approach:** Theory and manual execution first (no AI shortcuts for core
   mechanics like Git/PRs), AI-assisted workflows introduced explicitly once
   fundamentals are solid
-- **Sandbox:** All sessions build against a shared practice repo (see `/sandbox`)
-  so skills compound session to session
+- **Sandbox:** All sessions build against
+  [`gcfsm/brown-bag-sandbox`](https://github.com/gcfsm/brown-bag-sandbox) —
+  attendees fork it once, in Session 1, and keep building on that same fork
+  across every session, so skills (and the project itself) compound over
+  time. See `/sandbox` in this repo for details.
 - **Gate to real work:** Once attendees can read/write an Epic with Acceptance
   Criteria (Session 19), they're eligible to pair on real church project tickets
 
