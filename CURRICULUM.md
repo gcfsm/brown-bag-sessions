@@ -12,7 +12,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 |---|---|---|---|
 | 1 | Git Basics — Fork, Clone, npm Packages, Branch, Push, PR, Code Review, Conflict Resolution | [x] | [`01-git-basics`](./sessions/01-git-basics) |
 | 2 | CI/CD & GitHub Actions (free-tier features, lint/test workflows, CI Lint, Dependabot) | [x] | [`02-cicd-actions`](./sessions/02-cicd-actions) |
-| 3 | Vibe Coding Your First App (with Claude) | [ ] | [`03-vibe-coding-first-app`](./sessions/03-vibe-coding-first-app) |
+| 3 | Vibe Coding Your First App (with Claude) | [~] | [`03-vibe-coding-first-app`](./sessions/03-vibe-coding-first-app) |
 | 4 | React / Vite / Next.js Basics | [ ] | [`04-react-vite-nextjs-basics`](./sessions/04-react-vite-nextjs-basics) |
 | 5 | Data Modeling & NoSQL Patterns | [ ] | [`05-data-modeling-nosql`](./sessions/05-data-modeling-nosql) |
 

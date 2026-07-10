@@ -85,9 +85,26 @@ step — `svn commit` always requires being online, because it *is* the write
 to the central server.
 
 **Rung 3 — Git, distributed.** Git's core change wasn't "better CVS/SVN,"
-it was a different model entirely:
+it was a different model entirely — and it came out of a very concrete 2005
+crisis, not a lab exercise. The Linux kernel's thousands of contributors
+relied on a proprietary tool, BitKeeper, used for free by special
+arrangement. When that arrangement fell apart, **Linus Torvalds** (Linux's
+creator) wrote Git in about **ten days** — specifically to support
+thousands of independent contributors collaborating with no single company
+owning the infrastructure. "Distributed" wasn't a nice-to-have design
+choice; it was the only model that survived contact with that scale of
+problem.
+
 - Every clone is a **full copy of the entire history** — no constant
   connection to a central server needed
+- **Commits are identified by content, not a position in a queue.** A Git
+  commit ID (the `a1b2c3d...` hash in `git log`) is computed from the
+  commit's own content — so two people can commit offline, independently,
+  and if they made the identical change, it's the *same ID everywhere*,
+  with no server ever involved. Compare that to SVN's `r4521` — just the
+  next number off one server's counter, meaningless without that server.
+  This is *why* distributed history-merging is mathematically sound, not
+  just a policy choice.
 - **Commit and publish are two separate steps** — this is the single
   clearest artifact of the distributed model, and it's worth seeing
   side-by-side:
@@ -352,6 +369,20 @@ If you forget `-u` the first time, Git will tell you exactly what command to run
    - **Description:** what you changed, why, and how to test it (fill the PR template if one exists)
 5. Click **Create Pull Request**
 6. Request a reviewer if you have one assigned
+7. Once approved (and any required checks pass — Session 2), click
+   **Merge pull request**. GitHub gives you three options here, worth
+   knowing before you click blind:
+   - **Create a merge commit** — keeps full branch history, adds one merge
+     commit. The default, safest choice while you're learning.
+   - **Squash and merge** — flattens the whole branch into one clean
+     commit on `main`. Common for tidy history on small PRs.
+   - **Rebase and merge** — replays your commits onto `main` individually,
+     no merge commit at all. Skip this until rebase itself is covered —
+     not today's scope (see the note on Section 7 below).
+
+   Default to **Create a merge commit** for now — it's the least
+   surprising option, and it matches the merge-based conflict resolution
+   taught in Section 7.
 
 ---
 
