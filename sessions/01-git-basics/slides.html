@@ -355,6 +355,7 @@
     color: var(--parchment);
     white-space: nowrap;
   }
+  .flow .step.hi { border-color: var(--gold-dim); color: var(--gold); }
   .flow .arrow { color: var(--gold-dim); }
 
   .two-col { display: grid; gap: 2.4rem; grid-template-columns: 1fr; max-width: 60rem; }
@@ -519,6 +520,7 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
           <h2 class="headline">Git: every clone is the whole history</h2>
           <ul style="margin:1.1rem 0 0; padding-left:1.1rem; color:var(--parchment-dim); line-height:1.8; max-width:38ch;">
             <li>Every clone holds a <strong style="color:var(--parchment)">full copy</strong> of the entire history — no server needed to commit or browse the past</li>
+            <li>Commit IDs are a <strong style="color:var(--parchment)">hash of their content</strong>, not a counter — two people can commit offline, independently, and land the same ID with zero coordination</li>
             <li>Branching and merging are cheap and fast — branch → PR → merge is usable <em>daily</em>, not avoided</li>
             <li>Commit and publish are two separate steps (previous slide) — the direct consequence of being distributed</li>
           </ul>
@@ -541,7 +543,15 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
     </section>
 
     <!-- 8 -->
-    <section class="slide" data-label="why now" id="s8">
+    <section class="slide" data-label="the origin story" id="s8">
+      <p class="eyebrow">Why 2005, specifically</p>
+      <h2 class="headline">Ten days, one license dispute, one kernel</h2>
+      <p class="lede">The Linux kernel's thousands of contributors relied on a proprietary tool, BitKeeper, used for free by special arrangement. When that arrangement fell apart in 2005, <strong style="color:var(--parchment)">Linus Torvalds</strong> — Linux's own creator — wrote Git in about <strong style="color:var(--gold)">ten days</strong>.</p>
+      <p class="lede">Not a lab exercise. A tool built specifically to support thousands of independent contributors collaborating with no single company owning the infrastructure. "Distributed" wasn't a nice-to-have — it was the only model that survived contact with that scale of problem.</p>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-label="why now" id="s9">
       <p class="eyebrow">Why this matters even more today</p>
       <h2 class="headline">AI-assisted coding makes Git more important, not less</h2>
       <div class="cards">
@@ -551,8 +561,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </div>
     </section>
 
-    <!-- 9 -->
-    <section class="slide" data-label="git's guarantees" id="s9">
+    <!-- 10 -->
+    <section class="slide" data-label="git's guarantees" id="s10">
       <p class="eyebrow">Every guarantee, doing new work</p>
       <h2 class="headline">Git's core guarantees, applied to Claude's output</h2>
       <div class="cards">
@@ -563,8 +573,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </div>
     </section>
 
-    <!-- 10 -->
-    <section class="slide" data-label="the counterfactual" id="s10">
+    <!-- 11 -->
+    <section class="slide" data-label="the counterfactual" id="s11">
       <p class="eyebrow">The counterfactual</p>
       <h2 class="headline">If we were still on SVN, none of this works</h2>
       <ul class="ledger" style="max-width:56rem;">
@@ -575,16 +585,16 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </ul>
     </section>
 
-    <!-- 11 -->
-    <section class="slide" data-label="proof, not theory" id="s11">
+    <!-- 12 -->
+    <section class="slide" data-label="proof, not theory" id="s12">
       <p class="eyebrow">Not a hypothetical</p>
       <h2 class="headline">You're looking at the proof right now</h2>
       <p class="lede">This curriculum was built exactly this way — iterating with Claude turn by turn, adding a topic, committing, adding another, committing again, a dozen small changes in sequence.</p>
       <p class="lede">Without Git, that process means re-sending whole files back and forth, manually tracking which version had which addition — the <code>_FINAL_v2</code> chaos again, just at AI speed instead of human speed. <strong style="color:var(--parchment)">What we just did to build this session would be largely impossible, or painfully slow, without version control.</strong></p>
     </section>
 
-    <!-- 12 -->
-    <section class="slide" data-label="today · fork vs clone" id="s12">
+    <!-- 13 -->
+    <section class="slide" data-label="today · fork vs clone" id="s13">
       <p class="eyebrow">Hands-on starts here</p>
       <h2 class="headline">Fork vs. Clone</h2>
       <div class="table-wrap">
@@ -605,8 +615,8 @@ cd brown-bag-sessions</pre>
       </div>
     </section>
 
-    <!-- 13 -->
-    <section class="slide" data-label="the detail that matters" id="s13">
+    <!-- 14 -->
+    <section class="slide" data-label="the detail that matters" id="s14">
       <p class="eyebrow">Before the commands — one thing to remember</p>
       <h2 class="headline">SVN commit = Git commit + push</h2>
       <div class="table-wrap">
@@ -621,8 +631,8 @@ cd brown-bag-sessions</pre>
       <p class="lede">Ten commits on a plane, no signal — checkpoints, WIP, "let me try this" — then one <code class="mono" style="color:var(--gold)">push</code> when you're ready. Every command on the next few slides leans on this split.</p>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" data-label="today · npm install" id="s14">
+    <!-- 15 -->
+    <section class="slide" data-label="today · npm install" id="s15">
       <p class="eyebrow">The first thing you'll hit after cloning</p>
       <h2 class="headline">npm install</h2>
       <div class="term" style="max-width:38rem;">
@@ -642,8 +652,8 @@ npm run dev   <span class="cmt"># or whatever "scripts" says</span></pre>
       </div>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" data-label="today · commands" id="s15">
+    <!-- 16 -->
+    <section class="slide" data-label="today · commands" id="s16">
       <p class="eyebrow">The daily loop</p>
       <h2 class="headline">Local basics + branching</h2>
       <div class="term" style="max-width:38rem;">
@@ -661,15 +671,16 @@ git branch                        <span class="cmt"># list branches</span></pre>
       <p class="lede">Naming convention: short, descriptive, hyphenated — <code>fix-login-button</code>, <code>add-student-search</code>.</p>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" data-label="today · ship it" id="s16">
+    <!-- 17 -->
+    <section class="slide" data-label="today · ship it" id="s17">
       <p class="eyebrow">Push → PR → Review</p>
       <h2 class="headline">Getting a change into main</h2>
       <div class="flow">
         <span class="step">git push -u origin branch</span><span class="arrow">→</span>
         <span class="step">Compare &amp; pull request</span><span class="arrow">→</span>
         <span class="step">Title + description</span><span class="arrow">→</span>
-        <span class="step">Reviewer decides</span>
+        <span class="step">Reviewer decides</span><span class="arrow">→</span>
+        <span class="step hi">Merge</span>
       </div>
       <div class="two-col">
         <div>
@@ -681,10 +692,11 @@ git branch                        <span class="cmt"># list branches</span></pre>
           <ul><li>Read the diff, not just the description</li><li>Comment / Approve / Request changes</li><li>Be specific — "could null-error if X is empty" beats "looks off"</li></ul>
         </div>
       </div>
+      <p class="lede">Approved → click <strong style="color:var(--parchment)">Merge</strong>. Three options: <strong style="color:var(--gold)">Create a merge commit</strong> (default, safest while learning), <strong>Squash and merge</strong> (flattens to one commit), <strong>Rebase and merge</strong> (skip until rebase is covered).</p>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" data-label="today · conflicts" id="s17">
+    <!-- 18 -->
+    <section class="slide" data-label="today · conflicts" id="s18">
       <p class="eyebrow">By hand, no shortcuts</p>
       <h2 class="headline">Reading a conflict</h2>
       <div class="term" style="max-width:36rem;">
@@ -694,8 +706,8 @@ git branch                        <span class="cmt"># list branches</span></pre>
       <p class="lede">Read both sides. Decide the correct final code — one side, the other, or a blend. Delete the three marker lines. <code>git add</code> the file, commit, push. Editor merge tools can help highlight — but you should be able to do this by eye.</p>
     </section>
 
-    <!-- 18 -->
-    <section class="slide" data-label="homework" id="s18">
+    <!-- 19 -->
+    <section class="slide" data-label="homework" id="s19">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:50rem;">

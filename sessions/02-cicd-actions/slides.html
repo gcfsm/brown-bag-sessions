@@ -483,9 +483,13 @@
 
     <!-- 5 -->
     <section class="slide" data-label="cd, briefly" id="s5">
-      <p class="eyebrow">One step further — Session 7 goes here properly</p>
+      <p class="eyebrow">One step further — two doses today</p>
       <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
-      <p class="lede">Once every merge is verified, you can trust that <code>main</code> is always in a shippable state — so shipping stops being its own dreaded event and becomes one click, or no clicks at all. That's Continuous Delivery / Deployment. Today is the CI half: the automated gate that makes every merge trustworthy in the first place.</p>
+      <p class="lede">Once every merge is verified, you can trust that <code>main</code> is always in a shippable state — so shipping stops being its own dreaded event and becomes no click at all. That's Continuous Delivery / Deployment.</p>
+      <div class="flow">
+        <span class="step hi">facilitator: a real production pipeline</span><span class="arrow">→</span>
+        <span class="step hi">you: build a free one yourself, later today</span>
+      </div>
     </section>
 
     <!-- 6 -->
@@ -512,6 +516,7 @@
           </tbody>
         </table>
       </div>
+      <p class="lede"><code>checkout</code> and <code>setup-node</code> aren't special — they're two of thousands of published actions on the <strong style="color:var(--gold)">GitHub Actions Marketplace</strong>. Deploy to Firebase, post to Slack, run a Lighthouse audit — there's very likely already an action for it.</p>
     </section>
 
     <!-- 8 -->
@@ -559,13 +564,13 @@ git push -u origin add-ci-workflow</pre>
         <span class="step">runs live</span><span class="arrow">→</span>
         <span class="step">green ✓ or red ✕ on the PR</span>
       </div>
-      <p class="lede">A human reviewer no longer has to manually run <code>npm test</code> locally to find out if a PR is broken — the PR tells you before anyone even opens it.</p>
+      <p class="lede">A human reviewer no longer has to manually run <code>npm test</code> locally to find out if a PR is broken — the PR tells you before anyone even opens it. Once it's run on <code>main</code>, drop <code>![CI](.../ci.yml/badge.svg)</code> in your README — a visible payoff without opening the Actions tab.</p>
     </section>
 
     <!-- 10 -->
-    <section class="slide" data-label="free-tier limits" id="s10">
+    <section class="slide" data-label="free-tier limits" id="s10" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Know the ceiling before you hit it</p>
-      <h2 class="headline">Free-tier limits</h2>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Free-tier limits</h2>
       <div class="table-wrap">
         <table style="max-width:52rem;">
           <thead><tr><th></th><th>Public repos</th><th>Private repos (Free)</th></tr></thead>
@@ -576,7 +581,14 @@ git push -u origin add-ci-workflow</pre>
           </tbody>
         </table>
       </div>
-      <p class="lede">Linux runners are cheapest — <code>ubuntu-latest</code> by default; macOS costs 10× the minutes, Windows 2×. A lint/test job runs ~1–3 minutes, so 2,000 free minutes is several hundred runs — plenty for a small church project, but the ceiling is real (Session 16 comes back to this).</p>
+      <p class="lede" style="font-size:0.98rem; line-height:1.5;">Linux runners are cheapest — <code>ubuntu-latest</code> by default; macOS costs 10× the minutes, Windows 2×. A lint/test job runs ~1–3 minutes, so 2,000 free minutes is several hundred runs — plenty for a small church project, but the ceiling is real (Session 16 comes back to this).</p>
+      <div class="term" style="max-width:32rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;cut minutes further</div>
+        <pre style="font-size:0.8rem; line-height:1.5; padding:0.7rem 1rem 0.85rem;">- uses: actions/setup-node@v4
+  with:
+    node-version: '20'
+    <span class="gold">cache: 'npm'</span>   <span class="cmt"># ~2min install -> seconds</span></pre>
+      </div>
     </section>
 
     <!-- 11 -->
@@ -621,12 +633,12 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
     <!-- 13 -->
-    <section class="slide" data-label="dependabot" id="s13">
+    <section class="slide" data-label="dependabot" id="s13" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
       <p class="eyebrow">Automatic dependency PRs</p>
-      <h2 class="headline">Dependabot: security alerts vs. routine bumps</h2>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Dependabot: security alerts vs. routine bumps</h2>
       <div class="term" style="max-width:30rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;.github/dependabot.yml</div>
-        <pre>version: 2
+        <pre style="font-size:0.85rem; padding:0.85rem 1.1rem 1rem;">version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/"
@@ -646,15 +658,39 @@ updates:
     </section>
 
     <!-- 14 -->
-    <section class="slide" data-label="homework" id="s14">
+    <section class="slide" data-label="your first deploy" id="s14" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
+      <p class="eyebrow">CI verifies a merge. This ships it — no click.</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy, hands-on</h2>
+      <div class="term" style="max-width:38rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;.github/workflows/deploy.yml</div>
+        <pre style="font-size:0.76rem; line-height:1.45; padding:0.75rem 1rem 0.9rem;"><span class="gold">on:</span> { push: { branches: [main] } }
+<span class="gold">permissions:</span> { pages: write, id-token: write }
+<span class="gold">jobs:</span>
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: . }
+      - uses: actions/deploy-pages@v4</pre>
+      </div>
+      <p class="lede" style="font-size:0.96rem; line-height:1.5;">Settings → Pages → Source: <strong style="color:var(--parchment)">GitHub Actions</strong>. Merge this, and <code>main</code> deploys itself to <code>&lt;user&gt;.github.io/&lt;repo&gt;</code> — no Firebase account, no secrets (Session 7 is the real version).</p>
+      <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> you didn't deploy anything. You merged a PR, and the deploy happened to you.</p>
+    </section>
+
+    <!-- 15 -->
+    <section class="slide" data-label="homework" id="s15">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
         <li><span class="mark">□</span><span>Add <code>.github/workflows/ci.yml</code> (lint + test) to your fork of the sandbox repo</span></li>
         <li><span class="mark">□</span><span>Open a PR and watch the check run live on it</span></li>
+        <li><span class="mark">□</span><span>Add a CI status badge to your fork's README</span></li>
         <li><span class="mark">□</span><span>Turn on branch protection: require the PR, require the check, require up to date</span></li>
         <li><span class="mark">□</span><span>Deliberately break a lint rule on a branch, push it, read the failed run before fixing it</span></li>
         <li><span class="mark">□</span><span class="note">Add <code>.github/dependabot.yml</code> — read (not necessarily merge) any PR it opens</span></li>
+        <li><span class="mark">□</span><span>Set up <code>deploy.yml</code> + GitHub Pages, merge a PR, watch it deploy itself</span></li>
       </ul>
       <p class="footline">Next — Session 3: Vibe Coding Your First App</p>
     </section>

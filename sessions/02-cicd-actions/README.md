@@ -2,9 +2,9 @@
 
 **Status:** [x] Ready
 
-**Goal:** By the end of this session, you can read and write a GitHub Actions workflow, understand why a "passing check" gates a merge, set up branch protection that requires it, and read a failed Actions run well enough to fix it — all on the free tier.
+**Goal:** By the end of this session, you can read and write a GitHub Actions workflow, understand why a "passing check" gates a merge, set up branch protection that requires it, read a failed Actions run well enough to fix it, and have actually watched a merge deploy itself — all on the free tier.
 
-**Contents:** [Why CI/CD Exists](#why-cicd-exists--integration-hell) · [GitHub Actions Basics](#1-github-actions-basics) · [Your First Workflow](#2-your-first-workflow-lintest) · [Free-Tier Limits](#3-free-tier-limits--what-they-mean-in-practice) · [Branch Protection](#4-branch-protection--making-checks-mandatory) · [Reading a Failed Run](#5-reading-a-failed-actions-run) · [Dependabot](#6-dependabot--automatic-dependency-prs) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+**Contents:** [Why CI/CD Exists](#why-cicd-exists--integration-hell) · [GitHub Actions Basics](#1-github-actions-basics) · [Your First Workflow](#2-your-first-workflow-lintest) · [Free-Tier Limits](#3-free-tier-limits--what-they-mean-in-practice) · [Branch Protection](#4-branch-protection--making-checks-mandatory) · [Reading a Failed Run](#5-reading-a-failed-actions-run) · [Dependabot](#6-dependabot--automatic-dependency-prs) · [Your First Deploy](#7-your-first-deploy--experiencing-cd) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
 
 ---
 
@@ -46,9 +46,14 @@ gives you the *ability* to integrate constantly; CI is what makes doing so
 **Continuous Delivery / Deployment (CD)** is the natural next step once you
 trust that: if `main` always passes its checks, `main` is always in a
 shippable state — so shipping can itself become automatic (or one click)
-instead of its own separate, dreaded event. We'll only touch the edge of
-CD today (Session 7 covers actual deploys); the focus here is the CI half —
-the automated gate that makes every merge trustworthy in the first place.
+instead of its own separate, dreaded event. Today's focus is the CI half —
+the automated gate that makes every merge trustworthy in the first place —
+but you don't just hear about CD, you get two doses of it: the facilitator
+walks through a **real production pipeline** (with environments, secrets,
+the actual complexity — Session 7 territory), and then you build a small,
+free, secret-free version yourself in Section 7 below, so "merge triggers
+an automatic deploy" is something you've actually watched happen to your
+own code, not just a slide.
 
 **Where this leaves the vibe/agentic thread from Session 1:** if Claude can
 propose a change and you can merge it in minutes, CI is what stops "fast"
@@ -105,6 +110,13 @@ jobs:                              # one or more jobs, run in parallel by defaul
 every PR gets its own run, with each job and step's live output —
 this is also where you'll go to read a failure (Section 5).
 
+**Where actions come from:** `actions/checkout` and `actions/setup-node`
+aren't special-cased — they're two of thousands of published actions on the
+[GitHub Actions Marketplace](https://github.com/marketplace?type=actions),
+same idea as npm packages but for CI steps. Need to deploy to Firebase,
+post to Slack, or run a Lighthouse audit? There's very likely already a
+marketplace action for it before you'd write one from scratch.
+
 ---
 
 ## 2. Your First Workflow: Lint/Test
@@ -135,6 +147,18 @@ on the PR, before anyone even reviews the diff.
 `npm test` locally to find out if a PR is broken — the PR tells you before
 a human even opens it.
 
+**A visible payoff:** once the workflow has run at least once on `main`,
+drop a status badge into your README so the result is visible without
+opening the Actions tab:
+
+```markdown
+![CI](https://github.com/<owner>/<repo>/actions/workflows/ci.yml/badge.svg)
+```
+
+Green means the last run on the default branch passed; red means it
+didn't. Small, but it's the first thing a visitor — or a future you —
+sees.
+
 ---
 
 ## 3. Free-Tier Limits — What They Mean in Practice
@@ -158,6 +182,21 @@ quietly stop running mid-project:
   ceiling exists (Session 16 — Cost Awareness — comes back to this).
 - Church/sandbox projects should default to **public repos** where
   possible, specifically to get unlimited Actions minutes.
+
+**Cutting minutes further — cache dependencies:** re-downloading every
+package on every single run is the single biggest waster of minutes on a
+small project. One extra line fixes it:
+
+```yaml
+- uses: actions/setup-node@v4
+  with:
+    node-version: '20'
+    cache: 'npm'    # caches node_modules, keyed off package-lock.json
+```
+
+This alone can take a ~2-minute install down to a few seconds on a cache
+hit — worth adding to the Section 1 workflow once it's running, well
+before minutes become a real constraint.
 
 ---
 
@@ -257,6 +296,70 @@ that needs a real look before merging.
 
 ---
 
+## 7. Your First Deploy — Experiencing CD
+
+Everything above is CI: verifying a merge. This section is CD: a merge
+**shipping itself**, automatically, with no click required. The
+facilitator just walked you through what that looks like in a real
+production app — environments, secrets, the genuine complexity Session 7
+covers properly. This is the scaled-down version you build yourself,
+right now, for free, with nothing to configure but a workflow file.
+
+**Why GitHub Pages for this, not Firebase:** Firebase deploy needs a
+service account secret, project setup, sometimes a custom domain — real
+infrastructure, correctly deferred to Session 7. GitHub Pages needs
+neither an account nor a secret — it deploys straight from the repo you
+already have, which makes it the right size for "experience the mechanism
+today," not "learn production deployment today."
+
+### Steps
+
+1. Repo → **Settings → Pages** → under **Build and deployment**, set
+   **Source** to **GitHub Actions**
+2. Add `.github/workflows/deploy.yml`:
+   ```yaml
+   name: Deploy
+
+   on:
+     push:
+       branches: [main]
+
+   permissions:
+     contents: read
+     pages: write
+     id-token: write
+
+   jobs:
+     deploy:
+       runs-on: ubuntu-latest
+       environment:
+         name: github-pages
+         url: ${{ steps.deployment.outputs.page_url }}
+       steps:
+         - uses: actions/checkout@v4
+         - uses: actions/configure-pages@v5
+         - uses: actions/upload-pages-artifact@v3
+           with:
+             path: .              # or a build output folder, e.g. dist/
+         - id: deployment
+           uses: actions/deploy-pages@v4
+   ```
+3. Commit it on a branch, open a PR, same as Section 2 — watch **two**
+   checks now: your `lint-and-test` job from Section 2, and this `deploy`
+   job (which only actually runs on `main`, per the `on: push` trigger
+   above — a PR just shows it queued, not yet fired)
+4. Merge it. Push to `main` triggers the `deploy` job automatically — no
+   click, no manual step
+5. Watch it run in the **Actions** tab, then visit
+   `https://<your-username>.github.io/<repo-name>/` — that's a live URL,
+   built and shipped by the merge you just made
+
+**The payoff to say out loud:** you didn't deploy anything. You merged a
+PR, and the deploy *happened to you*. That's the entire idea of CD in one
+sentence.
+
+---
+
 ## Quick Reference Card (keep this open while working)
 
 ```
@@ -297,6 +400,24 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule: { interval: "weekly" }
+
+# deploy.yml — merge to main -> live URL, no click
+# Settings -> Pages -> Source: GitHub Actions, then:
+name: Deploy
+on:
+  push: { branches: [main] }
+permissions: { contents: read, pages: write, id-token: write }
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: ${{ steps.deployment.outputs.page_url }} }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: . }
+      - id: deployment
+        uses: actions/deploy-pages@v4
 ```
 
 ---
@@ -305,6 +426,8 @@ updates:
 
 - [ ] Add a `.github/workflows/ci.yml` lint/test workflow to your fork of the sandbox repo
 - [ ] Open a PR and watch the check run live on it
+- [ ] Add a CI status badge to your fork's README
 - [ ] Turn on branch protection on your fork's `main`: require the PR, require the check, require it to be up to date
 - [ ] Deliberately break a test or lint rule on a branch, push it, and read the failed run before fixing it
 - [ ] Add `.github/dependabot.yml` and, if a PR shows up before next session, read (don't necessarily merge) it
+- [ ] Set up `.github/workflows/deploy.yml` with GitHub Pages and merge a PR — watch it deploy itself, then visit the live URL
