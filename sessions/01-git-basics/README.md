@@ -467,7 +467,7 @@ git push
 
 ## Homework Before Next Session
 
-- [ ] Fork the practice repo — see [`/sandbox`](../../sandbox) for the shared repo used across sessions. **Facilitator note:** the sandbox repo is still TBD (see [`sandbox/README.md`](../../sandbox/README.md)) — confirm and share the actual fork link before assigning this homework.
+- [ ] Fork [`gcfsm/brown-bag-sandbox`](https://github.com/gcfsm/brown-bag-sandbox) — this is the repo you'll build on across every remaining session, not a one-off clone
 - [ ] Clone your fork locally
 - [ ] Run `npm install` and get the project running locally
 - [ ] Make one small change, commit it, push it, open a PR
