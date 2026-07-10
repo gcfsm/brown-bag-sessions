@@ -6,3 +6,4 @@ node_modules/
 dist/
 build/
 .firebase/
+.claude/settings.local.json
