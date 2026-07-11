@@ -77,16 +77,23 @@ Sessions 1–2's actual pacing)
 
 - [ ] Recap + the hook framing (~5 min): "you have two safety nets now, let's use them"
 - [ ] What vibe coding is / isn't, appropriate use (~10 min discussion)
-- [ ] Live demo: build the small app from an empty folder, narrating prompts (~15–20 min)
-- [ ] Hands-on lab: attendees build their own small tool with Claude (~30–40 min)
+- [ ] Live demo: build a small church-relevant tool from an empty folder, narrating prompts (~15–20 min)
+- [ ] Hands-on lab: attendees build their own small church tool with Claude (~30–40 min)
 - [ ] Wrap-up: PR review pass, tie back to Session 1/2 checks (~5–10 min)
 
 ## Hands-On Lab (draft)
 
-Each attendee (or pair) picks — or is assigned — a small, scoped tool to
-build with Claude against their sandbox fork, e.g.:
-- A CLI script (e.g. a simple file renamer, a word-count tool)
-- A single-file HTML/JS page (e.g. a small calculator, a checklist app)
+Each attendee (or pair) picks — or is assigned — a small, scoped, **church-relevant**
+tool to build with Claude against their sandbox fork. Same technical scope as
+before (no framework, no backend), just not generic — this is the first
+session that should feel like "I build things for the church," not three
+months from now:
+- A CLI script (e.g. an RSVP tally — read a text list of yes/no
+  responses, print a headcount; or a volunteer roster formatter — read a
+  CSV of names/roles, print a formatted sign-up sheet)
+- A single-file HTML/JS page (e.g. a volunteer sign-up list, an event
+  RSVP counter, or a simple service-setup checklist — using
+  `localStorage` if it needs to remember anything, no backend needed yet)
 
 Constraint that matters more than the idea itself: **it must ship as a
 real PR**, checked by the CI workflow from Session 2, reviewed by a
