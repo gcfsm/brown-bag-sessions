@@ -69,9 +69,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL_useThisOne.docx
 
 This is how file versioning worked (and often still works) without a proper
 version control system — manual naming conventions, a thumb drive passed
-hand to hand before shared drives were even common, shared drives once
-networks caught up, emailing files back and forth, "did you get my latest
-copy?" This breaks down fast:
+hand to hand, shared drives, emailing files back and forth, "did you get
+my latest copy?" This breaks down fast:
 
 - **No real history** — you can't see *what* changed between versions, only that a new file exists
 - **No safe collaboration** — two people editing the same file at the same time means someone's changes get overwritten, or you end up with `proposal_v2_JOHN.docx` and `proposal_v2_MARIA.docx` that now need to be manually merged by eye. With a physical thumb drive it's worse than unsafe — it's structurally impossible: only one person can hold the drive at a time, so real parallel work never even gets attempted, you just take turns
