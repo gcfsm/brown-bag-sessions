@@ -123,6 +123,18 @@ and often avoided in practice — teams would work directly on a shared trunk
 rather than branch freely, because merging branches back together was
 painful.
 
+**There's a second barrier the "constant connection" point doesn't even
+cover: someone has to run that server.** CVS and SVN both need a machine —
+always on, configured, maintained — to hold the "real" history. For a
+company, that's an IT department's job. For students, church volunteers,
+or anyone without their own infrastructure to stand up and maintain,
+that's often just not available. So a lot of people who technically *had
+access* to CVS or SVN as tools never actually used them, for exactly this
+reason — the real alternative wasn't "use SVN instead," it was the
+thumb-drive-passing from a few paragraphs up, because standing up a server
+was its own project most people couldn't take on. Keep that in mind for
+Rung 3 below.
+
 **The detail that matters most for later:** in SVN, "commit" and "publish
 to the shared history" are the same action. There's no local-only commit
 step — `svn commit` always requires being online, because it *is* the write
@@ -140,7 +152,14 @@ choice; it was the only model that survived contact with that scale of
 problem.
 
 - Every clone is a **full copy of the entire history** — no constant
-  connection to a central server needed
+  connection to a central server needed, and — this is the payoff to the
+  server-barrier point above — **no server to set up or maintain at all.**
+  `git init` in an empty folder gives you full, real version control,
+  right there, with nothing to install, configure, or keep running. This
+  is *why* Git reached students and volunteer teams that CVS and SVN
+  genuinely never did — not because Git is friendlier, but because it
+  removed the one requirement (a server someone maintains) that priced
+  those groups out in the first place.
 - **Commits are identified by content, not a position in a queue.** A Git
   commit ID (the `a1b2c3d...` hash in `git log`) is computed from the
   commit's own content — so two people can commit offline, independently,
