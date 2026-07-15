@@ -4,7 +4,51 @@
 
 **Goal:** By the end of this session, you can fork a repo, clone it, make a change, push it, open a PR, and resolve a simple merge conflict — all by hand, no AI assistance. This is the muscle memory that AI tools will later automate for you, but you should understand what's happening underneath first.
 
-**Contents:** [Why Git Exists](#why-git-exists--the-problem-before-version-control) · [Setup Check](#0-setup-check-do-before-session-or-first-5-min) · [Fork vs. Clone](#1-fork-vs-clone--whats-the-difference) · [npm Packages](#15-npm-packages--what-happens-right-after-you-clone) · [Local Basics](#2-local-basics--just-enough-to-orient) · [Branching](#3-branching) · [Push](#4-push) · [Open a PR](#5-open-a-pull-request-pr) · [Code Review](#6-code-review-basics) · [Conflict Resolution](#7-simple-conflict-resolution-no-rebase-just-merge) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+**Contents:** [Opening Story](#facilitator-note--the-opening-story-slides-2-4) · [Why Git Exists](#why-git-exists--the-problem-before-version-control) · [Setup Check](#0-setup-check-do-before-session-or-first-5-min) · [Fork vs. Clone](#1-fork-vs-clone--whats-the-difference) · [npm Packages](#15-npm-packages--what-happens-right-after-you-clone) · [Local Basics](#2-local-basics--just-enough-to-orient) · [Branching](#3-branching) · [Push](#4-push) · [Open a PR](#5-open-a-pull-request-pr) · [Code Review](#6-code-review-basics) · [Conflict Resolution](#7-simple-conflict-resolution-no-rebase-just-merge) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+
+---
+
+## Facilitator Note — The Opening Story (Slides 2–4)
+
+Slides 2–4 in the deck are deliberately bare — a headline and almost
+nothing else. They're prompts for you to talk from, not text for the room
+to read. This is the actual story to tell, out loud, in your own words:
+
+> I learned on a manual — driving school, the exam, the engine dying on
+> me more than once. I don't drive manual day to day anymore. But one
+> thing never left: you shift gears when your speed hits a certain range.
+> That's just where the gears live.
+>
+> Years later, driving automatic, I noticed something — flooring it to
+> overtake makes the car struggle. What actually works instead: release
+> the pedal, then reapply it. Faster, cleaner shift. The moment I noticed
+> that, I recognized it instantly — that's the same thing I was doing
+> with a clutch and a stick, years earlier. I would not have known to
+> even try that if I'd never learned manual.
+>
+> Now I drive an HEV. No handbrake — a mechanism holds the car at a stop
+> automatically and releases the moment you hit the pedal. Genuinely
+> amazing tech. And there are cars now with a single pedal for both
+> accelerating and braking — some Nissan models do this — and I'll be
+> honest, I still don't know how that one works. I don't think I need to.
+>
+> As the tech gets more convenient, you gravitate toward the convenient
+> version — and that's fine, that's what it's for. The point isn't that
+> you must suffer through manual before you're "allowed" to drive
+> automatic. The point is that the manual knowledge is *why* the
+> automatic trick made sense to me the moment I saw it, instead of just
+> being a fact someone told me to memorize.
+>
+> That's this hub. Sessions 1 and 2 are the manual gearbox — Git and
+> CI/CD, by hand, no AI shortcuts. Not because automation is bad. Because
+> once Claude is driving from Session 3 on, you'll recognize a bad diff
+> the same way I recognized that throttle trick — instantly, and for a
+> reason you can actually explain, not just a habit someone told you to
+> follow.
+
+Open with the show-of-hands question on Slide 2 ("who here drives, who
+drives manual?") before telling any of it — let a few people actually
+answer.
 
 ---
 
