@@ -611,7 +611,7 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
     <section class="slide" data-label="one line vs. a real graph" id="s11">
       <p class="eyebrow">The shape of history, not just the mechanics</p>
       <h2 class="headline">CVS and SVN draw a line. Git draws a graph.</h2>
-      <svg class="diagram" viewBox="0 0 920 220" width="920" role="img" aria-label="Comparison: CVS and SVN history is a single straight line of commits. Git history is a graph where a branch diverges from the main line and merges back into it.">
+      <svg class="diagram" viewBox="0 0 1150 220" width="1150" role="img" aria-label="Comparison: CVS and SVN history is a single straight line of commits. Git history is a graph where branches repeatedly diverge from the main line and merge back into it, over and over.">
         <text x="230" y="34" text-anchor="middle" class="sub" style="font-size:12px;">CVS / SVN — ONE STRAIGHT LINE</text>
         <line class="edge" x1="80" y1="150" x2="380" y2="150"></line>
         <circle class="node" cx="80" cy="150" r="7"></circle>
@@ -622,19 +622,28 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
 
         <line x1="430" y1="20" x2="430" y2="200" stroke="var(--ink-700)" stroke-width="1"></line>
 
-        <text x="690" y="34" text-anchor="middle" class="sub" style="font-size:12px;">GIT — DIVERGES, THEN MERGES BACK</text>
-        <line class="edge" x1="500" y1="150" x2="875" y2="150"></line>
-        <path class="edge hi" d="M575,150 L615,95 L680,95 L725,150"></path>
+        <text x="795" y="34" text-anchor="middle" class="sub" style="font-size:12px;">GIT — DIVERGES, MERGES BACK, AGAIN AND AGAIN</text>
+        <line class="edge" x1="500" y1="150" x2="1090" y2="150"></line>
+        <path class="edge hi" d="M560,150 L600,95 L645,95 L685,150"></path>
+        <path class="edge hi" d="M800,150 L840,95 L885,95 L925,150"></path>
         <circle class="node" cx="500" cy="150" r="7"></circle>
-        <circle class="node hi" cx="575" cy="150" r="8"></circle>
-        <circle class="node hi" cx="615" cy="95" r="7"></circle>
-        <circle class="node hi" cx="680" cy="95" r="7"></circle>
-        <circle class="node hi" cx="725" cy="150" r="8"></circle>
-        <circle class="node" cx="800" cy="150" r="7"></circle>
-        <circle class="node" cx="875" cy="150" r="7"></circle>
-        <text x="647" y="80" text-anchor="middle" class="sub">feature branch</text>
-        <text x="575" y="172" text-anchor="middle" class="sub">branch</text>
-        <text x="725" y="172" text-anchor="middle" class="sub">merge</text>
+        <circle class="node hi" cx="560" cy="150" r="8"></circle>
+        <circle class="node hi" cx="600" cy="95" r="7"></circle>
+        <circle class="node hi" cx="645" cy="95" r="7"></circle>
+        <circle class="node hi" cx="685" cy="150" r="8"></circle>
+        <circle class="node" cx="740" cy="150" r="7"></circle>
+        <circle class="node hi" cx="800" cy="150" r="8"></circle>
+        <circle class="node hi" cx="840" cy="95" r="7"></circle>
+        <circle class="node hi" cx="885" cy="95" r="7"></circle>
+        <circle class="node hi" cx="925" cy="150" r="8"></circle>
+        <circle class="node" cx="1010" cy="150" r="7"></circle>
+        <circle class="node" cx="1090" cy="150" r="7"></circle>
+        <text x="622" y="80" text-anchor="middle" class="sub">feature branch</text>
+        <text x="862" y="80" text-anchor="middle" class="sub">another branch, later</text>
+        <text x="560" y="172" text-anchor="middle" class="sub">branch</text>
+        <text x="685" y="172" text-anchor="middle" class="sub">merge</text>
+        <text x="800" y="172" text-anchor="middle" class="sub">branch</text>
+        <text x="925" y="172" text-anchor="middle" class="sub">merge</text>
       </svg>
       <p class="lede">Same number of changes, same amount of work — but only one of these shapes lets you try something risky <em style="color:var(--gold)">without touching the main line at all</em> until you're sure.</p>
     </section>
