@@ -259,6 +259,7 @@
 
   .card h3 { font-size: 1.05rem; color: var(--gold); font-family: var(--font-body); font-weight: 600; margin-bottom: 0.5rem; }
   .card p { color: var(--parchment-dim); font-size: 0.95rem; line-height: 1.55; }
+  .card .answer { display: block; margin-top: 0.6rem; color: var(--gold); font-size: 0.86rem; line-height: 1.45; }
 
   /* ---------- tables ---------- */
 
@@ -651,11 +652,11 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       <p class="eyebrow">Why this matters even more today</p>
       <h2 class="headline">AI-assisted coding makes Git more important, not less</h2>
       <div class="cards">
-        <div class="card"><h3>Seconds, not hours</h3><p>A full page, a working form, a fixed bug — before you've finished your coffee. Manual typing never moved this fast.</p></div>
-        <div class="card"><h3>One prompt, many files</h3><p>Twelve files changed from a single request. One "looks good" approves all twelve — read or not.</p></div>
-        <div class="card"><h3>Convenience is the risk</h3><p>The diff is 400 lines, it's 5pm, and it "probably" works. That's exactly the moment a bad one gets merged.</p></div>
+        <div class="card"><h3>Seconds, not hours</h3><p>A full page, a working form, a fixed bug — before your coffee's done.</p><span class="answer">&#8594; Commits are local and instant too — no SVN-style server wait to bottleneck it (Rung 2).</span></div>
+        <div class="card"><h3>One prompt, many files</h3><p>Twelve files changed from a single request.</p><span class="answer">&#8594; One diff view shows all twelve at once — that's what makes reviewing a broad change possible at all.</span></div>
+        <div class="card"><h3>Convenience is the risk</h3><p>400 lines, it's 5pm, and it "probably" works.</p><span class="answer">&#8594; Branch protection (Session 2) can require a passing check — the net doesn't depend on your discipline.</span></div>
       </div>
-      <p class="lede">None of that's a reason to slow down. It's <strong style="color:var(--parchment)">why Git's guarantees — history, branches, diffs, commits — matter more now, not less.</strong> Next.</p>
+      <p class="lede">Three risks, three <em style="color:var(--gold)">specific</em> mechanisms — not a vibe. More on each, next.</p>
     </section>
 
     <!-- 14 -->
