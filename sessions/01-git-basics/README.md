@@ -68,9 +68,10 @@ proposal_FINAL_v2_ACTUALLY_FINAL_useThisOne.docx
 ```
 
 This is how file versioning worked (and often still works) without a proper
-version control system — manual naming conventions, shared drives, emailing
-files back and forth, USB sticks, "did you get my latest copy?" This breaks
-down fast:
+version control system — manual naming conventions, a thumb drive passed
+hand to hand before shared drives were even common, shared drives once
+networks caught up, emailing files back and forth, "did you get my latest
+copy?" This breaks down fast:
 
 - **No real history** — you can't see *what* changed between versions, only that a new file exists
 - **No safe collaboration** — two people editing the same file at the same time means someone's changes get overwritten, or you end up with `proposal_v2_JOHN.docx` and `proposal_v2_MARIA.docx` that now need to be manually merged by eye
