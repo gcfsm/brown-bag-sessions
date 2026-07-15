@@ -26,7 +26,7 @@ to read. This is the actual story to tell, out loud, in your own words:
 > with a clutch and a stick, years earlier. I would not have known to
 > even try that if I'd never learned manual.
 >
-> Now I drive an HEV. No handbrake — a mechanism holds the car at a stop
+> Now I drive an EV. No handbrake — a mechanism holds the car at a stop
 > automatically and releases the moment you hit the pedal. Genuinely
 > amazing tech. And there are cars now with a single pedal for both
 > accelerating and braking — some Nissan models do this — and I'll be
