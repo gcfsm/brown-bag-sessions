@@ -4,7 +4,51 @@
 
 **Goal:** By the end of this session, you can fork a repo, clone it, make a change, push it, open a PR, and resolve a simple merge conflict — all by hand, no AI assistance. This is the muscle memory that AI tools will later automate for you, but you should understand what's happening underneath first.
 
-**Contents:** [Why Git Exists](#why-git-exists--the-problem-before-version-control) · [Setup Check](#0-setup-check-do-before-session-or-first-5-min) · [Fork vs. Clone](#1-fork-vs-clone--whats-the-difference) · [npm Packages](#15-npm-packages--what-happens-right-after-you-clone) · [Local Basics](#2-local-basics--just-enough-to-orient) · [Branching](#3-branching) · [Push](#4-push) · [Open a PR](#5-open-a-pull-request-pr) · [Code Review](#6-code-review-basics) · [Conflict Resolution](#7-simple-conflict-resolution-no-rebase-just-merge) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+**Contents:** [Opening Story](#facilitator-note--the-opening-story-slides-2-4) · [Why Git Exists](#why-git-exists--the-problem-before-version-control) · [Setup Check](#0-setup-check-do-before-session-or-first-5-min) · [Fork vs. Clone](#1-fork-vs-clone--whats-the-difference) · [npm Packages](#15-npm-packages--what-happens-right-after-you-clone) · [Local Basics](#2-local-basics--just-enough-to-orient) · [Branching](#3-branching) · [Push](#4-push) · [Open a PR](#5-open-a-pull-request-pr) · [Code Review](#6-code-review-basics) · [Conflict Resolution](#7-simple-conflict-resolution-no-rebase-just-merge) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+
+---
+
+## Facilitator Note — The Opening Story (Slides 2–4)
+
+Slides 2–4 in the deck are deliberately bare — a headline and almost
+nothing else. They're prompts for you to talk from, not text for the room
+to read. This is the actual story to tell, out loud, in your own words:
+
+> I learned on a manual — driving school, the exam, the engine dying on
+> me more than once. I don't drive manual day to day anymore. But one
+> thing never left: you shift gears when your speed hits a certain range.
+> That's just where the gears live.
+>
+> Years later, driving automatic, I noticed something — flooring it to
+> overtake makes the car struggle. What actually works instead: release
+> the pedal, then reapply it. Faster, cleaner shift. The moment I noticed
+> that, I recognized it instantly — that's the same thing I was doing
+> with a clutch and a stick, years earlier. I would not have known to
+> even try that if I'd never learned manual.
+>
+> Now I drive an EV. No handbrake — a mechanism holds the car at a stop
+> automatically and releases the moment you hit the pedal. Genuinely
+> amazing tech. And there are cars now with a single pedal for both
+> accelerating and braking — some Nissan models do this — and I'll be
+> honest, I still don't know how that one works. I don't think I need to.
+>
+> As the tech gets more convenient, you gravitate toward the convenient
+> version — and that's fine, that's what it's for. The point isn't that
+> you must suffer through manual before you're "allowed" to drive
+> automatic. The point is that the manual knowledge is *why* the
+> automatic trick made sense to me the moment I saw it, instead of just
+> being a fact someone told me to memorize.
+>
+> That's this hub. Sessions 1 and 2 are the manual gearbox — Git and
+> CI/CD, by hand, no AI shortcuts. Not because automation is bad. Because
+> once Claude is driving from Session 3 on, you'll recognize a bad diff
+> the same way I recognized that throttle trick — instantly, and for a
+> reason you can actually explain, not just a habit someone told you to
+> follow.
+
+Open with the show-of-hands question on Slide 2 ("who here drives, who
+drives manual?") before telling any of it — let a few people actually
+answer.
 
 ---
 
@@ -24,12 +68,12 @@ proposal_FINAL_v2_ACTUALLY_FINAL_useThisOne.docx
 ```
 
 This is how file versioning worked (and often still works) without a proper
-version control system — manual naming conventions, shared drives, emailing
-files back and forth, USB sticks, "did you get my latest copy?" This breaks
-down fast:
+version control system — manual naming conventions, a thumb drive passed
+hand to hand, shared drives, emailing files back and forth, "did you get
+my latest copy?" This breaks down fast:
 
 - **No real history** — you can't see *what* changed between versions, only that a new file exists
-- **No safe collaboration** — two people editing the same file at the same time means someone's changes get overwritten, or you end up with `proposal_v2_JOHN.docx` and `proposal_v2_MARIA.docx` that now need to be manually merged by eye
+- **No safe collaboration** — two people editing the same file at the same time means someone's changes get overwritten, or you end up with `proposal_v2_JOHN.docx` and `proposal_v2_MARIA.docx` that now need to be manually merged by eye. With a physical thumb drive it's worse than unsafe — it's structurally impossible: only one person can hold the drive at a time, so real parallel work never even gets attempted, you just take turns
 - **No accountability** — who changed what, and why, gets lost immediately
 - **No safe experimentation** — there's no cheap way to "try something" without risking the working version, so people either don't experiment or they duplicate the whole file "just in case"
 - **Fragile "final" concept** — "final" is really just whoever renamed the file last
@@ -79,6 +123,18 @@ and often avoided in practice — teams would work directly on a shared trunk
 rather than branch freely, because merging branches back together was
 painful.
 
+**There's a second barrier the "constant connection" point doesn't even
+cover: someone has to run that server.** CVS and SVN both need a machine —
+always on, configured, maintained — to hold the "real" history. For a
+company, that's an IT department's job. For students, church volunteers,
+or anyone without their own infrastructure to stand up and maintain,
+that's often just not available. So a lot of people who technically *had
+access* to CVS or SVN as tools never actually used them, for exactly this
+reason — the real alternative wasn't "use SVN instead," it was the
+thumb-drive-passing from a few paragraphs up, because standing up a server
+was its own project most people couldn't take on. Keep that in mind for
+Rung 3 below.
+
 **The detail that matters most for later:** in SVN, "commit" and "publish
 to the shared history" are the same action. There's no local-only commit
 step — `svn commit` always requires being online, because it *is* the write
@@ -96,7 +152,14 @@ choice; it was the only model that survived contact with that scale of
 problem.
 
 - Every clone is a **full copy of the entire history** — no constant
-  connection to a central server needed
+  connection to a central server needed, and — this is the payoff to the
+  server-barrier point above — **no server to set up or maintain at all.**
+  `git init` in an empty folder gives you full, real version control,
+  right there, with nothing to install, configure, or keep running. This
+  is *why* Git reached students and volunteer teams that CVS and SVN
+  genuinely never did — not because Git is friendlier, but because it
+  removed the one requirement (a server someone maintains) that priced
+  those groups out in the first place.
 - **Commits are identified by content, not a position in a queue.** A Git
   commit ID (the `a1b2c3d...` hash in `git log`) is computed from the
   commit's own content — so two people can commit offline, independently,

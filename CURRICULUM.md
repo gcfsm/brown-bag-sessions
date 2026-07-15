@@ -12,7 +12,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 |---|---|---|---|
 | 1 | Git Basics — Fork, Clone, npm Packages, Branch, Push, PR, Code Review, Conflict Resolution | [x] | [`01-git-basics`](./sessions/01-git-basics) |
 | 2 | CI/CD & GitHub Actions (free-tier features, lint/test workflows, CI Lint, Dependabot) | [x] | [`02-cicd-actions`](./sessions/02-cicd-actions) |
-| 3 | Vibe Coding Your First App (with Claude) | [~] | [`03-vibe-coding-first-app`](./sessions/03-vibe-coding-first-app) |
+| 3 | Vibe Coding Your First App (with Claude) | [x] | [`03-vibe-coding-first-app`](./sessions/03-vibe-coding-first-app) |
 | 4 | React / Vite / Next.js Basics | [ ] | [`04-react-vite-nextjs-basics`](./sessions/04-react-vite-nextjs-basics) |
 | 5 | Data Modeling & NoSQL Patterns | [ ] | [`05-data-modeling-nosql`](./sessions/05-data-modeling-nosql) |
 
@@ -83,3 +83,6 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 - Session 19 (Epics & ACs) is the unlock, not just "another topic" — attendees can informally start pairing on real tickets as soon as they're ready, even before Session 20 formally happens.
 - Session 2 opens with "integration hell" — the pre-CI pain of infrequent, all-at-once merges — as the direct sequel to Session 1's "cheap branching/merging" close: Git makes merging cheap, but only CI makes merging *often* safe, which is why the two sessions are back-to-back rather than CI/CD being deferred to the Professional Practice block.
 - Branch protection is deliberately split across Session 1 and Session 2 rather than taught once: Session 1 states the concept (why a PR isn't optional) where the PR/review workflow is already being taught; Session 2 does the hands-on setup, since "require status checks" needs a real CI check (built earlier in Session 2) to attach to.
+- Session 3 opens by explicitly cashing in Session 1 and 2's "AI-assisted coding makes Git more important, not less" claim rather than re-arguing it — the two safety nets exist *before* Session 3 starts on purpose, so letting Claude drive fast is a tested claim, not a leap of faith.
+- Session 3's hands-on examples are church-relevant (RSVP tally, volunteer sign-up list) at the same tiny technical scope as a generic calculator would be — free to do, and starts "I build things for the church" on day one of AI-assisted work instead of waiting for Session 4+'s real stack.
+- Session 4 is deliberately kept light on build-tool internals (Vite vs. Create React App/Craco, which is what the real target project — idmc-gcfsm — actually uses) rather than a deep platform-comparison section: since attendees vibe-code most implementation work, they need functional recognition (what command runs this, what file configures it) rather than mastery of either tool's internals. This does not extend to Sessions 1-2, which stay hand-typed/no-AI-shortcuts by design.
