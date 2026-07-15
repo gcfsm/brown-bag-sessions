@@ -366,6 +366,27 @@
 
   .footline { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
 
+  .pull {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.4;
+    max-width: 38ch;
+    color: var(--parchment);
+  }
+  .pull em { color: var(--gold); font-style: normal; }
+
+  .story-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    max-width: 9.5rem;
+  }
+  .story-stage .num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold-dim); }
+  .story-stage .name { font-size: 0.98rem; color: var(--parchment); font-weight: 600; }
+  .story-stage .note { font-size: 0.82rem; color: var(--parchment-dim); text-align: center; line-height: 1.4; }
+  .story-row { display: flex; justify-content: space-between; gap: 1rem; max-width: 60rem; flex-wrap: wrap; }
+
   ::-webkit-scrollbar { width: 10px; }
   ::-webkit-scrollbar-track { background: var(--ink-900); }
   ::-webkit-scrollbar-thumb { background: var(--ink-700); border-radius: 5px; }
@@ -408,7 +429,35 @@
     </section>
 
     <!-- 2 -->
-    <section class="slide" data-label="cold open" id="s2">
+    <section class="slide" data-label="the driving story" id="s2">
+      <p class="eyebrow">Before we touch a single git command — a show of hands</p>
+      <h2 class="headline">Who here drives? Who drives manual?</h2>
+      <p class="lede">I learned on a manual — driving school, the exam, the engine dying on me more than once. I don't drive manual day to day anymore. But one thing never left: you shift gears when your speed hits a certain range. That's just where the gears live.</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide" data-label="the eureka" id="s3">
+      <p class="eyebrow">Years later, driving automatic</p>
+      <h2 class="headline">The car struggles when you floor it to overtake</h2>
+      <p class="lede">What actually works instead: release the pedal, then reapply it. Faster, cleaner shift. The moment I noticed it, I recognized it instantly — that's the same thing I was doing with a clutch and a stick, years earlier.</p>
+      <p class="pull">I would not have known to even try that <em>if I'd never learned manual.</em></p>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide" data-label="the progression" id="s4">
+      <p class="eyebrow">The tech keeps getting more convenient — and that's fine</p>
+      <h2 class="headline">Manual → automatic → HEV auto-hold → one-pedal</h2>
+      <div class="story-row">
+        <div class="story-stage"><span class="num">01</span><span class="name">Manual</span><span class="note">learn where the gears actually live</span></div>
+        <div class="story-stage"><span class="num">02</span><span class="name">Automatic</span><span class="note">release, reapply — faster shifts, same idea</span></div>
+        <div class="story-stage"><span class="num">03</span><span class="name">HEV auto-hold</span><span class="note">the brake just&hellip; happens for you</span></div>
+        <div class="story-stage"><span class="num">04</span><span class="name">One-pedal</span><span class="note">still don't know how — and that's fine</span></div>
+      </div>
+      <p class="lede">That's this hub. <strong style="color:var(--parchment)">Sessions 1 and 2 are the manual gearbox</strong> — not because automation is bad, but because once Claude is driving from Session 3 on, you'll recognize a bad diff the same way I recognized that throttle trick: instantly, for a reason you can actually explain.</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide" data-label="cold open" id="s5">
       <p class="eyebrow">Before we touch Git</p>
       <h2 class="headline">Has anyone worked with files like these?</h2>
       <div class="term" style="max-width:34rem;">
@@ -424,8 +473,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       <p class="lede">No commands yet. Just the feeling this entire session exists to solve — manual naming, shared drives, "did you get my latest copy?"</p>
     </section>
 
-    <!-- 3 -->
-    <section class="slide" data-label="the problem" id="s3">
+    <!-- 6 -->
+    <section class="slide" data-label="the problem" id="s6">
       <p class="eyebrow">What breaks without version control</p>
       <h2 class="headline">Five ways the folder of shame fails you</h2>
       <ul class="ledger">
@@ -437,8 +486,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </ul>
     </section>
 
-    <!-- 4 -->
-    <section class="slide" data-label="the ladder" id="s4">
+    <!-- 7 -->
+    <section class="slide" data-label="the ladder" id="s7">
       <p class="eyebrow">Where Git actually comes from</p>
       <h2 class="headline">Git is rung three of a ladder</h2>
       <p class="lede">Each rung exists because the one before it had a specific, concrete problem — not because someone wanted a shinier tool.</p>
@@ -465,8 +514,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </svg>
     </section>
 
-    <!-- 5 -->
-    <section class="slide" data-label="rung 1 · cvs" id="s5">
+    <!-- 8 -->
+    <section class="slide" data-label="rung 1 · cvs" id="s8">
       <div class="content-grid split">
         <div>
           <p class="eyebrow">Rung 1 — early 1990s</p>
@@ -494,8 +543,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </div>
     </section>
 
-    <!-- 6 -->
-    <section class="slide" data-label="rung 2 · svn" id="s6">
+    <!-- 9 -->
+    <section class="slide" data-label="rung 2 · svn" id="s9">
       <p class="eyebrow">Rung 2 — early 2000s, built to fix CVS</p>
       <h2 class="headline">SVN fixes the sloppiness — keeps the cage</h2>
       <div class="table-wrap">
@@ -512,8 +561,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       <p class="lede">Still centralized, though — the core limitation carries over untouched: <strong style="color:var(--parchment)">commit, history, and most branching all require the server, every time.</strong></p>
     </section>
 
-    <!-- 7 -->
-    <section class="slide" data-label="rung 3 · git" id="s7">
+    <!-- 10 -->
+    <section class="slide" data-label="rung 3 · git" id="s10">
       <div class="content-grid split">
         <div>
           <p class="eyebrow">Rung 3 — 2005, still climbing</p>
@@ -542,16 +591,16 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </div>
     </section>
 
-    <!-- 8 -->
-    <section class="slide" data-label="the origin story" id="s8">
+    <!-- 11 -->
+    <section class="slide" data-label="the origin story" id="s11">
       <p class="eyebrow">Why 2005, specifically</p>
       <h2 class="headline">Ten days, one license dispute, one kernel</h2>
       <p class="lede">The Linux kernel's thousands of contributors relied on a proprietary tool, BitKeeper, used for free by special arrangement. When that arrangement fell apart in 2005, <strong style="color:var(--parchment)">Linus Torvalds</strong> — Linux's own creator — wrote Git in about <strong style="color:var(--gold)">ten days</strong>.</p>
       <p class="lede">Not a lab exercise. A tool built specifically to support thousands of independent contributors collaborating with no single company owning the infrastructure. "Distributed" wasn't a nice-to-have — it was the only model that survived contact with that scale of problem.</p>
     </section>
 
-    <!-- 9 -->
-    <section class="slide" data-label="why now" id="s9">
+    <!-- 12 -->
+    <section class="slide" data-label="why now" id="s12">
       <p class="eyebrow">Why this matters even more today</p>
       <h2 class="headline">AI-assisted coding makes Git more important, not less</h2>
       <div class="cards">
@@ -561,8 +610,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </div>
     </section>
 
-    <!-- 10 -->
-    <section class="slide" data-label="git's guarantees" id="s10">
+    <!-- 13 -->
+    <section class="slide" data-label="git's guarantees" id="s13">
       <p class="eyebrow">Every guarantee, doing new work</p>
       <h2 class="headline">Git's core guarantees, applied to Claude's output</h2>
       <div class="cards">
@@ -573,8 +622,8 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </div>
     </section>
 
-    <!-- 11 -->
-    <section class="slide" data-label="the counterfactual" id="s11">
+    <!-- 14 -->
+    <section class="slide" data-label="the counterfactual" id="s14">
       <p class="eyebrow">The counterfactual</p>
       <h2 class="headline">If we were still on SVN, none of this works</h2>
       <ul class="ledger" style="max-width:56rem;">
@@ -585,16 +634,16 @@ proposal_FINAL_v2_ACTUALLY_FINAL.docx
       </ul>
     </section>
 
-    <!-- 12 -->
-    <section class="slide" data-label="proof, not theory" id="s12">
+    <!-- 15 -->
+    <section class="slide" data-label="proof, not theory" id="s15">
       <p class="eyebrow">Not a hypothetical</p>
       <h2 class="headline">You're looking at the proof right now</h2>
       <p class="lede">This curriculum was built exactly this way — iterating with Claude turn by turn, adding a topic, committing, adding another, committing again, a dozen small changes in sequence.</p>
       <p class="lede">Without Git, that process means re-sending whole files back and forth, manually tracking which version had which addition — the <code>_FINAL_v2</code> chaos again, just at AI speed instead of human speed. <strong style="color:var(--parchment)">What we just did to build this session would be largely impossible, or painfully slow, without version control.</strong></p>
     </section>
 
-    <!-- 13 -->
-    <section class="slide" data-label="today · fork vs clone" id="s13">
+    <!-- 16 -->
+    <section class="slide" data-label="today · fork vs clone" id="s16">
       <p class="eyebrow">Hands-on starts here</p>
       <h2 class="headline">Fork vs. Clone</h2>
       <div class="table-wrap">
@@ -615,8 +664,8 @@ cd brown-bag-sandbox</pre>
       </div>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" data-label="the detail that matters" id="s14">
+    <!-- 17 -->
+    <section class="slide" data-label="the detail that matters" id="s17">
       <p class="eyebrow">Before the commands — one thing to remember</p>
       <h2 class="headline">SVN commit = Git commit + push</h2>
       <div class="table-wrap">
@@ -631,8 +680,8 @@ cd brown-bag-sandbox</pre>
       <p class="lede">Ten commits on a plane, no signal — checkpoints, WIP, "let me try this" — then one <code class="mono" style="color:var(--gold)">push</code> when you're ready. Every command on the next few slides leans on this split.</p>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" data-label="today · npm install" id="s15">
+    <!-- 18 -->
+    <section class="slide" data-label="today · npm install" id="s18">
       <p class="eyebrow">The first thing you'll hit after cloning</p>
       <h2 class="headline">npm install</h2>
       <div class="term" style="max-width:38rem;">
@@ -652,8 +701,8 @@ npm run dev   <span class="cmt"># or whatever "scripts" says</span></pre>
       </div>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" data-label="today · commands" id="s16">
+    <!-- 19 -->
+    <section class="slide" data-label="today · commands" id="s19">
       <p class="eyebrow">The daily loop</p>
       <h2 class="headline">Local basics + branching</h2>
       <div class="term" style="max-width:38rem;">
@@ -671,8 +720,8 @@ git branch                        <span class="cmt"># list branches</span></pre>
       <p class="lede">Naming convention: short, descriptive, hyphenated — <code>fix-login-button</code>, <code>add-student-search</code>.</p>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" data-label="today · ship it" id="s17">
+    <!-- 20 -->
+    <section class="slide" data-label="today · ship it" id="s20">
       <p class="eyebrow">Push → PR → Review</p>
       <h2 class="headline">Getting a change into main</h2>
       <div class="flow">
@@ -695,8 +744,8 @@ git branch                        <span class="cmt"># list branches</span></pre>
       <p class="lede">Approved → click <strong style="color:var(--parchment)">Merge</strong>. Three options: <strong style="color:var(--gold)">Create a merge commit</strong> (default, safest while learning), <strong>Squash and merge</strong> (flattens to one commit), <strong>Rebase and merge</strong> (skip until rebase is covered).</p>
     </section>
 
-    <!-- 18 -->
-    <section class="slide" data-label="today · conflicts" id="s18">
+    <!-- 21 -->
+    <section class="slide" data-label="today · conflicts" id="s21">
       <p class="eyebrow">By hand, no shortcuts</p>
       <h2 class="headline">Reading a conflict</h2>
       <div class="term" style="max-width:36rem;">
@@ -706,8 +755,8 @@ git branch                        <span class="cmt"># list branches</span></pre>
       <p class="lede">Read both sides. Decide the correct final code — one side, the other, or a blend. Delete the three marker lines. <code>git add</code> the file, commit, push. Editor merge tools can help highlight — but you should be able to do this by eye.</p>
     </section>
 
-    <!-- 19 -->
-    <section class="slide" data-label="hands-on · manufacture a conflict" id="s19" style="padding-top:4rem; padding-bottom:2.3rem; gap:1.1rem;">
+    <!-- 22 -->
+    <section class="slide" data-label="hands-on · manufacture a conflict" id="s22" style="padding-top:4rem; padding-bottom:2.3rem; gap:1.1rem;">
       <p class="eyebrow">With a partner, for real</p>
       <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Manufacture a real conflict</h2>
       <ul class="ledger" style="max-width:58rem;">
@@ -719,8 +768,8 @@ git branch                        <span class="cmt"># list branches</span></pre>
       </ul>
     </section>
 
-    <!-- 20 -->
-    <section class="slide" data-label="homework" id="s20">
+    <!-- 23 -->
+    <section class="slide" data-label="homework" id="s23">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:50rem;">
