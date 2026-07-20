@@ -416,7 +416,43 @@
     </section>
 
     <!-- 2 -->
-    <section class="slide" data-label="cold open" id="s2">
+    <section class="slide" data-label="recap · git verbs" id="s2">
+      <p class="eyebrow">Quick refresh before today</p>
+      <h2 class="headline">Commit, push, pull, fetch</h2>
+      <div class="table-wrap">
+        <table style="max-width:64rem;">
+          <thead><tr><th>Verb</th><th>What it actually does</th></tr></thead>
+          <tbody>
+            <tr><td><code>git commit</code></td><td>Records a change <strong style="color:var(--parchment)">locally</strong> — offline, instant, private (Session 1)</td></tr>
+            <tr><td><code>git push</code></td><td><strong style="color:var(--parchment)">Publishes</strong> local commits to the remote — makes them visible to anyone else</td></tr>
+            <tr><td><code>git fetch</code></td><td class="hi">Downloads what's new on the remote — doesn't touch your current branch</td></tr>
+            <tr><td><code>git pull</code></td><td class="hi"><code>fetch</code> <strong>+</strong> <code>merge</code>, in one step — the one you've already used since Session 1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede"><code>fetch</code> is the safer, two-step move — see what changed before you merge it. <code>pull</code> is the fast default the rest of the time.</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide" data-label="the stack" id="s3">
+      <p class="eyebrow">Sessions 1-2 were tool-agnostic. That changes now.</p>
+      <h2 class="headline">The stack we're building with</h2>
+      <div class="table-wrap">
+        <table style="max-width:64rem;">
+          <thead><tr><th></th><th>What it is</th><th>Where it shows up</th></tr></thead>
+          <tbody>
+            <tr><td><strong>GitHub</strong></td><td>Repos, PRs, Actions — today</td><td class="hi">Every session, from Session 1</td></tr>
+            <tr><td><strong>Claude</strong></td><td>The AI pair-programming partner</td><td class="hi">Hands-on starting Session 3</td></tr>
+            <tr><td><strong>React</strong></td><td>UI framework — components, props, state</td><td class="hi">Session 4</td></tr>
+            <tr><td><strong>Firebase</strong></td><td>Backend — Firestore, Auth, Hosting</td><td class="hi">Sessions 6-7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">This is the same stack idmc-gcfsm — a real church project — actually runs on. <strong style="color:var(--gold)">Nothing here is a toy version of a toy stack.</strong></p>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide" data-label="cold open" id="s4">
       <p class="eyebrow">Before we touch Actions</p>
       <h2 class="headline">Ten people branch Monday. Everyone merges Friday.</h2>
       <svg class="diagram" viewBox="0 0 640 190" width="640" role="img" aria-label="Five branches, each fine alone, converging Friday afternoon into an unknown outcome">
@@ -443,8 +479,8 @@
       <p class="lede">Each branch works fine, alone, all week. Friday, everyone merges into <code>main</code> at once. Now find out — together, for the first time — whether any of it actually fits.</p>
     </section>
 
-    <!-- 3 -->
-    <section class="slide" data-label="what breaks" id="s3">
+    <!-- 5 -->
+    <section class="slide" data-label="what breaks" id="s5">
       <p class="eyebrow">What breaks without CI</p>
       <h2 class="headline">Five ways "it worked on my branch" fails you</h2>
       <ul class="ledger">
@@ -456,8 +492,8 @@
       </ul>
     </section>
 
-    <!-- 4 -->
-    <section class="slide" data-label="the fix" id="s4">
+    <!-- 6 -->
+    <section class="slide" data-label="the fix" id="s6">
       <p class="eyebrow">The direct fix — coined late 1990s, Extreme Programming</p>
       <h2 class="headline">Continuous Integration: merge early and often, verify every time</h2>
       <div class="two-col">
@@ -481,8 +517,8 @@
       <p class="lede">This is the missing half of Session 1. Cheap merging (Git) plus automatic verification on every merge (CI) is what actually makes "branch → PR → merge, all day" safe at team scale — Git alone gives you the <em style="color:var(--gold)">ability</em>; CI is what makes doing so <em style="color:var(--gold)">not reckless</em>.</p>
     </section>
 
-    <!-- 5 -->
-    <section class="slide" data-label="cd, briefly" id="s5">
+    <!-- 7 -->
+    <section class="slide" data-label="cd, briefly" id="s7">
       <p class="eyebrow">One step further — two doses today</p>
       <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
       <p class="lede">Once every merge is verified, you can trust that <code>main</code> is always in a shippable state — so shipping stops being its own dreaded event and becomes no click at all. That's Continuous Delivery / Deployment.</p>
@@ -492,15 +528,15 @@
       </div>
     </section>
 
-    <!-- 6 -->
-    <section class="slide" data-label="the vibe coding thread" id="s6">
+    <!-- 8 -->
+    <section class="slide" data-label="the vibe coding thread" id="s8">
       <p class="eyebrow">The other half of the Session 1 thread</p>
       <p class="pull">A lint/test workflow doesn't care whether a human or <em>Claude</em> wrote the diff. It checks the result — every time, without getting tired, without skipping a step because the code "looked fine."</p>
       <p class="lede">If Claude can propose a change and you can merge it in minutes, CI is what stops "fast" from becoming "fast and broken."</p>
     </section>
 
-    <!-- 7 -->
-    <section class="slide" data-label="actions vocabulary" id="s7">
+    <!-- 9 -->
+    <section class="slide" data-label="actions vocabulary" id="s9">
       <p class="eyebrow">The vocabulary that matters</p>
       <h2 class="headline">Workflow, trigger, job, step, action, runner</h2>
       <div class="table-wrap">
@@ -519,8 +555,8 @@
       <p class="lede"><code>checkout</code> and <code>setup-node</code> aren't special — they're two of thousands of published actions on the <strong style="color:var(--gold)">GitHub Actions Marketplace</strong>. Deploy to Firebase, post to Slack, run a Lighthouse audit — there's very likely already an action for it.</p>
     </section>
 
-    <!-- 8 -->
-    <section class="slide" data-label="anatomy of a workflow" id="s8" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <!-- 10 -->
+    <section class="slide" data-label="anatomy of a workflow" id="s10" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">One file: <code>.github/workflows/ci.yml</code></p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Anatomy of a workflow</h2>
       <div class="term" style="max-width:40rem;">
@@ -545,8 +581,8 @@
       </div>
     </section>
 
-    <!-- 9 -->
-    <section class="slide" data-label="hands-on · first workflow" id="s9">
+    <!-- 11 -->
+    <section class="slide" data-label="hands-on · first workflow" id="s11">
       <p class="eyebrow">Hands-on</p>
       <h2 class="headline">From zero to a check on your PR</h2>
       <div class="term" style="max-width:34rem;">
@@ -567,8 +603,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">A human reviewer no longer has to manually run <code>npm test</code> locally to find out if a PR is broken — the PR tells you before anyone even opens it. Once it's run on <code>main</code>, drop <code>![CI](.../ci.yml/badge.svg)</code> in your README — a visible payoff without opening the Actions tab.</p>
     </section>
 
-    <!-- 10 -->
-    <section class="slide" data-label="free-tier limits" id="s10" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <!-- 12 -->
+    <section class="slide" data-label="free-tier limits" id="s12" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Know the ceiling before you hit it</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Free-tier limits</h2>
       <div class="table-wrap">
@@ -591,8 +627,8 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 11 -->
-    <section class="slide" data-label="branch protection" id="s11">
+    <!-- 13 -->
+    <section class="slide" data-label="branch protection" id="s13">
       <p class="eyebrow">The follow-through on Session 1's note</p>
       <h2 class="headline">Making the check mandatory</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -605,8 +641,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">The PR's <strong style="color:var(--parchment)">Merge</strong> button itself goes gray until the check passes and a reviewer approves. Not discipline. Not a reminder. GitHub mechanically refuses the merge.</p>
     </section>
 
-    <!-- 12 -->
-    <section class="slide" data-label="reading a failed run" id="s12">
+    <!-- 14 -->
+    <section class="slide" data-label="reading a failed run" id="s14">
       <p class="eyebrow">Everyone hits a red X eventually</p>
       <h2 class="headline">Reading a failed Actions run</h2>
       <div class="two-col">
@@ -632,8 +668,8 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 13 -->
-    <section class="slide" data-label="dependabot" id="s13" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
+    <!-- 15 -->
+    <section class="slide" data-label="dependabot" id="s15" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
       <p class="eyebrow">Automatic dependency PRs</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Dependabot: security alerts vs. routine bumps</h2>
       <div class="term" style="max-width:30rem;">
@@ -657,8 +693,8 @@ updates:
       </div>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" data-label="your first deploy" id="s14" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
+    <!-- 16 -->
+    <section class="slide" data-label="your first deploy" id="s16" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
       <p class="eyebrow">CI verifies a merge. This ships it — no click.</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy, hands-on</h2>
       <div class="term" style="max-width:38rem;">
@@ -679,8 +715,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> you didn't deploy anything. You merged a PR, and the deploy happened to you.</p>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" data-label="full loop · replay" id="s15" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
+    <!-- 17 -->
+    <section class="slide" data-label="full loop · replay" id="s17" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
       <p class="eyebrow">Same conflict activity as Session 1 — now with an audience</p>
       <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict. Watch everything react.</h2>
       <ul class="ledger" style="max-width:58rem;">
@@ -693,8 +729,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> the conflict-resolution skill didn't change since Session 1. Everything wrapped around it did.</p>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" data-label="homework" id="s16">
+    <!-- 18 -->
+    <section class="slide" data-label="homework" id="s18">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
