@@ -4,7 +4,41 @@
 
 **Goal:** By the end of this session, you can read and write a GitHub Actions workflow, understand why a "passing check" gates a merge, set up branch protection that requires it, read a failed Actions run well enough to fix it, and have actually watched a merge deploy itself — all on the free tier, capped off by watching a resolved conflict trigger both the check and the deploy at once.
 
-**Contents:** [Why CI/CD Exists](#why-cicd-exists--integration-hell) · [GitHub Actions Basics](#1-github-actions-basics) · [Your First Workflow](#2-your-first-workflow-lintest) · [Free-Tier Limits](#3-free-tier-limits--what-they-mean-in-practice) · [Branch Protection](#4-branch-protection--making-checks-mandatory) · [Reading a Failed Run](#5-reading-a-failed-actions-run) · [Dependabot](#6-dependabot--automatic-dependency-prs) · [Your First Deploy](#7-your-first-deploy--experiencing-cd) · [Full Loop](#8-full-loop--replay-the-conflict-now-watch-everything-react) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+**Contents:** [Recap: Git Verbs](#recap--commit-push-pull-fetch) · [The Stack](#the-stack-were-building-with) · [Why CI/CD Exists](#why-cicd-exists--integration-hell) · [GitHub Actions Basics](#1-github-actions-basics) · [Your First Workflow](#2-your-first-workflow-lintest) · [Free-Tier Limits](#3-free-tier-limits--what-they-mean-in-practice) · [Branch Protection](#4-branch-protection--making-checks-mandatory) · [Reading a Failed Run](#5-reading-a-failed-actions-run) · [Dependabot](#6-dependabot--automatic-dependency-prs) · [Your First Deploy](#7-your-first-deploy--experiencing-cd) · [Full Loop](#8-full-loop--replay-the-conflict-now-watch-everything-react) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+
+---
+
+## Recap — Commit, Push, Pull, Fetch
+
+Quick refresh before today, since two of these verbs got *used* in Session 1
+without ever getting their own explanation:
+
+| Verb | What it actually does |
+|---|---|
+| `git commit` | Records a change **locally** — offline, instant, private (Session 1) |
+| `git push` | **Publishes** your local commits to the remote — the step that makes them visible to anyone else |
+| `git fetch` | Downloads what's new on the remote — but doesn't touch your current branch. You can look before deciding to merge it in |
+| `git pull` | `git fetch` **+** `git merge`, in one step — downloads *and* immediately merges into your current branch |
+
+**The distinction that matters:** `pull` is the fast, default move for "just get me up to date." `fetch` is the safer, two-step version — see what changed on the remote first, *then* decide to merge, rebase, or just look. Reach for `fetch` when you want to inspect before committing to a merge; `pull` is fine the rest of the time, and it's the one you've already been using since Session 1's conflict-resolution steps.
+
+---
+
+## The Stack We're Building With
+
+Sessions 1-2 have been intentionally tool-agnostic — Git and GitHub Actions
+work the same regardless of what you're building. Starting Session 3, that
+changes. Here's the actual stack this program builds toward:
+
+| | What it is | Where it shows up |
+|---|---|---|
+| **GitHub** | Where the code lives — repos, PRs, Actions (today) | Every session, from Session 1 on |
+| **Claude** | The AI pair-programming partner | Hands-on starting Session 3 |
+| **React** | The UI framework — components, props, state | Session 4 |
+| **Firebase** | The backend — Firestore (database), Auth, Hosting | Sessions 6-7 |
+
+This is the same stack idmc-gcfsm — a real church project — actually runs
+on. Nothing in this program is a toy version of a toy stack.
 
 ---
 
