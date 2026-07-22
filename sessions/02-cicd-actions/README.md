@@ -37,8 +37,7 @@ changes. Here's the actual stack this program builds toward:
 | **React** | The UI framework — components, props, state | Session 4 |
 | **Firebase** | The backend — Firestore (database), Auth, Hosting | Sessions 6-7 |
 
-This is the same stack idmc-gcfsm — a real church project — actually runs
-on. Nothing in this program is a toy version of a toy stack.
+This is the same stack idmc-gcfsm runs on.
 
 ---
 
