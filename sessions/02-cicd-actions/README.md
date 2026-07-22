@@ -32,10 +32,10 @@ changes. Here's the actual stack this program builds toward:
 
 | | What it is | Where it shows up |
 |---|---|---|
-| **GitHub** | Where the code lives — repos, PRs, Actions (today) | Every session, from Session 1 on |
-| **Claude** | The AI pair-programming partner | Hands-on starting Session 3 |
-| **React** | The UI framework — components, props, state | Session 4 |
-| **Firebase** | The backend — Firestore (database), Auth, Hosting | Sessions 6-7 |
+| <img src="../../resources/icons/github.svg" width="20" height="20" alt=""> **GitHub** | Where the code lives — repos, PRs, Actions (today) | Every session, from Session 1 on |
+| <img src="../../resources/icons/anthropic.svg" width="20" height="20" alt=""> **Claude** | The AI pair-programming partner | Hands-on starting Session 3 |
+| <img src="../../resources/icons/react.svg" width="20" height="20" alt=""> **React** | The UI framework — components, props, state | Session 4 |
+| <img src="../../resources/icons/firebase.svg" width="20" height="20" alt=""> **Firebase** | The backend — Firestore (database), Auth, Hosting | Sessions 6-7 |
 
 This is the same stack idmc-gcfsm runs on.
 
