@@ -497,12 +497,12 @@
       <p class="eyebrow">What breaks without CI</p>
       <h2 class="headline">The longer you wait to integrate, the more it costs</h2>
       <ul class="ledger">
-        <li><span class="mark">01</span><span><strong><code>main</code> stops being trustworthy</strong> — <span class="note">nothing verifies it after a merge, so "does <code>main</code> currently work?" is a question nobody can answer without checking by hand</span></span></li>
-        <li><span class="mark">02</span><span><strong>Cause and effect come apart</strong> — <span class="note">ten changes land at once; which one broke the build is a mystery to investigate, not a fact you already have</span></span></li>
-        <li><span class="mark">03</span><span><strong>Feedback arrives too late to be cheap</strong> — <span class="note">the bug surfaces days or weeks after it was written, not minutes — the author has moved on, the context is gone</span></span></li>
-        <li><span class="mark">04</span><span><strong>The team's instinct inverts</strong> — <span class="note">merging feels dangerous, so people merge less often "to avoid the mess," which makes the next merge bigger and more dangerous</span></span></li>
+        <li><span class="mark">01</span><span><strong><code>main</code> stops being trustworthy</strong> — <span class="note">"does it work right now?" needs a manual check</span></span></li>
+        <li><span class="mark">02</span><span><strong>Cause and effect come apart</strong> — <span class="note">ten changes land at once; which one broke it is a mystery</span></span></li>
+        <li><span class="mark">03</span><span><strong>Feedback arrives too late to be cheap</strong> — <span class="note">days or weeks later, the author has moved on</span></span></li>
+        <li><span class="mark">04</span><span><strong>The team's instinct inverts</strong> — <span class="note">merging feels risky, so people merge less, which makes it riskier</span></span></li>
       </ul>
-      <p class="lede">And review doesn't cover the gap: a human reading a diff can't run the whole test suite in their head.</p>
+      <p class="lede">And review can't cover the gap — nobody runs a test suite in their head.</p>
     </section>
 
     <!-- 6 -->
@@ -527,15 +527,14 @@
           </ul>
         </div>
       </div>
-      <p class="lede">This is the missing half of Session 1. Cheap merging (Git) plus automatic verification on every merge (CI) is what actually makes "branch → PR → merge, all day" safe at team scale — Git alone gives you the <em style="color:var(--gold)">ability</em>; CI is what makes doing so <em style="color:var(--gold)">not reckless</em>.</p>
+      <p class="lede">Git makes merging cheap. CI is what makes doing it constantly <em style="color:var(--gold)">not reckless</em>.</p>
     </section>
 
     <!-- 7 -->
-    <section class="slide" data-label="cd, briefly" id="s7" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" data-label="cd, briefly" id="s7">
       <p class="eyebrow">One step further — where a merge actually lands</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
-      <p class="lede">Once every merge is verified, you can trust that <code>main</code> is always in a shippable state — so shipping stops being its own dreaded event and becomes no click at all. That's Continuous Delivery / Deployment.</p>
-      <p class="lede">Real projects point that mechanism at more than one place. Each long-lived branch owns an <strong style="color:var(--parchment)">environment</strong> — its own running copy of the app, its own data, its own URL:</p>
+      <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
+      <p class="lede">Each long-lived branch owns an <strong style="color:var(--parchment)">environment</strong> — its own copy, its own data, its own URL.</p>
       <div class="flow" style="margin-bottom:0.5rem;">
         <span class="step">PR merged into <code>develop</code></span><span class="arrow">→</span>
         <span class="step hi">deploys to dev</span><span class="arrow">→</span>
@@ -546,42 +545,40 @@
         <span class="step hi">deploys to prod</span><span class="arrow">→</span>
         <span class="step">users get it</span>
       </div>
-      <p class="lede">Same mechanism, pointed at two places — nothing reaches users that hasn't already run somewhere real. Next: this live on <strong style="color:var(--gold)">idmc-gcfsm</strong>, environments and secrets included. What you build later today has one rung — <code>main</code> → live — which is enough to feel the mechanism.</p>
+      <p class="lede">Next: this running live on <strong style="color:var(--gold)">idmc-gcfsm</strong>.</p>
     </section>
 
     <!-- 8 -->
-    <section class="slide" data-label="who owns this" id="s8" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" data-label="who owns this" id="s8">
       <p class="eyebrow">So whose job is all this?</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">DevOps is a practice before it's a job title</h2>
-      <p class="lede">It named a way of working before it named a role: developers and operations sharing one goal &mdash; shipping safely, and often &mdash; instead of tossing releases over a wall and blaming whoever caught them.</p>
+      <h2 class="headline">DevOps is a practice before it's a job title</h2>
       <div class="two-col">
         <div>
-          <h3>What the work actually is</h3>
+          <h3>The work</h3>
           <ul>
-            <li>The pipeline &mdash; build, test, deploy</li>
-            <li>Environments &mdash; dev and prod, kept apart</li>
-            <li>Secrets and access &mdash; who is allowed to deploy</li>
-            <li>Monitoring and rollback &mdash; noticing, and undoing</li>
+            <li>Build, test, deploy pipelines</li>
+            <li>Environments, kept apart</li>
+            <li>Secrets and access</li>
+            <li>Monitoring and rollback</li>
           </ul>
         </div>
         <div>
-          <h3>What Firebase absorbed</h3>
+          <h3>On Firebase</h3>
           <ul>
-            <li>No machine to provision, patch, or SSH into</li>
-            <li>Security rules instead of firewall config</li>
-            <li>IAM and service accounts instead of <code>sudo</code></li>
-            <li>A second project instead of a staging server</li>
+            <li>No machine to patch or SSH into</li>
+            <li>Security rules, not firewalls</li>
+            <li>IAM, not <code>sudo</code></li>
+            <li>A second project, not a staging box</li>
           </ul>
         </div>
       </div>
-      <p class="lede">The server work didn't vanish &mdash; it became <strong style="color:var(--parchment)">configuration that lives in your repo</strong>, reviewed like any other change. That's why it lands on developers now, and why a team this size has nobody holding the title: you merge the PR, you own what happens next. <span style="color:var(--muted)">Session 7 sets up the Firebase side properly; Session 15 is monitoring.</span></p>
+      <p class="lede">No server to set up &mdash; the ops work became <strong style="color:var(--parchment)">configuration in your repo</strong>. Which is why it's yours.</p>
     </section>
 
     <!-- 9 -->
     <section class="slide" data-label="the vibe coding thread" id="s9">
       <p class="eyebrow">The other half of the Session 1 thread</p>
-      <p class="pull">A lint/test workflow doesn't care whether a human or <em>Claude</em> wrote the diff. It checks the result — every time, without getting tired, without skipping a step because the code "looked fine."</p>
-      <p class="lede">If Claude can propose a change and you can merge it in minutes, CI is what stops "fast" from becoming "fast and broken."</p>
+      <p class="pull">A lint/test workflow doesn't care whether a human or <em>Claude</em> wrote the diff. It checks the result — every time.</p>
     </section>
 
     <!-- 10 -->
@@ -605,7 +602,23 @@
     </section>
 
     <!-- 11 -->
-    <section class="slide" data-label="anatomy of a workflow" id="s11" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" data-label="build, lint, test" id="s11">
+      <p class="eyebrow">Three verbs, in every workflow you'll write</p>
+      <h2 class="headline">Build, lint, test</h2>
+      <div class="table-wrap">
+        <table style="max-width:56rem;">
+          <tbody>
+            <tr><td><strong>build</strong></td><td>Does it compile and bundle at all?</td></tr>
+            <tr><td><strong>lint</strong></td><td class="hi">Is it written the way the team agreed?</td></tr>
+            <tr><td><strong>test</strong></td><td>Does it do what it's supposed to do?</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">A 1978 Bell Labs tool, named after the fluff you take a roller to. A compiler cares whether code <em style="color:var(--gold)">runs</em>; lint picks off what's legal but shouldn't be there. Ours is ESLint.</p>
+    </section>
+
+    <!-- 12 -->
+    <section class="slide" data-label="anatomy of a workflow" id="s12" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">One file: <code>.github/workflows/ci.yml</code></p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Anatomy of a workflow</h2>
       <div class="term" style="max-width:40rem;">
@@ -630,8 +643,8 @@
       </div>
     </section>
 
-    <!-- 12 -->
-    <section class="slide" data-label="hands-on · first workflow" id="s12">
+    <!-- 13 -->
+    <section class="slide" data-label="hands-on · first workflow" id="s13">
       <p class="eyebrow">Hands-on</p>
       <h2 class="headline">From zero to a check on your PR</h2>
       <div class="term" style="max-width:34rem;">
@@ -649,13 +662,13 @@ git push -u origin add-ci-workflow</pre>
         <span class="step">runs live</span><span class="arrow">→</span>
         <span class="step">green ✓ or red ✕ on the PR</span>
       </div>
-      <p class="lede">A human reviewer no longer has to manually run <code>npm test</code> locally to find out if a PR is broken — the PR tells you before anyone even opens it. Once it's run on <code>main</code>, drop <code>![CI](.../ci.yml/badge.svg)</code> in your README — a visible payoff without opening the Actions tab.</p>
+      <p class="lede">The PR tells you it's broken before a reviewer opens it. Once it's run on <code>main</code>, add a CI badge to your README.</p>
     </section>
 
-    <!-- 13 -->
-    <section class="slide" data-label="free-tier limits" id="s13" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <!-- 14 -->
+    <section class="slide" data-label="github free tier" id="s14" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Know the ceiling before you hit it</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Free-tier limits</h2>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">GitHub Actions free-tier limits</h2>
       <div class="table-wrap">
         <table style="max-width:52rem;">
           <thead><tr><th></th><th>Public repos</th><th>Private repos (Free)</th></tr></thead>
@@ -666,7 +679,7 @@ git push -u origin add-ci-workflow</pre>
           </tbody>
         </table>
       </div>
-      <p class="lede" style="font-size:0.98rem; line-height:1.5;">Linux runners are cheapest — <code>ubuntu-latest</code> by default; macOS costs 10× the minutes, Windows 2×. A lint/test job runs ~1–3 minutes, so 2,000 free minutes is several hundred runs — plenty for a small church project, but the ceiling is real (Session 16 comes back to this).</p>
+      <p class="lede" style="font-size:0.98rem; line-height:1.5;">Linux is cheapest — macOS costs 10× the minutes, Windows 2×. A lint/test run is ~1–3 minutes.</p>
       <div class="term" style="max-width:32rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;cut minutes further</div>
         <pre style="font-size:0.8rem; line-height:1.5; padding:0.7rem 1rem 0.85rem;">- uses: actions/setup-node@v4
@@ -676,49 +689,49 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" data-label="branch protection" id="s14">
+    <!-- 15 -->
+    <section class="slide" data-label="branch protection" id="s15">
       <p class="eyebrow">The follow-through on Session 1's note</p>
       <h2 class="headline">Making the check mandatory</h2>
       <ul class="ledger" style="max-width:52rem;">
         <li><span class="mark">□</span><span>Repo → <strong>Settings → Branches → Add rule</strong>, pattern <code>main</code></span></li>
-        <li><span class="mark">□</span><span><strong>Require a pull request before merging</strong> — no direct pushes to <code>main</code>, ever</span></li>
-        <li><span class="mark">□</span><span><strong>Require approvals</strong> — at least 1 reviewer, even on a small team</span></li>
-        <li><span class="mark">□</span><span><strong>Require status checks to pass</strong> — select <code>lint-and-test</code> (only listed once the workflow has run at least once)</span></li>
-        <li><span class="mark">□</span><span><strong>Require branches to be up to date before merging</strong> — the "merge often" half of Section 4, enforced automatically</span></li>
+        <li><span class="mark">□</span><span><strong>Require a pull request before merging</strong></span></li>
+        <li><span class="mark">□</span><span><strong>Require approvals</strong> — at least 1</span></li>
+        <li><span class="mark">□</span><span><strong>Require status checks to pass</strong> — select <code>lint-and-test</code></span></li>
+        <li><span class="mark">□</span><span><strong>Require branches to be up to date before merging</strong></span></li>
       </ul>
-      <p class="lede">The PR's <strong style="color:var(--parchment)">Merge</strong> button itself goes gray until the check passes and a reviewer approves. Not discipline. Not a reminder. GitHub mechanically refuses the merge.</p>
+      <p class="lede">The <strong style="color:var(--parchment)">Merge</strong> button goes gray. Not discipline — GitHub mechanically refuses.</p>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" data-label="reading a failed run" id="s15">
+    <!-- 16 -->
+    <section class="slide" data-label="reading a failed run" id="s16">
       <p class="eyebrow">Everyone hits a red X eventually</p>
       <h2 class="headline">Reading a failed Actions run</h2>
       <div class="two-col">
         <div>
           <h3>The workflow</h3>
           <ul>
-            <li>Click the failed check on the PR (or the Actions tab)</li>
-            <li>Click into the failing job, then the failing step</li>
+            <li>Click the failed check on the PR</li>
+            <li>Into the failing job, then the failing step</li>
             <li>Read from the <strong style="color:var(--parchment)">bottom up</strong> — the error is the last few lines</li>
-            <li>Reproduce locally (<code>npm install &amp;&amp; npm run lint &amp;&amp; npm test</code>) before pushing a fix</li>
-            <li>Push — the same PR re-runs automatically</li>
+            <li>Reproduce locally before pushing a fix</li>
+            <li>Push — the PR re-runs itself</li>
           </ul>
         </div>
         <div>
           <h3>Common first-timer failures</h3>
           <ul>
-            <li>Node version mismatch vs. <code>node-version:</code></li>
+            <li>Node version mismatch</li>
             <li>A file that works locally but was never committed</li>
-            <li>An env var / secret the runner doesn't have (Session 7)</li>
+            <li>A secret the runner doesn't have (Session 7)</li>
             <li>A flaky test under CI's tighter resources</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" data-label="dependabot" id="s16" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
+    <!-- 17 -->
+    <section class="slide" data-label="dependabot" id="s17" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
       <p class="eyebrow">Automatic dependency PRs</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Dependabot: security alerts vs. routine bumps</h2>
       <div class="term" style="max-width:30rem;">
@@ -742,8 +755,8 @@ updates:
       </div>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" data-label="your first deploy" id="s17" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
+    <!-- 18 -->
+    <section class="slide" data-label="your first deploy" id="s18" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
       <p class="eyebrow">CI verifies a merge. This ships it — no click.</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy, hands-on</h2>
       <div class="term" style="max-width:38rem;">
@@ -760,37 +773,37 @@ updates:
         with: { path: . }
       - uses: actions/deploy-pages@v4</pre>
       </div>
-      <p class="lede" style="font-size:0.96rem; line-height:1.5;">Settings → Pages → Source: <strong style="color:var(--parchment)">GitHub Actions</strong>. Merge this, and <code>main</code> deploys itself to <code>&lt;user&gt;.github.io/&lt;repo&gt;</code> — no Firebase account, no secrets (Session 7 is the real version).</p>
+      <p class="lede" style="font-size:0.96rem; line-height:1.5;">Settings → Pages → Source: <strong style="color:var(--parchment)">GitHub Actions</strong>. Then merge — no account, no secrets.</p>
       <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> you didn't deploy anything. You merged a PR, and the deploy happened to you.</p>
     </section>
 
-    <!-- 18 -->
-    <section class="slide" data-label="full loop · replay" id="s18" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
+    <!-- 19 -->
+    <section class="slide" data-label="full loop · replay" id="s19" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
       <p class="eyebrow">Same conflict activity as Session 1 — now with an audience</p>
       <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict. Watch everything react.</h2>
       <ul class="ledger" style="max-width:58rem;">
-        <li><span class="mark">1</span><span>Same partner, same setup — collaborator access, agree on one line</span></li>
-        <li><span class="mark">2</span><span>Both branch from <code>main</code> at the same time, edit that line differently, push</span></li>
-        <li><span class="mark">3</span><span>First PR: watch <strong style="color:var(--gold)">lint-and-test</strong> run live, then merge — watch <strong style="color:var(--gold)">deploy</strong> fire, site updates</span></li>
-        <li><span class="mark">4</span><span>Second PR: <strong style="color:var(--rust)">conflict</strong>, same as Session 1. Resolve it together</span></li>
-        <li><span class="mark">5</span><span>Merge the resolution — check <strong style="color:var(--parchment)">and</strong> deploy both fire again, automatically</span></li>
+        <li><span class="mark">1</span><span>Same partner, same setup — agree on one line</span></li>
+        <li><span class="mark">2</span><span>Both branch from <code>main</code>, edit that line differently, push</span></li>
+        <li><span class="mark">3</span><span>First PR: watch <strong style="color:var(--gold)">lint-and-test</strong> run, merge — watch <strong style="color:var(--gold)">deploy</strong> fire</span></li>
+        <li><span class="mark">4</span><span>Second PR: <strong style="color:var(--rust)">conflict</strong>. Resolve it together</span></li>
+        <li><span class="mark">5</span><span>Merge the resolution — check <strong style="color:var(--parchment)">and</strong> deploy fire again</span></li>
       </ul>
-      <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> the conflict-resolution skill didn't change since Session 1. Everything wrapped around it did.</p>
+      <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> the conflict skill didn't change since Session 1. Everything around it did.</p>
     </section>
 
-    <!-- 19 -->
-    <section class="slide" data-label="homework" id="s19">
+    <!-- 20 -->
+    <section class="slide" data-label="homework" id="s20">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
-        <li><span class="mark">□</span><span>Add <code>.github/workflows/ci.yml</code> (lint + test) to your fork of the sandbox repo</span></li>
-        <li><span class="mark">□</span><span>Open a PR and watch the check run live on it</span></li>
-        <li><span class="mark">□</span><span>Add a CI status badge to your fork's README</span></li>
-        <li><span class="mark">□</span><span>Turn on branch protection: require the PR, require the check, require up to date</span></li>
-        <li><span class="mark">□</span><span>Deliberately break a lint rule on a branch, push it, read the failed run before fixing it</span></li>
-        <li><span class="mark">□</span><span class="note">Add <code>.github/dependabot.yml</code> — read (not necessarily merge) any PR it opens</span></li>
-        <li><span class="mark">□</span><span>Set up <code>deploy.yml</code> + GitHub Pages, merge a PR, watch it deploy itself</span></li>
-        <li><span class="mark">□</span><span class="note">If you didn't finish it live: the Full Loop replay with your Session 1 partner</span></li>
+        <li><span class="mark">□</span><span>Add <code>.github/workflows/ci.yml</code> to your sandbox fork</span></li>
+        <li><span class="mark">□</span><span>Open a PR, watch the check run</span></li>
+        <li><span class="mark">□</span><span>Add a CI status badge to your README</span></li>
+        <li><span class="mark">□</span><span>Turn on branch protection</span></li>
+        <li><span class="mark">□</span><span>Break a lint rule on purpose — read the failed run before fixing</span></li>
+        <li><span class="mark">□</span><span class="note">Add <code>.github/dependabot.yml</code>, read a PR it opens</span></li>
+        <li><span class="mark">□</span><span>Set up <code>deploy.yml</code> + Pages, merge, watch it deploy</span></li>
+        <li><span class="mark">□</span><span class="note">If unfinished: the Full Loop replay with your partner</span></li>
       </ul>
       <p class="footline">Next — Session 3: Vibe Coding Your First App</p>
     </section>
