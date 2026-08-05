@@ -495,14 +495,14 @@
     <!-- 5 -->
     <section class="slide" data-label="what breaks" id="s5">
       <p class="eyebrow">What breaks without CI</p>
-      <h2 class="headline">Five ways "it worked on my branch" fails you</h2>
+      <h2 class="headline">The longer you wait to integrate, the more it costs</h2>
       <ul class="ledger">
-        <li><span class="mark">01</span><span><strong>No shared truth until merge</strong> — <span class="note">every branch is only ever tested against its own, increasingly stale copy of <code>main</code></span></span></li>
-        <li><span class="mark">02</span><span><strong>Breaks are anonymous</strong> — <span class="note">ten changes land at once; which one broke the build is now a mystery to solve, not a fact you already know</span></span></li>
-        <li><span class="mark">03</span><span><strong>Fixes get expensive</strong> — <span class="note">the bug is found days or weeks after it was written, not minutes — the author has moved on, context is gone</span></span></li>
-        <li><span class="mark">04</span><span><strong>Merging gets scarier, not safer</strong> — <span class="note">teams merge less often "to avoid the mess," which only makes the eventual mess bigger</span></span></li>
-        <li><span class="mark">05</span><span><strong>Review can't catch it</strong> — <span class="note">a human reading a diff cannot run the whole test suite in their head</span></span></li>
+        <li><span class="mark">01</span><span><strong><code>main</code> stops being trustworthy</strong> — <span class="note">nothing verifies it after a merge, so "does <code>main</code> currently work?" is a question nobody can answer without checking by hand</span></span></li>
+        <li><span class="mark">02</span><span><strong>Cause and effect come apart</strong> — <span class="note">ten changes land at once; which one broke the build is a mystery to investigate, not a fact you already have</span></span></li>
+        <li><span class="mark">03</span><span><strong>Feedback arrives too late to be cheap</strong> — <span class="note">the bug surfaces days or weeks after it was written, not minutes — the author has moved on, the context is gone</span></span></li>
+        <li><span class="mark">04</span><span><strong>The team's instinct inverts</strong> — <span class="note">merging feels dangerous, so people merge less often "to avoid the mess," which makes the next merge bigger and more dangerous</span></span></li>
       </ul>
+      <p class="lede">And review doesn't cover the gap: a human reading a diff can't run the whole test suite in their head.</p>
     </section>
 
     <!-- 6 -->
