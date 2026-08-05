@@ -552,27 +552,19 @@
     <section class="slide" data-label="who owns this" id="s8">
       <p class="eyebrow">So whose job is all this?</p>
       <h2 class="headline">DevOps is a practice before it's a job title</h2>
-      <div class="two-col">
-        <div>
-          <h3>The work</h3>
-          <ul>
-            <li>Build, test, deploy pipelines</li>
-            <li>Environments, kept apart</li>
-            <li>Secrets and access</li>
-            <li>Monitoring and rollback</li>
-          </ul>
-        </div>
-        <div>
-          <h3>On Firebase</h3>
-          <ul>
-            <li>No machine to patch or SSH into</li>
-            <li>Security rules, not firewalls</li>
-            <li>IAM, not <code>sudo</code></li>
-            <li>A second project, not a staging box</li>
-          </ul>
-        </div>
+      <div class="table-wrap">
+        <table style="max-width:62rem;">
+          <thead><tr><th>The ops work</th><th>What we actually do for it</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><strong>Pipelines</strong></td><td>Build, test, deploy in GitHub Actions</td><td class="hi">today</td></tr>
+            <tr><td><strong>Environments</strong></td><td>A Firebase project each for dev and prod</td><td class="hi">S7</td></tr>
+            <tr><td><strong>Secrets &amp; access</strong></td><td>Actions secrets, IAM, service accounts</td><td class="hi">S7</td></tr>
+            <tr><td><strong>Monitoring</strong></td><td>Firebase console, alerts on failures</td><td class="hi">S15</td></tr>
+            <tr><td><strong>Cost control</strong></td><td>Quotas and budget alerts</td><td class="hi">S16</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p class="lede">No server to set up &mdash; the ops work became <strong style="color:var(--parchment)">configuration in your repo</strong>. Which is why it's yours.</p>
+      <p class="lede">There's no server to provision &mdash; the ops work became <strong style="color:var(--parchment)">configuration in your repo</strong>. Which is why it's yours, not a separate person's.</p>
     </section>
 
     <!-- 9 -->

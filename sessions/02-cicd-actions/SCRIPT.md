@@ -120,7 +120,8 @@ pointer to the demo.
 
 ## 8 — "DevOps is a practice before it's a job title"
 
-**On screen:** two columns — the work, and what changes on Firebase.
+**On screen:** a table mapping each ops responsibility to the thing we
+actually do for it, and when in the curriculum it lands.
 
 > You've seen a whole pipeline now. Fair question: whose job is this?
 >
@@ -134,31 +135,36 @@ pointer to the demo.
 > delivery, you've rebuilt the wall the idea existed to remove. You'll
 > still see it in postings, so know both things.
 
-**Left column:**
+**On the table — this is the point of the slide:**
 
-> Whatever you call the person, this is the work: the pipeline,
-> environments kept apart, secrets and who's allowed to deploy, and
-> monitoring and rollback — noticing when something's wrong and being able
-> to undo it.
-
-**Right column — the correction worth making explicitly:**
-
-> Classically a lot of that meant servers. Provision a machine, patch it,
-> configure the web server, manage SSH keys, size it for traffic.
+> Read the left column and it's the classic ops job. Pipelines,
+> environments, secrets and access, monitoring, cost. Twenty years ago
+> every one of those meant a machine somebody owned — provision it, patch
+> it, configure the web server, manage SSH keys, size it for traffic.
 >
-> On Firebase there is no server. Nothing to provision, patch, or SSH
-> into. But the work didn't disappear — it changed shape. Firewall rules
-> became Firestore security rules. `sudo` became IAM and service accounts.
-> A staging server became a second Firebase project.
+> Now read the right column. That is the Firebase and GitHub work we're
+> doing across this whole curriculum. Setting up a Firebase project per
+> environment *is* environment management. Service accounts and IAM *are*
+> access control. Budget alerts *are* capacity planning.
+>
+> So when we get to Session 7 and spend an hour on Firebase setup, that
+> isn't a detour from the real work — that's ops, and you're the one
+> doing it.
+
+**The honest caveat, if someone asks:**
+
+> Not everything in Firebase is ops. Data modeling, auth flows, the logic
+> inside a Cloud Function — that's application development that happens to
+> live in the same console. Security rules sit on the line: they work like
+> access control but they're really app authorization written as config.
+> The *setup* is ops. What you build on top of it is building.
 
 **Closing:**
 
-> So the ops work became configuration that lives in your repo, reviewed
-> like any other change. That's exactly why it lands on developers now —
-> and why on a team our size nobody holds this title. You merge the PR,
-> you own what happens next.
->
-> Session 7 sets the Firebase side up properly. Session 15 is monitoring.
+> There's no server to provision. The ops work became configuration that
+> lives in your repo, reviewed like any other change. That's why it lands
+> on developers now — and why on a team our size nobody holds this title.
+> You merge the PR, you own what happens next.
 
 ---
 
