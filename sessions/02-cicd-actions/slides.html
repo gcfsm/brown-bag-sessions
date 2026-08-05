@@ -497,12 +497,12 @@
       <p class="eyebrow">What breaks without CI</p>
       <h2 class="headline">The longer you wait to integrate, the more it costs</h2>
       <ul class="ledger">
-        <li><span class="mark">01</span><span><strong><code>main</code> stops being trustworthy</strong> — <span class="note">nothing verifies it after a merge, so "does <code>main</code> currently work?" is a question nobody can answer without checking by hand</span></span></li>
-        <li><span class="mark">02</span><span><strong>Cause and effect come apart</strong> — <span class="note">ten changes land at once; which one broke the build is a mystery to investigate, not a fact you already have</span></span></li>
-        <li><span class="mark">03</span><span><strong>Feedback arrives too late to be cheap</strong> — <span class="note">the bug surfaces days or weeks after it was written, not minutes — the author has moved on, the context is gone</span></span></li>
-        <li><span class="mark">04</span><span><strong>The team's instinct inverts</strong> — <span class="note">merging feels dangerous, so people merge less often "to avoid the mess," which makes the next merge bigger and more dangerous</span></span></li>
+        <li><span class="mark">01</span><span><strong><code>main</code> stops being trustworthy</strong> — <span class="note">"does it work right now?" needs a manual check</span></span></li>
+        <li><span class="mark">02</span><span><strong>Cause and effect come apart</strong> — <span class="note">ten changes land at once; which one broke it is a mystery</span></span></li>
+        <li><span class="mark">03</span><span><strong>Feedback arrives too late to be cheap</strong> — <span class="note">days or weeks later, the author has moved on</span></span></li>
+        <li><span class="mark">04</span><span><strong>The team's instinct inverts</strong> — <span class="note">merging feels risky, so people merge less, which makes it riskier</span></span></li>
       </ul>
-      <p class="lede">And review doesn't cover the gap: a human reading a diff can't run the whole test suite in their head.</p>
+      <p class="lede">And review can't cover the gap — nobody runs a test suite in their head.</p>
     </section>
 
     <!-- 6 -->
@@ -531,11 +531,10 @@
     </section>
 
     <!-- 7 -->
-    <section class="slide" data-label="cd, briefly" id="s7" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" data-label="cd, briefly" id="s7">
       <p class="eyebrow">One step further — where a merge actually lands</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
-      <p class="lede">Once every merge is verified, you can trust that <code>main</code> is always in a shippable state — so shipping stops being its own dreaded event and becomes no click at all. That's Continuous Delivery / Deployment.</p>
-      <p class="lede">Real projects point that mechanism at more than one place. Each long-lived branch owns an <strong style="color:var(--parchment)">environment</strong> — its own running copy of the app, its own data, its own URL:</p>
+      <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
+      <p class="lede">Each long-lived branch owns an <strong style="color:var(--parchment)">environment</strong> — its own copy, its own data, its own URL.</p>
       <div class="flow" style="margin-bottom:0.5rem;">
         <span class="step">PR merged into <code>develop</code></span><span class="arrow">→</span>
         <span class="step hi">deploys to dev</span><span class="arrow">→</span>
@@ -546,35 +545,34 @@
         <span class="step hi">deploys to prod</span><span class="arrow">→</span>
         <span class="step">users get it</span>
       </div>
-      <p class="lede">Same mechanism, pointed at two places — nothing reaches users that hasn't already run somewhere real. Next: this live on <strong style="color:var(--gold)">idmc-gcfsm</strong>, environments and secrets included. What you build later today has one rung — <code>main</code> → live — which is enough to feel the mechanism.</p>
+      <p class="lede">Next: this running live on <strong style="color:var(--gold)">idmc-gcfsm</strong>.</p>
     </section>
 
     <!-- 8 -->
-    <section class="slide" data-label="who owns this" id="s8" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" data-label="who owns this" id="s8">
       <p class="eyebrow">So whose job is all this?</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">DevOps is a practice before it's a job title</h2>
-      <p class="lede">It named a way of working before it named a role: developers and operations sharing one goal &mdash; shipping safely, and often &mdash; instead of tossing releases over a wall and blaming whoever caught them.</p>
+      <h2 class="headline">DevOps is a practice before it's a job title</h2>
       <div class="two-col">
         <div>
-          <h3>What the work actually is</h3>
+          <h3>The work</h3>
           <ul>
-            <li>The pipeline &mdash; build, test, deploy</li>
-            <li>Environments &mdash; dev and prod, kept apart</li>
-            <li>Secrets and access &mdash; who is allowed to deploy</li>
-            <li>Monitoring and rollback &mdash; noticing, and undoing</li>
+            <li>Build, test, deploy pipelines</li>
+            <li>Environments, kept apart</li>
+            <li>Secrets and access</li>
+            <li>Monitoring and rollback</li>
           </ul>
         </div>
         <div>
-          <h3>What Firebase absorbed</h3>
+          <h3>On Firebase</h3>
           <ul>
-            <li>No machine to provision, patch, or SSH into</li>
-            <li>Security rules instead of firewall config</li>
-            <li>IAM and service accounts instead of <code>sudo</code></li>
-            <li>A second project instead of a staging server</li>
+            <li>No machine to patch or SSH into</li>
+            <li>Security rules, not firewalls</li>
+            <li>IAM, not <code>sudo</code></li>
+            <li>A second project, not a staging box</li>
           </ul>
         </div>
       </div>
-      <p class="lede">The server work didn't vanish &mdash; it became <strong style="color:var(--parchment)">configuration that lives in your repo</strong>, reviewed like any other change. That's why it lands on developers now, and why a team this size has nobody holding the title: you merge the PR, you own what happens next. <span style="color:var(--muted)">Session 7 sets up the Firebase side properly; Session 15 is monitoring.</span></p>
+      <p class="lede">No server to set up &mdash; the ops work became <strong style="color:var(--parchment)">configuration in your repo</strong>. Which is why it's yours.</p>
     </section>
 
     <!-- 9 -->
