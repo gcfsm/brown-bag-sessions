@@ -550,14 +550,42 @@
     </section>
 
     <!-- 8 -->
-    <section class="slide" data-label="the vibe coding thread" id="s8">
+    <section class="slide" data-label="who owns this" id="s8" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+      <p class="eyebrow">So whose job is all this?</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">DevOps is a practice before it's a job title</h2>
+      <p class="lede">It named a way of working before it named a role: developers and operations sharing one goal &mdash; shipping safely, and often &mdash; instead of tossing releases over a wall and blaming whoever caught them.</p>
+      <div class="two-col">
+        <div>
+          <h3>What the work actually is</h3>
+          <ul>
+            <li>The pipeline &mdash; build, test, deploy</li>
+            <li>Environments &mdash; dev and prod, kept apart</li>
+            <li>Secrets and access &mdash; who is allowed to deploy</li>
+            <li>Monitoring and rollback &mdash; noticing, and undoing</li>
+          </ul>
+        </div>
+        <div>
+          <h3>What Firebase absorbed</h3>
+          <ul>
+            <li>No machine to provision, patch, or SSH into</li>
+            <li>Security rules instead of firewall config</li>
+            <li>IAM and service accounts instead of <code>sudo</code></li>
+            <li>A second project instead of a staging server</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lede">The server work didn't vanish &mdash; it became <strong style="color:var(--parchment)">configuration that lives in your repo</strong>, reviewed like any other change. That's why it lands on developers now, and why a team this size has nobody holding the title: you merge the PR, you own what happens next. <span style="color:var(--muted)">Session 7 sets up the Firebase side properly; Session 15 is monitoring.</span></p>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-label="the vibe coding thread" id="s9">
       <p class="eyebrow">The other half of the Session 1 thread</p>
       <p class="pull">A lint/test workflow doesn't care whether a human or <em>Claude</em> wrote the diff. It checks the result — every time, without getting tired, without skipping a step because the code "looked fine."</p>
       <p class="lede">If Claude can propose a change and you can merge it in minutes, CI is what stops "fast" from becoming "fast and broken."</p>
     </section>
 
-    <!-- 9 -->
-    <section class="slide" data-label="actions vocabulary" id="s9">
+    <!-- 10 -->
+    <section class="slide" data-label="actions vocabulary" id="s10">
       <p class="eyebrow">The vocabulary that matters</p>
       <h2 class="headline">Workflow, trigger, job, step, action, runner</h2>
       <div class="table-wrap">
@@ -576,8 +604,8 @@
       <p class="lede"><code>checkout</code> and <code>setup-node</code> aren't special — they're two of thousands of published actions on the <strong style="color:var(--gold)">GitHub Actions Marketplace</strong>. Deploy to Firebase, post to Slack, run a Lighthouse audit — there's very likely already an action for it.</p>
     </section>
 
-    <!-- 10 -->
-    <section class="slide" data-label="anatomy of a workflow" id="s10" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <!-- 11 -->
+    <section class="slide" data-label="anatomy of a workflow" id="s11" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">One file: <code>.github/workflows/ci.yml</code></p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Anatomy of a workflow</h2>
       <div class="term" style="max-width:40rem;">
@@ -602,8 +630,8 @@
       </div>
     </section>
 
-    <!-- 11 -->
-    <section class="slide" data-label="hands-on · first workflow" id="s11">
+    <!-- 12 -->
+    <section class="slide" data-label="hands-on · first workflow" id="s12">
       <p class="eyebrow">Hands-on</p>
       <h2 class="headline">From zero to a check on your PR</h2>
       <div class="term" style="max-width:34rem;">
@@ -624,8 +652,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">A human reviewer no longer has to manually run <code>npm test</code> locally to find out if a PR is broken — the PR tells you before anyone even opens it. Once it's run on <code>main</code>, drop <code>![CI](.../ci.yml/badge.svg)</code> in your README — a visible payoff without opening the Actions tab.</p>
     </section>
 
-    <!-- 12 -->
-    <section class="slide" data-label="free-tier limits" id="s12" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <!-- 13 -->
+    <section class="slide" data-label="free-tier limits" id="s13" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Know the ceiling before you hit it</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Free-tier limits</h2>
       <div class="table-wrap">
@@ -648,8 +676,8 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 13 -->
-    <section class="slide" data-label="branch protection" id="s13">
+    <!-- 14 -->
+    <section class="slide" data-label="branch protection" id="s14">
       <p class="eyebrow">The follow-through on Session 1's note</p>
       <h2 class="headline">Making the check mandatory</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -662,8 +690,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">The PR's <strong style="color:var(--parchment)">Merge</strong> button itself goes gray until the check passes and a reviewer approves. Not discipline. Not a reminder. GitHub mechanically refuses the merge.</p>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" data-label="reading a failed run" id="s14">
+    <!-- 15 -->
+    <section class="slide" data-label="reading a failed run" id="s15">
       <p class="eyebrow">Everyone hits a red X eventually</p>
       <h2 class="headline">Reading a failed Actions run</h2>
       <div class="two-col">
@@ -689,8 +717,8 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" data-label="dependabot" id="s15" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
+    <!-- 16 -->
+    <section class="slide" data-label="dependabot" id="s16" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
       <p class="eyebrow">Automatic dependency PRs</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Dependabot: security alerts vs. routine bumps</h2>
       <div class="term" style="max-width:30rem;">
@@ -714,8 +742,8 @@ updates:
       </div>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" data-label="your first deploy" id="s16" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
+    <!-- 17 -->
+    <section class="slide" data-label="your first deploy" id="s17" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
       <p class="eyebrow">CI verifies a merge. This ships it — no click.</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy, hands-on</h2>
       <div class="term" style="max-width:38rem;">
@@ -736,8 +764,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> you didn't deploy anything. You merged a PR, and the deploy happened to you.</p>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" data-label="full loop · replay" id="s17" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
+    <!-- 18 -->
+    <section class="slide" data-label="full loop · replay" id="s18" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
       <p class="eyebrow">Same conflict activity as Session 1 — now with an audience</p>
       <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict. Watch everything react.</h2>
       <ul class="ledger" style="max-width:58rem;">
@@ -750,8 +778,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> the conflict-resolution skill didn't change since Session 1. Everything wrapped around it did.</p>
     </section>
 
-    <!-- 18 -->
-    <section class="slide" data-label="homework" id="s18">
+    <!-- 19 -->
+    <section class="slide" data-label="homework" id="s19">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
