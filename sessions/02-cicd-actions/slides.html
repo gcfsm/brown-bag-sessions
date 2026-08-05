@@ -531,14 +531,22 @@
     </section>
 
     <!-- 7 -->
-    <section class="slide" data-label="cd, briefly" id="s7">
-      <p class="eyebrow">One step further — two doses today</p>
-      <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
+    <section class="slide" data-label="cd, briefly" id="s7" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+      <p class="eyebrow">One step further — where a merge actually lands</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
       <p class="lede">Once every merge is verified, you can trust that <code>main</code> is always in a shippable state — so shipping stops being its own dreaded event and becomes no click at all. That's Continuous Delivery / Deployment.</p>
-      <div class="flow">
-        <span class="step hi">facilitator: a real production pipeline</span><span class="arrow">→</span>
-        <span class="step hi">you: build a free one yourself, later today</span>
+      <p class="lede">Real projects point that mechanism at more than one place. Each long-lived branch owns an <strong style="color:var(--parchment)">environment</strong> — its own running copy of the app, its own data, its own URL:</p>
+      <div class="flow" style="margin-bottom:0.5rem;">
+        <span class="step">PR merged into <code>develop</code></span><span class="arrow">→</span>
+        <span class="step hi">deploys to dev</span><span class="arrow">→</span>
+        <span class="step">the team pokes at it first</span>
       </div>
+      <div class="flow">
+        <span class="step"><code>develop</code> merged into <code>main</code></span><span class="arrow">→</span>
+        <span class="step hi">deploys to prod</span><span class="arrow">→</span>
+        <span class="step">users get it</span>
+      </div>
+      <p class="lede">Same mechanism, pointed at two places — nothing reaches users that hasn't already run somewhere real. Next: this live on <strong style="color:var(--gold)">idmc-gcfsm</strong>, environments and secrets included. What you build later today has one rung — <code>main</code> → live — which is enough to feel the mechanism.</p>
     </section>
 
     <!-- 8 -->
