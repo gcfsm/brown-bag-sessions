@@ -19,6 +19,28 @@ Sessions 6-7 (something deployed to monitor)
 - Error tracking concepts
 - "How do you find out something's wrong before a user tells you"
 - Light tool overview (no deep dive)
+- **Uptime Monitoring — checking from the outside**
+  - The distinction that organises this session: logs and error tracking are
+    *inside* the app and only report if the app is running well enough to
+    report. An uptime monitor is *outside* it, hitting a URL on a schedule.
+    If the whole thing is down, only the outside check notices
+  - **Monitors** — one per public URL, on an interval. The interval sets your
+    worst-case blind window: a 30-minute check means up to 30 minutes of
+    downtime before anyone is told. Shorter costs more and gets noisier —
+    naming that trade-off out loud is the lesson, not picking a number
+  - **Heartbeats** — the check inverted. Instead of something reaching in to
+    your service, your job reaches *out* on a schedule, and the alert fires
+    when the ping stops. This is the only thing that catches a scheduled task
+    that silently stopped running — including the Firestore export below,
+    which fails silently by default
+  - **Incidents, on-call, escalation policies** — who finds out, how, and who
+    gets told next when the first person doesn't answer. Worth covering even
+    at church-volunteer scale, where the honest answer may be "one person,
+    and here's what happens when they're on holiday"
+  - **Status pages** — the public artifact. Turns "is it just me?" into a link,
+    and gives you an uptime record over time
+  - Ocean runs Better Stack for all of the above — use it as the concrete
+    instance, but teach the concepts so the tool is swappable
 - **Disaster Recovery & Firestore Backups**
   - What DR means in practice for a small team (not enterprise-scale DR — realistic scope)
   - Firestore scheduled exports to Cloud Storage — setting one up

@@ -120,6 +120,30 @@
     color: var(--gold-dim);
   }
 
+  /* ---------- next-up pointer ---------- */
+
+  .nextup {
+    position: absolute;
+    bottom: 1.9rem;
+    right: var(--pad-x);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .nextup span { color: var(--gold-dim); }
+  .nextup:hover span { color: var(--gold); }
+
+  /* The bottom-left label already says where you are; on a phone there
+     isn't room for both. */
+  @media (max-width: 700px) {
+    .nextup { display: none; }
+  }
+
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -541,7 +565,7 @@
     </section>
 
     <!-- 4 -->
-    <section class="slide" id="s4" data-label="cold open">
+    <section class="slide" id="s4" data-label="cold open" data-teaser="ten people, one Friday">
       <p class="eyebrow">The problem</p>
       <h2 class="headline">Ten people branch Monday. Everyone merges Friday.</h2>
       <svg class="diagram" viewBox="0 0 640 190" width="640" role="img" aria-label="Five branches, each fine alone, converging Friday afternoon into an unknown outcome">
@@ -594,7 +618,7 @@
     </section>
 
     <!-- 7 -->
-    <section class="slide" id="s7" data-label="cd, briefly">
+    <section class="slide" id="s7" data-label="cd, briefly" data-teaser="what CI unlocks">
       <p class="eyebrow">One step further — where a merge actually lands</p>
       <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
       <p class="lede">Each long-lived branch owns an <strong style="color:var(--parchment)">environment</strong> — its own copy, its own data, its own URL.</p>
@@ -608,11 +632,21 @@
         <span class="step hi">deploys to prod</span><span class="arrow">→</span>
         <span class="step">users get it</span>
       </div>
-      <p class="lede">Next: this running live on <strong style="color:var(--gold)">idmc-gcfsm</strong>.</p>
+      <p class="lede"><strong style="color:var(--parchment)">Live demo:</strong> this running on <strong style="color:var(--gold)">idmc-gcfsm</strong>.</p>
     </section>
 
     <!-- 8 -->
-    <section class="slide" id="s8" data-label="who owns this">
+    <section class="slide" id="s8" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="ninety days of it">
+      <p class="eyebrow">The same mechanism, left running</p>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Deployed continuously. Nobody noticed.</h2>
+      <figure class="shot" data-file="cd-uptime-90d.png">
+        <img src="images/cd-uptime-90d.png" alt="A status page showing ninety days of uptime across four services" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>Ninety days of shipping. Every deploy in that window is invisible here</figcaption>
+      </figure>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" id="s9" data-label="who owns this">
       <p class="eyebrow">So whose job is all this?</p>
       <h2 class="headline">DevOps is a practice before it's a job title</h2>
       <div class="table-wrap">
@@ -630,14 +664,14 @@
       <p class="lede">There's no server to provision &mdash; the ops work became <strong style="color:var(--parchment)">configuration in your repo</strong>. Which is why it's yours, not a separate person's.</p>
     </section>
 
-    <!-- 9 -->
-    <section class="slide" id="s9" data-label="the vibe coding thread">
+    <!-- 10 -->
+    <section class="slide" id="s10" data-label="the vibe coding thread" data-teaser="where Claude fits in">
       <p class="eyebrow">The other half of the Session 1 thread</p>
       <p class="pull">A lint/test workflow doesn't care whether a human or <em>Claude</em> wrote the diff. It checks the result — every time.</p>
     </section>
 
-    <!-- 10 -->
-    <section class="slide" id="s10" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;" data-label="actions vocabulary">
+    <!-- 11 -->
+    <section class="slide" id="s11" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;" data-label="actions vocabulary">
       <p class="eyebrow">The vocabulary that matters</p>
       <h2 class="headline">Workflow, trigger, job, step, action, runner</h2>
       <div class="table-wrap">
@@ -656,8 +690,8 @@
       <p class="lede"><code>checkout</code> and <code>setup-node</code> aren't special — they're two of thousands of published actions on the <strong style="color:var(--gold)">GitHub Actions Marketplace</strong>. Deploy to Firebase, post to Slack, run a Lighthouse audit — there's very likely already an action for it.</p>
     </section>
 
-    <!-- 11 -->
-    <section class="slide" id="s11" data-label="build, lint, test">
+    <!-- 12 -->
+    <section class="slide" id="s12" data-label="build, lint, test">
       <p class="eyebrow">Three verbs, in every workflow you'll write</p>
       <h2 class="headline">Build, lint, test</h2>
       <div class="table-wrap">
@@ -672,8 +706,8 @@
       <p class="lede">A 1978 Bell Labs tool, named after the fluff you take a roller to. A compiler cares whether code <em style="color:var(--gold)">runs</em>; lint picks off what's legal but shouldn't be there. Ours is ESLint.</p>
     </section>
 
-    <!-- 12 -->
-    <section class="slide" id="s12" data-label="anatomy of a workflow" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <!-- 13 -->
+    <section class="slide" id="s13" data-label="anatomy of a workflow" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">One file: <code>.github/workflows/ci.yml</code></p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Anatomy of a workflow</h2>
       <div class="term" style="max-width:40rem;">
@@ -699,8 +733,8 @@
       <p class="lede">This is <strong style="color:var(--parchment)">YAML</strong> &mdash; indentation is the syntax, not decoration. Two spaces, never tabs.</p>
     </section>
 
-    <!-- 13 -->
-    <section class="slide" id="s13" data-label="hands-on · first workflow">
+    <!-- 14 -->
+    <section class="slide" id="s14" data-label="hands-on · first workflow">
       <p class="eyebrow">Hands-on</p>
       <h2 class="headline">From zero to a check on your PR</h2>
       <div class="term" style="max-width:34rem;">
@@ -721,8 +755,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">The PR tells you it's broken before a reviewer opens it. Once it's run on <code>main</code>, add a CI badge to your README.</p>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" id="s14" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a passing check looks like">
+    <!-- 15 -->
+    <section class="slide" id="s15" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a passing check looks like">
       <p class="eyebrow">What you just built</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">The check, on a real PR</h2>
       <figure class="shot" data-file="pr-checks-green.png">
@@ -732,8 +766,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 15 -->
-    <section class="slide" id="s15" data-label="github free tier" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <!-- 16 -->
+    <section class="slide" id="s16" data-label="github free tier" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Know the ceiling before you hit it</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">GitHub Actions free-tier limits</h2>
       <div class="table-wrap">
@@ -749,8 +783,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede" style="font-size:0.98rem; line-height:1.5;">Linux is cheapest — macOS costs 10× the minutes, Windows 2×. A lint/test run is ~1–3 minutes.</p>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" id="s16" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what it takes off your machine">
+    <!-- 17 -->
+    <section class="slide" id="s17" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what it takes off your machine">
       <p class="eyebrow">One developer, one month</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">718 hours of compute</h2>
       <figure class="shot" data-file="actions-usage.png">
@@ -760,8 +794,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 17 -->
-    <section class="slide" id="s17" data-label="branch protection">
+    <!-- 18 -->
+    <section class="slide" id="s18" data-label="branch protection">
       <p class="eyebrow">The follow-through on Session 1's note</p>
       <h2 class="headline">Making the check mandatory</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -774,8 +808,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">GitHub refuses the merge until the check passes. Not discipline — mechanics.</p>
     </section>
 
-    <!-- 18 -->
-    <section class="slide" id="s18" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what protection looks like">
+    <!-- 19 -->
+    <section class="slide" id="s19" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what protection looks like">
       <p class="eyebrow">Not discipline — refusal</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Required checks, not passed</h2>
       <figure class="shot" data-file="merge-button-blocked.png">
@@ -785,8 +819,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 19 -->
-    <section class="slide" id="s19" data-label="reading a failed run">
+    <!-- 20 -->
+    <section class="slide" id="s20" data-label="reading a failed run">
       <p class="eyebrow">Everyone hits a red X eventually</p>
       <h2 class="headline">Reading a failed Actions run</h2>
       <div class="two-col">
@@ -813,8 +847,8 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 20 -->
-    <section class="slide" id="s20" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a failure looks like">
+    <!-- 21 -->
+    <section class="slide" id="s21" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a failure looks like">
       <p class="eyebrow">Read it from the bottom</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">A failed run, opened up</h2>
       <figure class="shot" data-file="failed-run-log.png">
@@ -824,8 +858,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 21 -->
-    <section class="slide" id="s21" data-label="dependabot" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
+    <!-- 22 -->
+    <section class="slide" id="s22" data-label="dependabot" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
       <p class="eyebrow">Automatic dependency PRs</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Dependabot: security alerts vs. routine bumps</h2>
       <div class="term" style="max-width:30rem;">
@@ -850,8 +884,8 @@ updates:
       <p class="lede">Slide 4 again, different problem: small and often beats big and rare.</p>
     </section>
 
-    <!-- 22 -->
-    <section class="slide" id="s22" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what dependabot looks like">
+    <!-- 23 -->
+    <section class="slide" id="s23" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what dependabot looks like">
       <p class="eyebrow">It opens the PR for you</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">A Dependabot pull request</h2>
       <figure class="shot" data-file="dependabot-pr.png">
@@ -861,8 +895,8 @@ updates:
     </section>
 
 
-    <!-- 23 -->
-    <section class="slide" id="s23" data-label="your first deploy" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
+    <!-- 24 -->
+    <section class="slide" id="s24" data-label="your first deploy" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
       <p class="eyebrow">Hands-on — CI verifies a merge, this ships it</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy</h2>
       <div class="term" style="max-width:38rem;">
@@ -883,8 +917,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;">You didn't deploy anything. You merged a PR, and the deploy happened <em style="color:var(--gold)">to</em> you.</p>
     </section>
 
-    <!-- 24 -->
-    <section class="slide" id="s24" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a deploy looks like">
+    <!-- 25 -->
+    <section class="slide" id="s25" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a deploy looks like">
       <p class="eyebrow">The merge shipped it</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Your site, live</h2>
       <figure class="shot" data-file="pages-live.png">
@@ -894,8 +928,8 @@ updates:
     </section>
 
 
-    <!-- 25 -->
-    <section class="slide" id="s25" data-label="full loop · replay" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
+    <!-- 26 -->
+    <section class="slide" id="s26" data-label="full loop · replay" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
       <p class="eyebrow">Hands-on — same partner as Session 1</p>
       <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict</h2>
       <ul class="ledger" style="max-width:58rem;">
@@ -908,8 +942,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;">The conflict skill didn't change since Session 1. Everything around it did.</p>
     </section>
 
-    <!-- 26 -->
-    <section class="slide" id="s26" data-label="homework">
+    <!-- 27 -->
+    <section class="slide" id="s27" data-label="homework">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -938,6 +972,28 @@ updates:
       slides.forEach(function (s, i) {
         s.setAttribute('data-index', String(i + 1).padStart(2, '0'));
         s.setAttribute('data-total', total);
+
+        // "Next -> <label>", bottom right. Not on the title slide, and not
+        // on the last one. Absolutely positioned, so it stays out of the
+        // slide's flex flow and can't change any slide's height.
+        var next = slides[i + 1];
+        if (i > 0 && next) {
+          var a = document.createElement('a');
+          a.className = 'nextup';
+          a.href = '#' + next.id;
+          a.appendChild(document.createTextNode('Next \u2192 '));
+          var label = document.createElement('span');
+          // data-teaser lets a slide say how the previous one should announce
+          // it, for labels that read as a facilitator's index rather than a
+          // transition. Falls back to the label, which is usually fine.
+          label.textContent = next.getAttribute('data-teaser') || next.getAttribute('data-label');
+          a.appendChild(label);
+          a.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            next.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+          });
+          s.appendChild(a);
+        }
       });
 
       var dots = slides.map(function (s, i) {

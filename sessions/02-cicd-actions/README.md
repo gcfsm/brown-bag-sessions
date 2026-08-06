@@ -47,7 +47,7 @@ This is the same stack idmc-gcfsm runs on.
 
 ## Why CI/CD Exists — Integration Hell
 
-**Deck:** [Slides 4–9](slides.html#s4)
+**Deck:** [Slides 4–10](slides.html#s4)
 
 Session 1 ended on a claim worth re-stating plainly: **Git made branching and
 merging cheap.** Anyone can branch off `main`, work in isolation, and merge
@@ -104,7 +104,7 @@ without getting tired or skipping a step because the code "looked fine."
 
 ## 1. GitHub Actions Basics
 
-**Deck:** [Slides 10–12](slides.html#s10)
+**Deck:** [Slides 11–13](slides.html#s11)
 
 GitHub Actions is GitHub's built-in CI/CD system: you commit a workflow
 file to your repo, GitHub runs it on hosted machines ("runners") in
@@ -162,7 +162,7 @@ marketplace action for it before you'd write one from scratch.
 
 ## 2. Your First Workflow: Lint/Test
 
-**Deck:** [Slides 13–14](slides.html#s13)
+**Deck:** [Slides 14–15](slides.html#s14)
 
 The workflow above already *is* a real, working lint/test CI setup — this
 section is about actually landing it.
@@ -206,7 +206,7 @@ sees.
 
 ## 3. Free-Tier Limits — What They Mean in Practice
 
-**Deck:** [Slides 15–16](slides.html#s15)
+**Deck:** [Slides 16–17](slides.html#s16)
 
 GitHub Actions is free within limits — worth knowing so a workflow doesn't
 quietly stop running mid-project:
@@ -247,7 +247,7 @@ before minutes become a real constraint.
 
 ## 4. Branch Protection — Making Checks Mandatory
 
-**Deck:** [Slides 17–18](slides.html#s17)
+**Deck:** [Slides 18–19](slides.html#s18)
 
 Session 1 flagged this: on most real projects, `main` rejects direct
 pushes and requires a reviewed PR. **A CI check existing doesn't enforce
@@ -275,7 +275,7 @@ the merge. This is the concrete, hands-on answer to the Session 1 question
 
 ## 5. Reading a Failed Actions Run
 
-**Deck:** [Slides 19–20](slides.html#s19)
+**Deck:** [Slides 20–21](slides.html#s20)
 
 Everyone hits a red X eventually. The workflow, not the panic:
 
@@ -307,7 +307,7 @@ Everyone hits a red X eventually. The workflow, not the panic:
 
 ## 6. Dependabot — Automatic Dependency PRs
 
-**Deck:** [Slides 21–22](slides.html#s21)
+**Deck:** [Slides 22–23](slides.html#s22)
 
 Dependabot is a free, built-in GitHub bot that watches `package.json` and
 opens a PR automatically whenever a dependency has a newer version — most
@@ -349,7 +349,7 @@ that needs a real look before merging.
 
 ## 7. Your First Deploy — Experiencing CD
 
-**Deck:** [Slides 23–24](slides.html#s23)
+**Deck:** [Slides 24–25](slides.html#s24)
 
 Everything above is CI: verifying a merge. This section is CD: a merge
 **shipping itself**, automatically, with no click required. The
@@ -415,7 +415,7 @@ sentence.
 
 ## 8. Full Loop — Replay the Conflict, Now Watch Everything React
 
-**Deck:** [Slide 25](slides.html#s25)
+**Deck:** [Slide 26](slides.html#s26)
 
 Session 1 ended with a hands-on activity: pair up, both branch off the
 same line in the same file at the same time, first merge is clean, second
@@ -510,7 +510,7 @@ jobs:
 
 ## Homework Before Next Session
 
-**Deck:** [Slide 26](slides.html#s26)
+**Deck:** [Slide 27](slides.html#s27)
 
 - [ ] Add a `.github/workflows/ci.yml` lint/test workflow to your fork of the sandbox repo
 - [ ] Open a PR and watch the check run live on it
