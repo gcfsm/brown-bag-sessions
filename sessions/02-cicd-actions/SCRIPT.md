@@ -12,6 +12,27 @@ self-explanatory on screen and need no script.
 
 ---
 
+## 2 — "Commit, push, pull, fetch — and the PR"
+
+**On screen:** the four git verbs, plus a row for PR.
+
+**Say the words out loud — the deck has never spelled them:**
+
+> One thing I want to say properly, because we all say the abbreviation
+> and nobody ever expands it. PR is a **pull request**.
+>
+> And it's a strange name until you know where it came from. You're asking
+> the person who owns the repository to *pull* your changes into theirs.
+> That was originally an email — Git has a command, `git request-pull`,
+> that writes one for you. GitHub built a web page around that idea and
+> the name stuck.
+>
+> So a pull request is three things stapled together: the diff of what you
+> changed, a conversation about it, and a button that merges it. You made
+> one last session. Today we're putting a gate in front of that button.
+
+---
+
 ## 4 — "Ten people branch Monday. Everyone merges Friday."
 
 **On screen:** the converging-branches diagram, one line underneath.
