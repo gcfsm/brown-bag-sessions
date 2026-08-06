@@ -7,8 +7,8 @@ that used to be printed on them lives here. Not a read-aloud — say it in
 your own words. The point is that nothing important exists only in your
 head on the day.
 
-**Slides not listed** (title, recap, the stack, anatomy of a workflow,
-Dependabot) are self-explanatory on screen and need no script.
+**Slides not listed** (title, recap, the stack, anatomy of a workflow) are
+self-explanatory on screen and need no script.
 
 ---
 
@@ -310,6 +310,43 @@ actually do for it, and when in the curriculum it lands.
 > constantly: it works on your machine because the file is *on* your
 > machine — you never committed it. The runner starts from a clean clone,
 > so it doesn't have it.
+
+---
+
+## 20 — "Dependabot: security alerts vs. routine bumps"
+
+**On screen:** the config, the alert-vs-bump table, one closing line.
+
+**Whose job was this before? Worth asking the room:**
+
+> Mostly nobody's. That's the honest answer. It fell to whoever happened to
+> notice — a developer already in that file, a lead doing a cleanup nobody
+> scheduled, or a security team forwarding an advisory. There were tools,
+> but you had to remember to run them. No ticket, no owner, no deadline.
+
+**The failure mode — this is the point:**
+
+> So dependencies drift. Two years later someone tries to upgrade and every
+> package is four majors behind, each with breaking changes, and they
+> interact. What should have been fifty one-line diffs is a three-week
+> project everyone is afraid to start — so it gets postponed again.
+>
+> That is slide 4 with different nouns. Batch the work and each unit becomes
+> terrifying. Do it weekly and each one is a diff you barely read.
+
+**A real example, if you want one:**
+
+> On Android this is forced on you. Play Store raises the required target
+> API level, so the upgrade happens on Google's schedule, not when your team
+> has room. And it cascades — the SDK forces Gradle, Gradle forces the
+> plugins, the plugins force the libraries. Thirty upgrades at once because
+> one was mandatory.
+
+**The honest limit — say this, don't oversell:**
+
+> Dependabot does not fix that. A forced major bump still cascades. What
+> changes is what you carry into it: one hard upgrade, instead of one hard
+> upgrade plus two years of unrelated rot.
 
 ---
 
