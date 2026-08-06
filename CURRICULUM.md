@@ -35,7 +35,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 
 | # | Session | Status | Folder |
 |---|---|---|---|
-| 11 | Claude Skills, Hooks, Githooks, Agentic Loops, MCP Servers | [ ] | [`11-claude-skills-hooks-agentic`](./sessions/11-claude-skills-hooks-agentic) |
+| 11 | Claude Skills, Hooks, Githooks, Agentic Loops, MCP Servers, Routines | [ ] | [`11-claude-skills-hooks-agentic`](./sessions/11-claude-skills-hooks-agentic) |
 
 ## Block E — Professional Practice
 
@@ -72,6 +72,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 - Uptime monitoring added to Session 15 as the outside-in half of detection: logs and error tracking only report if the app is healthy enough to report, so an external check is the only thing that notices a total outage. Heartbeats are included specifically because they are what catches the Session 15 Firestore export silently no longer running — the two halves of this session check each other. On-call and escalation are covered at honest small-team scale rather than enterprise rotation. Better Stack is the concrete instance (it is what Ocean runs), taught concept-first so the tool stays swappable.
 - Disaster Recovery / Firestore backups placed in Session 15 rather than Session 7 — paired with Observability since detection and recovery are two halves of the same production-readiness concern, not a Firestore feature tour.
 - reCAPTCHA placed in Session 10 (App Check) since it's specifically an App Check verification provider; its free tier quota angle is cross-referenced in Session 16 (Cost Awareness) rather than duplicated.
+- Routines added to the end of Session 11, after the MCP server build rather than beside it. The session already moves Skill (knowledge) to MCP server (tools); a routine is the third step (it starts itself), and that only reads as a step once they have built the thing that gets started. The teaching weight is on scoping, not scheduling: routines run with no permission prompts, attach every connector by default, and act under the user's own GitHub and connector identity. Also draws the line against CI from Session 2 explicitly — CI is a deterministic gate that blocks a merge, a routine is judgment that proposes, and a routine should never be the check that has to pass. This pushes Session 11 past a single hour, so the Part A / Part B split is now assumed rather than flagged.
 - MCP Servers added to Session 11 rather than a new session — it's the natural next step after Skills/Hooks/Agentic Loops (giving Claude callable tools, not just instructions). Also flagged as a split candidate given the session's growing density.
 - Session 1 opens with a "why Git exists" hook — the pre-Git file-naming pain (`proposal_FINAL_v2_ACTUALLY_FINAL.docx`) — before any commands are introduced, so every technical concept that follows has a concrete problem it's solving.
 - npm packages added to Session 1 (right after Fork/Clone) rather than Session 4 — it's the practical next step after cloning any repo, and `node_modules` being gitignored is a natural extension of the Git "source of truth vs. regeneratable output" concept already being taught.
