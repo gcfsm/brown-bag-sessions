@@ -313,7 +313,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 22 — "Your first deploy, hands-on"
+## 22 — "Your first deploy"
 
 **On screen:** `deploy.yml`, the Pages setting, the closing line.
 
@@ -324,14 +324,15 @@ actually do for it, and when in the curriculum it lands.
 >
 > Merge this and `main` deploys itself to your-username.github.io/repo.
 
-**The closing line — pause before it:**
+**Deliver the closing line, don't read it.** Let the deploy finish, let
+someone see the live URL, then stop and say it slowly:
 
-> Say it out loud: you didn't deploy anything. You merged a PR, and the
-> deploy happened *to* you. That's the whole idea.
+> You didn't deploy anything. You merged a PR, and the deploy happened
+> *to* you. That's the whole idea.
 
 ---
 
-## 24 — "Replay the conflict. Watch everything react."
+## 24 — "Replay the conflict"
 
 **On screen:** five numbered steps, one closing line.
 
@@ -342,11 +343,11 @@ actually do for it, and when in the curriculum it lands.
 > merging the resolution kicks off a check *and* a deploy, and the site
 > updates while you watch.
 
-**Closing:**
+**Deliver the closing line, don't read it.** Wait until both the check
+and the deploy have fired on screen, then:
 
-> Say it out loud: the conflict-resolution skill didn't change since
-> Session 1. Everything wrapped around it did. That's what this whole
-> session added.
+> The conflict-resolution skill didn't change since Session 1. Everything
+> wrapped around it did. That's what this whole session added.
 
 ---
 
