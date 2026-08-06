@@ -7,10 +7,10 @@ that used to be printed on them lives here. Not a read-aloud — say it in
 your own words. The point is that nothing important exists only in your
 head on the day.
 
-**Slides not listed** — the title, the stack, the five screenshot slides,
+**Slides not listed** — the title, the stack, the six screenshot slides,
 and the homework — are self-explanatory on screen and need no script.
 
-Slide numbers here match the deck as it stands (26 slides). If you insert
+Slide numbers here match the deck as it stands (27 slides). If you insert
 a slide, the numbers below it shift; the quoted headline on each heading is
 what to match against.
 
@@ -143,7 +143,21 @@ pointer to the demo.
 
 ---
 
-## Slide 8 — "DevOps is a practice before it's a job title"
+## Slide 8 — "Deployed continuously. Nobody noticed."
+
+**Ten seconds. Don't teach off it — just land the claim and move.**
+
+> That's ninety days of a project that deploys on every merge. Every one
+> of those deploys is somewhere on this graph, and you can't find them.
+>
+> That's the answer to the thing you're all thinking, which is that
+> shipping constantly sounds like constantly breaking. A deploy doesn't
+> take the site down — the new version goes up alongside the old one and
+> traffic switches over. Same reason rolling back is instant.
+
+---
+
+## Slide 9 — "DevOps is a practice before it's a job title"
 
 **On screen:** a table mapping each ops responsibility to the thing we
 actually do for it, and when in the curriculum it lands.
@@ -193,7 +207,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 9 — The Claude / vibe-coding thread
+## Slide 10 — The Claude / vibe-coding thread
 
 **On screen:** one pull quote, nothing else.
 
@@ -209,7 +223,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 10 — "Workflow, trigger, job, step, action, runner"
+## Slide 11 — "Workflow, trigger, job, step, action, runner"
 
 **On screen:** the six terms and what each one means.
 
@@ -234,7 +248,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 11 — "Build, lint, test"
+## Slide 12 — "Build, lint, test"
 
 **On screen:** three verbs, three definitions, one line on the name.
 
@@ -263,7 +277,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 12 — "Anatomy of a workflow"
+## Slide 13 — "Anatomy of a workflow"
 
 **On screen:** the `ci.yml` file, annotated, and one line naming the format.
 
@@ -294,7 +308,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 13 — "From zero to a check on your PR"
+## Slide 14 — "From zero to a check on your PR"
 
 **On screen:** the terminal commands, the four-step flow, one line.
 
@@ -310,7 +324,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 15 — "GitHub Actions free-tier limits"
+## Slide 16 — "GitHub Actions free-tier limits"
 
 **On screen:** the limits table, one line, the caching snippet.
 
@@ -330,7 +344,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 16 — "718 hours of compute"
+## Slide 17 — "718 hours of compute"
 
 **On screen:** the Actions usage metrics for a real organisation, one month.
 
@@ -362,7 +376,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 17 — "Making the check mandatory"
+## Slide 18 — "Making the check mandatory"
 
 **On screen:** five checkbox steps, one closing line.
 
@@ -401,7 +415,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 19 — "Reading a failed Actions run"
+## Slide 20 — "Reading a failed Actions run"
 
 **On screen:** the workflow on the left, common failures on the right.
 
@@ -426,7 +440,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 21 — "Dependabot: security alerts vs. routine bumps"
+## Slide 22 — "Dependabot: security alerts vs. routine bumps"
 
 **On screen:** the config, the alert-vs-bump table, one closing line.
 
@@ -463,7 +477,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## Slide 23 — "Your first deploy"
+## Slide 24 — "Your first deploy"
 
 **On screen:** `deploy.yml`, the Pages setting, the closing line.
 
@@ -482,7 +496,7 @@ someone see the live URL, then stop and say it slowly:
 
 ---
 
-## Slide 25 — "Replay the conflict"
+## Slide 26 — "Replay the conflict"
 
 **On screen:** five numbered steps, one closing line.
 

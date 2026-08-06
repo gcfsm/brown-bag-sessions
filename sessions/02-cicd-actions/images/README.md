@@ -18,13 +18,13 @@ No markup changes needed.
 
 ## The files
 
-### `pr-checks-green.png` — slide 14
+### `pr-checks-green.png` — slide 15
 
 The **Checks** section of a pull request, `lint-and-test` passing, with
 "All checks have passed." Include the green tick and the merge box if it
 fits. This is the payoff for the whole first hands-on.
 
-### `merge-button-blocked.png` — slide 17
+### `merge-button-blocked.png` — slide 19
 
 A pull request blocked by failing required checks. Capture the whole
 merge box: the "Some checks were not successful" header, the failing
@@ -41,19 +41,36 @@ explain it. The script for slide 16 has the wording.
 A Dependabot PR with red checks makes a good subject — no need to break
 anything on purpose.
 
-### `failed-run-log.png` — slide 19
+### `cd-uptime-90d.png` — slide 8
+
+A status page showing the 90-day uptime bars across your services. Crop
+to the service rows and their bars; keep the "All services are online"
+header if it fits.
+
+**Drop the "Last updated" timestamp.** A stale time on a projected slide
+invites the one question you don't want in that ten seconds.
+
+This is a ten-second slide, not a segment — the whole argument is that
+the graph is boring. Don't crop so tight that the 90-day span stops being
+readable; the span *is* the point.
+
+Only use a status page that is already public. This repository is public
+and the deck is a live site, so a private status page would be publishing
+your service inventory.
+
+### `failed-run-log.png` — slide 21
 
 An expanded **failing step** in a workflow run, with the error visible in
 the last few lines. Crop so the error is on screen — a wall of setup logs
 with the error cut off defeats the "read from the bottom up" lesson.
 
-### `dependabot-pr.png` — slide 21
+### `dependabot-pr.png` — slide 23
 
 A real Dependabot pull request: the title with the version bump, the
 changelog/release-notes section it generates, and ideally a check running
 on it.
 
-### `pages-live.png` — slide 23
+### `pages-live.png` — slide 25
 
 The **Pages** settings panel showing "Your site is live at …", or the
 Deployments entry in the repo sidebar. Proof that merging shipped
