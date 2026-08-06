@@ -377,6 +377,34 @@
   .two-col.bad h3 { color: var(--rust); }
   .two-col.good h3 { color: var(--moss); }
 
+  /* ---------- screenshots ---------- */
+
+  .shot { margin: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; max-width: 72rem; }
+  .shot img {
+    display: block;
+    max-width: 100%;
+    max-height: 26rem;
+    width: auto;
+    border: 1px solid var(--ink-700);
+    border-radius: 4px;
+  }
+  .shot figcaption { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+  .shot.is-missing img { display: none; }
+  .shot.is-missing::before {
+    content: "drop in  " attr(data-file);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(60rem, 100%);
+    min-height: 20rem;
+    border: 1px dashed var(--ink-600);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--gold-dim);
+  }
+
   .footline { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
 
   .pull {
@@ -405,7 +433,7 @@
   <main class="deck" id="deck">
 
     <!-- 1 -->
-    <section class="slide" data-label="title" id="s1">
+    <section class="slide" id="s1" data-label="title">
       <p class="eyebrow">IT Group Hub — Session 2</p>
       <h1 class="headline">CI/CD &amp;<br />GitHub Actions</h1>
       <p class="subhead">Session 1 made merging cheap. This session makes merging <em>often</em> safe — automatic verification on every single merge, and a mandatory gate that enforces it.</p>
@@ -429,7 +457,7 @@
     </section>
 
     <!-- 2 -->
-    <section class="slide" data-label="recap · git verbs" id="s2">
+    <section class="slide" id="s2" data-label="recap · git verbs">
       <p class="eyebrow">Quick refresh before today</p>
       <h2 class="headline">Commit, push, pull, fetch</h2>
       <div class="table-wrap">
@@ -447,7 +475,7 @@
     </section>
 
     <!-- 3 -->
-    <section class="slide" data-label="the stack" id="s3">
+    <section class="slide" id="s3" data-label="the stack">
       <p class="eyebrow">Sessions 1-2 were tool-agnostic. That changes now.</p>
       <h2 class="headline">The stack we're building with</h2>
       <div class="table-wrap">
@@ -465,8 +493,8 @@
     </section>
 
     <!-- 4 -->
-    <section class="slide" data-label="cold open" id="s4">
-      <p class="eyebrow">Before we touch Actions</p>
+    <section class="slide" id="s4" data-label="cold open">
+      <p class="eyebrow">The problem</p>
       <h2 class="headline">Ten people branch Monday. Everyone merges Friday.</h2>
       <svg class="diagram" viewBox="0 0 640 190" width="640" role="img" aria-label="Five branches, each fine alone, converging Friday afternoon into an unknown outcome">
         <path class="edge" d="M40,20 C 300,20 460,90 560,105" />
@@ -493,7 +521,7 @@
     </section>
 
     <!-- 5 -->
-    <section class="slide" data-label="what breaks" id="s5">
+    <section class="slide" id="s5" data-label="what breaks">
       <p class="eyebrow">What breaks without CI</p>
       <h2 class="headline">The longer you wait to integrate, the more it costs</h2>
       <ul class="ledger">
@@ -506,7 +534,7 @@
     </section>
 
     <!-- 6 -->
-    <section class="slide" data-label="the fix" id="s6">
+    <section class="slide" id="s6" data-label="the fix">
       <p class="eyebrow">The direct fix — coined late 1990s, Extreme Programming</p>
       <h2 class="headline">Continuous Integration: merge early and often, verify every time</h2>
       <div class="two-col">
@@ -531,7 +559,7 @@
     </section>
 
     <!-- 7 -->
-    <section class="slide" data-label="cd, briefly" id="s7">
+    <section class="slide" id="s7" data-label="cd, briefly">
       <p class="eyebrow">One step further — where a merge actually lands</p>
       <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
       <p class="lede">Each long-lived branch owns an <strong style="color:var(--parchment)">environment</strong> — its own copy, its own data, its own URL.</p>
@@ -549,40 +577,32 @@
     </section>
 
     <!-- 8 -->
-    <section class="slide" data-label="who owns this" id="s8">
+    <section class="slide" id="s8" data-label="who owns this">
       <p class="eyebrow">So whose job is all this?</p>
       <h2 class="headline">DevOps is a practice before it's a job title</h2>
-      <div class="two-col">
-        <div>
-          <h3>The work</h3>
-          <ul>
-            <li>Build, test, deploy pipelines</li>
-            <li>Environments, kept apart</li>
-            <li>Secrets and access</li>
-            <li>Monitoring and rollback</li>
-          </ul>
-        </div>
-        <div>
-          <h3>On Firebase</h3>
-          <ul>
-            <li>No machine to patch or SSH into</li>
-            <li>Security rules, not firewalls</li>
-            <li>IAM, not <code>sudo</code></li>
-            <li>A second project, not a staging box</li>
-          </ul>
-        </div>
+      <div class="table-wrap">
+        <table style="max-width:62rem;">
+          <thead><tr><th>The ops work</th><th>What we actually do for it</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><strong>Pipelines</strong></td><td>Build, test, deploy in GitHub Actions</td><td class="hi">today</td></tr>
+            <tr><td><strong>Environments</strong></td><td>A Firebase project each for dev and prod</td><td class="hi">S7</td></tr>
+            <tr><td><strong>Secrets &amp; access</strong></td><td>Actions secrets, IAM, service accounts</td><td class="hi">S7</td></tr>
+            <tr><td><strong>Monitoring</strong></td><td>Firebase console, alerts on failures</td><td class="hi">S15</td></tr>
+            <tr><td><strong>Cost control</strong></td><td>Quotas and budget alerts</td><td class="hi">S16</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p class="lede">No server to set up &mdash; the ops work became <strong style="color:var(--parchment)">configuration in your repo</strong>. Which is why it's yours.</p>
+      <p class="lede">There's no server to provision &mdash; the ops work became <strong style="color:var(--parchment)">configuration in your repo</strong>. Which is why it's yours, not a separate person's.</p>
     </section>
 
     <!-- 9 -->
-    <section class="slide" data-label="the vibe coding thread" id="s9">
+    <section class="slide" id="s9" data-label="the vibe coding thread">
       <p class="eyebrow">The other half of the Session 1 thread</p>
       <p class="pull">A lint/test workflow doesn't care whether a human or <em>Claude</em> wrote the diff. It checks the result — every time.</p>
     </section>
 
     <!-- 10 -->
-    <section class="slide" data-label="actions vocabulary" id="s10">
+    <section class="slide" id="s10" data-label="actions vocabulary">
       <p class="eyebrow">The vocabulary that matters</p>
       <h2 class="headline">Workflow, trigger, job, step, action, runner</h2>
       <div class="table-wrap">
@@ -602,7 +622,7 @@
     </section>
 
     <!-- 11 -->
-    <section class="slide" data-label="build, lint, test" id="s11">
+    <section class="slide" id="s11" data-label="build, lint, test">
       <p class="eyebrow">Three verbs, in every workflow you'll write</p>
       <h2 class="headline">Build, lint, test</h2>
       <div class="table-wrap">
@@ -618,7 +638,7 @@
     </section>
 
     <!-- 12 -->
-    <section class="slide" data-label="anatomy of a workflow" id="s12" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" id="s12" data-label="anatomy of a workflow" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">One file: <code>.github/workflows/ci.yml</code></p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Anatomy of a workflow</h2>
       <div class="term" style="max-width:40rem;">
@@ -644,7 +664,7 @@
     </section>
 
     <!-- 13 -->
-    <section class="slide" data-label="hands-on · first workflow" id="s13">
+    <section class="slide" id="s13" data-label="hands-on · first workflow">
       <p class="eyebrow">Hands-on</p>
       <h2 class="headline">From zero to a check on your PR</h2>
       <div class="term" style="max-width:34rem;">
@@ -666,7 +686,18 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
     <!-- 14 -->
-    <section class="slide" data-label="github free tier" id="s14" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" id="s14" data-label="what a passing check looks like">
+      <p class="eyebrow">What you just built</p>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">The check, on a real PR</h2>
+      <figure class="shot" data-file="pr-checks-green.png">
+        <img src="images/pr-checks-green.png" alt="The Checks section of a pull request showing lint-and-test passing" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>All checks have passed — before a reviewer opens the diff</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- 15 -->
+    <section class="slide" id="s15" data-label="github free tier" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Know the ceiling before you hit it</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">GitHub Actions free-tier limits</h2>
       <div class="table-wrap">
@@ -689,8 +720,8 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" data-label="branch protection" id="s15">
+    <!-- 16 -->
+    <section class="slide" id="s16" data-label="branch protection">
       <p class="eyebrow">The follow-through on Session 1's note</p>
       <h2 class="headline">Making the check mandatory</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -703,8 +734,19 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">The <strong style="color:var(--parchment)">Merge</strong> button goes gray. Not discipline — GitHub mechanically refuses.</p>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" data-label="reading a failed run" id="s16">
+    <!-- 17 -->
+    <section class="slide" id="s17" data-label="what protection looks like">
+      <p class="eyebrow">Not discipline — refusal</p>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">The Merge button, greyed out</h2>
+      <figure class="shot" data-file="merge-button-blocked.png">
+        <img src="images/merge-button-blocked.png" alt="A pull request with the merge button disabled pending required status checks" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>Required checks have not passed. GitHub will not merge it</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- 18 -->
+    <section class="slide" id="s18" data-label="reading a failed run">
       <p class="eyebrow">Everyone hits a red X eventually</p>
       <h2 class="headline">Reading a failed Actions run</h2>
       <div class="two-col">
@@ -730,8 +772,19 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" data-label="dependabot" id="s17" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
+    <!-- 19 -->
+    <section class="slide" id="s19" data-label="what a failure looks like">
+      <p class="eyebrow">Read it from the bottom</p>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">A failed run, opened up</h2>
+      <figure class="shot" data-file="failed-run-log.png">
+        <img src="images/failed-run-log.png" alt="An expanded failing workflow step with the error visible in the final lines" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>The error is in the last few lines — not the first hundred</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- 20 -->
+    <section class="slide" id="s20" data-label="dependabot" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
       <p class="eyebrow">Automatic dependency PRs</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Dependabot: security alerts vs. routine bumps</h2>
       <div class="term" style="max-width:30rem;">
@@ -755,8 +808,19 @@ updates:
       </div>
     </section>
 
-    <!-- 18 -->
-    <section class="slide" data-label="your first deploy" id="s18" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
+    <!-- 21 -->
+    <section class="slide" id="s21" data-label="what dependabot looks like">
+      <p class="eyebrow">It opens the PR for you</p>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">A Dependabot pull request</h2>
+      <figure class="shot" data-file="dependabot-pr.png">
+        <img src="images/dependabot-pr.png" alt="A Dependabot pull request showing a dependency version bump and its changelog" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>Version bump, changelog, and a check already running on it</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- 22 -->
+    <section class="slide" id="s22" data-label="your first deploy" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
       <p class="eyebrow">CI verifies a merge. This ships it — no click.</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy, hands-on</h2>
       <div class="term" style="max-width:38rem;">
@@ -777,8 +841,19 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> you didn't deploy anything. You merged a PR, and the deploy happened to you.</p>
     </section>
 
-    <!-- 19 -->
-    <section class="slide" data-label="full loop · replay" id="s19" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
+    <!-- 23 -->
+    <section class="slide" id="s23" data-label="what a deploy looks like">
+      <p class="eyebrow">The merge shipped it</p>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Your site, live</h2>
+      <figure class="shot" data-file="pages-live.png">
+        <img src="images/pages-live.png" alt="The GitHub Pages settings panel showing the published site URL" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>No click. You merged a PR and this happened</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- 24 -->
+    <section class="slide" id="s24" data-label="full loop · replay" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
       <p class="eyebrow">Same conflict activity as Session 1 — now with an audience</p>
       <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict. Watch everything react.</h2>
       <ul class="ledger" style="max-width:58rem;">
@@ -791,8 +866,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> the conflict skill didn't change since Session 1. Everything around it did.</p>
     </section>
 
-    <!-- 20 -->
-    <section class="slide" data-label="homework" id="s20">
+    <!-- 25 -->
+    <section class="slide" id="s25" data-label="homework">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
