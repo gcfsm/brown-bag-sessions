@@ -602,7 +602,7 @@
             <tr><td><strong>Job</strong></td><td>A group of steps on one runner. Multiple jobs run in parallel by default</td></tr>
             <tr><td><strong>Step</strong></td><td>One command or one reusable action, run in order inside a job</td></tr>
             <tr><td><strong>Action</strong></td><td class="hi">A packaged, reusable step someone else wrote — like an npm package, but for CI steps. <strong style="color:var(--parchment)">Not</strong> the product: <em>GitHub Actions</em> is the platform, <em>an action</em> is one step in it</td></tr>
-            <tr><td><strong>Runner</strong></td><td>The disposable virtual machine your job actually executes on</td></tr>
+            <tr><td><strong>Runner</strong></td><td>The disposable virtual machine your job runs on &mdash; <strong style="color:var(--parchment)">GitHub's, not yours</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -702,7 +702,18 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
     <!-- 16 -->
-    <section class="slide" id="s16" data-label="branch protection">
+    <section class="slide" id="s16" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what it takes off your machine">
+      <p class="eyebrow">One developer, one month</p>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">718 hours of compute</h2>
+      <figure class="shot" data-file="actions-usage.png">
+        <img src="images/actions-usage.png" alt="GitHub Actions usage metrics showing 43,096 total minutes and 19,790 job runs across an organisation in one month" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>None of it on my laptop &mdash; 19,790 job runs, &#36;21 for the month</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- 17 -->
+    <section class="slide" id="s17" data-label="branch protection">
       <p class="eyebrow">The follow-through on Session 1's note</p>
       <h2 class="headline">Making the check mandatory</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -715,8 +726,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">GitHub refuses the merge until the check passes. Not discipline — mechanics.</p>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" id="s17" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what protection looks like">
+    <!-- 18 -->
+    <section class="slide" id="s18" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what protection looks like">
       <p class="eyebrow">Not discipline — refusal</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Required checks, not passed</h2>
       <figure class="shot" data-file="merge-button-blocked.png">
@@ -726,8 +737,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 18 -->
-    <section class="slide" id="s18" data-label="reading a failed run">
+    <!-- 19 -->
+    <section class="slide" id="s19" data-label="reading a failed run">
       <p class="eyebrow">Everyone hits a red X eventually</p>
       <h2 class="headline">Reading a failed Actions run</h2>
       <div class="two-col">
@@ -753,8 +764,8 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 19 -->
-    <section class="slide" id="s19" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a failure looks like">
+    <!-- 20 -->
+    <section class="slide" id="s20" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a failure looks like">
       <p class="eyebrow">Read it from the bottom</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">A failed run, opened up</h2>
       <figure class="shot" data-file="failed-run-log.png">
@@ -764,8 +775,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 20 -->
-    <section class="slide" id="s20" data-label="dependabot" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
+    <!-- 21 -->
+    <section class="slide" id="s21" data-label="dependabot" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
       <p class="eyebrow">Automatic dependency PRs</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Dependabot: security alerts vs. routine bumps</h2>
       <div class="term" style="max-width:30rem;">
@@ -790,8 +801,8 @@ updates:
       <p class="lede">Slide 4 again, different problem: small and often beats big and rare.</p>
     </section>
 
-    <!-- 21 -->
-    <section class="slide" id="s21" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what dependabot looks like">
+    <!-- 22 -->
+    <section class="slide" id="s22" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what dependabot looks like">
       <p class="eyebrow">It opens the PR for you</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">A Dependabot pull request</h2>
       <figure class="shot" data-file="dependabot-pr.png">
@@ -801,8 +812,8 @@ updates:
     </section>
 
 
-    <!-- 22 -->
-    <section class="slide" id="s22" data-label="your first deploy" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
+    <!-- 23 -->
+    <section class="slide" id="s23" data-label="your first deploy" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
       <p class="eyebrow">Hands-on — CI verifies a merge, this ships it</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy</h2>
       <div class="term" style="max-width:38rem;">
@@ -823,8 +834,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;">You didn't deploy anything. You merged a PR, and the deploy happened <em style="color:var(--gold)">to</em> you.</p>
     </section>
 
-    <!-- 23 -->
-    <section class="slide" id="s23" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a deploy looks like">
+    <!-- 24 -->
+    <section class="slide" id="s24" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a deploy looks like">
       <p class="eyebrow">The merge shipped it</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Your site, live</h2>
       <figure class="shot" data-file="pages-live.png">
@@ -834,8 +845,8 @@ updates:
     </section>
 
 
-    <!-- 24 -->
-    <section class="slide" id="s24" data-label="full loop · replay" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
+    <!-- 25 -->
+    <section class="slide" id="s25" data-label="full loop · replay" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
       <p class="eyebrow">Hands-on — same partner as Session 1</p>
       <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict</h2>
       <ul class="ledger" style="max-width:58rem;">
@@ -848,8 +859,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;">The conflict skill didn't change since Session 1. Everything around it did.</p>
     </section>
 
-    <!-- 25 -->
-    <section class="slide" id="s25" data-label="homework">
+    <!-- 26 -->
+    <section class="slide" id="s26" data-label="homework">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">

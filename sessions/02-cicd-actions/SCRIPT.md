@@ -274,6 +274,38 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
+## 16 — "718 hours of compute"
+
+**On screen:** the Actions usage metrics for a real organisation, one month.
+
+**Lead with the offload. Cost is the follow-up question, not the point:**
+
+> This is a month of Actions usage on an org I work on. Forty-three
+> thousand minutes. That's seven hundred and eighteen hours of compute —
+> which is a machine building and testing around the clock, for the entire
+> month.
+>
+> And I'm the only developer on it.
+>
+> None of that ran on my laptop. Nineteen thousand job runs, and not one
+> of them made my fan spin or stopped me working while I waited. It ran on
+> machines I don't own, in parallel, while I did something else.
+
+**If someone asks what it costs — and they will:**
+
+> Twenty-one dollars a month. My plan includes fifty thousand minutes and
+> I used forty-three, so no overage. But notice: that's eighty-six percent
+> of what's included, from one person. The ceiling on the previous slide is
+> real. I'm just under mine.
+
+**Then defuse it, or they'll think CI is out of reach:**
+
+> Don't read this as "CI is expensive." Read it as what happens when a
+> project has been running for years. The workflow you write in twenty
+> minutes will use about twenty minutes a month, on the free tier, forever.
+
+---
+
 ## 16 — "Making the check mandatory"
 
 **On screen:** five checkbox steps, one closing line.
