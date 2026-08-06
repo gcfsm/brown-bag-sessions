@@ -54,9 +54,10 @@ This is a ten-second slide, not a segment — the whole argument is that
 the graph is boring. Don't crop so tight that the 90-day span stops being
 readable; the span *is* the point.
 
-Only use a status page that is already public. This repository is public
-and the deck is a live site, so a private status page would be publishing
-your service inventory.
+Only use a status page that is already public — this repository is public
+and the deck is a live site, so a private one would be publishing your
+service inventory. Ocean's status page is public, so it's cleared for this
+slide; check before substituting a different project's.
 
 ### `failed-run-log.png` — slide 21
 
