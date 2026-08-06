@@ -390,7 +390,7 @@
 
     <!-- 1 -->
     <section class="slide" id="s1" data-label="title">
-      <p class="eyebrow">IT Group Hub — Session 3</p>
+      <p class="eyebrow">GITCom — Session 3</p>
       <h1 class="headline">Vibe Coding<br />Your First App</h1>
       <p class="subhead">Two safety nets from Sessions 1 and 2. Today, Claude drives fast — and you find out whether those safety nets actually hold.</p>
 
@@ -447,7 +447,109 @@
     </section>
 
     <!-- 4 -->
-    <section class="slide" id="s4" data-label="before you touch a keyboard">
+    <section class="slide" id="s4" data-label="tokens">
+      <p class="eyebrow">The unit everything else is measured in</p>
+      <h2 class="headline">It all runs on tokens</h2>
+      <ul class="ledger">
+        <li><span class="mark">01</span><span><strong>A token is a chunk of text</strong> &mdash; <span class="note">roughly three quarters of a word. <code>volunteer</code> is one token; <code>localStorage</code> is three</span></span></li>
+        <li><span class="mark">02</span><span><strong>Everything in the exchange counts</strong> &mdash; <span class="note">your prompt, every file Claude opens, every command's output, its thinking, its reply</span></span></li>
+        <li><span class="mark">03</span><span><strong>Tokens are the meter</strong> &mdash; <span class="note">your context window, your plan limits, and your bill are all counted in the same unit</span></span></li>
+      </ul>
+      <p class="lede">The next few slides are all the same idea from different angles: <strong style="color:var(--parchment)">models, context, limits and effort are four ways of spending tokens.</strong></p>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide" id="s5" data-label="context window">
+      <p class="eyebrow">How much Claude can hold at once</p>
+      <h2 class="headline">The context window is a desk, not a filing cabinet</h2>
+      <ul class="ledger">
+        <li><span class="mark">01</span><span><strong>What's on the desk</strong> &mdash; <span class="note">the conversation so far, your <code>CLAUDE.md</code>, every file read, every command's output</span></span></li>
+        <li><span class="mark">02</span><span><strong>It isn't memory</strong> &mdash; <span class="note">every message re-sends the whole desk. A one-line question in a session you've had open all day still pays for the whole conversation</span></span></li>
+        <li><span class="mark">03</span><span><strong>When it fills, it compacts</strong> &mdash; <span class="note">Claude Code summarizes the older history so the session survives. You lose detail, not the thread</span></span></li>
+      </ul>
+      <p class="lede">Run <code>/context</code> to see what's on the desk right now.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide" id="s6" data-label="clear or continue">
+      <p class="eyebrow">The habit that saves the most usage</p>
+      <h2 class="headline">Keep going, or start fresh?</h2>
+      <div class="two-col">
+        <div>
+          <h3>Keep the session</h3>
+          <ul>
+            <li>Still the same piece of work</li>
+            <li>Claude already knows these files &mdash; that history is earning its cost</li>
+            <li>You'd only have to re-explain it</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Run <code>/clear</code></h3>
+          <ul>
+            <li>Moving to unrelated work</li>
+            <li>Old context is crowding out what you need now</li>
+            <li>You're talking around assumptions from an hour ago</li>
+          </ul>
+        </div>
+      </div>
+      <p class="lede"><code>/rename</code> before you clear, and <code>/resume</code> finds it again later. <strong style="color:var(--parchment)">Clearing is free</strong> &mdash; compacting isn't, because summarizing a conversation means reading all of it.</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide" id="s7" data-label="which model" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+      <p class="eyebrow">Switch any time with <code>/model</code> &mdash; even mid-session</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Three models, three jobs</h2>
+      <div class="table-wrap">
+        <table style="max-width:64rem;">
+          <thead><tr><th>Model</th><th>Context window</th><th>Reach for it when</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Haiku 4.5</strong></td><td>200K tokens</td><td class="hi">Small, repetitive, mechanical. Fastest and cheapest</td></tr>
+            <tr><td><strong>Sonnet 5</strong></td><td>1M tokens</td><td class="hi">Daily coding. Where most of your work belongs</td></tr>
+            <tr><td><strong>Opus 5</strong></td><td>1M tokens</td><td class="hi">Hard reasoning &mdash; architecture, a bug you can't corner</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Bigger model, more tokens per answer. <strong style="color:var(--parchment)">Leaving Opus on for everything</strong> is the most common way people burn through a limit without noticing.</p>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide" id="s8" data-label="effort" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+      <p class="eyebrow">How hard it thinks before it answers</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Effort is the second dial</h2>
+      <div class="table-wrap">
+        <table style="max-width:58rem;">
+          <thead><tr><th>Level</th><th>When</th></tr></thead>
+          <tbody>
+            <tr><td><strong>low</strong></td><td class="hi">Short, scoped work where speed matters more than depth</td></tr>
+            <tr><td><strong>medium</strong></td><td class="hi">Cost-sensitive work that can trade away some depth</td></tr>
+            <tr><td><strong>high</strong></td><td class="hi">The default. Balances tokens against intelligence</td></tr>
+            <tr><td><strong>xhigh</strong></td><td class="hi">Deeper reasoning, higher token spend</td></tr>
+            <tr><td><strong>max</strong></td><td class="hi">Deepest &mdash; but it can overthink. Try it before you adopt it</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Thinking is billed as output, so this is the dial that moves your usage fastest. Set it with <code>/effort</code>, or the arrow keys on the <code>/model</code> screen. Need depth just once? Put <strong style="color:var(--parchment)">ultrathink</strong> in the prompt.</p>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" id="s9" data-label="two clocks" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+      <p class="eyebrow">Where your subscription actually runs out</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Two clocks are running: five hours, and the week</h2>
+      <div class="table-wrap">
+        <table style="max-width:68rem;">
+          <thead><tr><th>Limit</th><th>Window</th><th>Does switching model help?</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Session</strong></td><td>Rolling five hours from your first message</td><td class="hi"><strong style="color:var(--rust)">No</strong> &mdash; shared across all models</td></tr>
+            <tr><td><strong>Weekly</strong></td><td>Resets once a week</td><td class="hi"><strong style="color:var(--rust)">No</strong> &mdash; shared across all models</td></tr>
+            <tr><td><strong>Opus</strong></td><td>Its own rolling window</td><td class="hi"><strong style="color:var(--moss)">Yes</strong> &mdash; drop to Sonnet and keep working</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Both clocks count at once, so one heavy afternoon can eat the week. The same allowance covers Claude chat, Claude Code and Cowork &mdash; <strong style="color:var(--parchment)">it's one seat, not three.</strong> <code>/usage</code> shows where you stand and when it resets.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide" id="s10" data-label="before you touch a keyboard">
       <p class="eyebrow">Before you touch a keyboard</p>
       <p class="pull">You're about to let Claude make sweeping, fast changes — <em>on purpose</em>. The only reason that's safe instead of reckless is that the two things protecting you were already in place before today started.</p>
       <div class="flow">
@@ -457,16 +559,16 @@
       </div>
     </section>
 
-    <!-- 5 -->
-    <section class="slide" id="s5" data-label="scope, on purpose">
+    <!-- 11 -->
+    <section class="slide" id="s11" data-label="scope, on purpose">
       <p class="eyebrow">Deliberately narrow today</p>
       <h2 class="headline">Framework-free — the workflow doesn't change when the tools get bigger</h2>
       <p class="lede">A CLI script or a single-file page today, not a React app — Session 4 owns React/Vite properly. Pulling in a framework here would make this session about setup friction instead of the actual point: the Claude-partnership workflow.</p>
       <p class="lede"><strong style="color:var(--gold)">Where this is going:</strong> write a clear prompt, review a diff for hallucinations, ship through CI — not a one-off exercise. This is what maintaining a real church project later in this program actually looks like.</p>
     </section>
 
-    <!-- 6 -->
-    <section class="slide" id="s6" data-label="1 · what vibe coding means">
+    <!-- 12 -->
+    <section class="slide" id="s12" data-label="1 · what vibe coding means">
       <p class="eyebrow">Coined by Andrej Karpathy, early 2025</p>
       <h2 class="headline">Drive development through prompts, not hand-typed lines</h2>
       <div class="two-col">
@@ -489,15 +591,15 @@
       </div>
     </section>
 
-    <!-- 7 -->
-    <section class="slide" id="s7" data-label="not &quot;no review&quot;">
+    <!-- 13 -->
+    <section class="slide" id="s13" data-label="not &quot;no review&quot;">
       <p class="eyebrow">The one thing this is not</p>
       <p class="pull">What changes today is <em>volume</em>, not <em>standards</em>.</p>
       <p class="lede">Sessions 1 and 2's discipline — read the diff, require a passing check, get a second set of eyes — applies exactly the same to Claude's output as it does to your own. You'll review more code, faster, than you're used to. That's exactly why reviewing AI diffs gets its own section today.</p>
     </section>
 
-    <!-- 8 -->
-    <section class="slide" id="s8" data-label="2 · starting a project">
+    <!-- 14 -->
+    <section class="slide" id="s14" data-label="2 · starting a project">
       <p class="eyebrow">Two starting points, two different first moves</p>
       <h2 class="headline">Starting a project with Claude's help</h2>
       <div class="table-wrap">
@@ -512,8 +614,8 @@
       <p class="lede">For anything beyond a few lines: ask Claude to outline its <strong style="color:var(--parchment)">plan</strong> before it writes code. One extra exchange, catches a misunderstanding while it's still a sentence, not a diff.</p>
     </section>
 
-    <!-- 9 -->
-    <section class="slide" id="s9" data-label="the good prompt">
+    <!-- 15 -->
+    <section class="slide" id="s15" data-label="the good prompt">
       <p class="eyebrow">States the what and the constraints — not the how</p>
       <h2 class="headline">A good prompt vs. a vague one</h2>
       <div class="term" style="max-width:44rem;">
@@ -531,8 +633,8 @@
       <p class="lede">The bad prompt dictates <em style="color:var(--rust)">how</em> — defeats the point of having Claude write it. The good prompt states the <em style="color:var(--moss)">what</em> and the <em style="color:var(--moss)">constraints</em>, leaves the how to Claude.</p>
     </section>
 
-    <!-- 10 -->
-    <section class="slide" id="s10" data-label="3 · prompts vs code">
+    <!-- 16 -->
+    <section class="slide" id="s16" data-label="3 · prompts vs code">
       <p class="eyebrow">Knowing which is faster is the actual skill</p>
       <h2 class="headline">Redirect with a prompt, or just edit it yourself?</h2>
       <div class="two-col">
@@ -555,8 +657,8 @@
       <p class="lede"><strong style="color:var(--gold)">Small, checkpointed asks beat one giant prompt</strong> — smaller diffs are the ones you can actually review (next) and cleanly revert if wrong (Session 1's whole point).</p>
     </section>
 
-    <!-- 11 -->
-    <section class="slide" id="s11" data-label="4 · reviewing ai diffs">
+    <!-- 17 -->
+    <section class="slide" id="s17" data-label="4 · reviewing ai diffs">
       <p class="eyebrow">Session 1's habit. Higher volume, same discipline.</p>
       <h2 class="headline">What to actually check</h2>
       <ul class="ledger">
@@ -566,15 +668,15 @@
       </ul>
     </section>
 
-    <!-- 12 -->
-    <section class="slide" id="s12" data-label="run it">
+    <!-- 18 -->
+    <section class="slide" id="s18" data-label="run it">
       <p class="eyebrow">The check that actually matters</p>
       <p class="pull">Claude's confidence is <em>not</em> evidence.</p>
       <p class="lede">"This should work" is not the same as "I ran it and it worked." The second one is what you're actually checking for — every time, the same way you would with your own code before opening a PR.</p>
     </section>
 
-    <!-- 13 -->
-    <section class="slide" id="s13" data-label="5 · shipping it">
+    <!-- 19 -->
+    <section class="slide" id="s19" data-label="5 · shipping it">
       <p class="eyebrow">The loop closing — Claude typing, you still driving</p>
       <h2 class="headline">Commit, push, let CI do its job</h2>
       <div class="term" style="max-width:38rem;">
@@ -589,8 +691,8 @@ git push -u origin add-volunteer-signup
       <p class="lede"><strong style="color:var(--parchment)">Small, frequent commits still apply</strong> — one commit containing "the whole feature" is exactly as hard to revert when Claude wrote it as when you did. The check doesn't know or care who wrote the diff — that's the entire point of Session 2 existing before this one.</p>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" id="s14" data-label="6 · failure modes">
+    <!-- 20 -->
+    <section class="slide" id="s20" data-label="6 · failure modes">
       <p class="eyebrow">Set expectations before they hit one</p>
       <h2 class="headline">Common failure modes</h2>
       <div class="table-wrap">
@@ -605,8 +707,8 @@ git push -u origin add-volunteer-signup
       </div>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" id="s15" data-label="hands-on lab">
+    <!-- 21 -->
+    <section class="slide" id="s21" data-label="hands-on lab">
       <p class="eyebrow">Church-relevant, same tiny scope as a calculator</p>
       <h2 class="headline">Build it, ship it as a real PR</h2>
       <div class="two-col">
@@ -628,8 +730,8 @@ git push -u origin add-volunteer-signup
       <p class="lede"><strong style="color:var(--gold)">The constraint that matters more than the idea:</strong> it must ship as a real PR, checked by Session 2's CI, reviewed by a partner using Session 1's habits.</p>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" id="s16" data-label="lab flow">
+    <!-- 22 -->
+    <section class="slide" id="s22" data-label="lab flow">
       <p class="eyebrow">Suggested flow for the lab</p>
       <h2 class="headline">Five steps, same loop every time</h2>
       <div class="flow">
@@ -641,8 +743,8 @@ git push -u origin add-volunteer-signup
       </div>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" id="s17" data-label="homework">
+    <!-- 23 -->
+    <section class="slide" id="s23" data-label="homework">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
