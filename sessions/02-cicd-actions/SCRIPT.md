@@ -265,9 +265,13 @@ actually do for it, and when in the curriculum it lands.
 
 **Name the format — nobody has, and they are about to hand-write one:**
 
-> Before we read this: the format is YAML. You'll meet it constantly —
-> Actions, Firebase config, Docker, Kubernetes — so it's worth knowing by
-> name.
+> Before we read this: the format is YAML — said "YAM-ul," rhymes with
+> camel. You'll meet it constantly — Actions, Firebase config, Docker,
+> Kubernetes — so it's worth knowing by name, and worth saying correctly.
+>
+> The name is a joke on itself: **YAML Ain't Markup Language**. It started
+> out as "Yet Another Markup Language," then got renamed once the authors
+> decided the point was that it carries data, not document markup.
 >
 > The thing to know today is that **indentation is the syntax**. In most
 > languages, indenting is a courtesy to the next reader. In YAML it's
