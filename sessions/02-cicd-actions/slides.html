@@ -120,6 +120,30 @@
     color: var(--gold-dim);
   }
 
+  /* ---------- next-up pointer ---------- */
+
+  .nextup {
+    position: absolute;
+    bottom: 1.9rem;
+    right: var(--pad-x);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .nextup span { color: var(--gold-dim); }
+  .nextup:hover span { color: var(--gold); }
+
+  /* The bottom-left label already says where you are; on a phone there
+     isn't room for both. */
+  @media (max-width: 700px) {
+    .nextup { display: none; }
+  }
+
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -541,7 +565,7 @@
     </section>
 
     <!-- 4 -->
-    <section class="slide" id="s4" data-label="cold open">
+    <section class="slide" id="s4" data-label="cold open" data-teaser="ten people, one Friday">
       <p class="eyebrow">The problem</p>
       <h2 class="headline">Ten people branch Monday. Everyone merges Friday.</h2>
       <svg class="diagram" viewBox="0 0 640 190" width="640" role="img" aria-label="Five branches, each fine alone, converging Friday afternoon into an unknown outcome">
@@ -594,7 +618,7 @@
     </section>
 
     <!-- 7 -->
-    <section class="slide" id="s7" data-label="cd, briefly">
+    <section class="slide" id="s7" data-label="cd, briefly" data-teaser="what CI unlocks">
       <p class="eyebrow">One step further — where a merge actually lands</p>
       <h2 class="headline">If <code>main</code> always passes, shipping <code>main</code> can be automatic</h2>
       <p class="lede">Each long-lived branch owns an <strong style="color:var(--parchment)">environment</strong> — its own copy, its own data, its own URL.</p>
@@ -631,7 +655,7 @@
     </section>
 
     <!-- 9 -->
-    <section class="slide" id="s9" data-label="the vibe coding thread">
+    <section class="slide" id="s9" data-label="the vibe coding thread" data-teaser="where Claude fits in">
       <p class="eyebrow">The other half of the Session 1 thread</p>
       <p class="pull">A lint/test workflow doesn't care whether a human or <em>Claude</em> wrote the diff. It checks the result — every time.</p>
     </section>
@@ -938,6 +962,28 @@ updates:
       slides.forEach(function (s, i) {
         s.setAttribute('data-index', String(i + 1).padStart(2, '0'));
         s.setAttribute('data-total', total);
+
+        // "Next -> <label>", bottom right. Not on the title slide, and not
+        // on the last one. Absolutely positioned, so it stays out of the
+        // slide's flex flow and can't change any slide's height.
+        var next = slides[i + 1];
+        if (i > 0 && next) {
+          var a = document.createElement('a');
+          a.className = 'nextup';
+          a.href = '#' + next.id;
+          a.appendChild(document.createTextNode('Next \u2192 '));
+          var label = document.createElement('span');
+          // data-teaser lets a slide say how the previous one should announce
+          // it, for labels that read as a facilitator's index rather than a
+          // transition. Falls back to the label, which is usually fine.
+          label.textContent = next.getAttribute('data-teaser') || next.getAttribute('data-label');
+          a.appendChild(label);
+          a.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            next.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+          });
+          s.appendChild(a);
+        }
       });
 
       var dots = slides.map(function (s, i) {
