@@ -816,26 +816,20 @@ git push -u origin add-volunteer-signup
     </section>
 
     <!-- 21 -->
-    <section class="slide" id="s21" data-label="hands-on lab">
-      <p class="eyebrow">Your turn &mdash; in pairs</p>
-      <h2 class="headline">Pick one. Build it with Claude. Open a real PR.</h2>
-      <div class="two-col">
-        <div>
-          <h3>Either a CLI script&hellip;</h3>
-          <ul>
-            <li>RSVP tally &mdash; read yes/no responses, print a headcount</li>
-            <li>Volunteer roster formatter &mdash; read a CSV, print a sign-up sheet</li>
-          </ul>
-        </div>
-        <div>
-          <h3>&hellip;or a single-file page</h3>
-          <ul>
-            <li>Volunteer sign-up list, or an event RSVP counter</li>
-            <li>Service-setup checklist &mdash; <code>localStorage</code>, no backend yet</li>
-          </ul>
-        </div>
+    <section class="slide" id="s21" data-label="hands-on lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
+      <p class="eyebrow">Your turn &mdash; in pairs, in your sandbox fork</p>
+      <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Build the volunteer sign-up page</h2>
+      <div class="term" style="max-width:46rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
+        <pre>git checkout -b volunteer-signup
+claude
+<span class="cmt"># then give it the "Good" prompt from earlier, word for word:</span>
+<span class="cmt"># single-file HTML page, plain HTML/JS, no framework, no build</span>
+<span class="cmt"># step, add your name to a shift, localStorage so it survives</span>
+<span class="cmt"># a refresh, one file.</span></pre>
       </div>
-      <p class="lede">Any of these is small enough &mdash; <strong style="color:var(--parchment)">the idea is not the point.</strong> <strong style="color:var(--gold)">What you have to produce:</strong> a pull request that passes Session 2's CI and gets a partner's approval. Bring your own idea instead if you have one that fits.</p>
+      <p class="lede"><strong style="color:var(--gold)">Done when:</strong> the page opens by double-clicking it &middot; a name you add is still there after a refresh &middot; the PR is open, CI is green, and your partner approved it.</p>
+      <p class="lede">Rather build something else? An RSVP tally or a roster formatter works the same. <strong style="color:var(--parchment)">Same size, same rules.</strong></p>
     </section>
 
     <!-- 22 -->
