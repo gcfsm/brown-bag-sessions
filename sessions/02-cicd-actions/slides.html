@@ -731,16 +731,16 @@ git push -u origin add-ci-workflow</pre>
         <li><span class="mark">□</span><span><strong>Require status checks to pass</strong> — select <code>lint-and-test</code></span></li>
         <li><span class="mark">□</span><span><strong>Require branches to be up to date before merging</strong></span></li>
       </ul>
-      <p class="lede">The <strong style="color:var(--parchment)">Merge</strong> button goes gray. Not discipline — GitHub mechanically refuses.</p>
+      <p class="lede">GitHub refuses the merge until the check passes. Not discipline — mechanics.</p>
     </section>
 
     <!-- 17 -->
     <section class="slide" id="s17" data-label="what protection looks like">
       <p class="eyebrow">Not discipline — refusal</p>
-      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">The Merge button, greyed out</h2>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Required checks, not passed</h2>
       <figure class="shot" data-file="merge-button-blocked.png">
-        <img src="images/merge-button-blocked.png" alt="A pull request with the merge button disabled pending required status checks" onerror="this.closest('.shot').classList.add('is-missing')" />
-        <figcaption>Required checks have not passed. GitHub will not merge it</figcaption>
+        <img src="images/merge-button-blocked.png" alt="A pull request blocked by three failing required status checks, offering auto-merge rather than merge" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>Three red, all Required &mdash; and &ldquo;Enable auto-merge&rdquo; is not a merge button</figcaption>
       </figure>
     </section>
 

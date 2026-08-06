@@ -229,7 +229,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 14 — "GitHub Actions free-tier limits"
+## 15 — "GitHub Actions free-tier limits"
 
 **On screen:** the limits table, one line, the caching snippet.
 
@@ -249,7 +249,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 15 — "Making the check mandatory"
+## 16 — "Making the check mandatory"
 
 **On screen:** five checkbox steps, one closing line.
 
@@ -264,14 +264,31 @@ actually do for it, and when in the curriculum it lands.
 
 **Closing:**
 
-> And this is the part that matters. The Merge button itself goes gray
-> until the check passes and someone approves. It isn't discipline, it
-> isn't a reminder in a group chat, nobody has to remember. GitHub
-> mechanically refuses the merge.
+> And this is the part that matters. The merge is refused until the check
+> passes and someone approves. It isn't discipline, it isn't a reminder in
+> a group chat, nobody has to remember. GitHub mechanically refuses.
+
+**The trap on the next slide — say this before someone asks:**
+
+> Look carefully, because this confused me too. There *is* a clickable
+> button here, and it says "Enable auto-merge." That is not a merge button.
+>
+> Auto-merge is the opposite: it tells GitHub "merge this for me later,
+> once every required check goes green." Click it and nothing happens now.
+> The PR just waits.
+>
+> GitHub only offers auto-merge *because* the merge is blocked. So a button
+> you can click is not evidence the protection failed — check whether it
+> says "Merge pull request" or "Enable auto-merge." They mean opposite
+> things.
+>
+> The one real exception is a bypass. If you're on a ruleset's bypass list,
+> you get a genuine merge button plus a line saying you're allowed to
+> bypass. If you don't see that sentence, you don't have it.
 
 ---
 
-## 16 — "Reading a failed Actions run"
+## 18 — "Reading a failed Actions run"
 
 **On screen:** the workflow on the left, common failures on the right.
 
@@ -296,7 +313,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 18 — "Your first deploy, hands-on"
+## 22 — "Your first deploy, hands-on"
 
 **On screen:** `deploy.yml`, the Pages setting, the closing line.
 
@@ -314,7 +331,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 19 — "Replay the conflict. Watch everything react."
+## 24 — "Replay the conflict. Watch everything react."
 
 **On screen:** five numbered steps, one closing line.
 
