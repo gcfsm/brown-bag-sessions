@@ -590,7 +590,7 @@
     </section>
 
     <!-- 10 -->
-    <section class="slide" id="s10" data-label="actions vocabulary">
+    <section class="slide" id="s10" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;" data-label="actions vocabulary">
       <p class="eyebrow">The vocabulary that matters</p>
       <h2 class="headline">Workflow, trigger, job, step, action, runner</h2>
       <div class="table-wrap">
@@ -601,7 +601,7 @@
             <tr><td><strong>Trigger</strong> (<code>on:</code>)</td><td>The event that starts it — <code>push</code>, <code>pull_request</code>, a schedule, or manual</td></tr>
             <tr><td><strong>Job</strong></td><td>A group of steps on one runner. Multiple jobs run in parallel by default</td></tr>
             <tr><td><strong>Step</strong></td><td>One command or one reusable action, run in order inside a job</td></tr>
-            <tr><td><strong>Action</strong></td><td>A packaged, reusable step someone else wrote — like an npm package, but for CI steps</td></tr>
+            <tr><td><strong>Action</strong></td><td class="hi">A packaged, reusable step someone else wrote — like an npm package, but for CI steps. <strong style="color:var(--parchment)">Not</strong> the product: <em>GitHub Actions</em> is the platform, <em>an action</em> is one step in it</td></tr>
             <tr><td><strong>Runner</strong></td><td>The disposable virtual machine your job actually executes on</td></tr>
           </tbody>
         </table>
