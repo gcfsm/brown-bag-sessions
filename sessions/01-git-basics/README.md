@@ -4,11 +4,13 @@
 
 **Goal:** By the end of this session, you can fork a repo, clone it, make a change, push it, open a PR, and resolve a simple merge conflict — all by hand, no AI assistance. This is the muscle memory that AI tools will later automate for you, but you should understand what's happening underneath first.
 
-**Contents:** [Opening Story](#facilitator-note--the-opening-story-slides-2-4) · [Why Git Exists](#why-git-exists--the-problem-before-version-control) · [Setup Check](#0-setup-check-do-before-session-or-first-5-min) · [Fork vs. Clone](#1-fork-vs-clone--whats-the-difference) · [npm Packages](#15-npm-packages--what-happens-right-after-you-clone) · [Local Basics](#2-local-basics--just-enough-to-orient) · [Branching](#3-branching) · [Push](#4-push) · [Open a PR](#5-open-a-pull-request-pr) · [Code Review](#6-code-review-basics) · [Conflict Resolution](#7-simple-conflict-resolution-no-rebase-just-merge) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+**Contents:** [Opening Story](#facilitator-note--the-opening-story) · [Why Git Exists](#why-git-exists--the-problem-before-version-control) · [Setup Check](#0-setup-check-do-before-session-or-first-5-min) · [Fork vs. Clone](#1-fork-vs-clone--whats-the-difference) · [npm Packages](#15-npm-packages--what-happens-right-after-you-clone) · [Local Basics](#2-local-basics--just-enough-to-orient) · [Branching](#3-branching) · [Push](#4-push) · [Open a PR](#5-open-a-pull-request-pr) · [Code Review](#6-code-review-basics) · [Conflict Resolution](#7-simple-conflict-resolution-no-rebase-just-merge) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
 
 ---
 
-## Facilitator Note — The Opening Story (Slides 2–4)
+## Facilitator Note — The Opening Story
+
+**Deck:** [Slides 2–4](slides.html#s2)
 
 Slides 2–4 in the deck are deliberately bare — a headline and almost
 nothing else. They're prompts for you to talk from, not text for the room
@@ -53,6 +55,8 @@ answer.
 ---
 
 ## Why Git Exists — The Problem Before Version Control
+
+**Deck:** [Slides 5–16](slides.html#s5)
 
 Before diving into commands, it helps to feel the pain Git was built to solve.
 Ask the room: has anyone worked with files like these?
@@ -308,6 +312,8 @@ distributed model over the CVS/SVN centralized one.
 
 ## 0. Setup Check (do before session or first 5 min)
 
+**Deck:** none — reference material
+
 - [ ] GitHub account created
 - [ ] Git installed (`git --version` in terminal)
 - [ ] Git identity configured:
@@ -321,6 +327,8 @@ distributed model over the CVS/SVN centralized one.
 ---
 
 ## 1. Fork vs. Clone — What's the Difference?
+
+**Deck:** [Slide 17](slides.html#s17)
 
 | | Fork | Clone |
 |---|---|---|
@@ -345,6 +353,8 @@ cd repo-name
 ---
 
 ## 1.5 npm Packages — What Happens Right After You Clone
+
+**Deck:** [Slide 19](slides.html#s19)
 
 Most repos you clone won't run immediately — they depend on external packages
 that aren't stored in Git itself. This is the first thing you'll hit after
@@ -384,6 +394,8 @@ or the `engines` field in `package.json`).
 
 ## 2. Local Basics — Just Enough to Orient
 
+**Deck:** [Slides 18, 20](slides.html#s18)
+
 ```bash
 git status       # what's changed, what's staged
 git add <file>   # stage a specific file
@@ -399,6 +411,8 @@ git log --oneline   # compact version
 
 ## 3. Branching
 
+**Deck:** [Slide 20](slides.html#s20)
+
 **Why branches exist:** isolate your work so you don't break `main` while you're still figuring things out. Everyone works on their own branch, then merges in through a PR.
 
 ```bash
@@ -413,6 +427,8 @@ git checkout main                 # switch back to main
 
 ## 4. Push
 
+**Deck:** [Slides 20–21](slides.html#s20)
+
 ```bash
 git push -u origin my-feature-name   # first push of this branch (-u sets tracking)
 git push                              # subsequent pushes, once tracking is set
@@ -423,6 +439,8 @@ If you forget `-u` the first time, Git will tell you exactly what command to run
 ---
 
 ## 5. Open a Pull Request (PR)
+
+**Deck:** [Slide 21](slides.html#s21)
 
 1. Push your branch (above)
 2. Go to your fork on GitHub — you'll usually see a **"Compare & pull request"** banner
@@ -451,6 +469,8 @@ If you forget `-u` the first time, Git will tell you exactly what command to run
 
 ## 6. Code Review Basics
 
+**Deck:** [Slide 21](slides.html#s21)
+
 **As the author:**
 - Read your own diff before requesting review — catch typos/debug logs yourself first
 - Respond to every comment (even just "done" or "good catch")
@@ -471,6 +491,8 @@ it's frequently the *only* door in. We'll set this up hands-on in Session 2
 ---
 
 ## 7. Simple Conflict Resolution (no rebase, just merge)
+
+**Deck:** [Slides 22–23](slides.html#s22)
 
 **What a conflict is:** two branches changed the *same lines* of the same file, and Git can't automatically decide which version is correct — so it asks you.
 
@@ -550,6 +572,8 @@ is for.
 
 ## Quick Reference Card (keep this open while working)
 
+**Deck:** none — reference material
+
 ```
 git clone <url>
 cd <repo>
@@ -573,6 +597,8 @@ git push
 ---
 
 ## Homework Before Next Session
+
+**Deck:** [Slide 24](slides.html#s24)
 
 - [ ] Fork [`gcfsm/brown-bag-sandbox`](https://github.com/gcfsm/brown-bag-sandbox) — this is the repo you'll build on across every remaining session, not a one-off clone
 - [ ] Clone your fork locally

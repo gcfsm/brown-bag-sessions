@@ -7,12 +7,16 @@ that used to be printed on them lives here. Not a read-aloud — say it in
 your own words. The point is that nothing important exists only in your
 head on the day.
 
-**Slides not listed** (title, recap, the stack, anatomy of a workflow) are
-self-explanatory on screen and need no script.
+**Slides not listed** — the title, the stack, the five screenshot slides,
+and the homework — are self-explanatory on screen and need no script.
+
+Slide numbers here match the deck as it stands (26 slides). If you insert
+a slide, the numbers below it shift; the quoted headline on each heading is
+what to match against.
 
 ---
 
-## 2 — "Commit, push, pull, fetch — and the PR"
+## Slide 2 — "Commit, push, pull, fetch — and the PR"
 
 **On screen:** the four git verbs, plus a row for PR.
 
@@ -33,7 +37,7 @@ self-explanatory on screen and need no script.
 
 ---
 
-## 4 — "Ten people branch Monday. Everyone merges Friday."
+## Slide 4 — "Ten people branch Monday. Everyone merges Friday."
 
 **On screen:** the converging-branches diagram, one line underneath.
 
@@ -49,7 +53,7 @@ self-explanatory on screen and need no script.
 
 ---
 
-## 5 — "The longer you wait to integrate, the more it costs"
+## Slide 5 — "The longer you wait to integrate, the more it costs"
 
 **On screen:** four numbered failures, plus a closing line about review.
 
@@ -82,7 +86,7 @@ self-explanatory on screen and need no script.
 
 ---
 
-## 6 — "Continuous Integration: merge early and often, verify every time"
+## Slide 6 — "Continuous Integration: merge early and often, verify every time"
 
 **On screen:** without-CI / with-CI columns, one closing line.
 
@@ -101,7 +105,7 @@ self-explanatory on screen and need no script.
 
 ---
 
-## 7 — "If `main` always passes, shipping `main` can be automatic"
+## Slide 7 — "If `main` always passes, shipping `main` can be automatic"
 
 **On screen:** the definition line, two branch→environment rows, a
 pointer to the demo.
@@ -139,7 +143,7 @@ pointer to the demo.
 
 ---
 
-## 8 — "DevOps is a practice before it's a job title"
+## Slide 8 — "DevOps is a practice before it's a job title"
 
 **On screen:** a table mapping each ops responsibility to the thing we
 actually do for it, and when in the curriculum it lands.
@@ -189,7 +193,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 9 — The Claude / vibe-coding thread
+## Slide 9 — The Claude / vibe-coding thread
 
 **On screen:** one pull quote, nothing else.
 
@@ -205,7 +209,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 10 — "Workflow, trigger, job, step, action, runner"
+## Slide 10 — "Workflow, trigger, job, step, action, runner"
 
 **On screen:** the six terms and what each one means.
 
@@ -230,7 +234,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 11 — "Build, lint, test"
+## Slide 11 — "Build, lint, test"
 
 **On screen:** three verbs, three definitions, one line on the name.
 
@@ -259,7 +263,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 13 — "Anatomy of a workflow"
+## Slide 12 — "Anatomy of a workflow"
 
 **On screen:** the `ci.yml` file, annotated, and one line naming the format.
 
@@ -290,7 +294,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 13 — "From zero to a check on your PR"
+## Slide 13 — "From zero to a check on your PR"
 
 **On screen:** the terminal commands, the four-step flow, one line.
 
@@ -306,7 +310,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 15 — "GitHub Actions free-tier limits"
+## Slide 15 — "GitHub Actions free-tier limits"
 
 **On screen:** the limits table, one line, the caching snippet.
 
@@ -326,7 +330,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 16 — "718 hours of compute"
+## Slide 16 — "718 hours of compute"
 
 **On screen:** the Actions usage metrics for a real organisation, one month.
 
@@ -358,7 +362,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 16 — "Making the check mandatory"
+## Slide 17 — "Making the check mandatory"
 
 **On screen:** five checkbox steps, one closing line.
 
@@ -397,7 +401,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 18 — "Reading a failed Actions run"
+## Slide 19 — "Reading a failed Actions run"
 
 **On screen:** the workflow on the left, common failures on the right.
 
@@ -422,7 +426,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 20 — "Dependabot: security alerts vs. routine bumps"
+## Slide 21 — "Dependabot: security alerts vs. routine bumps"
 
 **On screen:** the config, the alert-vs-bump table, one closing line.
 
@@ -459,7 +463,7 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
-## 22 — "Your first deploy"
+## Slide 23 — "Your first deploy"
 
 **On screen:** `deploy.yml`, the Pages setting, the closing line.
 
@@ -478,7 +482,7 @@ someone see the live URL, then stop and say it slowly:
 
 ---
 
-## 24 — "Replay the conflict"
+## Slide 25 — "Replay the conflict"
 
 **On screen:** five numbered steps, one closing line.
 
