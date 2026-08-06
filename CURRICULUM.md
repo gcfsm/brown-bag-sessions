@@ -44,7 +44,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 | 12 | Testing & QA (Jest/Vitest, tying into CI/CD) | [ ] | [`12-testing-qa`](./sessions/12-testing-qa) |
 | 13 | Data Privacy & RA 10173 (Philippine Data Privacy Act) | [ ] | [`13-data-privacy-ra10173`](./sessions/13-data-privacy-ra10173) |
 | 14 | Documentation & Technical Writing | [ ] | [`14-documentation-technical-writing`](./sessions/14-documentation-technical-writing) |
-| 15 | Monitoring & Observability Basics + Disaster Recovery (Firestore backups) | [ ] | [`15-monitoring-observability`](./sessions/15-monitoring-observability) |
+| 15 | Monitoring & Observability Basics (uptime, heartbeats, on-call, status pages) + Disaster Recovery (Firestore backups) | [ ] | [`15-monitoring-observability`](./sessions/15-monitoring-observability) |
 | 16 | Cost Awareness (indexes cost/perf, reads/writes, cold starts) | [ ] | [`16-cost-awareness`](./sessions/16-cost-awareness) |
 
 ## Block F — Career & Design
@@ -69,6 +69,7 @@ Status legend: `[ ]` not started · `[~]` in progress · `[x]` ready to teach
 - Session 5 (Data Modeling) is placed before Firebase proper — most Firestore mistakes are modeling mistakes, not API mistakes.
 - Session 8 (Multi-Tenant) gets its own session rather than being folded into Firebase basics — it is genuinely advanced.
 - Session 7 now includes a serverless-vs-servers comparison plus Cloud Functions on top of Storage/Secrets/Domain/Deploy — flagged in its README as a candidate to split into two parts if running strict 1hr sessions.
+- Uptime monitoring added to Session 15 as the outside-in half of detection: logs and error tracking only report if the app is healthy enough to report, so an external check is the only thing that notices a total outage. Heartbeats are included specifically because they are what catches the Session 15 Firestore export silently no longer running — the two halves of this session check each other. On-call and escalation are covered at honest small-team scale rather than enterprise rotation. Better Stack is the concrete instance (it is what Ocean runs), taught concept-first so the tool stays swappable.
 - Disaster Recovery / Firestore backups placed in Session 15 rather than Session 7 — paired with Observability since detection and recovery are two halves of the same production-readiness concern, not a Firestore feature tour.
 - reCAPTCHA placed in Session 10 (App Check) since it's specifically an App Check verification provider; its free tier quota angle is cross-referenced in Session 16 (Cost Awareness) rather than duplicated.
 - MCP Servers added to Session 11 rather than a new session — it's the natural next step after Skills/Hooks/Agentic Loops (giving Claude callable tools, not just instructions). Also flagged as a split candidate given the session's growing density.
