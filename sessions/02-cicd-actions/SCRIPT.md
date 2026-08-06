@@ -184,6 +184,31 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
+## 10 — "Workflow, trigger, job, step, action, runner"
+
+**On screen:** the six terms and what each one means.
+
+**Name the collision — it trips people up, and GitHub caused it:**
+
+> One warning before we go through these. GitHub named the product
+> "Actions," and then named one of the things inside it "an action." Those
+> are not the same size at all.
+>
+> **GitHub Actions**, capital A, is the whole platform — the tab in your
+> repo, the minutes you're billed for, the marketplace.
+>
+> **An action**, lowercase, is one reusable step someone published. Like an
+> npm package, but for CI steps.
+>
+> And the file you write is neither — that's a **workflow**.
+>
+> So today is mostly about writing workflows. We'll use a few actions
+> along the way — `checkout` and `setup-node` on the next slide are two of
+> them — but you could write a perfectly good workflow using none at all,
+> just shell commands.
+
+---
+
 ## 11 — "Build, lint, test"
 
 **On screen:** three verbs, three definitions, one line on the name.
