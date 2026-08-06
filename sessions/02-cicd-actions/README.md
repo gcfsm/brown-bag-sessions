@@ -162,10 +162,97 @@ marketplace action for it before you'd write one from scratch.
 
 ## 2. Your First Workflow: Lint/Test
 
-**Deck:** [Slides 14–15](slides.html#s14)
+**Deck:** [Slides 14–16](slides.html#s14)
 
 The workflow above already *is* a real, working lint/test CI setup — this
 section is about actually landing it.
+
+### First: give the check something to check
+
+**Do this before the workflow file, or the very first run goes red.** The
+workflow runs `npm install`, then `npm run lint`, then `npm test`. A fresh
+sandbox fork has none of those — there's no `package.json` in it yet, because
+nothing has been built in it yet. `npm install` fails immediately:
+
+```
+npm error code ENOENT
+npm error enoent Could not read package.json: Error: ENOENT: no such file
+npm error enoent or directory, open '/home/runner/work/.../package.json'
+```
+
+The job stops there. It never reaches lint or test at all — which is worth
+pointing at, because the red X says `lint-and-test` failed and the actual
+cause is one step earlier.
+
+**Say this out loud, because it's the lesson hiding in the bug:** a check is
+only as real as the thing it runs. CI didn't malfunction — it correctly
+reported that there was nothing to verify. That's the whole distinction
+between a green check that means something and one that just means the
+workflow file parsed.
+
+Three small files fix it, with **nothing to install** — `node --check` is a
+syntax check and `node --test` is Node's own test runner, both built into
+Node itself:
+
+```json
+// package.json
+{
+  "name": "brown-bag-sandbox",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "node --check src/greet.js",
+    "test": "node --test"
+  }
+}
+```
+
+```js
+// src/greet.js
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+module.exports = { greet };
+```
+
+```js
+// test/greet.test.js
+const test = require('node:test');
+const assert = require('node:assert');
+const { greet } = require('../src/greet.js');
+
+test('greet includes the name', () => {
+  assert.strictEqual(greet('GCF'), 'Hello, GCF!');
+});
+```
+
+Then run it once locally, and **commit the lock file it generates**:
+
+```bash
+npm install          # no dependencies, but it writes package-lock.json
+npm run lint         # exits 0
+npm test             # 1 passing
+git add package.json package-lock.json src test
+```
+
+**Two things worth being straight about:**
+
+- **`node --check` is not a real linter.** It catches broken syntax, not
+  unused variables or style. It's a stand-in that keeps Session 2 about the
+  CI mechanism instead of about configuring ESLint — a real linter arrives
+  with the real project, once there's real code to lint.
+- **Commit `package-lock.json`.** Section 3 adds `cache: 'npm'` to the
+  workflow, and that cache is keyed off the lock file — without one
+  committed, that step has nothing to work from and will complain about it.
+
+**This is also what makes the homework work.** "Deliberately break a test or
+lint rule and read the failed run" needs a test and a lint rule to break.
+Delete the `!` from `Hello, ${name}!` and `npm test` fails; delete the
+closing `}` from `greet.js` and `npm run lint` fails. Both are genuinely red,
+for a genuine reason.
+
+### Then: the workflow file
 
 ```bash
 mkdir -p .github/workflows
@@ -206,7 +293,7 @@ sees.
 
 ## 3. Free-Tier Limits — What They Mean in Practice
 
-**Deck:** [Slides 16–17](slides.html#s16)
+**Deck:** [Slides 17–18](slides.html#s17)
 
 GitHub Actions is free within limits — worth knowing so a workflow doesn't
 quietly stop running mid-project:
@@ -247,7 +334,7 @@ before minutes become a real constraint.
 
 ## 4. Branch Protection — Making Checks Mandatory
 
-**Deck:** [Slides 18–19](slides.html#s18)
+**Deck:** [Slides 19–20](slides.html#s19)
 
 Session 1 flagged this: on most real projects, `main` rejects direct
 pushes and requires a reviewed PR. **A CI check existing doesn't enforce
@@ -275,7 +362,7 @@ the merge. This is the concrete, hands-on answer to the Session 1 question
 
 ## 5. Reading a Failed Actions Run
 
-**Deck:** [Slides 20–21](slides.html#s20)
+**Deck:** [Slides 21–22](slides.html#s21)
 
 Everyone hits a red X eventually. The workflow, not the panic:
 
@@ -296,6 +383,13 @@ Everyone hits a red X eventually. The workflow, not the panic:
    no need to open a new one
 
 **Common first-timer failures, roughly in order of frequency:**
+- **No `package.json` in the repo yet** — `npm install` fails with `ENOENT`
+  on the first step, and the check reports as `lint-and-test` failing even
+  though lint and test never ran. This is the one that actually bit us
+  (Section 2 fixes it), and it's the clearest example of rule 3 above:
+  the last lines name the real cause, the check's *name* doesn't
+- **No `package-lock.json` committed**, once `cache: 'npm'` is added in
+  Section 3 — the cache has nothing to key off
 - Node version mismatch (local Node version differs from `node-version:`
   in the workflow — check `.nvmrc` / `engines` per Session 1)
 - A file that works locally but was never `git add`-ed / committed
@@ -307,7 +401,7 @@ Everyone hits a red X eventually. The workflow, not the panic:
 
 ## 6. Dependabot — Automatic Dependency PRs
 
-**Deck:** [Slides 22–23](slides.html#s22)
+**Deck:** [Slides 23–24](slides.html#s23)
 
 Dependabot is a free, built-in GitHub bot that watches `package.json` and
 opens a PR automatically whenever a dependency has a newer version — most
@@ -349,7 +443,7 @@ that needs a real look before merging.
 
 ## 7. Your First Deploy — Experiencing CD
 
-**Deck:** [Slides 24–25](slides.html#s24)
+**Deck:** [Slides 25–26](slides.html#s25)
 
 Everything above is CI: verifying a merge. This section is CD: a merge
 **shipping itself**, automatically, with no click required. The
@@ -415,7 +509,7 @@ sentence.
 
 ## 8. Full Loop — Replay the Conflict, Now Watch Everything React
 
-**Deck:** [Slide 26](slides.html#s26)
+**Deck:** [Slide 27](slides.html#s27)
 
 Session 1 ended with a hands-on activity: pair up, both branch off the
 same line in the same file at the same time, first merge is clean, second
@@ -449,6 +543,21 @@ shipped, with zero extra effort from either of you. That's Sessions 1 and
 **Deck:** none — reference material
 
 ```
+# BEFORE the workflow: the repo needs something to run.
+# No package.json -> `npm install` fails on step one, every time.
+# package.json  (no dependencies — node --check and node --test are built in)
+{
+  "name": "brown-bag-sandbox",
+  "private": true,
+  "scripts": {
+    "lint": "node --check src/greet.js",
+    "test": "node --test"
+  }
+}
+# plus src/greet.js (exports greet) and test/greet.test.js (asserts it)
+npm install                     # writes package-lock.json — commit it,
+                                # `cache: 'npm'` below is keyed off it
+
 # workflow file lives here
 .github/workflows/ci.yml
 
@@ -510,8 +619,9 @@ jobs:
 
 ## Homework Before Next Session
 
-**Deck:** [Slide 27](slides.html#s27)
+**Deck:** [Slide 28](slides.html#s28)
 
+- [ ] Confirm your fork has a `package.json` with `lint` and `test` scripts, and that `package-lock.json` is committed — without it the workflow fails on its first step (Section 2)
 - [ ] Add a `.github/workflows/ci.yml` lint/test workflow to your fork of the sandbox repo
 - [ ] Open a PR and watch the check run live on it
 - [ ] Add a CI status badge to your fork's README
