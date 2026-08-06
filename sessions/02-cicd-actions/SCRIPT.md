@@ -259,6 +259,33 @@ actually do for it, and when in the curriculum it lands.
 
 ---
 
+## 13 — "Anatomy of a workflow"
+
+**On screen:** the `ci.yml` file, annotated, and one line naming the format.
+
+**Name the format — nobody has, and they are about to hand-write one:**
+
+> Before we read this: the format is YAML. You'll meet it constantly —
+> Actions, Firebase config, Docker, Kubernetes — so it's worth knowing by
+> name.
+>
+> The thing to know today is that **indentation is the syntax**. In most
+> languages, indenting is a courtesy to the next reader. In YAML it's
+> structure. `jobs:` and the two-space-indented line under it are in a
+> parent-child relationship *because of the spaces*. Move them and you have
+> said something different.
+>
+> Two spaces per level, and never tabs — YAML rejects tabs outright.
+
+**Worth flagging now, because it fails unlike anything else:**
+
+> When you break YAML, the workflow doesn't fail — it never starts. There's
+> no run to open, no log to read from the bottom. GitHub just tells you the
+> file is invalid. So if you push and nothing at all happens, don't go
+> looking for a failed run. Check your indentation.
+
+---
+
 ## 13 — "From zero to a check on your PR"
 
 **On screen:** the terminal commands, the four-step flow, one line.
