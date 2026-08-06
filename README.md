@@ -1,4 +1,4 @@
-# IT Group Hub — Church IT Discipleship & Career Track
+# GCF IT Community — Church IT Discipleship & Career Track
 
 ## Purpose
 

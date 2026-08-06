@@ -1,4 +1,4 @@
-# IT Group Hub — Session 1: Git Basics to Your First PR
+# GITCom — Session 1: Git Basics to Your First PR
 
 **Status:** [x] Ready
 

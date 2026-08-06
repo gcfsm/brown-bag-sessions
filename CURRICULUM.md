@@ -1,4 +1,4 @@
-# Master Curriculum — IT Group Hub
+# Master Curriculum — GCF IT Community
 
 Biweekly cadence. ~20 sessions across four blocks, followed by real project pairing.
 

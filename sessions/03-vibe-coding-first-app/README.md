@@ -1,4 +1,4 @@
-# IT Group Hub — Session 3: Vibe Coding Your First App (with Claude)
+# GITCom — Session 3: Vibe Coding Your First App (with Claude)
 
 **Status:** [x] Ready
 
