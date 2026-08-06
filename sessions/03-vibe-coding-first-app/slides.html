@@ -349,6 +349,8 @@
   .term .gold { color: var(--gold); }
   .term .rust { color: var(--rust); }
   .term .moss { color: var(--moss); }
+  /* The technical knowledge the "good" prompt quietly required. */
+  .term .key { color: var(--gold); }
 
   /* ---------- svg diagrams ---------- */
 
@@ -386,6 +388,29 @@
   .two-col .good h3 { color: var(--moss); }
 
   .footline { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
+
+  /* Title-slide navigation: out to the index, across to this session's notes.
+     Wrapped with the footline so the pair contributes one flex item. */
+  .deck-foot { display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .deck-nav {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    display: flex;
+    gap: 0.85rem;
+    align-items: baseline;
+  }
+
+  .deck-nav a {
+    color: var(--gold-dim);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .deck-nav a:hover { color: var(--gold); border-bottom-color: var(--gold-dim); }
+  .deck-nav .sep { color: var(--ink-600); }
 
   .pull {
     font-family: var(--font-display);
@@ -477,7 +502,10 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 470"><g transform="scale(10)"><path fill="#e8e1cf" d="M0 0h47v47h-47z"/><path stroke="#0e1116" d="M3 3.5h7m1 0h2m1 0h4m2 0h1m5 0h2m1 0h3m1 0h1m3 0h7m-41 1h1m5 0h1m2 0h2m1 0h1m1 0h4m1 0h1m4 0h1m3 0h1m1 0h2m2 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m7 0h3m2 0h3m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h2m3 0h2m2 0h8m1 0h1m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m1 0h2m3 0h1m1 0h1m1 0h2m3 0h2m2 0h3m1 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h2m1 0h4m1 0h2m1 0h2m1 0h1m5 0h2m1 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-33 1h1m1 0h2m2 0h2m1 0h5m1 0h2m4 0h3m-32 1h1m3 0h1m1 0h3m2 0h1m1 0h1m1 0h3m2 0h3m4 0h1m1 0h1m1 0h7m2 0h1m-41 1h2m3 0h1m1 0h1m1 0h6m3 0h1m1 0h1m2 0h1m2 0h2m2 0h1m3 0h4m2 0h1m-39 1h1m1 0h1m1 0h4m1 0h1m4 0h1m3 0h1m1 0h2m1 0h3m1 0h2m1 0h2m1 0h2m3 0h1m-41 1h2m2 0h1m3 0h1m1 0h2m1 0h9m1 0h1m3 0h1m1 0h7m1 0h1m1 0h2m-40 1h1m1 0h8m2 0h3m1 0h2m2 0h4m2 0h3m2 0h2m5 0h1m-39 1h2m1 0h1m2 0h2m1 0h1m3 0h1m3 0h5m2 0h1m5 0h6m1 0h1m1 0h1m-39 1h1m3 0h4m1 0h2m1 0h3m3 0h2m3 0h3m1 0h2m2 0h8m-41 1h1m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m2 0h3m2 0h1m2 0h1m2 0h3m2 0h1m2 0h1m1 0h1m-32 1h6m3 0h1m1 0h1m1 0h5m5 0h1m2 0h1m2 0h1m1 0h1m-29 1h1m1 0h2m2 0h1m2 0h1m1 0h2m1 0h1m1 0h3m1 0h2m2 0h4m2 0h2m-39 1h2m1 0h2m1 0h7m2 0h1m5 0h2m2 0h1m2 0h1m1 0h4m1 0h1m2 0h1m-39 1h3m4 0h2m2 0h1m3 0h2m3 0h1m3 0h1m4 0h1m2 0h2m1 0h1m-38 1h2m3 0h3m3 0h2m2 0h2m1 0h3m1 0h1m1 0h3m4 0h1m1 0h1m5 0h2m-40 1h2m1 0h1m2 0h5m4 0h1m6 0h1m1 0h1m1 0h2m1 0h1m3 0h3m1 0h1m1 0h1m-41 1h1m5 0h6m1 0h1m1 0h2m3 0h1m1 0h6m4 0h1m1 0h4m2 0h1m-40 1h3m3 0h2m1 0h2m5 0h1m1 0h4m3 0h5m1 0h1m1 0h1m1 0h2m1 0h2m-41 1h1m1 0h1m3 0h3m1 0h2m1 0h2m2 0h1m2 0h2m2 0h1m2 0h1m1 0h1m2 0h1m7 0h1m-41 1h1m2 0h1m4 0h1m1 0h4m2 0h2m5 0h1m1 0h4m1 0h1m1 0h1m1 0h3m1 0h1m1 0h1m-39 1h2m1 0h6m1 0h2m2 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m4 0h1m1 0h1m5 0h1m-40 1h2m6 0h1m7 0h2m2 0h1m1 0h2m1 0h1m1 0h10m2 0h1m-37 1h1m1 0h1m3 0h6m1 0h2m1 0h3m3 0h1m2 0h1m2 0h2m6 0h1m-41 1h2m1 0h1m1 0h1m6 0h1m3 0h2m1 0h1m4 0h1m1 0h1m1 0h2m4 0h3m2 0h2m-37 1h1m1 0h5m1 0h2m3 0h3m1 0h4m3 0h2m2 0h2m4 0h3m-39 1h3m3 0h1m1 0h2m1 0h2m2 0h1m1 0h3m1 0h1m2 0h1m2 0h2m1 0h2m2 0h1m2 0h2m-41 1h4m2 0h3m2 0h1m1 0h1m1 0h3m3 0h2m4 0h1m1 0h1m2 0h6m-30 1h3m1 0h2m1 0h4m3 0h2m3 0h2m1 0h3m3 0h1m1 0h1m1 0h1m-41 1h7m1 0h3m2 0h1m2 0h1m1 0h1m2 0h3m1 0h5m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-41 1h1m5 0h1m5 0h2m1 0h2m4 0h1m3 0h1m3 0h4m3 0h2m1 0h1m-40 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m3 0h2m4 0h1m1 0h1m2 0h8m-38 1h1m1 0h3m1 0h1m5 0h3m3 0h1m2 0h3m2 0h3m3 0h1m2 0h1m1 0h3m-40 1h1m1 0h3m1 0h1m4 0h3m1 0h1m2 0h1m1 0h1m2 0h2m2 0h1m2 0h4m3 0h2m1 0h1m-41 1h1m5 0h1m2 0h6m6 0h2m1 0h1m1 0h1m1 0h2m2 0h1m1 0h2m3 0h2m-41 1h7m1 0h2m2 0h1m1 0h1m2 0h2m1 0h4m4 0h2m1 0h7m1 0h1"/></g></svg>
         <p class="qr__cap">Scan to follow along<span>gcfsm.github.io/brown-bag-sessions</span></p>
       </div>
-      <p class="footline">Church IT Discipleship &amp; Career Track — Session 3 of 20</p>
+      <div class="deck-foot">
+        <p class="footline">Church IT Discipleship &amp; Career Track — Session 3 of 20</p>
+        <p class="deck-nav"><a target="_blank" rel="noopener" href="../../index.html">&larr; All sessions</a><span class="sep">&middot;</span><a target="_blank" rel="noopener" href="./">Notes for this session</a></p>
+      </div>
     </section>
 
 
@@ -496,6 +524,7 @@
         </table>
       </div>
       <p class="lede">The difference that matters: <strong style="color:var(--parchment)">chat can't touch your project.</strong> Claude Code can.</p>
+      <p class="lede" style="font-size:0.98rem;">Only the first one has a free tier. <strong style="color:var(--parchment)">Claude Code and Cowork need a paid plan</strong> &mdash; Pro, Max, Team or Enterprise.</p>
     </section>
 
     <!-- 3 -->
@@ -568,7 +597,7 @@
     <!-- 7 -->
     <section class="slide" id="s7" data-label="which model" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Switch any time with <code>/model</code> &mdash; even mid-session</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Three models, three jobs</h2>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Four models, four jobs</h2>
       <div class="table-wrap">
         <table style="max-width:64rem;">
           <thead><tr><th>Model</th><th>Context window</th><th>Reach for it when</th></tr></thead>
@@ -576,6 +605,7 @@
             <tr><td><strong>Haiku 4.5</strong></td><td>200K tokens</td><td class="hi">Small, repetitive, mechanical. Fastest and cheapest</td></tr>
             <tr><td><strong>Sonnet 5</strong></td><td>1M tokens</td><td class="hi">Daily coding. Where most of your work belongs</td></tr>
             <tr><td><strong>Opus 5</strong></td><td>1M tokens</td><td class="hi">Hard reasoning &mdash; architecture, a bug you can't corner</td></tr>
+            <tr><td><strong>Fable 5</strong></td><td>1M tokens</td><td class="hi">Work bigger than one sitting. Never the default &mdash; you pick it, with <code>/model fable</code></td></tr>
           </tbody>
         </table>
       </div>
@@ -625,16 +655,22 @@
       <div class="flow">
         <span class="step">s1 · history &amp; branches</span><span class="arrow">+</span>
         <span class="step">s2 · required check</span><span class="arrow">=</span>
-        <span class="step hi">today isn't a leap of faith</span>
+        <span class="step hi">today isn't a gamble</span>
       </div>
     </section>
 
     <!-- 11 -->
-    <section class="slide" id="s11" data-label="scope, on purpose">
-      <p class="eyebrow">Deliberately narrow today</p>
-      <h2 class="headline">Framework-free — the workflow doesn't change when the tools get bigger</h2>
-      <p class="lede">A CLI script or a single-file page today, not a React app — Session 4 owns React/Vite properly. Pulling in a framework here would make this session about setup friction instead of the actual point: the Claude-partnership workflow.</p>
-      <p class="lede"><strong style="color:var(--gold)">Where this is going:</strong> write a clear prompt, review a diff for hallucinations, ship through CI — not a one-off exercise. This is what maintaining a real church project later in this program actually looks like.</p>
+    <section class="slide" id="s11" data-label="what today is">
+      <p class="eyebrow">Where the next hour is going</p>
+      <h2 class="headline">One small thing, prompted, reviewed, and shipped</h2>
+      <div class="flow">
+        <span class="step">write a clear prompt</span><span class="arrow">&rarr;</span>
+        <span class="step">review the diff</span><span class="arrow">&rarr;</span>
+        <span class="step">run it</span><span class="arrow">&rarr;</span>
+        <span class="step hi">ship it through CI</span>
+      </div>
+      <p class="lede"><strong style="color:var(--gold)">You'll do this yourself at the end.</strong> Everything between here and the lab is that loop, one step at a time &mdash; not theory you'll be tested on.</p>
+      <p class="lede">No React today: a CLI script or a single-file page. Session 4 owns frameworks. Adding one here would make today about setup friction instead of the workflow.</p>
     </section>
 
     <!-- 12 -->
@@ -662,10 +698,10 @@
     </section>
 
     <!-- 13 -->
-    <section class="slide" id="s13" data-label="not &quot;no review&quot;">
-      <p class="eyebrow">The one thing this is not</p>
-      <p class="pull">What changes today is <em>volume</em>, not <em>standards</em>.</p>
-      <p class="lede">Sessions 1 and 2's discipline — read the diff, require a passing check, get a second set of eyes — applies exactly the same to Claude's output as it does to your own. You'll review more code, faster, than you're used to. That's exactly why reviewing AI diffs gets its own section today.</p>
+    <section class="slide" id="s13" data-label="review still applies">
+      <p class="eyebrow">What today is not</p>
+      <p class="pull">Vibe coding doesn't mean <em>skipping</em> review. It means <em>more</em> review.</p>
+      <p class="lede">Claude writes more code, faster, than you would by hand &mdash; so there's more to read, not less. Sessions 1 and 2's habits don't relax to keep up: read the diff, require a passing check, get a second pair of eyes. Same bar whether you typed it or Claude did, which is why reviewing Claude's diffs gets its own section today.</p>
     </section>
 
     <!-- 14 -->
@@ -695,54 +731,56 @@
       count yes values."
 
 <span class="moss">Good:</span> "Build a single-file HTML page for a volunteer sign-up
-      list. Plain HTML/JS, no framework, no build step — it
+      list. Plain HTML/JS, <span class="key">no framework</span>, <span class="key">no build step</span> — it
       needs to run by just opening the file. People can add
-      their name to a shift; store it in localStorage so it
+      their name to a shift; store it in <span class="key">localStorage</span> so it
       survives a page refresh. Keep it to one file."</pre>
       </div>
       <p class="lede">The bad prompt dictates <em style="color:var(--rust)">how</em> — defeats the point of having Claude write it. The good prompt states the <em style="color:var(--moss)">what</em> and the <em style="color:var(--moss)">constraints</em>, leaves the how to Claude.</p>
     </section>
 
     <!-- 16 -->
-    <section class="slide" id="s16" data-label="3 · prompts vs code">
-      <p class="eyebrow">Knowing which is faster is the actual skill</p>
-      <h2 class="headline">Redirect with a prompt, or just edit it yourself?</h2>
+    <section class="slide" id="s16" data-label="3 · redirect or restart">
+      <p class="eyebrow">The call you make ten times a session</p>
+      <h2 class="headline">Redirect the thread, or start a fresh one?</h2>
       <div class="two-col">
         <div>
-          <h3>Redirect with a prompt</h3>
+          <h3>Redirect</h3>
           <ul>
-            <li>The <em>approach</em> is wrong</li>
-            <li>The issue will recur in multiple places</li>
-            <li>Give feedback on <em>why</em>, not just "fix it"</li>
+            <li>The approach is close, one decision is wrong</li>
+            <li>It still holds context you'd have to rebuild</li>
+            <li>Say <em>why</em> it's wrong, not just &ldquo;fix it&rdquo;</li>
           </ul>
         </div>
         <div>
-          <h3>Just edit it yourself</h3>
+          <h3>Start over</h3>
           <ul>
-            <li>A one-line fix you already know the answer to</li>
-            <li>Round-tripping through a prompt is slower than typing it</li>
+            <li>You've corrected the same thing twice</li>
+            <li>The thread is mostly wrong turns now &mdash; that's what gets re-sent every message</li>
+            <li><code>/clear</code>, then one better prompt</li>
           </ul>
         </div>
       </div>
-      <p class="lede"><strong style="color:var(--gold)">Small, checkpointed asks beat one giant prompt</strong> — smaller diffs are the ones you can actually review (next) and cleanly revert if wrong (Session 1's whole point).</p>
+      <p class="lede"><strong style="color:var(--gold)">Small, checkpointed asks beat one giant prompt</strong> &mdash; smaller diffs are the ones you can actually review (next) and cleanly revert if wrong (Session 1's whole point).</p>
     </section>
 
     <!-- 17 -->
-    <section class="slide" id="s17" data-label="4 · reviewing ai diffs">
-      <p class="eyebrow">Session 1's habit. Higher volume, same discipline.</p>
-      <h2 class="headline">What to actually check</h2>
+    <section class="slide" id="s17" data-label="4 · reviewing ai diffs" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
+      <p class="eyebrow">Session 1's habit, at a different altitude</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Ask what it did. Then check the part a summary can't prove.</h2>
       <ul class="ledger">
-        <li><span class="mark">01</span><span><strong>Does it do what you asked</strong> — <span class="note">not "does it look plausible," does it match the prompt</span></span></li>
-        <li><span class="mark">02</span><span><strong>Does it match existing patterns</strong> — <span class="note">a good diff follows the repo's conventions instead of inventing new ones next to them</span></span></li>
-        <li><span class="mark">03</span><span><strong>Anything that looks hallucinated</strong> — <span class="note">an import, method, or config option that doesn't actually exist — often confident-sounding and syntactically perfect</span></span></li>
+        <li><span class="mark">01</span><span><strong>Start with a summary</strong> &mdash; <span class="note">&ldquo;what did you change, and why?&rdquo; At volume this is how you keep up. It only works because something else is checking the code</span></span></li>
+        <li><span class="mark">02</span><span><strong>Trust the check for what runs</strong> &mdash; <span class="note">an invented import or method dies the moment the code runs. Session 2's CI catches those without you reading a line</span></span></li>
+        <li><span class="mark">03</span><span><strong>Read closely where being wrong is silent</strong> &mdash; <span class="note">right answer to the wrong question, real data touched, auth and permissions. Working code can still be the wrong code, and nothing red will tell you</span></span></li>
       </ul>
+      <p class="lede">A summary is only as good as your ability to judge it. <strong style="color:var(--parchment)">Read diffs until you can</strong> &mdash; that is the skill the shortcut depends on.</p>
     </section>
 
     <!-- 18 -->
-    <section class="slide" id="s18" data-label="run it">
+    <section class="slide" id="s18" data-label="evidence, not confidence">
       <p class="eyebrow">The check that actually matters</p>
       <p class="pull">Claude's confidence is <em>not</em> evidence.</p>
-      <p class="lede">"This should work" is not the same as "I ran it and it worked." The second one is what you're actually checking for — every time, the same way you would with your own code before opening a PR.</p>
+      <p class="lede">&ldquo;This should work&rdquo; and &ldquo;I ran it, here's the output&rdquo; are different claims. You don't have to be the one who runs it &mdash; tell Claude to run it and show you what happened. <strong style="color:var(--parchment)">What you're refusing to accept is a change nothing has executed.</strong></p>
     </section>
 
     <!-- 19 -->
@@ -778,31 +816,25 @@ git push -u origin add-volunteer-signup
     </section>
 
     <!-- 21 -->
-    <section class="slide" id="s21" data-label="hands-on lab">
-      <p class="eyebrow">Church-relevant, same tiny scope as a calculator</p>
-      <h2 class="headline">Build it, ship it as a real PR</h2>
-      <div class="two-col">
-        <div>
-          <h3>CLI script</h3>
-          <ul>
-            <li>RSVP tally — read yes/no responses, print a headcount</li>
-            <li>Volunteer roster formatter — read a CSV, print a sign-up sheet</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Single-file page</h3>
-          <ul>
-            <li>Volunteer sign-up list, or an event RSVP counter</li>
-            <li>Service-setup checklist — <code>localStorage</code>, no backend yet</li>
-          </ul>
-        </div>
+    <section class="slide" id="s21" data-label="hands-on lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
+      <p class="eyebrow">Your turn &mdash; in pairs, in your sandbox fork</p>
+      <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Build the volunteer sign-up page</h2>
+      <div class="term" style="max-width:46rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
+        <pre>git checkout -b volunteer-signup
+claude
+<span class="cmt"># then give it the "Good" prompt from earlier, word for word:</span>
+<span class="cmt"># single-file HTML page, plain HTML/JS, no framework, no build</span>
+<span class="cmt"># step, add your name to a shift, localStorage so it survives</span>
+<span class="cmt"># a refresh, one file.</span></pre>
       </div>
-      <p class="lede"><strong style="color:var(--gold)">The constraint that matters more than the idea:</strong> it must ship as a real PR, checked by Session 2's CI, reviewed by a partner using Session 1's habits.</p>
+      <p class="lede"><strong style="color:var(--gold)">Done when:</strong> the page opens by double-clicking it &middot; a name you add is still there after a refresh &middot; the PR is open, CI is green, and your partner approved it.</p>
+      <p class="lede">Rather build something else? An RSVP tally or a roster formatter works the same. <strong style="color:var(--parchment)">Same size, same rules.</strong></p>
     </section>
 
     <!-- 22 -->
     <section class="slide" id="s22" data-label="lab flow">
-      <p class="eyebrow">Suggested flow for the lab</p>
+      <p class="eyebrow">Do it in this order</p>
       <h2 class="headline">Five steps, same loop every time</h2>
       <div class="flow">
         <span class="step">pick it, write the prompt together</span><span class="arrow">→</span>

@@ -104,6 +104,20 @@ write it at all. The good prompt states the *what* (a sign-up list), the
 *constraints* (single file, no framework, no build step, localStorage), and
 leaves the implementation to Claude.
 
+**Say this out loud when you show the good prompt.** Look at what writing it
+actually required: knowing that a framework is optional, that a build step is
+a thing you can decline, and that `localStorage` survives a page refresh.
+Those aren't wording choices — they're technical knowledge, and a beginner
+couldn't have produced that prompt. Claude wrote the code; someone still had
+to know what to ask for.
+
+That's the honest answer to "does this mean I don't need to learn to code
+anymore." No — it moves where your knowledge gets applied. It stops being
+about typing syntax from memory and starts being about knowing what to ask
+for, and recognising a wrong answer when you see one. Which is what the other
+nineteen sessions are for. On the slide, the three phrases that took knowing
+something are highlighted in gold.
+
 **Let Claude propose a plan before it writes code** — for anything beyond a
 few lines, ask it to outline its approach first ("what's your plan before
 you start writing?"). This costs one extra exchange and catches a
@@ -216,24 +230,36 @@ Set expectations before they hit one, not after:
 
 **Deck:** [Slides 21–22](slides.html#s21)
 
-Each attendee (or pair) picks — or is assigned — a small, scoped,
-**church-relevant** tool to build with Claude against their sandbox fork.
-Same technical scope throughout this session (no framework, no backend) —
-just not generic. This is the first session that should feel like "I build
-things for the church," not three months from now once React and Firebase
-show up:
+**The default task: a volunteer sign-up page.** Everyone builds the same
+thing unless they'd rather not — a shared task means a pair that gets stuck
+can look sideways, and it makes the review step comparable across the room.
 
-- **A CLI script** — e.g. an RSVP tally (read a text list of yes/no
-  responses, print a headcount), or a volunteer roster formatter (read a
-  CSV of names/roles, print a formatted sign-up sheet)
-- **A single-file HTML/JS page** — e.g. a volunteer sign-up list, an event
-  RSVP counter, or a simple service-setup checklist — using `localStorage`
-  if it needs to remember anything, no backend needed yet
+Work in your sandbox fork, on a branch:
 
-**Constraint that matters more than the idea itself: it must ship as a real
-PR**, checked by the CI workflow from Session 2, reviewed by a partner
-using Session 1's review habits. The artifact is secondary to practicing
-the full loop once, end to end, with Claude doing the typing.
+```bash
+git checkout -b volunteer-signup
+claude
+```
+
+Then give Claude the "Good" prompt from Section 2, word for word. That's
+deliberate: they've already seen it, discussed why it's good, and now they
+watch it work. Nobody should be staring at a blank prompt wondering what to
+type.
+
+**Done when all three are true:**
+
+1. The page opens by double-clicking the file — no server, no build step
+2. A name added to a shift is still there after a refresh
+3. The PR is open, CI is green, and a partner has approved it
+
+Point 3 matters more than the artifact. The tool is small on purpose; what's
+being practised is the full loop once, end to end, with Claude doing the
+typing.
+
+**If a pair wants their own idea**, anything the same size works — an RSVP
+tally that reads yes/no responses and prints a headcount, or a roster
+formatter that reads a CSV and prints a sign-up sheet. Same rules: no
+framework, no backend, ships as a PR.
 
 **Suggested flow for the lab:**
 1. Pick the tool, write the initial prompt together as a pair (Section 2)
