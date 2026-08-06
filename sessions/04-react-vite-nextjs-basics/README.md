@@ -1,4 +1,4 @@
-# IT Group Hub — Session 4: React / Vite / Next.js Basics
+# GITCom — Session 4: React / Vite / Next.js Basics
 
 **Status:** [x] Ready
 
