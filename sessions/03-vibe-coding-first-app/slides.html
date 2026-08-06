@@ -740,27 +740,28 @@
     </section>
 
     <!-- 16 -->
-    <section class="slide" id="s16" data-label="3 · prompts vs code">
-      <p class="eyebrow">Knowing which is faster is the actual skill</p>
-      <h2 class="headline">Redirect with a prompt, or just edit it yourself?</h2>
+    <section class="slide" id="s16" data-label="3 · redirect or restart">
+      <p class="eyebrow">The call you make ten times a session</p>
+      <h2 class="headline">Redirect the thread, or start a fresh one?</h2>
       <div class="two-col">
         <div>
-          <h3>Redirect with a prompt</h3>
+          <h3>Redirect</h3>
           <ul>
-            <li>The <em>approach</em> is wrong</li>
-            <li>The issue will recur in multiple places</li>
-            <li>Give feedback on <em>why</em>, not just "fix it"</li>
+            <li>The approach is close, one decision is wrong</li>
+            <li>It still holds context you'd have to rebuild</li>
+            <li>Say <em>why</em> it's wrong, not just &ldquo;fix it&rdquo;</li>
           </ul>
         </div>
         <div>
-          <h3>Just edit it yourself</h3>
+          <h3>Start over</h3>
           <ul>
-            <li>A one-line fix you already know the answer to</li>
-            <li>Round-tripping through a prompt is slower than typing it</li>
+            <li>You've corrected the same thing twice</li>
+            <li>The thread is mostly wrong turns now &mdash; that's what gets re-sent every message</li>
+            <li><code>/clear</code>, then one better prompt</li>
           </ul>
         </div>
       </div>
-      <p class="lede"><strong style="color:var(--gold)">Small, checkpointed asks beat one giant prompt</strong> — smaller diffs are the ones you can actually review (next) and cleanly revert if wrong (Session 1's whole point).</p>
+      <p class="lede"><strong style="color:var(--gold)">Small, checkpointed asks beat one giant prompt</strong> &mdash; smaller diffs are the ones you can actually review (next) and cleanly revert if wrong (Session 1's whole point).</p>
     </section>
 
     <!-- 17 -->
@@ -776,10 +777,10 @@
     </section>
 
     <!-- 18 -->
-    <section class="slide" id="s18" data-label="run it">
+    <section class="slide" id="s18" data-label="evidence, not confidence">
       <p class="eyebrow">The check that actually matters</p>
       <p class="pull">Claude's confidence is <em>not</em> evidence.</p>
-      <p class="lede">"This should work" is not the same as "I ran it and it worked." The second one is what you're actually checking for — every time, the same way you would with your own code before opening a PR.</p>
+      <p class="lede">&ldquo;This should work&rdquo; and &ldquo;I ran it, here's the output&rdquo; are different claims. You don't have to be the one who runs it &mdash; tell Claude to run it and show you what happened. <strong style="color:var(--parchment)">What you're refusing to accept is a change nothing has executed.</strong></p>
     </section>
 
     <!-- 19 -->
