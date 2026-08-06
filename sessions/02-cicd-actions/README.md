@@ -1,4 +1,4 @@
-# IT Group Hub — Session 2: CI/CD & GitHub Actions
+# GITCom — Session 2: CI/CD & GitHub Actions
 
 **Status:** [x] Ready
 

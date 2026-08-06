@@ -434,8 +434,9 @@
 
     <!-- 1 -->
     <section class="slide" id="s1" data-label="title">
-      <p class="eyebrow">IT Group Hub — Session 2</p>
+      <p class="eyebrow">GITCom — Session 2</p>
       <h1 class="headline">CI/CD &amp;<br />GitHub Actions</h1>
+      <p class="eyebrow" style="color:var(--muted); letter-spacing:0.1em;">Continuous Integration, Continuous Delivery</p>
       <p class="subhead">Session 1 made merging cheap. This session makes merging <em>often</em> safe — automatic verification on every single merge, and a mandatory gate that enforces it.</p>
 
       <svg class="diagram" viewBox="0 0 640 90" width="640" role="img" aria-label="From cheap merging to automatic verification to automatic shipping">
@@ -476,7 +477,7 @@
 
     <!-- 3 -->
     <section class="slide" id="s3" data-label="the stack">
-      <p class="eyebrow">Sessions 1-2 were tool-agnostic. That changes now.</p>
+      <p class="eyebrow">The tools, and when each one arrives</p>
       <h2 class="headline">The stack we're building with</h2>
       <div class="table-wrap">
         <table style="max-width:64rem;">
@@ -537,23 +538,10 @@
     <section class="slide" id="s6" data-label="the fix">
       <p class="eyebrow">The direct fix — coined late 1990s, Extreme Programming</p>
       <h2 class="headline">Continuous Integration: merge early and often, verify every time</h2>
-      <div class="two-col">
-        <div class="bad">
-          <h3>Without CI</h3>
-          <ul>
-            <li>Branches live for weeks</li>
-            <li>Verification happens by eye, at review time</li>
-            <li>A break surfaces on integration day — for everyone, at once</li>
-          </ul>
-        </div>
-        <div class="good">
-          <h3>With CI</h3>
-          <ul>
-            <li>Merge the same day work starts</li>
-            <li>Every merge is built, linted, tested — automatically</li>
-            <li>A break surfaces in minutes, on the one change that caused it</li>
-          </ul>
-        </div>
+      <div class="cards">
+        <div class="card"><h3>Merge daily</h3><p>The same day work starts, not weeks later</p></div>
+        <div class="card"><h3>Verify automatically</h3><p>Every merge built, linted, tested &mdash; no one has to remember</p></div>
+        <div class="card"><h3>Fail small</h3><p>A break surfaces in minutes, on the one change that caused it</p></div>
       </div>
       <p class="lede">Git makes merging cheap. CI is what makes doing it constantly <em style="color:var(--gold)">not reckless</em>.</p>
     </section>
@@ -711,13 +699,6 @@ git push -u origin add-ci-workflow</pre>
         </table>
       </div>
       <p class="lede" style="font-size:0.98rem; line-height:1.5;">Linux is cheapest — macOS costs 10× the minutes, Windows 2×. A lint/test run is ~1–3 minutes.</p>
-      <div class="term" style="max-width:32rem;">
-        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;cut minutes further</div>
-        <pre style="font-size:0.8rem; line-height:1.5; padding:0.7rem 1rem 0.85rem;">- uses: actions/setup-node@v4
-  with:
-    node-version: '20'
-    <span class="gold">cache: 'npm'</span>   <span class="cmt"># ~2min install -> seconds</span></pre>
-      </div>
     </section>
 
     <!-- 16 -->
@@ -731,16 +712,16 @@ git push -u origin add-ci-workflow</pre>
         <li><span class="mark">□</span><span><strong>Require status checks to pass</strong> — select <code>lint-and-test</code></span></li>
         <li><span class="mark">□</span><span><strong>Require branches to be up to date before merging</strong></span></li>
       </ul>
-      <p class="lede">The <strong style="color:var(--parchment)">Merge</strong> button goes gray. Not discipline — GitHub mechanically refuses.</p>
+      <p class="lede">GitHub refuses the merge until the check passes. Not discipline — mechanics.</p>
     </section>
 
     <!-- 17 -->
     <section class="slide" id="s17" data-label="what protection looks like">
       <p class="eyebrow">Not discipline — refusal</p>
-      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">The Merge button, greyed out</h2>
+      <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Required checks, not passed</h2>
       <figure class="shot" data-file="merge-button-blocked.png">
-        <img src="images/merge-button-blocked.png" alt="A pull request with the merge button disabled pending required status checks" onerror="this.closest('.shot').classList.add('is-missing')" />
-        <figcaption>Required checks have not passed. GitHub will not merge it</figcaption>
+        <img src="images/merge-button-blocked.png" alt="A pull request blocked by three failing required status checks, offering auto-merge rather than merge" onerror="this.closest('.shot').classList.add('is-missing')" />
+        <figcaption>Three red, all Required &mdash; and &ldquo;Enable auto-merge&rdquo; is not a merge button</figcaption>
       </figure>
     </section>
 
@@ -821,8 +802,8 @@ updates:
 
     <!-- 22 -->
     <section class="slide" id="s22" data-label="your first deploy" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
-      <p class="eyebrow">CI verifies a merge. This ships it — no click.</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy, hands-on</h2>
+      <p class="eyebrow">Hands-on — CI verifies a merge, this ships it</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy</h2>
       <div class="term" style="max-width:38rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;.github/workflows/deploy.yml</div>
         <pre style="font-size:0.76rem; line-height:1.45; padding:0.75rem 1rem 0.9rem;"><span class="gold">on:</span> { push: { branches: [main] } }
@@ -838,7 +819,7 @@ updates:
       - uses: actions/deploy-pages@v4</pre>
       </div>
       <p class="lede" style="font-size:0.96rem; line-height:1.5;">Settings → Pages → Source: <strong style="color:var(--parchment)">GitHub Actions</strong>. Then merge — no account, no secrets.</p>
-      <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> you didn't deploy anything. You merged a PR, and the deploy happened to you.</p>
+      <p class="lede" style="font-size:0.96rem; line-height:1.5;">You didn't deploy anything. You merged a PR, and the deploy happened <em style="color:var(--gold)">to</em> you.</p>
     </section>
 
     <!-- 23 -->
@@ -854,8 +835,8 @@ updates:
 
     <!-- 24 -->
     <section class="slide" id="s24" data-label="full loop · replay" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
-      <p class="eyebrow">Same conflict activity as Session 1 — now with an audience</p>
-      <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict. Watch everything react.</h2>
+      <p class="eyebrow">Hands-on — same partner as Session 1</p>
+      <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict</h2>
       <ul class="ledger" style="max-width:58rem;">
         <li><span class="mark">1</span><span>Same partner, same setup — agree on one line</span></li>
         <li><span class="mark">2</span><span>Both branch from <code>main</code>, edit that line differently, push</span></li>
@@ -863,7 +844,7 @@ updates:
         <li><span class="mark">4</span><span>Second PR: <strong style="color:var(--rust)">conflict</strong>. Resolve it together</span></li>
         <li><span class="mark">5</span><span>Merge the resolution — check <strong style="color:var(--parchment)">and</strong> deploy fire again</span></li>
       </ul>
-      <p class="lede" style="font-size:0.96rem; line-height:1.5;"><strong style="color:var(--gold)">Say it out loud:</strong> the conflict skill didn't change since Session 1. Everything around it did.</p>
+      <p class="lede" style="font-size:0.96rem; line-height:1.5;">The conflict skill didn't change since Session 1. Everything around it did.</p>
     </section>
 
     <!-- 25 -->

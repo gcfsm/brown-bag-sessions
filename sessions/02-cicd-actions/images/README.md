@@ -26,10 +26,20 @@ fits. This is the payoff for the whole first hands-on.
 
 ### `merge-button-blocked.png` — slide 17
 
-A pull request with **Merge greyed out**, showing "Required statuses must
-pass before merging" or "Review required." The point of the branch
-protection slide is that GitHub mechanically refuses — this is that, in
-one picture.
+A pull request blocked by failing required checks. Capture the whole
+merge box: the "Some checks were not successful" header, the failing
+checks with their **Required** labels, and the button underneath.
+
+**Capture it with auto-merge on, not off.** The instinct is to find a
+clean "Merge greyed out" shot, but the version worth teaching is the one
+with **Enable auto-merge** showing — because that button is clickable, and
+it looks exactly like permission to merge. It isn't: auto-merge tells
+GitHub to merge later, once the checks go green. A blocked PR that still
+offers a clickable button is the thing people misread, so show it and
+explain it. The script for slide 16 has the wording.
+
+A Dependabot PR with red checks makes a good subject — no need to break
+anything on purpose.
 
 ### `failed-run-log.png` — slide 19
 
