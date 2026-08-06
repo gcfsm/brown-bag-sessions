@@ -537,23 +537,10 @@
     <section class="slide" id="s6" data-label="the fix">
       <p class="eyebrow">The direct fix — coined late 1990s, Extreme Programming</p>
       <h2 class="headline">Continuous Integration: merge early and often, verify every time</h2>
-      <div class="two-col">
-        <div class="bad">
-          <h3>Without CI</h3>
-          <ul>
-            <li>Branches live for weeks</li>
-            <li>Verification happens by eye, at review time</li>
-            <li>A break surfaces on integration day — for everyone, at once</li>
-          </ul>
-        </div>
-        <div class="good">
-          <h3>With CI</h3>
-          <ul>
-            <li>Merge the same day work starts</li>
-            <li>Every merge is built, linted, tested — automatically</li>
-            <li>A break surfaces in minutes, on the one change that caused it</li>
-          </ul>
-        </div>
+      <div class="cards">
+        <div class="card"><h3>Merge daily</h3><p>The same day work starts, not weeks later</p></div>
+        <div class="card"><h3>Verify automatically</h3><p>Every merge built, linted, tested &mdash; no one has to remember</p></div>
+        <div class="card"><h3>Fail small</h3><p>A break surfaces in minutes, on the one change that caused it</p></div>
       </div>
       <p class="lede">Git makes merging cheap. CI is what makes doing it constantly <em style="color:var(--gold)">not reckless</em>.</p>
     </section>
@@ -711,13 +698,6 @@ git push -u origin add-ci-workflow</pre>
         </table>
       </div>
       <p class="lede" style="font-size:0.98rem; line-height:1.5;">Linux is cheapest — macOS costs 10× the minutes, Windows 2×. A lint/test run is ~1–3 minutes.</p>
-      <div class="term" style="max-width:32rem;">
-        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;cut minutes further</div>
-        <pre style="font-size:0.8rem; line-height:1.5; padding:0.7rem 1rem 0.85rem;">- uses: actions/setup-node@v4
-  with:
-    node-version: '20'
-    <span class="gold">cache: 'npm'</span>   <span class="cmt"># ~2min install -> seconds</span></pre>
-      </div>
     </section>
 
     <!-- 16 -->
