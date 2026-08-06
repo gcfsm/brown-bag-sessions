@@ -10,6 +10,8 @@
 
 ## Recap — Commit, Push, Pull, Fetch
 
+**Deck:** [Slide 2](slides.html#s2)
+
 Quick refresh before today, since two of these verbs got *used* in Session 1
 without ever getting their own explanation:
 
@@ -25,6 +27,8 @@ without ever getting their own explanation:
 ---
 
 ## The Stack We're Building With
+
+**Deck:** [Slide 3](slides.html#s3)
 
 Sessions 1-2 have been intentionally tool-agnostic — Git and GitHub Actions
 work the same regardless of what you're building. Starting Session 3, that
@@ -42,6 +46,8 @@ This is the same stack idmc-gcfsm runs on.
 ---
 
 ## Why CI/CD Exists — Integration Hell
+
+**Deck:** [Slides 4–9](slides.html#s4)
 
 Session 1 ended on a claim worth re-stating plainly: **Git made branching and
 merging cheap.** Anyone can branch off `main`, work in isolation, and merge
@@ -97,6 +103,8 @@ without getting tired or skipping a step because the code "looked fine."
 ---
 
 ## 1. GitHub Actions Basics
+
+**Deck:** [Slides 10–12](slides.html#s10)
 
 GitHub Actions is GitHub's built-in CI/CD system: you commit a workflow
 file to your repo, GitHub runs it on hosted machines ("runners") in
@@ -154,6 +162,8 @@ marketplace action for it before you'd write one from scratch.
 
 ## 2. Your First Workflow: Lint/Test
 
+**Deck:** [Slides 13–14](slides.html#s13)
+
 The workflow above already *is* a real, working lint/test CI setup — this
 section is about actually landing it.
 
@@ -196,6 +206,8 @@ sees.
 
 ## 3. Free-Tier Limits — What They Mean in Practice
 
+**Deck:** [Slides 15–16](slides.html#s15)
+
 GitHub Actions is free within limits — worth knowing so a workflow doesn't
 quietly stop running mid-project:
 
@@ -235,6 +247,8 @@ before minutes become a real constraint.
 
 ## 4. Branch Protection — Making Checks Mandatory
 
+**Deck:** [Slides 17–18](slides.html#s17)
+
 Session 1 flagged this: on most real projects, `main` rejects direct
 pushes and requires a reviewed PR. **A CI check existing doesn't enforce
 anything by itself** — you have to explicitly tell GitHub "don't allow a
@@ -260,6 +274,8 @@ the merge. This is the concrete, hands-on answer to the Session 1 question
 ---
 
 ## 5. Reading a Failed Actions Run
+
+**Deck:** [Slides 19–20](slides.html#s19)
 
 Everyone hits a red X eventually. The workflow, not the panic:
 
@@ -290,6 +306,8 @@ Everyone hits a red X eventually. The workflow, not the panic:
 ---
 
 ## 6. Dependabot — Automatic Dependency PRs
+
+**Deck:** [Slides 21–22](slides.html#s21)
 
 Dependabot is a free, built-in GitHub bot that watches `package.json` and
 opens a PR automatically whenever a dependency has a newer version — most
@@ -330,6 +348,8 @@ that needs a real look before merging.
 ---
 
 ## 7. Your First Deploy — Experiencing CD
+
+**Deck:** [Slides 23–24](slides.html#s23)
 
 Everything above is CI: verifying a merge. This section is CD: a merge
 **shipping itself**, automatically, with no click required. The
@@ -395,6 +415,8 @@ sentence.
 
 ## 8. Full Loop — Replay the Conflict, Now Watch Everything React
 
+**Deck:** [Slide 25](slides.html#s25)
+
 Session 1 ended with a hands-on activity: pair up, both branch off the
 same line in the same file at the same time, first merge is clean, second
 collides, resolve it together. Do it **again**, with the same partner —
@@ -423,6 +445,8 @@ shipped, with zero extra effort from either of you. That's Sessions 1 and
 ---
 
 ## Quick Reference Card (keep this open while working)
+
+**Deck:** none — reference material
 
 ```
 # workflow file lives here
@@ -485,6 +509,8 @@ jobs:
 ---
 
 ## Homework Before Next Session
+
+**Deck:** [Slide 26](slides.html#s26)
 
 - [ ] Add a `.github/workflows/ci.yml` lint/test workflow to your fork of the sandbox repo
 - [ ] Open a PR and watch the check run live on it

@@ -10,6 +10,8 @@
 
 ## The Hook — Why This Is Session 3, Not Session 1
 
+**Deck:** [Slides 10–11](slides.html#s10)
+
 Session 1 gave you history and branches as a safety net — any change, however
 bad, is one `git revert` away from gone. Session 2 gave you a second safety
 net — an automated check that has to pass before anything reaches `main`.
@@ -41,6 +43,8 @@ the workflow is the real thing.
 
 ## 1. What Vibe Coding Means, and When It's Appropriate
 
+**Deck:** [Slides 12–13](slides.html#s12)
+
 **Vibe coding** — the term, coined by Andrej Karpathy in early 2025 — means
 driving development through natural-language prompts and fast iteration,
 rather than hand-typing every line yourself. You describe what you want,
@@ -70,6 +74,8 @@ you're used to — which is exactly why Section 4 below exists.
 ---
 
 ## 2. Starting a Project With Claude's Help
+
+**Deck:** [Slides 14–15](slides.html#s14)
 
 Two starting points, and they call for different first moves:
 
@@ -107,6 +113,8 @@ misunderstanding while it's still a sentence, not a diff.
 
 ## 3. Iterating on Prompts vs. Iterating on Code
 
+**Deck:** [Slide 16](slides.html#s16)
+
 Once Claude has written something, you have two ways to fix what's wrong —
 knowing which is faster is the actual skill:
 
@@ -134,6 +142,8 @@ wrong (Session 1's whole point).
 
 ## 4. Reviewing AI-Generated Code Before Accepting It
 
+**Deck:** [Slides 17–18](slides.html#s17)
+
 This is Session 1's diff-review discipline, applied to a much higher volume
 of generated code than a human typing by hand would ever produce in the same
 amount of time. The habit doesn't change. The stakes of skipping it do.
@@ -157,6 +167,8 @@ way you would (or should) with your own code before opening a PR.
 ---
 
 ## 5. Committing, Pushing, and Letting CI + Branch Protection Do Their Job
+
+**Deck:** [Slide 19](slides.html#s19)
 
 This is the loop closing — Session 1's mechanics and Session 2's required
 check, exercised on a real PR from work you did today, with Claude doing
@@ -188,6 +200,8 @@ keyboard or Claude's.
 
 ## 6. Common Failure Modes
 
+**Deck:** [Slide 20](slides.html#s20)
+
 Set expectations before they hit one, not after:
 
 | Failure mode | What it looks like | The fix |
@@ -199,6 +213,8 @@ Set expectations before they hit one, not after:
 ---
 
 ## Hands-On Lab
+
+**Deck:** [Slides 21–22](slides.html#s21)
 
 Each attendee (or pair) picks — or is assigned — a small, scoped,
 **church-relevant** tool to build with Claude against their sandbox fork.
@@ -231,6 +247,8 @@ the full loop once, end to end, with Claude doing the typing.
 
 ## Quick Reference Card (keep this open while working)
 
+**Deck:** none — reference material
+
 ```
 # good prompt vs. vague prompt
 Vague:  "make a signup form"
@@ -258,6 +276,8 @@ git push -u origin <branch-name>
 ---
 
 ## Homework Before Next Session
+
+**Deck:** [Slide 23](slides.html#s23)
 
 - [ ] Extend the tool built in-session with one more small feature, same PR discipline (branch → Claude → review → PR → CI → merge)
 - [ ] Deliberately spot-check one Claude-authored diff for a hallucinated API/method before running it

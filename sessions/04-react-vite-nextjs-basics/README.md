@@ -10,6 +10,8 @@
 
 ## Why This Session Exists — What Breaks as Vanilla Grows
 
+**Deck:** [Slides 2–3](slides.html#s2)
+
 Session 3's tool was intentionally a single HTML file — no framework, no build step, because the point was the Claude-partnership workflow, not tooling. But if you extended it in the homework, you may have already felt the seam: adding a second feature means more manual DOM work (`document.getElementById`, more `innerHTML` string-building), and more places where what's on screen can drift out of sync with your actual data.
 
 That's the specific problem React solves. Instead of manually pushing DOM updates every time data changes, you describe what the UI should look like *for a given state*, and React handles making the screen match it. This session is the introductory version of that mental model — just enough to work with it, and to work with Claude on it.
@@ -19,6 +21,8 @@ That's the specific problem React solves. Instead of manually pushing DOM update
 ---
 
 ## 1. Component Basics — Props and State
+
+**Deck:** [Slides 4–5](slides.html#s4)
 
 A **component** is a function that returns UI. That's it — the rest is two ways data flows through it:
 
@@ -48,6 +52,8 @@ function VolunteerCard({ name, role }) {   // props: passed in, read-only
 
 ## 2. Vite vs. Next.js — When to Use Which
 
+**Deck:** [Slide 6](slides.html#s6)
+
 | | Vite | Next.js |
 |---|---|---|
 | What it is | A fast dev server + build tool for a client-side app | A full framework — routing, server rendering, and API routes built in |
@@ -59,6 +65,8 @@ function VolunteerCard({ name, role }) {   // props: passed in, read-only
 ---
 
 ## 3. Dev Server, Hot Reload — Functional Literacy, Not Mastery
+
+**Deck:** [Slide 7](slides.html#s7)
 
 ```bash
 npm create vite@latest my-app -- --template react
@@ -74,6 +82,8 @@ Open the printed URL. Edit a component, save the file — the browser updates **
 ---
 
 ## 4. If the Project Already Uses Something Else
+
+**Deck:** [Slide 8](slides.html#s8)
 
 Not every React project you touch will be a fresh Vite app — plenty of real, older projects (including some you may end up maintaining) use **Create React App**, often wrapped with **Craco** (a thin layer that lets you override CRA's build config without fully "ejecting" it).
 
@@ -92,6 +102,8 @@ Same job (dev server, hot reload, production build), different tool, different c
 
 ## 5. Routing Fundamentals
 
+**Deck:** [Slide 9](slides.html#s9)
+
 **Client-side routing** means the URL changes and a different component renders — without a full page reload, unlike clicking a plain `<a href>` link to a different server-rendered page.
 
 - **Vite (client-only app):** routing isn't built in — you add a library (commonly `react-router`) and wire up routes yourself: this path renders that component.
@@ -102,6 +114,8 @@ Same underlying idea (URL → component), different amount of setup. This is exa
 ---
 
 ## Hands-On Lab
+
+**Deck:** [Slide 10](slides.html#s10)
 
 Rebuild the church tool from Session 3's homework as React components — same idea, now with props and state doing the work instead of manual DOM calls:
 
@@ -115,6 +129,8 @@ Same constraint as Session 3: **it ships as a real PR.** The component structure
 ---
 
 ## Quick Reference Card (keep this open while working)
+
+**Deck:** none — reference material
 
 ```
 # starting a fresh Vite + React project
@@ -140,6 +156,8 @@ Next.js   -> file-based: app/schedule/page.jsx  =>  /schedule
 ---
 
 ## Homework Before Next Session
+
+**Deck:** [Slide 11](slides.html#s11)
 
 - [ ] Get the Session 3 tool running as React components, with at least one prop and one piece of state
 - [ ] Open a project (yours, a teammate's, or idmc-gcfsm's `README`/`package.json`) and identify which tool it uses — Vite, Next.js, or CRA/Craco — from the `scripts` section alone
