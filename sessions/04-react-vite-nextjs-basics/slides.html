@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Session 4 — React / Vite / Next.js Basics</title>
+<title>Session 4 — React on Firebase: Vite, Next.js &amp; Where Each One Deploys</title>
 <style>
   /*
     Design note: same "ink and archive" world as Sessions 1-3, reused
@@ -286,15 +286,15 @@
     <div class="rail__dots" id="railDots"></div>
   </nav>
 
-  <div class="hud" id="hud">01 / 11 · title</div>
+  <div class="hud" id="hud">01 / 19 · title</div>
 
   <main class="deck" id="deck">
 
     <!-- 1 -->
     <section class="slide" data-label="title" id="s1">
       <p class="eyebrow">GITCom — Session 4</p>
-      <h1 class="headline">React, Vite<br />&amp; Next.js Basics</h1>
-      <p class="subhead">What breaks in vanilla JS as an app grows — and just enough component thinking to work with Claude on the fix.</p>
+      <h1 class="headline">React on Firebase<br />&amp; where it deploys</h1>
+      <p class="subhead">Twenty years of JavaScript history, and then the decision it leads to: Vite or Next.js isn't a matter of taste — it's a choice between two different Firebase products, two billing plans, and two answers to "where does the server-side code live." No code today.</p>
 
       <div class="qr">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 470"><g transform="scale(10)"><path fill="#e8e1cf" d="M0 0h47v47h-47z"/><path stroke="#0e1116" d="M3 3.5h7m3 0h4m1 0h2m1 0h2m1 0h4m1 0h2m2 0h2m2 0h7m-41 1h1m5 0h1m2 0h3m1 0h1m1 0h3m2 0h1m2 0h2m2 0h4m3 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m3 0h1m2 0h2m3 0h2m1 0h1m1 0h2m1 0h4m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m4 0h1m4 0h2m2 0h6m4 0h2m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m2 0h1m1 0h1m1 0h1m5 0h1m3 0h2m1 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h1m1 0h2m1 0h10m1 0h1m2 0h5m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-32 1h3m1 0h3m1 0h5m1 0h2m4 0h3m-32 1h1m2 0h1m1 0h2m1 0h2m2 0h2m1 0h1m3 0h1m1 0h1m1 0h1m1 0h4m4 0h1m1 0h1m-35 1h2m1 0h2m6 0h2m1 0h1m1 0h1m3 0h1m2 0h1m4 0h1m2 0h3m2 0h4m-41 1h2m1 0h2m1 0h1m3 0h5m2 0h3m1 0h1m2 0h1m3 0h1m2 0h1m1 0h1m1 0h5m-38 1h1m2 0h1m1 0h1m10 0h1m2 0h2m2 0h4m1 0h1m7 0h1m1 0h1m-41 1h2m1 0h1m2 0h1m1 0h2m2 0h1m1 0h8m1 0h1m1 0h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h1m-38 1h3m3 0h1m2 0h1m3 0h2m2 0h1m2 0h1m2 0h2m2 0h3m4 0h1m1 0h1m-40 1h1m1 0h2m2 0h5m2 0h2m3 0h2m3 0h1m2 0h5m3 0h2m1 0h2m1 0h1m-40 1h5m1 0h1m1 0h3m1 0h3m1 0h2m1 0h4m1 0h2m1 0h4m2 0h2m3 0h1m-40 1h2m1 0h5m2 0h1m2 0h1m1 0h1m1 0h1m2 0h3m4 0h1m1 0h1m5 0h1m1 0h1m1 0h1m-40 1h3m2 0h1m1 0h4m1 0h4m1 0h2m2 0h1m1 0h2m3 0h3m3 0h2m4 0h1m-41 1h1m1 0h2m2 0h1m2 0h3m1 0h1m3 0h1m4 0h1m1 0h2m8 0h1m1 0h5m-39 1h1m1 0h1m2 0h1m1 0h2m1 0h1m3 0h1m2 0h1m1 0h1m3 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m-38 1h1m2 0h2m1 0h1m1 0h3m1 0h2m3 0h1m4 0h1m1 0h1m1 0h3m2 0h5m1 0h3m-40 1h2m1 0h1m1 0h1m1 0h4m1 0h2m1 0h3m2 0h3m1 0h2m2 0h2m2 0h3m3 0h3m-41 1h7m3 0h1m1 0h1m4 0h3m1 0h1m6 0h4m4 0h4m-40 1h2m1 0h3m2 0h3m5 0h1m4 0h1m1 0h1m1 0h1m1 0h1m2 0h2m2 0h2m2 0h1m1 0h1m-40 1h3m2 0h3m2 0h3m3 0h1m1 0h4m1 0h2m1 0h3m1 0h4m-35 1h2m1 0h1m1 0h1m3 0h4m2 0h2m1 0h5m1 0h1m4 0h1m1 0h1m5 0h1m-37 1h1m3 0h2m3 0h2m1 0h1m1 0h2m3 0h6m4 0h1m1 0h1m1 0h1m1 0h1m2 0h2m-41 1h3m2 0h1m1 0h5m1 0h1m3 0h3m1 0h6m2 0h2m1 0h1m1 0h1m5 0h1m-41 1h2m2 0h1m1 0h1m3 0h2m1 0h3m1 0h2m2 0h2m1 0h1m1 0h1m2 0h1m2 0h1m6 0h2m-40 1h1m3 0h1m9 0h1m2 0h4m2 0h1m1 0h2m2 0h1m2 0h3m4 0h1m-41 1h1m1 0h2m1 0h3m3 0h3m2 0h3m2 0h4m1 0h1m1 0h1m3 0h1m2 0h2m3 0h1m-39 1h2m1 0h1m2 0h1m2 0h1m2 0h1m2 0h2m2 0h2m1 0h1m2 0h3m1 0h3m2 0h1m2 0h2m-41 1h1m3 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h1m1 0h2m2 0h3m1 0h1m2 0h6m1 0h1m1 0h1m-33 1h7m1 0h2m2 0h1m3 0h3m4 0h2m3 0h2m1 0h2m-41 1h7m2 0h2m7 0h2m1 0h2m1 0h3m1 0h1m3 0h1m1 0h1m1 0h2m1 0h1m-40 1h1m5 0h1m1 0h1m2 0h4m3 0h3m3 0h2m1 0h2m2 0h2m3 0h1m1 0h3m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h1m2 0h2m1 0h1m1 0h1m5 0h1m1 0h1m1 0h1m1 0h5m3 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h3m1 0h3m1 0h1m1 0h3m2 0h1m3 0h2m1 0h1m1 0h1m1 0h1m-41 1h1m1 0h3m1 0h1m4 0h1m1 0h1m4 0h1m1 0h2m1 0h1m7 0h1m4 0h2m1 0h2m-41 1h1m5 0h1m3 0h5m1 0h1m2 0h1m1 0h1m2 0h3m2 0h1m1 0h2m2 0h1m3 0h1m-40 1h7m1 0h1m5 0h1m1 0h1m3 0h4m4 0h2m1 0h7m1 0h1"/></g></svg>
@@ -307,130 +307,243 @@
     </section>
 
     <!-- 2 -->
-    <section class="slide" data-label="the problem" id="s2">
+    <section class="slide" data-label="the seam" data-teaser="a short history" id="s2">
       <p class="eyebrow">If you extended the Session 3 tool</p>
       <h2 class="headline">You've already felt the seam</h2>
       <p class="lede">More <code>document.getElementById</code>. More manual <code>innerHTML</code> string-building. More places where what's on screen quietly drifts from what your data actually says.</p>
-      <p class="pull">That's the exact problem React exists to solve.</p>
+      <p class="pull">That wasn't a beginner mistake. <em>That's how everyone did it, for a decade.</em></p>
+      <p class="lede">You didn't write bad code. You wrote <strong style="color:var(--parchment)">2006</strong> — which makes it exactly the right place to start.</p>
     </section>
 
     <!-- 3 -->
-    <section class="slide" data-label="scope, on purpose" id="s3">
-      <p class="eyebrow">Same spirit as Session 3</p>
-      <h2 class="headline">Light on build-tool internals — on purpose</h2>
-      <p class="lede">You don't need Vite's or Webpack's internals to use either well — the same way you didn't need V8 to write JavaScript. What you need is <strong style="color:var(--parchment)">functional recognition</strong>: what command runs this, what file configures it, what should make you stop and ask.</p>
-      <p class="pull">Sessions 1 and 2 stay hand-typed. <em>That boundary doesn't move.</em></p>
+    <section class="slide" data-label="era one · 1996–2008" data-teaser="the browser takes over" id="s3">
+      <p class="eyebrow">Era one — the server rendered everything</p>
+      <h2 class="headline">JavaScript was garnish</h2>
+      <p class="lede">PHP, ASP, JSP, later Rails: the server built the entire page for every request. You clicked, the browser threw the whole page away, asked for a new one, and repainted. <strong style="color:var(--parchment)">Every interaction was a full page reload.</strong> JavaScript validated a form, swapped an image on hover, opened a dropdown. It was not where the application lived.</p>
+      <p class="lede">And it was miserable to write, for a reason that has nothing to do with the language: <strong style="color:var(--parchment)">every browser did something slightly different.</strong> IE6 against Firefox against Safari meant the same twenty lines needed three variations. <strong style="color:var(--parchment)">Prototype.js</strong> (2005) and <strong style="color:var(--parchment)">jQuery</strong> (2006) existed to make that stop — and got enormous for exactly that reason.</p>
+      <p class="pull">Then AJAX: update without reloading. <em>So why are we reloading at all?</em></p>
     </section>
 
     <!-- 4 -->
-    <section class="slide" data-label="1 · components" id="s4">
-      <p class="eyebrow">The whole mental model, in one line</p>
-      <h2 class="headline">A component is a function that returns UI</h2>
-      <div class="term" style="max-width:40rem;">
-        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;VolunteerCard.jsx</div>
-        <pre>function VolunteerCard({ name, role }) {  <span class="cmt">// props: read-only</span>
-  const [signedUp, setSignedUp] = useState(false);  <span class="cmt">// state: owned here</span>
-
-  return (
-    &lt;div&gt;
-      &lt;h3&gt;{name} — {role}&lt;/h3&gt;
-      &lt;button onClick={() =&gt; setSignedUp(true)}&gt;
-        {signedUp ? <span class="gold">"You're in!"</span> : "Sign up"}
-      &lt;/button&gt;
-    &lt;/div&gt;
-  );
-}</pre>
-      </div>
+    <section class="slide" data-label="era two · ~2010" data-teaser="js escapes the browser" id="s4">
+      <p class="eyebrow">Era two — the Single Page Application</p>
+      <h2 class="headline">The browser takes over</h2>
+      <p class="lede">Backbone.js, and then <strong style="color:var(--parchment)">AngularJS</strong> (2010, Google). Load the page once and never reload it again. <strong style="color:var(--parchment)">The server's job flips</strong> — it stops sending pages and starts sending data as JSON. The browser now owns rendering, routing, and state. Change the data, the screen updates itself; no <code>getElementById</code> anywhere.</p>
+      <p class="lede" style="color:var(--parchment)">And it created two new problems:</p>
+      <ul class="ledger" style="max-width:50rem;">
+        <li><span class="mark">1</span><span>Nothing shows until a <strong>large bundle of JavaScript</strong> downloads and runs. On a slow phone: a blank screen.</span></li>
+        <li><span class="mark">2</span><span>Search engines got an <strong>empty page</strong> — the crawler received a shell; the content only existed after JS ran.</span></li>
+      </ul>
+      <p class="pull">That second one isn't history. <em>It's why a public site and an internal dashboard get different answers today.</em></p>
     </section>
 
     <!-- 5 -->
-    <section class="slide" data-label="props vs state" id="s5">
-      <p class="eyebrow">The rule of thumb</p>
-      <h2 class="headline">If a parent controls it, it's a prop. If it's private and changes, it's state.</h2>
-      <p class="lede"><code>name</code> and <code>role</code> come from whoever renders the card — it never changes them itself. <code>signedUp</code> is local: clicking the button updates it, and only this card re-renders to match.</p>
+    <section class="slide" data-label="era three · 2009" data-teaser="the component" id="s5">
+      <p class="eyebrow">Era three — Node.js</p>
+      <h2 class="headline">JavaScript escapes the browser</h2>
+      <p class="lede">Ryan Dahl took <strong style="color:var(--parchment)">V8</strong> — Chrome's JavaScript engine — out of the browser and wrapped it in a runtime that could read files, listen on ports, and talk to databases. JavaScript was suddenly a server language, and "full-stack JavaScript developer" became a real job title.</p>
+      <p class="lede"><strong style="color:var(--parchment)">npm</strong> (2010) became how code gets shared — and then how <em>tooling</em> gets built. Which answers a question beginners are right to ask: why does a front-end project need <code>npm install</code> at all, when the browser is what runs the code?</p>
+      <p class="pull">Because the <em>tools</em> are Node programs. <em>Vite is. Next.js is. So is your CI job.</em></p>
     </section>
 
     <!-- 6 -->
-    <section class="slide" data-label="2 · vite vs next" id="s6">
-      <p class="eyebrow">Different questions, not different tiers</p>
-      <h2 class="headline">Vite vs. Next.js — when to use which</h2>
-      <div class="table-wrap">
-        <table style="max-width:64rem;">
-          <thead><tr><th></th><th>Vite</th><th>Next.js</th></tr></thead>
-          <tbody>
-            <tr><td><strong>What it is</strong></td><td>Fast dev server + build tool</td><td class="hi">A full framework — routing, server-side rendering (SSR), API routes built in</td></tr>
-            <tr><td><strong>Use when</strong></td><td>Simple client-only app, no SEO concerns</td><td class="hi">Real multi-page routing, crawlable content, or a backend in the same project</td></tr>
-            <tr><td><strong>Church example</strong></td><td>Internal admin tool, volunteer-only dashboard</td><td class="hi">A public conference site — idmc-gcfsm's actual stack</td></tr>
-          </tbody>
-        </table>
+    <section class="slide" data-label="era four · 2013–14" data-teaser="the wheel comes back" id="s6">
+      <p class="eyebrow">Era four — React, then Vue</p>
+      <h2 class="headline">The unit stops being the page. It becomes the component.</h2>
+      <p class="lede">One self-contained piece of screen that owns its own patch. And with it, the shift that actually matters: <strong style="color:var(--parchment)">you stop issuing instructions and start making a declaration.</strong></p>
+      <div class="content-grid" style="grid-template-columns: 1fr 1fr; gap:2rem;">
+        <div>
+          <h3 style="font-family:var(--font-mono); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:0.8rem;">Imperative — the old way</h3>
+          <p class="lede">Find this element, change its text, hide that one.</p>
+        </div>
+        <div>
+          <h3 style="font-family:var(--font-mono); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold-dim); margin-bottom:0.8rem;">Declarative — the new way</h3>
+          <p class="lede">Describe what the screen should look like for a given state. The library works out what to change.</p>
+        </div>
       </div>
-      <p class="lede">Vite asks "run and bundle this fast." Next.js asks "build a whole multi-page site." A project needing routing, SEO, or a backend reaches for Next.js from the start.</p>
+      <p class="pull">Your Session 3 drift becomes structurally hard — <em>there's no second copy of the truth left to drift from.</em></p>
     </section>
 
     <!-- 7 -->
-    <section class="slide" data-label="3 · dev server" id="s7">
-      <p class="eyebrow">Functional literacy, not mastery</p>
-      <h2 class="headline">Dev server, hot reload</h2>
-      <div class="term" style="max-width:36rem;">
-        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
-        <pre>npm create vite@latest my-app -- --template react
-cd my-app
-npm install
-<span class="gold">npm run dev</span>     <span class="cmt"># prints a localhost URL</span></pre>
-      </div>
-      <p class="lede">Save a file — the browser updates <strong style="color:var(--parchment)">without a full reload</strong>, state usually preserved. If it doesn't update, that's your signal something's actually wrong — ask Claude, don't puzzle through it alone.</p>
+    <section class="slide" data-label="the loop closes · 2016" data-teaser="the altitude" id="s7">
+      <p class="eyebrow">The wheel comes back around</p>
+      <h2 class="headline">Server rendering returns — now with components</h2>
+      <p class="lede">Put the last two eras together. JavaScript runs on a server <span class="note">(era 3)</span>. Components describe a UI <span class="note">(era 4)</span>. So run the components <strong style="color:var(--parchment)">on the server</strong>, send finished HTML, and let it wake up as a live app once the JavaScript arrives.</p>
+      <p class="lede">Look closely at what that is: <strong style="color:var(--parchment)">era one's answer, rebuilt with era four's tools</strong> — and it fixes exactly the two problems era two created. Something is on screen immediately, and a crawler gets real content. <strong style="color:var(--parchment)">Next.js</strong> (2016) is that idea packaged. <strong style="color:var(--parchment)">Vite</strong> (2020) is the SPA path, done fast.</p>
+      <p class="lede"><span class="note">And to be accurate about it: era one never actually ended. Server-rendered pages stayed the majority of the web the whole time. What came back around was the <em>frontier</em> — returning to something that never left, now carrying better tools.</span></p>
+      <p class="pull">Vite descends from era two. Next.js from era one. <em>Neither is out of date — and that's why they deploy to two different Firebase products.</em></p>
     </section>
 
     <!-- 8 -->
-    <section class="slide" data-label="4 · something else" id="s8">
-      <p class="eyebrow">Recognition, not mastery</p>
-      <h2 class="headline">If the project already uses something else</h2>
-      <div class="term" style="max-width:38rem;">
-        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;package.json</div>
-        <pre>"scripts": {
-  <span class="gold">"start": "craco start"</span>,  <span class="cmt">// CRA + Craco — "npm start"</span>
-  "build": "craco build"
-}</pre>
-      </div>
-      <p class="lede">Same job (dev server, hot reload, build), different tool, different command name. You don't need to know <em style="color:var(--gold)">why</em> a project chose Craco to work in it — notice the script name, use the right one.</p>
+    <section class="slide" data-label="2 · the altitude" data-teaser="the stack" id="s8">
+      <p class="eyebrow">Same posture as Session 3</p>
+      <h2 class="headline">There is no code on these slides</h2>
+      <p class="lede">Session 3 settled how we work: you state the <strong style="color:var(--parchment)">what</strong> and the <strong style="color:var(--parchment)">constraints</strong>, Claude writes it, you check whether it answered the right question. Handing you JSX to memorise two weeks later would contradict that.</p>
+      <p class="lede">What you can't delegate is the decision that comes <em style="color:var(--gold)">before</em> the prompt. Claude will happily build either answer — and it will not mention that they deploy to different Firebase products, on different billing plans.</p>
+      <p class="pull">Sessions 1 and 2 stay hand-typed. <em>That boundary doesn't move.</em></p>
     </section>
 
     <!-- 9 -->
-    <section class="slide" data-label="5 · routing" id="s9">
-      <p class="eyebrow">Same idea, different amount of setup</p>
-      <h2 class="headline">Routing: URL changes, a different component renders</h2>
-      <div class="content-grid" style="grid-template-columns: 1fr 1fr;">
-        <div>
-          <h3 style="font-family:var(--font-mono); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:0.8rem;">Vite</h3>
-          <p class="lede">Not built in — add <code>react-router</code>, wire up routes yourself: this path renders that component.</p>
-        </div>
-        <div>
-          <h3 style="font-family:var(--font-mono); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:0.8rem;">Next.js</h3>
-          <p class="lede"><strong style="color:var(--parchment)">File-based</strong> — the folder structure <em>is</em> the URL structure. <code>app/schedule/page.jsx</code> → <code>/schedule</code>, automatically.</p>
-        </div>
+    <section class="slide" data-label="3 · the stack" id="s9">
+      <p class="eyebrow">Worth saying plainly — everything after this assumes it</p>
+      <h2 class="headline">We already decided: Firebase</h2>
+      <div class="table-wrap">
+        <table style="max-width:62rem;">
+          <thead><tr><th>Layer</th><th>What we use</th><th>Taught in</th></tr></thead>
+          <tbody>
+            <tr><td><strong>UI</strong></td><td>React</td><td>today — vocabulary only</td></tr>
+            <tr><td><strong>Framework</strong></td><td class="hi">Vite <em>or</em> Next.js</td><td class="hi">today — the decision</td></tr>
+            <tr><td><strong>Database</strong></td><td>Firestore</td><td>Sessions 5 &amp; 6</td></tr>
+            <tr><td><strong>Login</strong></td><td>Firebase Auth</td><td>Session 6</td></tr>
+            <tr><td><strong>Server-side code</strong></td><td>Cloud Functions</td><td>Session 7</td></tr>
+            <tr><td><strong>Hosting</strong></td><td class="hi">Firebase Hosting <em>or</em> App Hosting</td><td class="hi">today — the decision</td></tr>
+            <tr><td><strong>CI</strong></td><td>GitHub Actions</td><td>Session 2 — already yours</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p class="lede">Firebase isn't one product, it's a shelf of them — and we've committed to that shelf. So "which framework" is never a standalone question here.</p>
     </section>
 
     <!-- 10 -->
-    <section class="slide" data-label="hands-on lab" id="s10">
-      <p class="eyebrow">Same tool, now with real components</p>
-      <h2 class="headline">Rebuild the Session 3 tool as components</h2>
-      <ul class="ledger">
-        <li><span class="mark">1</span><span><code>npm create vite@latest</code> a fresh app, or extend one already started</span></li>
-        <li><span class="mark">2</span><span>Split it into <strong style="color:var(--parchment)">at least two components</strong> — a list (props) and an item (its own local state)</span></li>
-        <li><span class="mark">3</span><span>Confirm hot reload actually updates the browser when you save</span></li>
-        <li><span class="mark">4</span><span>Ship it the same way as always — branch → Claude helps write it → you review → PR → CI → merge</span></li>
+    <section class="slide" data-label="4 · vocabulary" id="s10">
+      <p class="eyebrow">Four words — so your prompt lands, not so you can type them</p>
+      <h2 class="headline">The vocabulary you actually need</h2>
+      <ul class="ledger" style="max-width:52rem;">
+        <li><span class="mark">·</span><span><strong>Component</strong> — <span class="note">one self-contained piece of the screen that owns its own patch: a volunteer card, a schedule row</span></span></li>
+        <li><span class="mark">·</span><span><strong>Props</strong> — <span class="note">data handed down <em>into</em> it from whatever contains it. Read-only from the inside</span></span></li>
+        <li><span class="mark">·</span><span><strong>State</strong> — <span class="note">data it owns itself and that changes. When it changes, that piece of screen updates</span></span></li>
+        <li><span class="mark">·</span><span><strong>Route</strong> — <span class="note">a URL that renders a particular screen</span></span></li>
       </ul>
+      <p class="pull">If two components both need it, <em>it can't live inside either one.</em></p>
     </section>
 
     <!-- 11 -->
-    <section class="slide" data-label="homework" id="s11">
+    <section class="slide" data-label="5 · the fork" id="s11">
+      <p class="eyebrow">Not "simple vs. full" — that framing tells you nothing</p>
+      <h2 class="headline">Two eras' answers, two Firebase products</h2>
+      <div class="table-wrap">
+        <table style="max-width:70rem;">
+          <thead><tr><th></th><th>Vite <span style="color:var(--muted); text-transform:none; letter-spacing:0;">— SPA lineage</span></th><th>Next.js <span style="color:var(--muted); text-transform:none; letter-spacing:0;">— server-rendering lineage</span></th></tr></thead>
+          <tbody>
+            <tr><td><strong>The build produces</strong></td><td>Static files in a folder</td><td class="hi">A running server application</td></tr>
+            <tr><td><strong>Firebase product</strong></td><td><strong>Firebase Hosting</strong></td><td class="hi"><strong>Firebase App Hosting</strong></td></tr>
+            <tr><td><strong>What serves it</strong></td><td>A CDN. No server of yours runs.</td><td class="hi">A container on Cloud Run, behind a CDN</td></tr>
+            <tr><td><strong>Billing plan</strong></td><td><strong style="color:var(--moss)">Spark — free</strong></td><td class="hi"><strong>Blaze — billing on</strong></td></tr>
+            <tr><td><strong>Routing</strong></td><td>Add <code>react-router</code>, wire it up</td><td class="hi">File-based — folders <em>are</em> the URLs</td></tr>
+            <tr><td><strong>Search engines</strong></td><td>Indexed on a <strong>delayed second pass</strong>; weaker outside Google</td><td class="hi">Content is in the <strong>first response</strong> — nothing to wait for</td></tr>
+            <tr><td><strong>Server-side code</strong></td><td>A <strong>separate Cloud Function</strong></td><td class="hi"><strong>Built in</strong> — API routes, same deploy</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Vite gives you a folder a CDN hands out. Next.js gives you an application that has to keep running somewhere. <strong style="color:var(--parchment)">Every row follows from that one difference</strong> — and that difference is era two versus era one.</p>
+    </section>
+
+    <!-- 12 -->
+    <section class="slide" data-label="which one" id="s12">
+      <p class="eyebrow">In church terms</p>
+      <h2 class="headline">Which one, and when you decide</h2>
+      <div class="content-grid" style="grid-template-columns: 1fr 1fr;">
+        <div>
+          <h3 style="font-family:var(--font-mono); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:0.8rem;">Vite → Hosting</h3>
+          <p class="lede">Rostering dashboard, attendance tracker, admin panel. <strong style="color:var(--parchment)">Volunteers log in; nobody needs to find it on Google.</strong> Login-gated content has no SEO story to lose — so era two's weakness costs you nothing, and this path is free at our scale.</p>
+        </div>
+        <div>
+          <h3 style="font-family:var(--font-mono); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:0.8rem;">Next.js → App Hosting</h3>
+          <p class="lede">The idmc-gcfsm conference site, a ministry landing page. <strong style="color:var(--parchment)">Public, and people find it by searching.</strong> Real distinct pages you want indexed.</p>
+        </div>
+      </div>
+      <p class="pull">Reversing this later isn't a rename — <em>it's a rebuild plus a hosting migration.</em></p>
+    </section>
+
+    <!-- 13 -->
+    <section class="slide" data-label="6 · path a" id="s13">
+      <p class="eyebrow">Vite → Firebase Hosting</p>
+      <h2 class="headline">A folder of files on a CDN</h2>
+      <ul class="ledger" style="max-width:54rem;">
+        <li><span class="mark">·</span><span><strong>Runs on Spark — no credit card.</strong> <span class="note">10 GB storage, 10 GB/month transfer. Caps are hard, not billable: you get a wall, not a bill.</span></span></li>
+        <li><span class="mark">·</span><span><strong>You trigger the deploy</strong> <span class="note">— CLI, or the GitHub Action from Session 2. Wired up properly in Session 7.</span></span></li>
+        <li><span class="mark">·</span><span><strong>Nothing here can hold a secret.</strong> <span class="note">Everything shipped to the browser can be read by anyone with dev tools open.</span></span></li>
+      </ul>
+      <p class="pull">Client-only is <em>not</em> backend-less.</p>
+      <p class="lede">It still talks to Firestore and Auth directly — and <strong style="color:var(--parchment)">security rules</strong> decide who may read or write what. That's a real server-side permission check. It's just not one you wrote. <span class="note">(Sessions 5, 6, 9.)</span></p>
+    </section>
+
+    <!-- 14 -->
+    <section class="slide" data-label="7 · path b" id="s14">
+      <p class="eyebrow">Next.js → Firebase App Hosting</p>
+      <h2 class="headline">An application that keeps running</h2>
+      <ul class="ledger" style="max-width:56rem;">
+        <li><span class="mark">·</span><span><strong>Git-triggered.</strong> <span class="note">Push to the live branch and it builds and rolls out. Merging a PR ships to production — which is exactly what Session 2's required checks are standing in front of.</span></span></li>
+        <li><span class="mark">·</span><span><strong>Google Cloud, unhidden.</strong> <span class="note">Cloud Build builds a container, Cloud Run runs it, Cloud CDN caches it. When it breaks, those are the logs.</span></span></li>
+        <li><span class="mark">·</span><span><strong>Requires Blaze.</strong> <span class="note">Real free allowances — ~10 GiB/mo traffic, 2M requests, 2,500 build minutes — but nothing stops at the line. Past it, it's a bill. (Session 16.)</span></span></li>
+        <li><span class="mark">·</span><span><strong><code>apphosting.yaml</code></strong> <span class="note">— env vars, secrets, container size. Recognise the filename; you don't need to write one today.</span></span></li>
+      </ul>
+      <p class="pull">What you're buying: <em>the backend comes with it.</em></p>
+    </section>
+
+    <!-- 15 -->
+    <section class="slide" data-label="8 · the honest part" id="s15">
+      <p class="eyebrow">Three corrections, so nobody leaves with a rule that's too clean</p>
+      <h2 class="headline">What Next.js does <em style="font-style:normal;color:var(--gold)">not</em> replace</h2>
+      <p class="lede"><strong style="color:var(--parchment)">"Next.js means no Cloud Functions" is false.</strong> It removes the endpoint <em>you call</em> — client asks, server answers. It does nothing about the kind that fires on its own: a Firestore document changed, a file was uploaded, or it's 2am and the nightly summary is due. Nobody calls those. There is no request. An API route only exists while someone is asking it something — so it can never be one, on any platform.</p>
+      <p class="lede"><strong style="color:var(--parchment)">Blaze doesn't mean expensive.</strong> It means metered instead of capped. Spark says "you can't go past this line." Blaze says "past this line, it costs." For a church both are usually free — the real question is which failure you'd rather have: a site that switches off, or an invoice nobody was watching for.</p>
+      <p class="lede"><strong style="color:var(--parchment)">"Google can't see a React app" is out of date</strong> — that was era two's problem, and Google fixed most of it. It now runs your JavaScript on a <em style="color:var(--gold)">second pass</em>, queued behind the first, sometimes days later. So the honest 2026 version isn't <em>invisible</em>, it's <em>delayed and less certain</em>: content behind a click or scroll still isn't indexed, and other crawlers — Bing, social link previews, AI crawlers — are further behind than Google. For a conference page with a date on it, "probably indexed, eventually" is still the wrong answer.</p>
+    </section>
+
+    <!-- 16 -->
+    <section class="slide" data-label="9 · in the prompt" id="s16">
+      <p class="eyebrow">Session 3's rule, with today's constraint added</p>
+      <h2 class="headline">Claude can't infer this — both answers look correct from the inside</h2>
+      <div class="term" style="max-width:52rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;the prompt</div>
+        <pre><span class="cmt">Weak:</span>
+"Build me a React app for volunteer sign-ups."
+
+<span class="cmt">Strong:</span>
+"<span class="gold">React + Vite, deploying to Firebase Hosting as a static
+build.</span> Data in Firestore, read from the client and guarded
+by <span class="gold">security rules</span> — <span class="gold">no server-side code, no Cloud
+Functions</span>, and nothing that needs a secret at runtime.
+Volunteers sign in with Firebase Auth."</pre>
+      </div>
+      <p class="lede">The weak prompt might get you Next.js. It might assume an API route — which assumes App Hosting, which assumes Blaze. None of that will be announced. <strong style="color:var(--parchment)">One sentence longer closes every gap.</strong></p>
+    </section>
+
+    <!-- 17 -->
+    <section class="slide" data-label="10 · reading a project" id="s17">
+      <p class="eyebrow">Most projects already made this decision</p>
+      <h2 class="headline">Three facts tell you what you can safely propose</h2>
+      <div class="term" style="max-width:50rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;open the repo, ask Claude</div>
+        <pre>"What is this project — <span class="gold">Vite, Next.js or CRA</span>?
+ <span class="gold">Where does it deploy</span>, and does it have
+ <span class="gold">any server-side code</span>?"</pre>
+      </div>
+      <p class="lede">Plenty of real projects are still on <strong style="color:var(--parchment)">Create React App</strong> — same era-two lineage as Vite, same static output for Hosting, just the previous generation of it. With the history, an unfamiliar tool is <em style="color:var(--gold)">placeable</em> rather than alarming: it's someone's answer from a particular year.</p>
+      <p class="lede">Asking for an API route in a project that deploys as a static site isn't a small ask — <strong style="color:var(--parchment)">it's a hosting migration.</strong> Better to know that before you suggest it than after.</p>
+    </section>
+
+    <!-- 18 -->
+    <section class="slide" data-label="hands-on lab" id="s18">
+      <p class="eyebrow">Call it, in pairs — one sentence of why each</p>
+      <h2 class="headline">Which path? And does it still need a function?</h2>
+      <ul class="ledger">
+        <li><span class="mark">1</span><span>A volunteer rostering dashboard. Thirty leaders sign in; nobody else should ever see it.</span></li>
+        <li><span class="mark">2</span><span>The public conference site — schedule, speakers, venue. People find it by Googling it.</span></li>
+        <li><span class="mark">3</span><span>A public registration form that emails a confirmation, <strong style="color:var(--parchment)">using a mail service's API key</strong>.</span></li>
+        <li><span class="mark">4</span><span>An internal attendance tracker that also posts a summary every Sunday at 9pm.</span></li>
+      </ul>
+      <p class="lede">Then take <strong style="color:var(--parchment)">scenario 1</strong>, write the prompt with the deploy target stated, let Claude scaffold it — and check the answer against your decision. Ship it: branch → review → PR → CI → merge. <span class="note">Don't deploy it today; that's Session 7.</span></p>
+    </section>
+
+    <!-- 19 -->
+    <section class="slide" data-label="homework" id="s19">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
-      <ul class="ledger checklist" style="max-width:54rem;">
-        <li><span class="mark">□</span><span>Get the Session 3 tool running as React components — one prop, one piece of state, minimum</span></li>
-        <li><span class="mark">□</span><span>Open a project's <code>package.json</code> "scripts" and identify Vite vs. Next.js vs. CRA/Craco from that alone</span></li>
-        <li><span class="mark">□</span><span class="note">Same PR discipline: branch, review, ship through CI</span></li>
+      <ul class="ledger checklist" style="max-width:56rem;">
+        <li><span class="mark">□</span><span>Open a real project and work out which path it's on — framework, Firebase product, server-side code or not. Ask Claude if you're unsure; the goal is the answer, not the archaeology.</span></li>
+        <li><span class="mark">□</span><span>Write the one-paragraph decision for a tool your ministry actually wants: <strong style="color:var(--parchment)">which path, and the one sentence of why.</strong> Bring it to Session 5.</span></li>
+        <li><span class="mark">□</span><span class="note">Check a Session 3 prompt: handed to Claude today with no other context, could it tell which hosting path you meant?</span></li>
       </ul>
       <p class="footline">Next — Session 5: Data Modeling &amp; NoSQL Patterns</p>
     </section>

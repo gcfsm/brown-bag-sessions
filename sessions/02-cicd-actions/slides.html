@@ -516,7 +516,7 @@
     <div class="rail__dots" id="railDots"></div>
   </nav>
 
-  <div class="hud" id="hud">01 / 14 · title</div>
+  <div class="hud" id="hud">01 / 28 · title</div>
 
   <main class="deck" id="deck">
 
@@ -759,8 +759,27 @@
       <p class="lede">This is <strong style="color:var(--parchment)">YAML</strong> &mdash; indentation is the syntax, not decoration. Two spaces, never tabs.</p>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" id="s14" data-label="hands-on · first workflow">
+    <!-- 15 -->
+    <section class="slide" id="s14" data-label="before the workflow">
+      <p class="eyebrow">Do this first — or the run goes red on step one</p>
+      <h2 class="headline">A check needs something to check</h2>
+      <p class="lede">That workflow runs <code>npm install</code>, then <code>npm run lint</code>, then <code>npm test</code>. On a fresh sandbox fork <strong style="color:var(--parchment)">none of those exist yet</strong> — there's no <code>package.json</code>, so <code>npm install</code> fails on the very first step and the job never reaches lint or test at all.</p>
+      <div class="term" style="max-width:38rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;package.json</div>
+        <pre>{
+  "name": "brown-bag-sandbox",
+  "private": true,
+  "scripts": {
+    <span class="gold">"lint": "node --check src/greet.js"</span>,
+    <span class="gold">"test": "node --test"</span>
+  }
+}</pre>
+      </div>
+      <p class="lede"><strong style="color:var(--parchment)">No dependencies to install</strong> — <code>node --check</code> is a syntax check and <code>node --test</code> is Node's own test runner, both built in. Add the two tiny files they point at <span class="note">(notes, Section 2)</span>, run <code>npm install</code> once, and <strong style="color:var(--parchment)">commit <code>package-lock.json</code> too</strong> — the <code>cache: 'npm'</code> line coming in Section 3 has nothing to key off without it.</p>
+    </section>
+
+    <!-- 15 -->
+    <section class="slide" id="s15" data-label="hands-on · first workflow">
       <p class="eyebrow">Hands-on</p>
       <h2 class="headline">From zero to a check on your PR</h2>
       <div class="term" style="max-width:34rem;">
@@ -781,8 +800,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">The PR tells you it's broken before a reviewer opens it. Once it's run on <code>main</code>, add a CI badge to your README.</p>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" id="s15" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a passing check looks like">
+    <!-- 16 -->
+    <section class="slide" id="s16" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a passing check looks like">
       <p class="eyebrow">What you just built</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">The check, on a real PR</h2>
       <figure class="shot" data-file="pr-checks-green.png">
@@ -792,8 +811,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 16 -->
-    <section class="slide" id="s16" data-label="github free tier" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <!-- 17 -->
+    <section class="slide" id="s17" data-label="github free tier" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Know the ceiling before you hit it</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">GitHub Actions free-tier limits</h2>
       <div class="table-wrap">
@@ -809,8 +828,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede" style="font-size:0.98rem; line-height:1.5;">Linux is cheapest — macOS costs 10× the minutes, Windows 2×. A lint/test run is ~1–3 minutes.</p>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" id="s17" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what it takes off your machine">
+    <!-- 18 -->
+    <section class="slide" id="s18" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what it takes off your machine">
       <p class="eyebrow">One developer, one month</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">718 hours of compute</h2>
       <figure class="shot" data-file="actions-usage.png">
@@ -820,8 +839,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 18 -->
-    <section class="slide" id="s18" data-label="branch protection">
+    <!-- 19 -->
+    <section class="slide" id="s19" data-label="branch protection">
       <p class="eyebrow">The follow-through on Session 1's note</p>
       <h2 class="headline">Making the check mandatory</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -834,8 +853,8 @@ git push -u origin add-ci-workflow</pre>
       <p class="lede">GitHub refuses the merge until the check passes. Not discipline — mechanics.</p>
     </section>
 
-    <!-- 19 -->
-    <section class="slide" id="s19" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what protection looks like">
+    <!-- 20 -->
+    <section class="slide" id="s20" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what protection looks like">
       <p class="eyebrow">Not discipline — refusal</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Required checks, not passed</h2>
       <figure class="shot" data-file="merge-button-blocked.png">
@@ -845,8 +864,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 20 -->
-    <section class="slide" id="s20" data-label="reading a failed run">
+    <!-- 21 -->
+    <section class="slide" id="s21" data-label="reading a failed run">
       <p class="eyebrow">Everyone hits a red X eventually</p>
       <h2 class="headline">Reading a failed Actions run</h2>
       <div class="two-col">
@@ -873,8 +892,8 @@ git push -u origin add-ci-workflow</pre>
       </div>
     </section>
 
-    <!-- 21 -->
-    <section class="slide" id="s21" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a failure looks like">
+    <!-- 22 -->
+    <section class="slide" id="s22" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a failure looks like">
       <p class="eyebrow">Read it from the bottom</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">A failed run, opened up</h2>
       <figure class="shot" data-file="failed-run-log.png">
@@ -884,8 +903,8 @@ git push -u origin add-ci-workflow</pre>
     </section>
 
 
-    <!-- 22 -->
-    <section class="slide" id="s22" data-label="dependabot" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
+    <!-- 23 -->
+    <section class="slide" id="s23" data-label="dependabot" style="padding-top:4.2rem; padding-bottom:2.5rem; gap:1.2rem;">
       <p class="eyebrow">Automatic dependency PRs</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Dependabot: security alerts vs. routine bumps</h2>
       <div class="term" style="max-width:30rem;">
@@ -910,8 +929,8 @@ updates:
       <p class="lede">Slide 4 again, different problem: small and often beats big and rare.</p>
     </section>
 
-    <!-- 23 -->
-    <section class="slide" id="s23" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what dependabot looks like">
+    <!-- 24 -->
+    <section class="slide" id="s24" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what dependabot looks like">
       <p class="eyebrow">It opens the PR for you</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">A Dependabot pull request</h2>
       <figure class="shot" data-file="dependabot-pr.png">
@@ -921,8 +940,8 @@ updates:
     </section>
 
 
-    <!-- 24 -->
-    <section class="slide" id="s24" data-label="your first deploy" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
+    <!-- 25 -->
+    <section class="slide" id="s25" data-label="your first deploy" style="padding-top:4rem; padding-bottom:2.2rem; gap:1rem;">
       <p class="eyebrow">Hands-on — CI verifies a merge, this ships it</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your first deploy</h2>
       <div class="term" style="max-width:38rem;">
@@ -943,8 +962,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;">You didn't deploy anything. You merged a PR, and the deploy happened <em style="color:var(--gold)">to</em> you.</p>
     </section>
 
-    <!-- 25 -->
-    <section class="slide" id="s25" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a deploy looks like">
+    <!-- 26 -->
+    <section class="slide" id="s26" style="padding-top:3.6rem; padding-bottom:2.2rem; gap:0.9rem;" data-label="what a deploy looks like">
       <p class="eyebrow">The merge shipped it</p>
       <h2 class="headline" style="font-size:clamp(1.5rem, 2.6vw, 2.1rem);">Your site, live</h2>
       <figure class="shot" data-file="pages-live.png">
@@ -954,8 +973,8 @@ updates:
     </section>
 
 
-    <!-- 26 -->
-    <section class="slide" id="s26" data-label="full loop · replay" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
+    <!-- 27 -->
+    <section class="slide" id="s27" data-label="full loop · replay" style="padding-top:4rem; padding-bottom:2.3rem; gap:1rem;">
       <p class="eyebrow">Hands-on — same partner as Session 1</p>
       <h2 class="headline" style="font-size:clamp(1.8rem, 3.2vw, 2.6rem);">Replay the conflict</h2>
       <ul class="ledger" style="max-width:58rem;">
@@ -968,8 +987,8 @@ updates:
       <p class="lede" style="font-size:0.96rem; line-height:1.5;">The conflict skill didn't change since Session 1. Everything around it did.</p>
     </section>
 
-    <!-- 27 -->
-    <section class="slide" id="s27" data-label="homework">
+    <!-- 28 -->
+    <section class="slide" id="s28" data-label="homework">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
