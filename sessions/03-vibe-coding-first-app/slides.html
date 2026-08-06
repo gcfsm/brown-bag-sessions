@@ -349,6 +349,8 @@
   .term .gold { color: var(--gold); }
   .term .rust { color: var(--rust); }
   .term .moss { color: var(--moss); }
+  /* The technical knowledge the "good" prompt quietly required. */
+  .term .key { color: var(--gold); }
 
   /* ---------- svg diagrams ---------- */
 
@@ -729,9 +731,9 @@
       count yes values."
 
 <span class="moss">Good:</span> "Build a single-file HTML page for a volunteer sign-up
-      list. Plain HTML/JS, no framework, no build step — it
+      list. Plain HTML/JS, <span class="key">no framework</span>, <span class="key">no build step</span> — it
       needs to run by just opening the file. People can add
-      their name to a shift; store it in localStorage so it
+      their name to a shift; store it in <span class="key">localStorage</span> so it
       survives a page refresh. Keep it to one file."</pre>
       </div>
       <p class="lede">The bad prompt dictates <em style="color:var(--rust)">how</em> — defeats the point of having Claude write it. The good prompt states the <em style="color:var(--moss)">what</em> and the <em style="color:var(--moss)">constraints</em>, leaves the how to Claude.</p>
@@ -762,14 +764,15 @@
     </section>
 
     <!-- 17 -->
-    <section class="slide" id="s17" data-label="4 · reviewing ai diffs">
-      <p class="eyebrow">Session 1's habit. Higher volume, same discipline.</p>
-      <h2 class="headline">What to actually check</h2>
+    <section class="slide" id="s17" data-label="4 · reviewing ai diffs" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
+      <p class="eyebrow">Session 1's habit, at a different altitude</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Ask what it did. Then check the part a summary can't prove.</h2>
       <ul class="ledger">
-        <li><span class="mark">01</span><span><strong>Does it do what you asked</strong> — <span class="note">not "does it look plausible," does it match the prompt</span></span></li>
-        <li><span class="mark">02</span><span><strong>Does it match existing patterns</strong> — <span class="note">a good diff follows the repo's conventions instead of inventing new ones next to them</span></span></li>
-        <li><span class="mark">03</span><span><strong>Anything that looks hallucinated</strong> — <span class="note">an import, method, or config option that doesn't actually exist — often confident-sounding and syntactically perfect</span></span></li>
+        <li><span class="mark">01</span><span><strong>Start with a summary</strong> &mdash; <span class="note">&ldquo;what did you change, and why?&rdquo; At volume this is how you keep up. It only works because something else is checking the code</span></span></li>
+        <li><span class="mark">02</span><span><strong>Trust the check for what runs</strong> &mdash; <span class="note">an invented import or method dies the moment the code runs. Session 2's CI catches those without you reading a line</span></span></li>
+        <li><span class="mark">03</span><span><strong>Read closely where being wrong is silent</strong> &mdash; <span class="note">right answer to the wrong question, real data touched, auth and permissions. Working code can still be the wrong code, and nothing red will tell you</span></span></li>
       </ul>
+      <p class="lede">A summary is only as good as your ability to judge it. <strong style="color:var(--parchment)">Read diffs until you can</strong> &mdash; that is the skill the shortcut depends on.</p>
     </section>
 
     <!-- 18 -->

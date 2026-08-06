@@ -104,6 +104,20 @@ write it at all. The good prompt states the *what* (a sign-up list), the
 *constraints* (single file, no framework, no build step, localStorage), and
 leaves the implementation to Claude.
 
+**Say this out loud when you show the good prompt.** Look at what writing it
+actually required: knowing that a framework is optional, that a build step is
+a thing you can decline, and that `localStorage` survives a page refresh.
+Those aren't wording choices — they're technical knowledge, and a beginner
+couldn't have produced that prompt. Claude wrote the code; someone still had
+to know what to ask for.
+
+That's the honest answer to "does this mean I don't need to learn to code
+anymore." No — it moves where your knowledge gets applied. It stops being
+about typing syntax from memory and starts being about knowing what to ask
+for, and recognising a wrong answer when you see one. Which is what the other
+nineteen sessions are for. On the slide, the three phrases that took knowing
+something are highlighted in gold.
+
 **Let Claude propose a plan before it writes code** — for anything beyond a
 few lines, ask it to outline its approach first ("what's your plan before
 you start writing?"). This costs one extra exchange and catches a
