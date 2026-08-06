@@ -12,6 +12,27 @@ self-explanatory on screen and need no script.
 
 ---
 
+## 2 — "Commit, push, pull, fetch — and the PR"
+
+**On screen:** the four git verbs, plus a row for PR.
+
+**Say the words out loud — the deck has never spelled them:**
+
+> One thing I want to say properly, because we all say the abbreviation
+> and nobody ever expands it. PR is a **pull request**.
+>
+> And it's a strange name until you know where it came from. You're asking
+> the person who owns the repository to *pull* your changes into theirs.
+> That was originally an email — Git has a command, `git request-pull`,
+> that writes one for you. GitHub built a web page around that idea and
+> the name stuck.
+>
+> So a pull request is three things stapled together: the diff of what you
+> changed, a conversation about it, and a button that merges it. You made
+> one last session. Today we're putting a gate in front of that button.
+
+---
+
 ## 4 — "Ten people branch Monday. Everyone merges Friday."
 
 **On screen:** the converging-branches diagram, one line underneath.
@@ -235,6 +256,37 @@ actually do for it, and when in the curriculum it lands.
 >
 > The name stuck, so any tool like this is now "a linter." Ours is ESLint,
 > and `npm run lint` is what runs it.
+
+---
+
+## 13 — "Anatomy of a workflow"
+
+**On screen:** the `ci.yml` file, annotated, and one line naming the format.
+
+**Name the format — nobody has, and they are about to hand-write one:**
+
+> Before we read this: the format is YAML — said "YAM-ul," rhymes with
+> camel. You'll meet it constantly — Actions, Firebase config, Docker,
+> Kubernetes — so it's worth knowing by name, and worth saying correctly.
+>
+> The name is a joke on itself: **YAML Ain't Markup Language**. It started
+> out as "Yet Another Markup Language," then got renamed once the authors
+> decided the point was that it carries data, not document markup.
+>
+> The thing to know today is that **indentation is the syntax**. In most
+> languages, indenting is a courtesy to the next reader. In YAML it's
+> structure. `jobs:` and the two-space-indented line under it are in a
+> parent-child relationship *because of the spaces*. Move them and you have
+> said something different.
+>
+> Two spaces per level, and never tabs — YAML rejects tabs outright.
+
+**Worth flagging now, because it fails unlike anything else:**
+
+> When you break YAML, the workflow doesn't fail — it never starts. There's
+> no run to open, no log to read from the bottom. GitHub just tells you the
+> file is invalid. So if you push and nothing at all happens, don't go
+> looking for a failed run. Check your indentation.
 
 ---
 

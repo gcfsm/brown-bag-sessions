@@ -374,8 +374,8 @@
   .two-col h3 { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.8rem; }
   .two-col ul { margin: 0; padding-left: 1.1rem; color: var(--parchment-dim); line-height: 1.7; font-size: 0.96rem; }
   .two-col ul li::marker { color: var(--gold-dim); }
-  .two-col.bad h3 { color: var(--rust); }
-  .two-col.good h3 { color: var(--moss); }
+  .two-col .bad h3 { color: var(--rust); }
+  .two-col .good h3 { color: var(--moss); }
 
   /* ---------- screenshots ---------- */
 
@@ -460,7 +460,7 @@
     <!-- 2 -->
     <section class="slide" id="s2" data-label="recap · git verbs">
       <p class="eyebrow">Quick refresh before today</p>
-      <h2 class="headline">Commit, push, pull, fetch</h2>
+      <h2 class="headline">Commit, push, pull, fetch &mdash; and the PR</h2>
       <div class="table-wrap">
         <table style="max-width:64rem;">
           <thead><tr><th>Verb</th><th>What it actually does</th></tr></thead>
@@ -469,6 +469,7 @@
             <tr><td><code>git push</code></td><td><strong style="color:var(--parchment)">Publishes</strong> local commits to the remote — makes them visible to anyone else</td></tr>
             <tr><td><code>git fetch</code></td><td class="hi">Downloads what's new on the remote — doesn't touch your current branch</td></tr>
             <tr><td><code>git pull</code></td><td class="hi"><code>fetch</code> <strong>+</strong> <code>merge</code>, in one step — the one you've already used since Session 1</td></tr>
+            <tr><td><strong>PR</strong></td><td class="hi">A <strong style="color:var(--parchment)">pull request</strong> — asking that your branch be pulled into another. A diff, a discussion, and a merge button in one place</td></tr>
           </tbody>
         </table>
       </div>
@@ -649,6 +650,7 @@
       - run: npm run lint
       - run: npm test</pre>
       </div>
+      <p class="lede">This is <strong style="color:var(--parchment)">YAML</strong> &mdash; indentation is the syntax, not decoration. Two spaces, never tabs.</p>
     </section>
 
     <!-- 13 -->
@@ -755,6 +757,7 @@ git push -u origin add-ci-workflow</pre>
         <div>
           <h3>Common first-timer failures</h3>
           <ul>
+            <li>A YAML indentation slip &mdash; the workflow never starts, so there is no log</li>
             <li>Node version mismatch</li>
             <li>A file that works locally but was never committed</li>
             <li>A secret the runner doesn't have (Session 7)</li>
@@ -792,7 +795,7 @@ updates:
         <table style="max-width:56rem;">
           <thead><tr><th></th><th>Security alert</th><th>Routine version bump</th></tr></thead>
           <tbody>
-            <tr><td><strong>Why it opened</strong></td><td class="hi">A known CVE in a dependency</td><td>A newer version just exists</td></tr>
+            <tr><td><strong>Why it opened</strong></td><td class="hi">A known CVE &mdash; a published security flaw &mdash; in a dependency</td><td>A newer version just exists</td></tr>
             <tr><td><strong>Urgency</strong></td><td class="hi">Review and merge promptly</td><td>Merge when convenient, or batch</td></tr>
             <tr><td><strong>Safe default</strong></td><td colspan="2">CI passes + no breaking changes in the changelog → merge it</td></tr>
           </tbody>
