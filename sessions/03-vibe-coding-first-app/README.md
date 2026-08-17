@@ -75,7 +75,7 @@ you're used to — which is exactly why Section 4 below exists.
 
 ## 2. Starting a Project With Claude's Help
 
-**Deck:** [Slides 14–15](slides.html#s14)
+**Deck:** [Slides 14–16](slides.html#s14)
 
 Two starting points, and they call for different first moves:
 
@@ -118,6 +118,25 @@ for, and recognising a wrong answer when you see one. Which is what the other
 nineteen sessions are for. On the slide, the three phrases that took knowing
 something are highlighted in gold.
 
+**Point Claude at existing building blocks — don't hand-roll what already
+exists.** The same knowledge that makes a good prompt also tells you what
+*not* to ask Claude to build. An accessible dropdown, a date picker, a modal,
+form-validation UI — these are solved problems, and a hand-rolled version is
+usually subtly broken in ways a glance won't catch: keyboard navigation,
+focus traps, screen-reader labels. The move is to point Claude at a
+battle-tested library instead of asking it to reinvent one — less code to
+review, and the hard edge cases arrive already handled.
+
+For React specifically, the name worth knowing is
+[**shadcn/ui**](https://ui.shadcn.com) — accessible, composable components you
+copy straight into your project. It needs React and a build step, so the
+hands-on version belongs to Session 4's world, not today's single-file lab
+(which stays dependency-free on purpose, so the session stays about the
+workflow and not about setup). But the *instinct* starts now: before you ask
+Claude to build a component, ask whether a good version already exists. That
+question — "is this already a solved problem?" — is itself part of the
+development skill this session is really teaching.
+
 **Let Claude propose a plan before it writes code** — for anything beyond a
 few lines, ask it to outline its approach first ("what's your plan before
 you start writing?"). This costs one extra exchange and catches a
@@ -127,7 +146,7 @@ misunderstanding while it's still a sentence, not a diff.
 
 ## 3. Iterating on Prompts vs. Iterating on Code
 
-**Deck:** [Slide 16](slides.html#s16)
+**Deck:** [Slide 17](slides.html#s17)
 
 Once Claude has written something, you have two ways to fix what's wrong —
 knowing which is faster is the actual skill:
@@ -156,7 +175,7 @@ wrong (Session 1's whole point).
 
 ## 4. Reviewing AI-Generated Code Before Accepting It
 
-**Deck:** [Slides 17–18](slides.html#s17)
+**Deck:** [Slides 18–19](slides.html#s18)
 
 This is Session 1's diff-review discipline, applied to a much higher volume
 of generated code than a human typing by hand would ever produce in the same
@@ -182,7 +201,7 @@ way you would (or should) with your own code before opening a PR.
 
 ## 5. Committing, Pushing, and Letting CI + Branch Protection Do Their Job
 
-**Deck:** [Slide 19](slides.html#s19)
+**Deck:** [Slide 20](slides.html#s20)
 
 This is the loop closing — Session 1's mechanics and Session 2's required
 check, exercised on a real PR from work you did today, with Claude doing
@@ -214,7 +233,7 @@ keyboard or Claude's.
 
 ## 6. Common Failure Modes
 
-**Deck:** [Slide 20](slides.html#s20)
+**Deck:** [Slide 21](slides.html#s21)
 
 Set expectations before they hit one, not after:
 
@@ -228,7 +247,7 @@ Set expectations before they hit one, not after:
 
 ## Hands-On Lab
 
-**Deck:** [Slides 21–22](slides.html#s21)
+**Deck:** [Slides 22–23](slides.html#s22)
 
 **The default task: a volunteer sign-up page.** Everyone builds the same
 thing unless they'd rather not — a shared task means a pair that gets stuck
@@ -290,6 +309,12 @@ Good:   "Build a single-file HTML page for a volunteer sign-up list.
 - "this should work" energy, with no actual local run to back it up
 - a diff so big you're skimming instead of reading
 
+# before asking Claude to BUILD a component, ask if it already exists
+- hand-rolled dropdown / date picker / modal -> usually subtly broken
+  (keyboard nav, focus traps, screen-reader labels)
+- "use a battle-tested library instead" -> less to review, a11y handled
+- React later? shadcn/ui (Session 4). one file today? stay dependency-free
+
 # the loop, same as Sessions 1 & 2, Claude typing instead of you
 git checkout -b <branch-name>
 # Claude writes it, you review it
@@ -303,8 +328,9 @@ git push -u origin <branch-name>
 
 ## Homework Before Next Session
 
-**Deck:** [Slide 23](slides.html#s23)
+**Deck:** [Slide 24](slides.html#s24)
 
 - [ ] Extend the tool built in-session with one more small feature, same PR discipline (branch → Claude → review → PR → CI → merge)
 - [ ] Deliberately spot-check one Claude-authored diff for a hallucinated API/method before running it
 - [ ] Write one vague prompt and one good prompt for the same small task, and notice the difference in what comes back
+- [ ] Find one thing your tool hand-rolls (a control, a bit of layout) and name an existing library that already solves it — note what you'd change if you rebuilt it that way
