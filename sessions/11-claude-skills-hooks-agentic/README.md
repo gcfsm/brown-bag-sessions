@@ -12,7 +12,18 @@ Session 3 (Vibe Coding), comfort with Git
 
 ## Topics to Cover (outline — expand with full detail)
 
-- Claude Skills — what they are, how to write one
+> **Hand-off from Session 3.** Skills and Routines are now *introduced*
+> practically in Session 3's Act II (make a skill, improve it when it misfires,
+> scope one simple routine). This session is the **deep version**, not the
+> first encounter — assume attendees have already made and tuned a skill, and
+> spend the time here on what Session 3 deliberately left out: Hooks, Githooks,
+> agentic loops, `git worktree`, building a real MCP server, and Routines as
+> the payoff of that build. Recap Skills briefly, then go past it.
+
+- Claude Skills — what they are, how to write one (recap from Session 3's Act
+  II, then go deeper: skill structure, `skill-creator` for authoring/eval, and
+  `/skill-doctor` for diagnosing why a skill isn't triggering — the power tools
+  Session 3 named but deferred here)
 - Claude Hooks
 - Githooks (pre-commit, pre-push) vs. Claude Hooks — how they differ
 - Agentic loops — what "agentic" means in practice
@@ -25,10 +36,15 @@ Session 3 (Vibe Coding), comfort with Git
   - Building a minimal MCP server from scratch (e.g. wrapping a simple internal API or the sandbox app's data)
   - Connecting the MCP server to Claude and testing a real tool call end-to-end
   - Where this fits for church projects — e.g. an MCP server over Ocean SIS data, generalized for teaching purposes
-- **Routines — work that runs without you**
+- **Routines — work that runs without you** (deep version; Session 3's Act II
+  already introduced the practical shape — saved prompt + scope + trigger, runs
+  as you, proposes rather than gates — so build on that rather than re-teaching
+  it from zero)
   - Completes the arc this session already sets up: a Skill gives Claude
     *knowledge*, an MCP server gives it *tools*, a Routine gives it *a reason
-    to start*. Nobody has to be at a keyboard
+    to start*. Nobody has to be at a keyboard. This is why routines land more
+    fully here than in Session 3: only after the MCP-server build does "it
+    starts itself" mean starting a *tool you made*, not just re-running a prompt
   - What one is: a saved prompt plus the repositories, cloud environment and
     connectors it's allowed to touch. Runs on Anthropic's infrastructure, so
     it fires with your laptop shut
@@ -93,8 +109,12 @@ Server build + Routines) and the split is no longer optional — it's two
 - **Part B:** Agentic loops, building a minimal MCP server, then Routines
   (hands-on build, needs the most lab time of anything in this block)
 
-Routines belong at the very end of Part B and nowhere else. The whole point
-lands only after they've built an MCP server: a routine is what happens when
-the thing you built starts itself. Teaching it before that makes it sound
-like cron with extra steps.
+Within *this* session, routines belong at the very end of Part B, after the
+MCP-server build — not beside it. (Session 3's Act II is the one earlier place
+they appear, and deliberately so: there they're the practical "the loop can run
+without you" step. Here they're the deeper payoff.) The full point lands only
+after they've built an MCP server: a routine is what happens when the thing you
+built starts itself. Teaching *that* version before the build makes it sound
+like cron with extra steps — so recap Session 3's practical routine, then show
+what changes once there's a real tool for it to run.
 
