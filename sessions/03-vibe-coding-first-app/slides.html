@@ -871,7 +871,94 @@ claude
     </section>
 
     <!-- 24 -->
-    <section class="slide" id="s24" data-label="homework">
+    <section class="slide" id="s24" data-label="act ii · make claude yours">
+      <p class="eyebrow">You shipped one thing. Now stop starting from scratch.</p>
+      <p class="pull">The loop you just ran works every time &mdash; but Claude forgets <em>you</em> the moment the session ends.</p>
+      <div class="flow">
+        <span class="step">the one-off loop</span><span class="arrow">&rarr;</span>
+        <span class="step">a skill it remembers</span><span class="arrow">&rarr;</span>
+        <span class="step hi">a routine that starts itself</span>
+      </div>
+      <p class="lede">The next three slides are that progression: teach Claude how <strong style="color:var(--parchment)">you</strong> work once, keep that lesson sharp, then let it run without you in the room. This is the part we configure together &mdash; you'll leave with it set up, not just described.</p>
+    </section>
+
+    <!-- 25 -->
+    <section class="slide" id="s25" data-label="skills" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
+      <p class="eyebrow">Teach it once, not every session</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">A skill is knowledge Claude picks up only when it's needed</h2>
+      <div class="two-col">
+        <div>
+          <h3>CLAUDE.md &mdash; always on the desk</h3>
+          <ul>
+            <li>Read every session, counts against context every message (slide 5)</li>
+            <li>For the few things always true: the stack, how to run it</li>
+          </ul>
+        </div>
+        <div>
+          <h3>A skill &mdash; pulled off the shelf</h3>
+          <ul>
+            <li>Sits unread until its <em>description</em> matches what you're doing</li>
+            <li>For knowledge you need sometimes: &ldquo;how we build for the church&rdquo;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="term" style="max-width:46rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;.claude/skills/church-conventions/SKILL.md</div>
+        <pre><span class="cmt">---</span>
+name: church-conventions
+<span class="key">description</span>: How we build GCF apps &mdash; stack, naming,
+             review rules. Use for any church project.
+<span class="cmt">---</span>
+Firestore for data. No frameworks in single-file tools.
+Every PR needs a passing check and a second reviewer&hellip;</pre>
+      </div>
+      <p class="lede">Make one with <code>/skills</code>, or just ask Claude to write it. The <strong style="color:var(--gold)">description is the trigger</strong> &mdash; it's what tells Claude when to reach for this shelf.</p>
+    </section>
+
+    <!-- 26 -->
+    <section class="slide" id="s26" data-label="the feedback loop">
+      <p class="eyebrow">Skills get better the way prompts do</p>
+      <h2 class="headline">When a skill misfires, fix the skill &mdash; not just this session</h2>
+      <ul class="ledger">
+        <li><span class="mark">01</span><span><strong>It didn't trigger</strong> &mdash; <span class="note">Claude ignored a skill that should have applied. The fix is almost always the <em>description</em> &mdash; it didn't match how you actually asked</span></span></li>
+        <li><span class="mark">02</span><span><strong>It triggered but did the wrong thing</strong> &mdash; <span class="note">the instructions were vague or wrong. Same habit as slide 17: say <em>why</em> it was wrong, then edit the skill so the next run starts correct</span></span></li>
+        <li><span class="mark">03</span><span><strong>Every fix compounds</strong> &mdash; <span class="note">it's banked for everyone who has the skill, from now on &mdash; unlike a one-off correction that dies when the session clears</span></span></li>
+      </ul>
+      <p class="lede">The power tools come later (Session 11): <code>skill-creator</code> to draft and test one, <code>/skill-doctor</code> to diagnose why one isn't triggering. <strong style="color:var(--parchment)">Today the loop is enough: use it, watch it miss, tighten it.</strong></p>
+    </section>
+
+    <!-- 27 -->
+    <section class="slide" id="s27" data-label="routines" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
+      <p class="eyebrow">The last step &mdash; it starts itself</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">A routine is the loop, running with nobody at the keyboard</h2>
+      <ul class="ledger" style="max-width:54rem;">
+        <li><span class="mark">01</span><span><strong>What it is</strong> &mdash; <span class="note">a saved prompt plus the repos, environment and connectors it may touch. Runs on Anthropic's servers on a schedule or an event &mdash; your laptop can be shut</span></span></li>
+        <li><span class="mark">02</span><span><strong>No permission prompts, and it acts as you</strong> &mdash; <span class="note">its commits, PRs and messages carry <em>your</em> name. So the lesson is <strong style="color:var(--parchment)">scoping</strong>, not scheduling: give it only the repos and connectors it needs</span></span></li>
+        <li><span class="mark">03</span><span><strong>A routine proposes; CI decides</strong> &mdash; <span class="note">it reads and suggests (a weekly triage, a security scan). Session 2's check is still the gate &mdash; never make a routine the thing that has to pass</span></span></li>
+      </ul>
+      <p class="lede">We'll set a simple one up together &mdash; and build the deeper, tool-calling version in <strong style="color:var(--gold)">Session 11</strong>, where a routine is what happens once you've given Claude real tools to run.</p>
+    </section>
+
+    <!-- 28 -->
+    <section class="slide" id="s28" data-label="act ii lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
+      <p class="eyebrow">Your turn again &mdash; in your working environment</p>
+      <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Make one skill, then make it better</h2>
+      <div class="term" style="max-width:46rem;">
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;claude</div>
+        <pre>/skills
+<span class="cmt"># 1. create a small skill for your sandbox &mdash; e.g. "commit-style":</span>
+<span class="cmt">#    how you want commit messages written</span>
+
+<span class="cmt"># 2. use it on a real change; watch whether it triggers on its own</span>
+
+<span class="cmt"># 3. it missed, or got it wrong? tighten the description and the</span>
+<span class="cmt">#    instructions, then run it again</span></pre>
+      </div>
+      <p class="lede"><strong style="color:var(--gold)">Done when:</strong> your skill triggers on its own for the right task, and you've improved it at least once from watching it work. <strong style="color:var(--parchment)">Then we set up one routine together</strong> &mdash; scoped as a room, because it acts as whoever owns it.</p>
+    </section>
+
+    <!-- 29 -->
+    <section class="slide" id="s29" data-label="homework">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -879,6 +966,7 @@ claude
         <li><span class="mark">□</span><span>Spot-check one Claude-authored diff for a hallucinated API/method before running it</span></li>
         <li><span class="mark">□</span><span class="note">Write one vague prompt and one good prompt for the same task — notice the difference in what comes back</span></li>
         <li><span class="mark">□</span><span>Find one thing your tool hand-rolled and name a library that already solves it</span></li>
+        <li><span class="mark">□</span><span><strong style="color:var(--parchment)">Use the skill you made</strong> on a real task — when it misfires, tighten its description and note what changed</span></li>
       </ul>
       <p class="footline">Next — Session 4: React / Vite / Next.js Basics</p>
     </section>

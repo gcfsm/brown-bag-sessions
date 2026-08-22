@@ -1,12 +1,13 @@
-# Session: Firebase Deeper — Storage, Secret Manager, Custom Domain, Cloud Functions, Deploy CI/CD
+# Session: Firebase Deeper — Storage, Secret Manager, Custom Domain, Environments (Dev/Prod), Cloud Functions, Deploy CI/CD
 
 **Status:** [ ] Not started
 
 ## Goal
 
 Go beyond Firestore basics into Storage, secret management, custom domains,
-Cloud Functions, and deployment pipelines — including understanding when
-serverless is the right call versus a traditional cloud server.
+running separate dev and prod environments, Cloud Functions, and deployment
+pipelines — including understanding when serverless is the right call versus a
+traditional cloud server.
 
 ## Prerequisites
 
@@ -32,6 +33,40 @@ Session 6
   - When to use which — client-initiated action → onCall; reacting to data changes → event-triggered; time-based/recurring job → scheduled; public webhook or third-party integration → HTTP
   - Local emulation and testing before deploy
   - Cold start behavior in practice
+- **Dev vs. Prod environments — running two separate Firebase projects**
+  - **Why separate at all** — the point people miss until it bites them:
+    - You never test rules, functions, or a schema change against **real
+      people's data**. Dev is where a mistake is free; prod is where a mistake
+      has someone's name and phone number in it (forward-links to Session 13,
+      Data Privacy)
+    - A broken deploy in dev doesn't take the **live church site** down. The
+      blast radius of "oops" is the whole reason the split exists
+  - **The mechanics — one Firebase project per environment**
+    - Two projects, e.g. `gcf-app-dev` and `gcf-app-prod` — separate
+      Firestore data, separate Auth users, separate everything. They are *not*
+      two folders in one project; they are two projects
+    - `.firebaserc` holds project **aliases**, so `firebase use dev` /
+      `firebase use prod` switches which one you're pointed at, and
+      `firebase deploy --project prod` is explicit at deploy time
+    - The honest failure mode to warn about out loud: running a destructive
+      command while pointed at prod because you forgot to check `firebase use`.
+      Make "which project am I on?" a reflex
+  - **Config differs per environment, and that's the whole game**
+    - Separate secrets in Secret Manager (dev API keys ≠ prod API keys)
+    - Separate `apphosting.yaml` / functions config values per project
+    - Separate App Check registrations and reCAPTCHA keys (ties to Session 10)
+  - **The promotion path — how a change gets from dev to prod**
+    - CI (Session 2) deploys the dev branch to the **dev** project
+      automatically, so every merge is exercised somewhere real but harmless
+    - Prod deploy is gated: it happens only on a merge to the **production
+      branch**, behind the same required checks and branch protection from
+      Session 2 (this is where Session 4's "merging a PR ships to production"
+      gets its guard rails)
+  - **The honest small-church scope** — say this so nobody over-builds:
+    **dev + prod is the sane minimum**, and it's worth the setup. A third
+    "staging" environment is usually overkill at church-project scale — name
+    it as a thing that exists at bigger companies, and skip it here until
+    there's a real reason
 - Deploy CI/CD — wiring Firebase deploy into GitHub Actions from Session 2
 
 ## Agenda (TBD)
@@ -56,8 +91,15 @@ _What attendees should do before the next session._
 ## Facilitator Note
 
 This session is now fairly dense (Storage + Secret Manager + Custom Domain +
-Serverless comparison + Cloud Functions + Deploy CI/CD). Consider splitting
-into two 1hr parts if running strictly to the 1hr format:
+Dev/Prod environments + Serverless comparison + Cloud Functions + Deploy
+CI/CD). Consider splitting into two 1hr parts if running strictly to the 1hr
+format:
 - **Part A:** Storage, Secret Manager, Custom Domain
-- **Part B:** Serverless vs. servers comparison, Cloud Functions, Deploy CI/CD
+- **Part B:** Serverless vs. servers comparison, Cloud Functions, Dev/Prod
+  environments, Deploy CI/CD
+
+Dev/Prod environments sits in Part B next to Deploy CI/CD deliberately: the
+two-project split only makes sense once you're actually deploying, since the
+promotion path (dev branch → dev project, prod branch → prod project) *is* a
+CI/CD wiring decision, not a separate topic.
 
