@@ -142,6 +142,22 @@ few lines, ask it to outline its approach first ("what's your plan before
 you start writing?"). This costs one extra exchange and catches a
 misunderstanding while it's still a sentence, not a diff.
 
+**Aside: match the model to the task.** Once you're working across more than
+one Claude model, the same "know what to ask for" instinct from above applies
+to *which model* you hand the work to, not just how you phrase the prompt:
+
+- **Planning and genuinely complex work** (architecture decisions, tricky
+  bugs, anything where a wrong first move is expensive to unwind) — reach for
+  the strongest model available (e.g. Opus).
+- **Mechanical, well-specified work** (renaming, boilerplate, applying a
+  pattern you've already decided on) — a faster, cheaper model (e.g. Sonnet
+  or Haiku) does it just as well, faster and for less.
+
+You don't need to think hard about this every time — as a rule of thumb,
+plan with your strongest model, then delegate the mechanical follow-through
+to a lighter one. This matters more as your usage grows; keep it in the back
+of your mind for now.
+
 ---
 
 ## 3. Iterating on Prompts vs. Iterating on Code
@@ -482,6 +498,10 @@ git add .
 git commit -m "message"            # small, checkpointed, not one giant commit
 git push -u origin <branch-name>
 # open PR -> watch the check run -> partner reviews -> merge
+
+# which model, for what (Section 2 aside)
+plan / complex work    -> strongest model (e.g. Opus)
+mechanical, well-spec'd -> faster/cheaper model (e.g. Sonnet, Haiku)
 
 # Act II: make Claude yours (Sections 7-9)
 CLAUDE.md   -> always read (on the desk) -> the few things always true
