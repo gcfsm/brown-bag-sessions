@@ -158,6 +158,20 @@ plan with your strongest model, then delegate the mechanical follow-through
 to a lighter one. This matters more as your usage grows; keep it in the back
 of your mind for now.
 
+**What this looks like in practice — a real session, tiered this way:**
+
+| Lane | Cost | Share |
+|---|---|---|
+| Sonnet 5 (orchestrator + all Sonnet sub-agents) | $89.66 | 80% |
+| Opus 5 (planning + investigation) | $16.04 | 14% |
+| Opus 4.8 (early planning) | $5.88 | 5% |
+
+Total spend: $111.59 across 40 issues closed/fixed — about $2.79/issue. The
+split is the point: Sonnet carries most of the actual implementation volume,
+while the expensive models are reserved for planning and the genuinely hard
+or risky work. That 80/14/5 shape is what "tier by task, not by default" looks
+like once you measure it.
+
 ---
 
 ## 3. Iterating on Prompts vs. Iterating on Code
