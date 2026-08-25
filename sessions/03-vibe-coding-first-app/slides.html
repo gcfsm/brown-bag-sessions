@@ -830,7 +830,7 @@ git push -u origin add-volunteer-signup
 
     <!-- 22 -->
     <section class="slide" id="s22" data-label="hands-on lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
-      <p class="eyebrow">Your turn &mdash; in pairs, in your sandbox fork</p>
+      <p class="eyebrow">Act I lab &middot; in pairs, in your sandbox fork</p>
       <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Build the volunteer sign-up page</h2>
       <div class="term" style="max-width:46rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
@@ -867,7 +867,7 @@ claude
         <span class="step">a skill it remembers</span><span class="arrow">&rarr;</span>
         <span class="step hi">a routine that starts itself</span>
       </div>
-      <p class="lede">Next three slides: teach Claude how <strong style="color:var(--parchment)">you</strong> work, keep it sharp, then let it run without you. <strong style="color:var(--gold)">We set this up together</strong> &mdash; you leave with it working, not just described.</p>
+      <p class="lede">Over the next three slides: teach Claude how <strong style="color:var(--parchment)">you</strong> work, keep it sharp, then let it run without you. <strong style="color:var(--gold)">We set this up together</strong> &mdash; you leave with it working, not just described.</p>
     </section>
 
     <!-- 25 -->
@@ -878,12 +878,12 @@ claude
         <div>
           <h3>CLAUDE.md &mdash; always on the desk</h3>
           <ul>
-            <li>Read every session, counts against context every message (slide 5)</li>
+            <li>Read every session &mdash; it takes up context on every message</li>
             <li>For the few things always true: the stack, how to run it</li>
           </ul>
         </div>
         <div>
-          <h3>A skill &mdash; pulled off the shelf</h3>
+          <h3>A skill &mdash; loaded only when relevant</h3>
           <ul>
             <li>Sits unread until its <em>description</em> matches what you're doing</li>
             <li>For knowledge you need sometimes: &ldquo;how we build for the church&rdquo;</li>
@@ -900,7 +900,7 @@ name: church-conventions
 Firestore for data. No frameworks in single-file tools.
 Every PR needs a passing check and a second reviewer&hellip;</pre>
       </div>
-      <p class="lede">Make one with <code>/skills</code>, or just ask Claude to write it. The <strong style="color:var(--gold)">description is the trigger</strong> &mdash; it's what tells Claude when to reach for this shelf.</p>
+      <p class="lede">Make one with <code>/skills</code>, or just ask Claude to write it. The <strong style="color:var(--gold)">description is the trigger</strong> &mdash; it's what tells Claude when to use the skill.</p>
     </section>
 
     <!-- 26 -->
@@ -909,7 +909,7 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
       <h2 class="headline">When a skill misfires, fix the skill &mdash; not just this session</h2>
       <ul class="ledger">
         <li><span class="mark">01</span><span><strong>It didn't trigger</strong> &mdash; <span class="note">Claude ignored a skill that should have applied. The fix is almost always the <em>description</em> &mdash; it didn't match how you actually asked</span></span></li>
-        <li><span class="mark">02</span><span><strong>It triggered but did the wrong thing</strong> &mdash; <span class="note">the instructions were vague or wrong. Same habit as slide 17: say <em>why</em> it was wrong, then edit the skill so the next run starts correct</span></span></li>
+        <li><span class="mark">02</span><span><strong>It triggered but did the wrong thing</strong> &mdash; <span class="note">the instructions were vague or wrong. Say <em>why</em> it was wrong, then edit the skill so the next run starts right</span></span></li>
         <li><span class="mark">03</span><span><strong>Every fix compounds</strong> &mdash; <span class="note">it's banked for everyone who has the skill, from now on &mdash; unlike a one-off correction that dies when the session clears</span></span></li>
       </ul>
       <p class="lede">Power tools come in <strong style="color:var(--gold)">Session 11</strong> (<code>skill-creator</code>, <code>/skill-doctor</code>). Today the loop is enough: <strong style="color:var(--parchment)">use it, watch it miss, tighten it.</strong></p>
@@ -929,7 +929,7 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
 
     <!-- 28 -->
     <section class="slide" id="s28" data-label="act ii lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
-      <p class="eyebrow">Your turn again &mdash; in your working environment</p>
+      <p class="eyebrow">Act II lab &middot; on your own machine, in your sandbox fork</p>
       <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Make one skill, then make it better</h2>
       <div class="term" style="max-width:46rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;claude</div>
@@ -942,7 +942,7 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
 <span class="cmt"># 3. it missed, or got it wrong? tighten the description and the</span>
 <span class="cmt">#    instructions, then run it again</span></pre>
       </div>
-      <p class="lede"><strong style="color:var(--gold)">Done when:</strong> your skill triggers on its own, and you've improved it once from watching it work. <strong style="color:var(--parchment)">Then one routine, together</strong> &mdash; scoped carefully, because it acts as whoever owns it.</p>
+      <p class="lede"><strong style="color:var(--gold)">Done when:</strong> your skill triggers on its own, and you've improved it once from watching it work. <strong style="color:var(--parchment)">Then one routine, together</strong> &mdash; scoped carefully, because a routine runs as you.</p>
     </section>
 
     <!-- 29 -->
@@ -954,7 +954,7 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
         <li><span class="mark">02</span><span><strong>What should we keep doing?</strong> &mdash; <span class="note">the thing that worked and is easy to drop by accident &mdash; call it out so it survives into the next session on purpose</span></span></li>
         <li><span class="mark">03</span><span><strong>What should we stop doing?</strong> &mdash; <span class="note">the habit that cost more than it gave &mdash; retire it deliberately instead of carrying it forward out of momentum</span></span></li>
       </ul>
-      <p class="lede">It's slide 26's feedback loop aimed at the <em>room</em>, not a skill: a fix we agree on here is <strong style="color:var(--parchment)">banked into the next session</strong> &mdash; the process improves the way the skills do, one honest correction at a time.</p>
+      <p class="lede">Same idea as fixing a skill, aimed at the <em>room</em> instead: a change we agree on here <strong style="color:var(--parchment)">carries into the next session</strong>, so how we work keeps improving &mdash; one honest correction at a time.</p>
     </section>
 
     <!-- 30 -->
