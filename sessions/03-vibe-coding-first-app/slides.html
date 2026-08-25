@@ -651,7 +651,7 @@
     <!-- 10 -->
     <section class="slide" id="s10" data-label="before you touch a keyboard">
       <p class="eyebrow">Before you touch a keyboard</p>
-      <p class="pull">You're about to let Claude make sweeping, fast changes — <em>on purpose</em>. The only reason that's safe instead of reckless is that the two things protecting you were already in place before today started.</p>
+      <p class="pull">You're about to let Claude make sweeping, fast changes — <em>on purpose</em>. That's safe, not reckless, only because your two safety nets from Sessions 1 and 2 are already up.</p>
       <div class="flow">
         <span class="step">s1 · history &amp; branches</span><span class="arrow">+</span>
         <span class="step">s2 · required check</span><span class="arrow">=</span>
@@ -669,14 +669,15 @@
         <span class="step">run it</span><span class="arrow">&rarr;</span>
         <span class="step hi">ship it through CI</span>
       </div>
-      <p class="lede"><strong style="color:var(--gold)">You'll do this yourself at the end.</strong> Everything until the lab is that loop, one step at a time &mdash; not theory.</p>
-      <p class="lede">No React today &mdash; a CLI script or single-file page. Frameworks are Session 4; adding one here makes today about setup, not the workflow.</p>
+      <p class="lede"><strong style="color:var(--gold)">You'll do this yourself at the end.</strong> Everything before the lab walks the same loop, one step at a time &mdash; you'll practice it, not just watch.</p>
+      <p class="lede">No React today &mdash; just a CLI script or a single-file page. Frameworks come in Session 4; pulling one in now would make today about setup instead of the workflow.</p>
     </section>
 
     <!-- 12 -->
     <section class="slide" id="s12" data-label="1 · what vibe coding means">
-      <p class="eyebrow">Coined by Andrej Karpathy, early 2025</p>
-      <h2 class="headline">Drive development through prompts, not hand-typed lines</h2>
+      <p class="eyebrow">Step 1 of 6 &middot; Coined by Andrej Karpathy, early 2025</p>
+      <h2 class="headline">What is vibe coding?</h2>
+      <p class="lede">Driving development through prompts and fast iteration, not hand-typing every line &mdash; you describe what you want, Claude writes it, you run it and course-correct.</p>
       <div class="two-col">
         <div class="good">
           <h3>Good fit</h3>
@@ -701,12 +702,12 @@
     <section class="slide" id="s13" data-label="review still applies">
       <p class="eyebrow">What today is not</p>
       <p class="pull">Vibe coding doesn't mean <em>skipping</em> review. It means <em>more</em> review.</p>
-      <p class="lede">More code, faster, means <strong style="color:var(--parchment)">more to read, not less.</strong> Same bar as Sessions 1 and 2 &mdash; read the diff, require a passing check, get a second pair of eyes &mdash; whether you typed it or Claude did.</p>
+      <p class="lede">More code, faster, means <strong style="color:var(--parchment)">more to read, not less.</strong> Same bar as Sessions 1 and 2 &mdash; read the diff, require a passing check, get a second pair of eyes.</p>
     </section>
 
     <!-- 14 -->
     <section class="slide" id="s14" data-label="2 · starting a project">
-      <p class="eyebrow">Two starting points, two different first moves</p>
+      <p class="eyebrow">Step 2 of 6 &middot; Two starting points, two first moves</p>
       <h2 class="headline">Starting a project with Claude's help</h2>
       <div class="table-wrap">
         <table style="max-width:56rem;">
@@ -732,9 +733,9 @@
 
 <span class="moss">Good:</span> "Build a single-file HTML page for a volunteer sign-up
       list. Plain HTML/JS, <span class="key">no framework</span>, <span class="key">no build step</span> — it
-      needs to run by just opening the file. People can add
-      their name to a shift; store it in <span class="key">localStorage</span> so it
-      survives a page refresh. Keep it to one file."</pre>
+      should run by just opening the file. People add their
+      name to a shift; store it in <span class="key">localStorage</span> so it
+      survives a refresh."</pre>
       </div>
       <p class="lede">The bad prompt dictates <em style="color:var(--rust)">how</em> — defeats the point of having Claude write it. The good prompt states the <em style="color:var(--moss)">what</em> and the <em style="color:var(--moss)">constraints</em>, leaves the how to Claude.</p>
     </section>
@@ -765,37 +766,24 @@
     </section>
 
     <!-- 17 -->
-    <section class="slide" id="s17" data-label="3 · redirect or restart">
-      <p class="eyebrow">The call you make ten times a session</p>
-      <h2 class="headline">Redirect the thread, or start a fresh one?</h2>
-      <div class="two-col">
-        <div>
-          <h3>Redirect</h3>
-          <ul>
-            <li>The approach is close, one decision is wrong</li>
-            <li>It still holds context you'd have to rebuild</li>
-            <li>Say <em>why</em> it's wrong, not just &ldquo;fix it&rdquo;</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Start over</h3>
-          <ul>
-            <li>You've corrected the same thing twice</li>
-            <li>The thread is mostly wrong turns now &mdash; that's what gets re-sent every message</li>
-            <li><code>/clear</code>, then one better prompt</li>
-          </ul>
-        </div>
-      </div>
-      <p class="lede"><strong style="color:var(--gold)">Small, checkpointed asks beat one giant prompt</strong> &mdash; small diffs are the ones you can actually review, and cleanly revert when wrong.</p>
+    <section class="slide" id="s17" data-label="3 · when it's wrong">
+      <p class="eyebrow">Step 3 of 6 &middot; Claude got it wrong &mdash; now what?</p>
+      <h2 class="headline">Redirect, fix it yourself, or start clean</h2>
+      <ul class="ledger">
+        <li><span class="mark">01</span><span><strong>Redirect the thread</strong> &mdash; <span class="note">the approach is close, one decision is wrong, and the chat still holds context worth keeping. Tell Claude <em>why</em> it's wrong, not just &ldquo;fix it&rdquo;</span></span></li>
+        <li><span class="mark">02</span><span><strong>Just fix it yourself</strong> &mdash; <span class="note">a one-line change you already know the answer to. Editing the file is faster than explaining it back to Claude</span></span></li>
+        <li><span class="mark">03</span><span><strong>Start clean</strong> &mdash; <span class="note">you've corrected the same thing twice and the chat is mostly wrong turns now &mdash; and every message re-sends all of them. <code>/clear</code>, then one better prompt</span></span></li>
+      </ul>
+      <p class="lede">Keep each ask <strong style="color:var(--gold)">small and checkpointed</strong> and there's less to undo when one goes wrong &mdash; a small diff is easy to review, and easy to revert.</p>
     </section>
 
     <!-- 18 -->
     <section class="slide" id="s18" data-label="4 · reviewing ai diffs" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
-      <p class="eyebrow">Session 1's habit, at a different altitude</p>
+      <p class="eyebrow">Step 4 of 6 &middot; Reviewing what Claude wrote</p>
       <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Ask what it did. Then check the part a summary can't prove.</h2>
       <ul class="ledger">
         <li><span class="mark">01</span><span><strong>Start with a summary</strong> &mdash; <span class="note">&ldquo;what did you change, and why?&rdquo; At volume this is how you keep up. It only works because something else is checking the code</span></span></li>
-        <li><span class="mark">02</span><span><strong>Trust the check for what runs</strong> &mdash; <span class="note">an invented import or method dies the moment the code runs. Session 2's CI catches those without you reading a line</span></span></li>
+        <li><span class="mark">02</span><span><strong>Let the check catch the loud bugs</strong> &mdash; <span class="note">a made-up import or method (Claude's classic slip) crashes the instant the code runs, so Session 2's CI flags it for you. You don't spend your own attention there</span></span></li>
         <li><span class="mark">03</span><span><strong>Read closely where being wrong is silent</strong> &mdash; <span class="note">right answer to the wrong question, real data touched, auth and permissions. Working code can still be the wrong code, and nothing red will tell you</span></span></li>
       </ul>
       <p class="lede">A summary is only as good as your ability to judge it. <strong style="color:var(--parchment)">Read diffs until you can</strong> &mdash; that is the skill the shortcut depends on.</p>
@@ -805,12 +793,12 @@
     <section class="slide" id="s19" data-label="evidence, not confidence">
       <p class="eyebrow">The check that actually matters</p>
       <p class="pull">Claude's confidence is <em>not</em> evidence.</p>
-      <p class="lede">&ldquo;This should work&rdquo; and &ldquo;I ran it &mdash; here's the output&rdquo; are different claims. You needn't run it yourself; have Claude run it and show you. <strong style="color:var(--parchment)">Never accept a change nothing has executed.</strong></p>
+      <p class="lede">&ldquo;This should work&rdquo; is a guess; &ldquo;I ran it &mdash; here's the output&rdquo; is proof. Have Claude run the code and show you the result &mdash; <strong style="color:var(--parchment)">don't accept anything that hasn't actually run.</strong></p>
     </section>
 
     <!-- 20 -->
     <section class="slide" id="s20" data-label="5 · shipping it">
-      <p class="eyebrow">The loop closing — Claude typing, you still driving</p>
+      <p class="eyebrow">Step 5 of 6 &middot; Claude typing, you still driving</p>
       <h2 class="headline">Commit, push, let CI do its job</h2>
       <div class="term" style="max-width:38rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
@@ -826,7 +814,7 @@ git push -u origin add-volunteer-signup
 
     <!-- 21 -->
     <section class="slide" id="s21" data-label="6 · failure modes">
-      <p class="eyebrow">Set expectations before they hit one</p>
+      <p class="eyebrow">Step 6 of 6 &middot; Set expectations before they hit one</p>
       <h2 class="headline">Common failure modes</h2>
       <div class="table-wrap">
         <table style="max-width:70rem;">
@@ -842,7 +830,7 @@ git push -u origin add-volunteer-signup
 
     <!-- 22 -->
     <section class="slide" id="s22" data-label="hands-on lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
-      <p class="eyebrow">Your turn &mdash; in pairs, in your sandbox fork</p>
+      <p class="eyebrow">Act I lab &middot; in pairs, in your sandbox fork</p>
       <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Build the volunteer sign-up page</h2>
       <div class="term" style="max-width:46rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
@@ -879,7 +867,7 @@ claude
         <span class="step">a skill it remembers</span><span class="arrow">&rarr;</span>
         <span class="step hi">a routine that starts itself</span>
       </div>
-      <p class="lede">Next three slides: teach Claude how <strong style="color:var(--parchment)">you</strong> work, keep it sharp, then let it run without you. <strong style="color:var(--gold)">We set this up together</strong> &mdash; you leave with it working, not just described.</p>
+      <p class="lede">Over the next three slides: teach Claude how <strong style="color:var(--parchment)">you</strong> work, keep it sharp, then let it run without you. <strong style="color:var(--gold)">We set this up together</strong> &mdash; you leave with it working, not just described.</p>
     </section>
 
     <!-- 25 -->
@@ -890,12 +878,12 @@ claude
         <div>
           <h3>CLAUDE.md &mdash; always on the desk</h3>
           <ul>
-            <li>Read every session, counts against context every message (slide 5)</li>
+            <li>Read every session &mdash; it takes up context on every message</li>
             <li>For the few things always true: the stack, how to run it</li>
           </ul>
         </div>
         <div>
-          <h3>A skill &mdash; pulled off the shelf</h3>
+          <h3>A skill &mdash; loaded only when relevant</h3>
           <ul>
             <li>Sits unread until its <em>description</em> matches what you're doing</li>
             <li>For knowledge you need sometimes: &ldquo;how we build for the church&rdquo;</li>
@@ -912,7 +900,7 @@ name: church-conventions
 Firestore for data. No frameworks in single-file tools.
 Every PR needs a passing check and a second reviewer&hellip;</pre>
       </div>
-      <p class="lede">Make one with <code>/skills</code>, or just ask Claude to write it. The <strong style="color:var(--gold)">description is the trigger</strong> &mdash; it's what tells Claude when to reach for this shelf.</p>
+      <p class="lede">Make one with <code>/skills</code>, or just ask Claude to write it. The <strong style="color:var(--gold)">description is the trigger</strong> &mdash; it's what tells Claude when to use the skill.</p>
     </section>
 
     <!-- 26 -->
@@ -921,7 +909,7 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
       <h2 class="headline">When a skill misfires, fix the skill &mdash; not just this session</h2>
       <ul class="ledger">
         <li><span class="mark">01</span><span><strong>It didn't trigger</strong> &mdash; <span class="note">Claude ignored a skill that should have applied. The fix is almost always the <em>description</em> &mdash; it didn't match how you actually asked</span></span></li>
-        <li><span class="mark">02</span><span><strong>It triggered but did the wrong thing</strong> &mdash; <span class="note">the instructions were vague or wrong. Same habit as slide 17: say <em>why</em> it was wrong, then edit the skill so the next run starts correct</span></span></li>
+        <li><span class="mark">02</span><span><strong>It triggered but did the wrong thing</strong> &mdash; <span class="note">the instructions were vague or wrong. Say <em>why</em> it was wrong, then edit the skill so the next run starts right</span></span></li>
         <li><span class="mark">03</span><span><strong>Every fix compounds</strong> &mdash; <span class="note">it's banked for everyone who has the skill, from now on &mdash; unlike a one-off correction that dies when the session clears</span></span></li>
       </ul>
       <p class="lede">Power tools come in <strong style="color:var(--gold)">Session 11</strong> (<code>skill-creator</code>, <code>/skill-doctor</code>). Today the loop is enough: <strong style="color:var(--parchment)">use it, watch it miss, tighten it.</strong></p>
@@ -934,14 +922,14 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
       <ul class="ledger" style="max-width:54rem;">
         <li><span class="mark">01</span><span><strong>What it is</strong> &mdash; <span class="note">a saved prompt plus the repos, environment and connectors it may touch. Runs on Anthropic's servers on a schedule or an event &mdash; your laptop can be shut</span></span></li>
         <li><span class="mark">02</span><span><strong>No permission prompts, and it acts as you</strong> &mdash; <span class="note">its commits, PRs and messages carry <em>your</em> name. So the lesson is <strong style="color:var(--parchment)">scoping</strong>, not scheduling: give it only the repos and connectors it needs</span></span></li>
-        <li><span class="mark">03</span><span><strong>A routine proposes; CI decides</strong> &mdash; <span class="note">it reads and suggests (a weekly triage, a security scan). Session 2's check is still the gate &mdash; never make a routine the thing that has to pass</span></span></li>
+        <li><span class="mark">03</span><span><strong>A routine proposes; CI decides</strong> &mdash; <span class="note">it reads and suggests &mdash; a weekly triage, a security scan. Session 2's check is still what has to pass</span></span></li>
       </ul>
       <p class="lede">We'll set a simple one up together &mdash; the deeper, tool-calling version is <strong style="color:var(--gold)">Session 11</strong>, once Claude has real tools to run.</p>
     </section>
 
     <!-- 28 -->
     <section class="slide" id="s28" data-label="act ii lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
-      <p class="eyebrow">Your turn again &mdash; in your working environment</p>
+      <p class="eyebrow">Act II lab &middot; on your own machine, in your sandbox fork</p>
       <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Make one skill, then make it better</h2>
       <div class="term" style="max-width:46rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;claude</div>
@@ -954,7 +942,7 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
 <span class="cmt"># 3. it missed, or got it wrong? tighten the description and the</span>
 <span class="cmt">#    instructions, then run it again</span></pre>
       </div>
-      <p class="lede"><strong style="color:var(--gold)">Done when:</strong> your skill triggers on its own, and you've improved it once from watching it work. <strong style="color:var(--parchment)">Then one routine, together</strong> &mdash; scoped carefully, because it acts as whoever owns it.</p>
+      <p class="lede"><strong style="color:var(--gold)">Done when:</strong> your skill triggers on its own, and you've improved it once from watching it work. <strong style="color:var(--parchment)">Then one routine, together</strong> &mdash; scoped carefully, because a routine runs as you.</p>
     </section>
 
     <!-- 29 -->
@@ -966,7 +954,7 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
         <li><span class="mark">02</span><span><strong>What should we keep doing?</strong> &mdash; <span class="note">the thing that worked and is easy to drop by accident &mdash; call it out so it survives into the next session on purpose</span></span></li>
         <li><span class="mark">03</span><span><strong>What should we stop doing?</strong> &mdash; <span class="note">the habit that cost more than it gave &mdash; retire it deliberately instead of carrying it forward out of momentum</span></span></li>
       </ul>
-      <p class="lede">It's slide 26's feedback loop aimed at the <em>room</em>, not a skill: a fix we agree on here is <strong style="color:var(--parchment)">banked into the next session</strong> &mdash; the process improves the way the skills do, one honest correction at a time.</p>
+      <p class="lede">Same idea as fixing a skill, aimed at the <em>room</em> instead: a change we agree on here <strong style="color:var(--parchment)">carries into the next session</strong>, so how we work keeps improving &mdash; one honest correction at a time.</p>
     </section>
 
     <!-- 30 -->

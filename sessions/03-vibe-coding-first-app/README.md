@@ -94,9 +94,9 @@ uses a for loop with an if statement to count yes values."
 
 Good prompt:
 "Build a single-file HTML page for a volunteer sign-up list. Plain
-HTML/JS, no framework, no build step — it needs to run by just opening
-the file. People can add their name to a shift; store it in
-localStorage so it survives a page refresh. Keep it to one file."
+HTML/JS, no framework, no build step — it should run by just opening
+the file. People add their name to a shift; store it in localStorage
+so it survives a refresh."
 ```
 
 The bad prompt dictates *how* — which defeats the point of having Claude
@@ -475,7 +475,7 @@ decision made deliberately, out loud, before anything runs as them.
 Vague:  "make a signup form"
 Good:   "Build a single-file HTML page for a volunteer sign-up list.
          Plain HTML/JS, no framework, no build step. Store entries in
-         localStorage. Keep it to one file."
+         localStorage so they survive a refresh."
         -> states the WHAT and the CONSTRAINTS, leaves the HOW to Claude
 
 # red flags when reviewing a Claude diff
