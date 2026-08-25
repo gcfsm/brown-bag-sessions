@@ -731,11 +731,11 @@
       an array and uses a for loop with an if statement to
       count yes values."
 
-<span class="moss">Good:</span> "Build a single-file HTML page for a volunteer sign-up
-      list. Plain HTML/JS, <span class="key">no framework</span>, <span class="key">no build step</span> — it
-      should run by just opening the file. People add their
-      name to a shift; store it in <span class="key">localStorage</span> so it
-      survives a refresh."</pre>
+<span class="moss">Good:</span> "Build a volunteer sign-up page. Plain HTML/JS,
+      <span class="key">no framework</span>, <span class="key">no build step</span> — it should run by
+      just opening the file. People add their name to a
+      shift; store it in <span class="key">localStorage</span> so it survives
+      a refresh."</pre>
       </div>
       <p class="lede">The bad prompt dictates <em style="color:var(--rust)">how</em> — defeats the point of having Claude write it. The good prompt states the <em style="color:var(--moss)">what</em> and the <em style="color:var(--moss)">constraints</em>, leaves the how to Claude.</p>
     </section>
@@ -837,9 +837,9 @@ git push -u origin add-volunteer-signup
         <pre>git checkout -b volunteer-signup
 claude
 <span class="cmt"># then give it the "Good" prompt from earlier, word for word:</span>
-<span class="cmt"># single-file HTML page, plain HTML/JS, no framework, no build</span>
-<span class="cmt"># step, add your name to a shift, localStorage so it survives</span>
-<span class="cmt"># a refresh, one file.</span></pre>
+<span class="cmt"># volunteer sign-up page, plain HTML/JS, no framework, no</span>
+<span class="cmt"># build step, runs by opening the file, add a name to a</span>
+<span class="cmt"># shift, localStorage so it survives a refresh.</span></pre>
       </div>
       <p class="lede"><strong style="color:var(--gold)">Done when:</strong> the page opens by double-clicking it &middot; a name you add is still there after a refresh &middot; the PR is open, CI is green, and your partner approved it.</p>
       <p class="lede">Rather build something else? An RSVP tally or a roster formatter works the same. <strong style="color:var(--parchment)">Same size, same rules.</strong></p>

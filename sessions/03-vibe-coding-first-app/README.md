@@ -93,16 +93,15 @@ Bad prompt:
 uses a for loop with an if statement to count yes values."
 
 Good prompt:
-"Build a single-file HTML page for a volunteer sign-up list. Plain
-HTML/JS, no framework, no build step — it should run by just opening
-the file. People add their name to a shift; store it in localStorage
-so it survives a refresh."
+"Build a volunteer sign-up page. Plain HTML/JS, no framework, no build
+step — it should run by just opening the file. People add their name
+to a shift; store it in localStorage so it survives a refresh."
 ```
 
 The bad prompt dictates *how* — which defeats the point of having Claude
-write it at all. The good prompt states the *what* (a sign-up list), the
-*constraints* (single file, no framework, no build step, localStorage), and
-leaves the implementation to Claude.
+write it at all. The good prompt states the *what* (a sign-up page), the
+*constraints* (no framework, no build step, runs by just opening the file,
+localStorage), and leaves the implementation to Claude.
 
 **Say this out loud when you show the good prompt.** Look at what writing it
 actually required: knowing that a framework is optional, that a build step is
@@ -473,8 +472,8 @@ decision made deliberately, out loud, before anything runs as them.
 ```
 # good prompt vs. vague prompt
 Vague:  "make a signup form"
-Good:   "Build a single-file HTML page for a volunteer sign-up list.
-         Plain HTML/JS, no framework, no build step. Store entries in
+Good:   "Build a volunteer sign-up page. Plain HTML/JS, no framework,
+         no build step, runs by opening the file. Store entries in
          localStorage so they survive a refresh."
         -> states the WHAT and the CONSTRAINTS, leaves the HOW to Claude
 
