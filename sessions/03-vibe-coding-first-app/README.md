@@ -4,7 +4,7 @@
 
 **Goal:** By the end of this session, you can start a project with Claude, tell the difference between a good prompt and a vague one, review an AI-generated diff well enough to catch a hallucination, and ship the result through the exact same branch → PR → CI loop from Sessions 1 and 2 — with Claude doing the typing.
 
-**Contents:** [The Hook](#the-hook--why-this-is-session-3-not-session-1) · [What Vibe Coding Is](#1-what-vibe-coding-means-and-when-its-appropriate) · [Starting a Project With Claude](#2-starting-a-project-with-claudes-help) · [Prompts vs. Code](#3-iterating-on-prompts-vs-iterating-on-code) · [Reviewing AI Diffs](#4-reviewing-ai-generated-code-before-accepting-it) · [Shipping It](#5-committing-pushing-and-letting-ci--branch-protection-do-their-job) · [Failure Modes](#6-common-failure-modes) · [Hands-On Lab](#hands-on-lab) · [Skills](#7-making-claude-fit-how-you-work-skills) · [Skill Feedback Loop](#8-keeping-your-skills-sharp-the-feedback-loop) · [Routines](#9-work-that-runs-without-you-routines) · [Act II Lab](#hands-on-lab--act-ii-make-a-skill-then-improve-it) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Homework](#homework-before-next-session)
+**Contents:** [The Hook](#the-hook--why-this-is-session-3-not-session-1) · [What Vibe Coding Is](#1-what-vibe-coding-means-and-when-its-appropriate) · [Starting a Project With Claude](#2-starting-a-project-with-claudes-help) · [Prompts vs. Code](#3-iterating-on-prompts-vs-iterating-on-code) · [Reviewing AI Diffs](#4-reviewing-ai-generated-code-before-accepting-it) · [Shipping It](#5-committing-pushing-and-letting-ci--branch-protection-do-their-job) · [Failure Modes](#6-common-failure-modes) · [Hands-On Lab](#hands-on-lab) · [Skills](#7-making-claude-fit-how-you-work-skills) · [Skill Feedback Loop](#8-keeping-your-skills-sharp-the-feedback-loop) · [Routines](#9-work-that-runs-without-you-routines) · [Act II Lab](#hands-on-lab--act-ii-make-a-skill-then-improve-it) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Retrospective](#session-retrospective--treat-the-session-like-a-sprint) · [Homework](#homework-before-next-session)
 
 ---
 
@@ -515,9 +515,45 @@ a routine   -> the loop with nobody at the keyboard
 
 ---
 
-## Homework Before Next Session
+## Session Retrospective — Treat the Session Like a Sprint
 
 **Deck:** [Slide 29](slides.html#s29)
+
+Borrowed straight from Agile: a sprint doesn't end when the work ships — it
+ends with a **retrospective**, a few minutes where the team looks at *how it
+worked*, not just *what got built*. Run each session the same way. Before
+anyone leaves, close the room with three questions:
+
+1. **What went wrong?** — where did we get stuck, lose time, or repeat a
+   mistake from last session? Name it plainly and without blame; the point is
+   to fix the process, not to fault a person.
+2. **What should we continue doing?** — what actually worked and is easy to
+   drop by accident? Say it out loud so it carries into the next session on
+   purpose.
+3. **What should we stop doing?** — what cost more than it gave? Retire it
+   deliberately instead of carrying it forward out of habit.
+
+**Why this belongs here specifically.** It's the same feedback loop as Section
+8, pointed at the *room* instead of a skill. There, a misfiring skill gets
+fixed once and the fix is *banked* for everyone from then on. A retro does
+that for the session itself: a correction the group agrees on here becomes how
+the next session runs, so the process compounds the same way the skills do —
+one honest correction at a time. Keep it short (five minutes), keep it
+regular, and write the answers down somewhere the group will see them next
+time — an evaporated retro improves nothing.
+
+> **Facilitator note.** Keep it blameless and specific. "The lab ran long
+> because we debugged setup live" is actionable; "the lab was slow" is not.
+> One concrete change per question is plenty — a retro that produces ten fixes
+> produces none. This is also worth modelling early: by the time attendees
+> pair on real church project tickets (the Gate, Session 19), running a clean
+> retro is part of working on a team, not an afterthought.
+
+---
+
+## Homework Before Next Session
+
+**Deck:** [Slide 30](slides.html#s30)
 
 - [ ] Extend the tool built in-session with one more small feature, same PR discipline (branch → Claude → review → PR → CI → merge)
 - [ ] Deliberately spot-check one Claude-authored diff for a hallucinated API/method before running it
