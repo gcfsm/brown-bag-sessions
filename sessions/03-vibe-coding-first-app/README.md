@@ -402,7 +402,7 @@ is the point. Just know the tooling exists for when a skill earns it.
 
 ## 9. Work That Runs Without You (Routines)
 
-**Deck:** [Slide 27](slides.html#s27)
+**Deck:** [Slides 27–28](slides.html#s27)
 
 A **routine** is the whole loop from today, running with **nobody at the
 keyboard**. It's a saved prompt plus the repositories, cloud environment, and
@@ -432,17 +432,55 @@ version — a routine that fires a custom MCP server you built — is **Session
 11**, where it lands properly: a routine is what happens once you've given
 Claude real tools to run, not just instructions to read.
 
+### The Abyss self-healing routine
+
+Abyss now uses this pattern for production runtime errors. Present it as a
+real example of a tightly scoped routine, not as a promise that an agent can
+safely operate without boundaries:
+
+1. Abyss fingerprints repeated frontend error-boundary and Cloud Function
+   failures into incidents instead of treating every occurrence as new.
+2. The incident gains a redacted stack, occurrence count, affected module,
+   and an independent server-log count. A read-only, environment-scoped MCP
+   connector exposes that evidence to the routine.
+3. An hourly routine reads production incidents and judges whether one is a
+   breaking or blocking failure. Non-urgent verdicts are recorded so the next
+   run does not pay to judge the same incident again.
+4. For one eligible incident, one fixer produces the smallest repair and runs
+   the repository's full verification gate. One adversarial reviewer tries to
+   break the diff and may send it back for one revision.
+5. If the repair survives, the routine opens one hotfix PR and stops. It never
+   merges and never deploys; a human keeps both decisions.
+
+**Say this out loud:** the useful part is not "AI fixes production." The useful
+part is the boundary around the judgment: production runtime errors only,
+owned repositories only, at most three agents, one PR per incident, and a hard
+stop before merge or deploy. Incident text is data, not instructions.
+
+**Current implementation:** the pipeline and `/self-heal` playbook landed in
+Abyss across issues #1128 and #1168. The latest follow-up also moves legacy
+`alerted` incidents back into the filing queue on recurrence, so active errors
+repair their own queue state without a one-off backfill.
+
 > **Facilitator note — research preview.** Routines are evolving; specific
 > screens, limits, and the exact `/schedule` commands may have moved by the
 > time you teach this. Teach the *shape* (saved prompt + scope + trigger, runs
 > as you, proposes rather than gates); demo the current UI live rather than
 > from a screenshot that will age.
 
+**Product guidance checked 2026-09-18:** Anthropic's current help pages describe
+[Claude and Cowork as a gradually merging experience](https://support.claude.com/en/articles/16761823-claude-cowork-and-chat-are-one-claude),
+list [`low`, `medium`, `high`, `xhigh`, `max`, and `auto` as Claude Code effort
+choices](https://support.claude.com/en/articles/14554000-claude-code-power-user-tips),
+and advise checking the account's Usage page because
+[limits vary by plan](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work).
+Recheck these screens before presenting a later session.
+
 ---
 
 ## Hands-On Lab — Act II: Make a Skill, Then Improve It
 
-**Deck:** [Slide 28](slides.html#s28)
+**Deck:** [Slide 29](slides.html#s29)
 
 Everyone, on their own machine, in their sandbox fork:
 
@@ -516,7 +554,7 @@ a routine   -> the loop with nobody at the keyboard
 
 ## Session Retrospective — Treat the Session Like a Sprint
 
-**Deck:** [Slide 29](slides.html#s29)
+**Deck:** [Slide 30](slides.html#s30)
 
 Borrowed straight from Agile: a sprint doesn't end when the work ships — it
 ends with a **retrospective**, a few minutes where the team looks at *how it
@@ -552,7 +590,7 @@ time — an evaporated retro improves nothing.
 
 ## Homework Before Next Session
 
-**Deck:** [Slide 30](slides.html#s30)
+**Deck:** [Slide 31](slides.html#s31)
 
 - [ ] Extend the tool built in-session with one more small feature, same PR discipline (branch → Claude → review → PR → CI → merge)
 - [ ] Deliberately spot-check one Claude-authored diff for a hallucinated API/method before running it

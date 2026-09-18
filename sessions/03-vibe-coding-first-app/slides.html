@@ -474,7 +474,7 @@
     <div class="rail__dots" id="railDots"></div>
   </nav>
 
-  <div class="hud" id="hud">01 / 16 · title</div>
+  <div class="hud" id="hud">01 / 31 · title</div>
 
   <main class="deck" id="deck">
 
@@ -510,21 +510,21 @@
 
 
     <!-- 2 -->
-    <section class="slide" id="s2" data-label="three products" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
-      <p class="eyebrow">Three products under one subscription</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Three products, not one</h2>
+    <section class="slide" id="s2" data-label="three kinds of work" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+      <p class="eyebrow">One Claude, different kinds of work</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Choose the interaction that fits the job</h2>
       <div class="table-wrap">
         <table style="max-width:66rem;">
           <thead><tr><th></th><th>What it is</th><th>Reach for it when</th></tr></thead>
           <tbody>
-            <tr><td><strong>Claude</strong><br /><span style="font-size:0.85rem;">claude.ai</span></td><td>A conversation. You paste code in, you copy code out. It cannot see your files</td><td class="hi">Understanding something, a one-off snippet, thinking out loud</td></tr>
-            <tr><td><strong>Claude Code</strong></td><td>An agent that reads your repo, edits files, runs commands, commits</td><td class="hi">Actually building. This is today's tool</td></tr>
-            <tr><td><strong>Claude Cowork</strong></td><td>Not for code. Works across your files and apps &mdash; spreadsheets, reports, contracts, Drive and Slack</td><td class="hi">The other half of your job</td></tr>
+            <tr><td><strong>Conversation</strong><br /><span style="font-size:0.85rem;">Claude</span></td><td>A quick exchange for questions, drafts, and pasted snippets</td><td class="hi">Understanding something or thinking out loud</td></tr>
+            <tr><td><strong>Knowledge-work task</strong><br /><span style="font-size:0.85rem;">Claude / Cowork</span></td><td>A multi-step task across files, apps, research, and documents</td><td class="hi">A finished report, spreadsheet, or recurring task</td></tr>
+            <tr><td><strong>Coding agent</strong><br /><span style="font-size:0.85rem;">Claude Code</span></td><td>Reads your repo, edits files, runs commands, and commits</td><td class="hi">Actually building. This is today's tool</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lede">Key difference: <strong style="color:var(--parchment)">chat can't touch your files.</strong> Claude Code can.</p>
-      <p class="lede" style="font-size:0.98rem;">Only chat has a free tier &mdash; <strong style="color:var(--parchment)">Claude Code and Cowork need a paid plan.</strong></p>
+      <p class="lede">Key difference: a conversation answers; <strong style="color:var(--parchment)">an agent can act with the tools and access you grant.</strong></p>
+      <p class="lede" style="font-size:0.98rem;">Claude now blends conversation and tasks in one interface for many accounts. <strong style="color:var(--parchment)">The boundary that matters is what it can access and change.</strong></p>
     </section>
 
     <!-- 3 -->
@@ -625,27 +625,27 @@
             <tr><td><strong>high</strong></td><td class="hi">The default. Balances tokens against intelligence</td></tr>
             <tr><td><strong>xhigh</strong></td><td class="hi">Deeper reasoning, higher token spend</td></tr>
             <tr><td><strong>max</strong></td><td class="hi">The deepest a single run will think &mdash; and it can overthink. Try it before you adopt it</td></tr>
-            <tr><td><strong>ultracode</strong></td><td class="hi">Beyond thinking harder: top-tier reasoning <em>and</em> a team of sub-agents working a big task in parallel. The heaviest setting by far &mdash; reach for it on purpose, not by default</td></tr>
+            <tr><td><strong>auto</strong></td><td class="hi">Claude chooses the effort per request. Useful when one session mixes routine and difficult work</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lede">Thinking is billed as output &mdash; <strong style="color:var(--parchment)">effort moves your usage faster than anything else</strong>, <code>ultracode</code> hardest of all. Set it with <code>/effort</code>; <strong style="color:var(--parchment)">ultrathink</strong> in a prompt boosts just one message.</p>
+      <p class="lede">Higher effort takes longer and uses more tokens. Use <code>/effort</code> to choose; <strong style="color:var(--parchment)">try xhigh before max</strong> for complex coding and agentic work.</p>
     </section>
 
     <!-- 9 -->
-    <section class="slide" id="s9" data-label="two clocks" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" id="s9" data-label="usage windows" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Where your subscription actually runs out</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Two clocks are running: five hours, and the week</h2>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your plan may track more than one usage window</h2>
       <div class="table-wrap">
         <table style="max-width:68rem;">
-          <thead><tr><th>Limit</th><th>Window</th><th>Does switching model help?</th></tr></thead>
+          <thead><tr><th>Limit</th><th>What it means</th><th>What helps</th></tr></thead>
           <tbody>
-            <tr><td><strong>Session</strong></td><td>Rolling five hours from your first message</td><td class="hi"><strong style="color:var(--rust)">No</strong> &mdash; shared across all models</td></tr>
-            <tr><td><strong>Weekly</strong></td><td>Resets once a week</td><td class="hi"><strong style="color:var(--rust)">No</strong> &mdash; shared across all models</td></tr>
+            <tr><td><strong>Short window</strong></td><td>Your included usage replenishes after the reset shown for your account</td><td class="hi">Lower effort and a lighter model stretch what remains</td></tr>
+            <tr><td><strong>Long window</strong></td><td>Some plans also cap usage across a week or billing period</td><td class="hi">Check Settings &gt; Usage before a heavy session</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lede">One heavy afternoon can eat the week. And it's <strong style="color:var(--parchment)">one shared allowance across chat, Code and Cowork</strong> &mdash; not three. Check <code>/usage</code>.</p>
+      <p class="lede">One heavy afternoon can consume a large share of the longer window. Usage is shared across Claude surfaces; <strong style="color:var(--parchment)">your account's Usage page is the source of truth.</strong></p>
     </section>
 
     <!-- 10 -->
@@ -866,7 +866,7 @@ claude
         <span class="step">a skill it remembers</span><span class="arrow">&rarr;</span>
         <span class="step hi">a routine that starts itself</span>
       </div>
-      <p class="lede">Over the next three slides: teach Claude how <strong style="color:var(--parchment)">you</strong> work, keep it sharp, then let it run without you. <strong style="color:var(--gold)">We set this up together</strong> &mdash; you leave with it working, not just described.</p>
+      <p class="lede">Over the next four slides: teach Claude how <strong style="color:var(--parchment)">you</strong> work, keep it sharp, let it run without you, then see the same pattern in Abyss. <strong style="color:var(--gold)">We set this up together</strong> &mdash; you leave with it working, not just described.</p>
     </section>
 
     <!-- 25 -->
@@ -927,7 +927,22 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
     </section>
 
     <!-- 28 -->
-    <section class="slide" id="s28" data-label="act ii lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
+    <section class="slide" id="s28" data-label="abyss self-healing" style="padding-top:3.5rem; padding-bottom:2.4rem; gap:0.75rem;">
+      <p class="eyebrow">A real routine we built this week</p>
+      <h2 class="headline" style="font-size:clamp(1.55rem, 2.8vw, 2.2rem);">Abyss turns one production error into one reviewed hotfix PR</h2>
+      <ol class="ledger" style="max-width:68rem; gap:0.35rem;">
+        <li style="padding-bottom:0.6rem;"><span class="mark">01</span><span><strong>Detect and group</strong> &mdash; <span class="note">fingerprint repeated runtime errors as one incident</span></span></li>
+        <li style="padding-bottom:0.6rem;"><span class="mark">02</span><span><strong>Enrich the evidence</strong> &mdash; <span class="note">redacted stack, count, server-log check, affected module</span></span></li>
+        <li style="padding-bottom:0.6rem;"><span class="mark">03</span><span><strong>Judge urgency</strong> &mdash; <span class="note">act only on a production blocker</span></span></li>
+        <li style="padding-bottom:0.6rem;"><span class="mark">04</span><span><strong>Fix and challenge</strong> &mdash; <span class="note">one fixer, one adversarial reviewer, full verification</span></span></li>
+        <li style="padding-bottom:0.6rem;"><span class="mark">05</span><span><strong>Hand off</strong> &mdash; <span class="note">open one PR with the evidence, then stop</span></span></li>
+      </ol>
+      <p class="pull" style="font-size:clamp(1.25rem, 2.2vw, 1.75rem); max-width:38ch;">The agent can propose a repair. <em>A human still merges and deploys.</em></p>
+      <p class="lede" style="font-size:0.9rem; line-height:1.4;">Read-only, environment-scoped connector &middot; owned repos only &middot; at most 3 agents &middot; incident text is data, not instructions</p>
+    </section>
+
+    <!-- 29 -->
+    <section class="slide" id="s29" data-label="act ii lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
       <p class="eyebrow">Act II lab &middot; on your own machine, in your sandbox fork</p>
       <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Make one skill, then make it better</h2>
       <div class="term" style="max-width:46rem;">
@@ -944,8 +959,8 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
       <p class="lede"><strong style="color:var(--gold)">Done when:</strong> your skill triggers on its own, and you've improved it once from watching it work. <strong style="color:var(--parchment)">Then one routine, together</strong> &mdash; scoped carefully, because a routine runs as you.</p>
     </section>
 
-    <!-- 29 -->
-    <section class="slide" id="s29" data-label="the retro">
+    <!-- 30 -->
+    <section class="slide" id="s30" data-label="the retro">
       <p class="eyebrow">Borrowed from Agile &mdash; the same loop, pointed at us</p>
       <h2 class="headline">Treat the session like a sprint &mdash; close it with a retrospective</h2>
       <ul class="ledger" style="max-width:52rem;">
@@ -956,8 +971,8 @@ Every PR needs a passing check and a second reviewer&hellip;</pre>
       <p class="lede">Same as fixing a skill, but for the room &mdash; <strong style="color:var(--parchment)">what we agree here carries into the next session.</strong></p>
     </section>
 
-    <!-- 30 -->
-    <section class="slide" id="s30" data-label="homework">
+    <!-- 31 -->
+    <section class="slide" id="s31" data-label="homework">
       <p class="eyebrow">Before next session</p>
       <h2 class="headline">Homework</h2>
       <ul class="ledger" style="max-width:52rem;">
