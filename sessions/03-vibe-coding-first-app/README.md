@@ -65,11 +65,11 @@ result needs:
 
 The stakes change the proof, not whether Claude belongs in the workflow.
 
-**The one thing this is not:** "no review." Sessions 1 and 2's discipline —
-read the diff, require a passing check, get a second set of eyes — applies
-exactly the same to Claude's output as it does to your own. What changes
-today is *volume*, not *standards*. You'll review more code, faster, than
-you're used to — which is exactly why Section 4 below exists.
+**Separate the author from the reviewer.** Claude can write the change and
+perform an adversarial pass over its own work. Then use a different model,
+such as Gemini in GitHub, to review the PR independently. The models can find
+different failure modes, but neither owns the decision: read their findings,
+require passing checks, and keep the merge with a human.
 
 ---
 
@@ -446,9 +446,10 @@ safely operate without boundaries:
 3. An hourly routine reads production incidents and judges whether one is a
    breaking or blocking failure. Non-urgent verdicts are recorded so the next
    run does not pay to judge the same incident again.
-4. For one eligible incident, one fixer produces the smallest repair and runs
-   the repository's full verification gate. One adversarial reviewer tries to
-   break the diff and may send it back for one revision.
+4. For one eligible incident, one Claude fixer produces the smallest repair
+   and runs the repository's full verification gate. A separate Claude pass
+   tries to break the diff and may send it back for one revision. Gemini then
+   reviews the resulting PR independently in GitHub.
 5. If the repair survives, the routine opens one hotfix PR and stops. It never
    merges and never deploys; a human keeps both decisions.
 
