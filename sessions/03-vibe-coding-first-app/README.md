@@ -52,18 +52,18 @@ Claude writes it, you run it, you course-correct. The "vibe" is trusting the
 loop enough to move fast — not skipping review, which is a different thing
 entirely and the subject of Section 4.
 
-**When it's a good fit:**
-- Prototypes, first drafts, throwaway scripts
-- Small, well-scoped tools where "does it work" is easy to verify by running it
-- Anything where you'd otherwise spend most of your time on boilerplate,
-  not on a hard decision
+**Claude can work across the whole range.** The old version of this session
+split work into "good fit" and "needs extra scrutiny." That understates what
+the tool can do. The useful distinction is now the strength of evidence the
+result needs:
 
-**When it needs extra scrutiny (not "don't," just "look closer"):**
-- Anything touching real people's data — attendee info, payment details,
-  contact lists
-- Security-sensitive logic — auth checks, permission rules, anything that
-  decides who can see or do what
-- Code you can't easily test or verify just by running it
+- With fast-feedback work, prototype, run focused tests, and review the visible
+  behavior.
+- With real people's data, add privacy and access tests.
+- With auth or payments, add adversarial review. For systems that are difficult
+  to exercise locally, use evals and production monitoring.
+
+The stakes change the proof, not whether Claude belongs in the workflow.
 
 **The one thing this is not:** "no review." Sessions 1 and 2's discipline —
 read the diff, require a passing check, get a second set of eyes — applies

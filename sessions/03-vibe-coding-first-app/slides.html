@@ -665,22 +665,22 @@
     <section class="slide" id="s11" data-label="1 · what vibe coding means">
       <p class="eyebrow">Step 1 of 6 &middot; Coined by Andrej Karpathy, early 2025</p>
       <h2 class="headline">What is vibe coding?</h2>
-      <p class="lede">Driving development through prompts and fast iteration, not hand-typing every line &mdash; you describe what you want, Claude writes it, you run it and course-correct.</p>
+      <p class="lede">Driving development through prompts and fast iteration, not hand-typing every line. Claude can work across both columns; <strong style="color:var(--parchment)">the proof changes with the stakes.</strong></p>
       <div class="two-col">
         <div class="good">
-          <h3>Good fit</h3>
+          <h3>Fast feedback</h3>
           <ul>
-            <li>Prototypes, first drafts, throwaway scripts</li>
-            <li>Small, well-scoped tools — "does it work" is easy to verify by running it</li>
-            <li>Anything mostly boilerplate, not a hard decision</li>
+            <li>Prototype and run it immediately</li>
+            <li>Use focused tests for routine features</li>
+            <li>Review the visible behavior, then ship</li>
           </ul>
         </div>
-        <div class="bad">
-          <h3>Needs extra scrutiny</h3>
+        <div class="good">
+          <h3>Stronger proof</h3>
           <ul>
-            <li>Anything touching real people's data</li>
-            <li>Security-sensitive logic — auth, permissions</li>
-            <li>Code you can't easily test by running it</li>
+            <li>Real data: privacy and access tests</li>
+            <li>Auth or payments: adversarial review</li>
+            <li>Hard-to-run systems: evals and monitoring</li>
           </ul>
         </div>
       </div>
