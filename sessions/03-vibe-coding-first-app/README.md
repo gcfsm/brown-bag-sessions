@@ -474,6 +474,8 @@ list [`low`, `medium`, `high`, `xhigh`, `max`, and `auto` as Claude Code effort
 choices](https://support.claude.com/en/articles/14554000-claude-code-power-user-tips),
 and advise checking the account's Usage page because
 [limits vary by plan](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work).
+On the current Max (20x) account, that page shows three meters: the rolling
+5-hour limit, **Weekly · all models**, and a separate **Weekly · Fable** meter.
 Recheck these screens before presenting a later session.
 
 ---
