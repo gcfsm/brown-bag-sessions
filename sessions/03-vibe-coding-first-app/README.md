@@ -54,8 +54,8 @@ entirely and the subject of Section 4.
 
 **Claude can work across the whole range.** The old version of this session
 split work into "good fit" and "needs extra scrutiny." That understates what
-the tool can do. The useful distinction is now the strength of evidence the
-result needs:
+the tool can do. The useful distinction is now how thoroughly we verify the
+result before shipping:
 
 - With fast-feedback work, prototype, run focused tests, and review the visible
   behavior.
@@ -63,7 +63,8 @@ result needs:
 - With auth or payments, add adversarial review. For systems that are difficult
   to exercise locally, use evals and production monitoring.
 
-The stakes change the proof, not whether Claude belongs in the workflow.
+Higher stakes need more checks, not a different conclusion about whether
+Claude belongs in the workflow.
 
 **Separate the author from the reviewer.** Claude can write the change and
 perform an adversarial pass over its own work. Then use a different model,
