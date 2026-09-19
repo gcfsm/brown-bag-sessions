@@ -2,9 +2,9 @@
 
 **Status:** [x] Ready
 
-**Goal:** By the end of this session, you can start a project with Claude, tell the difference between a good prompt and a vague one, review an AI-generated diff well enough to catch a hallucination, and ship the result through the exact same branch → PR → CI loop from Sessions 1 and 2 — with Claude doing the typing.
+**Goal:** By the end of this session, you can start a project with Claude, tell the difference between a good prompt and a vague one, review an AI-generated diff well enough to catch a hallucination, and let Claude carry the result through the branch → PR → CI loop while you own the merge decision.
 
-**Contents:** [The Hook](#the-hook--why-this-is-session-3-not-session-1) · [What Vibe Coding Is](#1-what-vibe-coding-means-and-when-its-appropriate) · [Starting a Project With Claude](#2-starting-a-project-with-claudes-help) · [Prompts vs. Code](#3-iterating-on-prompts-vs-iterating-on-code) · [Reviewing AI Diffs](#4-reviewing-ai-generated-code-before-accepting-it) · [Shipping It](#5-committing-pushing-and-letting-ci--branch-protection-do-their-job) · [Failure Modes](#6-common-failure-modes) · [Hands-On Lab](#hands-on-lab) · [Skills](#7-making-claude-fit-how-you-work-skills) · [Skill Feedback Loop](#8-keeping-your-skills-sharp-the-feedback-loop) · [Routines](#9-work-that-runs-without-you-routines) · [Act II Lab](#hands-on-lab--act-ii-make-a-skill-then-improve-it) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Retrospective](#session-retrospective--treat-the-session-like-a-sprint) · [Homework](#homework-before-next-session)
+**Contents:** [The Hook](#the-hook--why-this-is-session-3-not-session-1) · [What Vibe Coding Is](#1-what-vibe-coding-means-and-when-its-appropriate) · [Starting a Project With Claude](#2-starting-a-project-with-claudes-help) · [Prompts vs. Code](#3-iterating-on-prompts-vs-iterating-on-code) · [Reviewing AI Diffs](#4-reviewing-ai-generated-code-before-accepting-it) · [Preparing the PR](#5-letting-claude-prepare-the-pr) · [Failure Modes](#6-common-failure-modes) · [Hands-On Lab](#hands-on-lab) · [Skills](#7-making-claude-fit-how-you-work-skills) · [Skill Feedback Loop](#8-keeping-your-skills-sharp-the-feedback-loop) · [Routines](#9-work-that-runs-without-you-routines) · [Act II Lab](#hands-on-lab--act-ii-make-a-skill-then-improve-it) · [Quick Reference](#quick-reference-card-keep-this-open-while-working) · [Retrospective](#session-retrospective--treat-the-session-like-a-sprint) · [Homework](#homework-before-next-session)
 
 ---
 
@@ -215,30 +215,24 @@ way you would (or should) with your own code before opening a PR.
 
 ---
 
-## 5. Committing, Pushing, and Letting CI + Branch Protection Do Their Job
+## 5. Letting Claude Prepare the PR
 
 **Deck:** [Slide 11](slides.html#s19)
 
-This is the loop closing — Session 1's mechanics and Session 2's required
-check, exercised on a real PR from work you did today, with Claude doing
-most of the typing:
+This is the loop closing. Claude can handle the Git mechanics as well as the
+code: create the branch, make focused commits, run the checks, push, and open
+the PR.
 
-```bash
-git checkout -b add-volunteer-signup
-# ... Claude writes the file, you review it (Section 4) ...
-git add .
-git commit -m "Add volunteer sign-up list page"
-git push -u origin add-volunteer-signup
-# open a PR — same as Session 1, Section 5
-# watch the lint-and-test check run — same as Session 2, Section 2
+```text
+Create a branch for the volunteer sign-up feature.
+Implement it in small commits and run the checks.
+Push the branch and open a PR with a short summary, test evidence,
+and anything you want me to review closely.
 ```
 
-**Small, frequent commits — the muscle memory from Session 1 — still
-applies, even though Claude is doing the typing.** A single commit
-containing "the whole feature" is exactly as hard to review, revert, or
-bisect when Claude wrote it as when a human did. Commit at the same
-granularity you would if you were typing it yourself: one logical change
-per commit, not one commit per session.
+**The human role moves up a level.** You set the scope, inspect the evidence,
+respond to review findings, and decide whether the PR should merge. Claude
+handles the repetitive mechanics.
 
 **The check doesn't know or care who wrote the diff.** That's the entire
 point of Session 2 existing before this one — `lint-and-test` runs the same
@@ -269,10 +263,9 @@ Set expectations before they hit one, not after:
 thing unless they'd rather not — a shared task means a pair that gets stuck
 can look sideways, and it makes the review step comparable across the room.
 
-Work in your sandbox fork, on a branch:
+Start Claude in your sandbox fork:
 
 ```bash
-git checkout -b volunteer-signup
 claude
 ```
 
@@ -301,8 +294,8 @@ framework, no backend, ships as a PR.
 2. Let Claude propose a plan, then build it in small, checkpointed asks (Section 3)
 3. Review the diff together before committing (Section 4) — deliberately
    look for at least one thing to question, even if it turns out fine
-4. Commit, push, open a PR, watch the check run (Section 5)
-5. Partner reviews and approves, merge it
+4. Ask Claude to run the checks and open the PR (Section 5)
+5. Review the evidence and findings, then decide whether to merge
 
 **That's Act I — the one-off loop, shipped once.** Once the room has done it
 end to end, move to Act II below: the same partnership, but made durable so
@@ -532,13 +525,10 @@ Good:   "Build a volunteer sign-up page. Plain HTML/JS, no framework,
 - "use a battle-tested library instead" -> less to review, a11y handled
 - React later? shadcn/ui (Session 4). one file today? stay dependency-free
 
-# the loop, same as Sessions 1 & 2, Claude typing instead of you
-git checkout -b <branch-name>
-# Claude writes it, you review it
-git add .
-git commit -m "message"            # small, checkpointed, not one giant commit
-git push -u origin <branch-name>
-# open PR -> watch the check run -> partner reviews -> merge
+# the loop, same as Sessions 1 & 2, with Claude handling the mechanics
+Ask Claude to create the branch, make focused commits, run the checks,
+push, and open the PR with its evidence. Review the findings, then decide
+whether to merge.
 
 # which model, for what (Section 2 aside)
 plan / complex work    -> strongest model (e.g. Opus)

@@ -659,18 +659,19 @@
 
     <!-- 19 -->
     <section class="slide" id="s19" data-label="shipping it">
-      <p class="eyebrow">Claude types, you still drive</p>
-      <h2 class="headline">Commit, push, let CI do its job</h2>
+      <p class="eyebrow">Claude can handle the Git workflow too</p>
+      <h2 class="headline">Ask Claude to prepare the PR</h2>
       <div class="term" style="max-width:38rem;">
-        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
-        <pre>git checkout -b add-volunteer-signup
-<span class="cmt"># Claude writes it, you review it (previous slides)</span>
-git add .
-git commit -m "Add volunteer sign-up list page"
-git push -u origin add-volunteer-signup
-<span class="cmt"># open PR -> watch lint-and-test run -> partner reviews</span></pre>
+        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;claude</div>
+        <pre>Create a branch for the volunteer sign-up feature.
+Implement it in small commits and run the checks.
+Push the branch and open a PR with:
+
+  - a short summary
+  - the test evidence
+  - anything you want me to review closely</pre>
       </div>
-      <p class="lede"><strong style="color:var(--parchment)">Small, frequent commits still apply</strong> &mdash; a whole-feature commit is just as hard to revert whether Claude wrote it or you did. The check doesn't care who wrote the diff.</p>
+      <p class="lede">Claude handles the branch, commits, push, checks, and PR. <strong style="color:var(--parchment)">You review the evidence and decide whether to merge.</strong></p>
     </section>
 
     <!-- 20 -->
@@ -695,9 +696,8 @@ git push -u origin add-volunteer-signup
       <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Build the volunteer sign-up page</h2>
       <div class="term" style="max-width:46rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
-        <pre>git checkout -b volunteer-signup
-claude
-<span class="cmt"># then give it the "Good" prompt from earlier, word for word:</span>
+        <pre>claude
+<span class="cmt"># ask it to create a branch, then give it the "Good" prompt:</span>
 <span class="cmt"># volunteer sign-up page, plain HTML/JS, no framework, no</span>
 <span class="cmt"># build step, runs by opening the file, add a name to a</span>
 <span class="cmt"># shift, localStorage so it survives a refresh.</span></pre>
@@ -714,8 +714,8 @@ claude
         <span class="step">pick it, write the prompt together</span><span class="arrow">→</span>
         <span class="step">plan, then small checkpointed asks</span><span class="arrow">→</span>
         <span class="step hi">review the diff together</span><span class="arrow">→</span>
-        <span class="step">commit, push, open PR</span><span class="arrow">→</span>
-        <span class="step">partner approves, merge</span>
+        <span class="step">Claude checks and opens the PR</span><span class="arrow">→</span>
+        <span class="step">review the evidence, then merge</span>
       </div>
     </section>
 
