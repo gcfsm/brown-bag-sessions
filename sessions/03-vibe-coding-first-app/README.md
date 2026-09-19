@@ -10,7 +10,7 @@
 
 ## The Hook — Why This Is Session 3, Not Session 1
 
-**Deck:** [Slides 1 and 10](slides.html#s10)
+**Deck:** [Slides 1–4](slides.html#s1)
 
 Session 1 gave you history and branches as a safety net — any change, however
 bad, is one `git revert` away from gone. Session 2 gave you a second safety
@@ -43,7 +43,7 @@ the workflow is the real thing.
 
 ## 1. What Vibe Coding Means, and When It's Appropriate
 
-**Deck:** [Slides 11–12](slides.html#s11)
+**Deck:** [Slides 5–6](slides.html#s11)
 
 **Vibe coding** — the term, coined by Andrej Karpathy in early 2025 — means
 driving development through natural-language prompts and fast iteration,
@@ -75,7 +75,7 @@ require passing checks, and keep the merge with a human.
 
 ## 2. Starting a Project With Claude's Help
 
-**Deck:** [Slides 13–15](slides.html#s13)
+**Deck:** [Slides 7–8](slides.html#s13)
 
 Two starting points, and they call for different first moves:
 
@@ -161,7 +161,7 @@ of your mind for now.
 
 ## 3. Iterating on Prompts vs. Iterating on Code
 
-**Deck:** [Slide 16](slides.html#s16)
+**Deck:** [Slide 9](slides.html#s16)
 
 Once Claude has written something, you have two ways to fix what's wrong —
 knowing which is faster is the actual skill:
@@ -190,7 +190,7 @@ wrong (Session 1's whole point).
 
 ## 4. Reviewing AI-Generated Code Before Accepting It
 
-**Deck:** [Slides 17–18](slides.html#s17)
+**Deck:** [Slide 10](slides.html#s17)
 
 This is Session 1's diff-review discipline, applied to a much higher volume
 of generated code than a human typing by hand would ever produce in the same
@@ -216,7 +216,7 @@ way you would (or should) with your own code before opening a PR.
 
 ## 5. Committing, Pushing, and Letting CI + Branch Protection Do Their Job
 
-**Deck:** [Slide 19](slides.html#s19)
+**Deck:** [Slide 11](slides.html#s19)
 
 This is the loop closing — Session 1's mechanics and Session 2's required
 check, exercised on a real PR from work you did today, with Claude doing
@@ -248,7 +248,7 @@ keyboard or Claude's.
 
 ## 6. Common Failure Modes
 
-**Deck:** [Slide 20](slides.html#s20)
+**Deck:** [Slide 12](slides.html#s20)
 
 Set expectations before they hit one, not after:
 
@@ -262,7 +262,7 @@ Set expectations before they hit one, not after:
 
 ## Hands-On Lab
 
-**Deck:** [Slides 21–22](slides.html#s21)
+**Deck:** [Slides 13–14](slides.html#s21)
 
 **The default task: a volunteer sign-up page.** Everyone builds the same
 thing unless they'd rather not — a shared task means a pair that gets stuck
@@ -311,7 +311,7 @@ nobody starts from a blank prompt next time.
 
 ## Beyond the One-Off Loop (Act II)
 
-**Deck:** [Slide 23](slides.html#s23)
+**Deck:** [Slide 15](slides.html#s23)
 
 The loop in Sections 1–5 works every time — but it forgets you the moment the
 session ends. Every new session, you re-explain the stack, the conventions,
@@ -330,7 +330,7 @@ description of one.
 
 ## 7. Making Claude Fit How You Work (Skills)
 
-**Deck:** [Slide 24](slides.html#s24)
+**Deck:** reference notes only
 
 A **skill** is a small folder of knowledge — a `SKILL.md` file — that Claude
 picks up **only when it's relevant**, and ignores the rest of the time. That
@@ -374,7 +374,7 @@ control instead of in one person's head.
 
 ## 8. Keeping Your Skills Sharp (the Feedback Loop)
 
-**Deck:** [Slide 25](slides.html#s25)
+**Deck:** reference notes only
 
 A skill is never right the first time, and that's expected. The skill that
 matters is not writing one — it's **improving it when it misfires**, the same
@@ -402,7 +402,7 @@ is the point. Just know the tooling exists for when a skill earns it.
 
 ## 9. Work That Runs Without You (Routines)
 
-**Deck:** [Slides 26–27](slides.html#s26)
+**Deck:** [Slides 15–16](slides.html#s23)
 
 A **routine** is the whole loop from today, running with **nobody at the
 keyboard**. It's a saved prompt plus the repositories, cloud environment, and
@@ -483,7 +483,7 @@ Recheck these screens before presenting a later session.
 
 ## Hands-On Lab — Act II: Make a Skill, Then Improve It
 
-**Deck:** [Slide 28](slides.html#s28)
+**Deck:** reference notes only
 
 Everyone, on their own machine, in their sandbox fork:
 
@@ -557,7 +557,7 @@ a routine   -> the loop with nobody at the keyboard
 
 ## Session Retrospective — Treat the Session Like a Sprint
 
-**Deck:** [Slide 29](slides.html#s29)
+**Deck:** [Slide 18](slides.html#s29)
 
 Borrowed straight from Agile: a sprint doesn't end when the work ships — it
 ends with a **retrospective**, a few minutes where the team looks at *how it
@@ -593,7 +593,7 @@ time — an evaporated retro improves nothing.
 
 ## Homework Before Next Session
 
-**Deck:** [Slide 30](slides.html#s30)
+**Deck:** [Slide 19](slides.html#s30)
 
 - [ ] Extend the tool built in-session with one more small feature, same PR discipline (branch → Claude → review → PR → CI → merge)
 - [ ] Deliberately spot-check one Claude-authored diff for a hallucinated API/method before running it
