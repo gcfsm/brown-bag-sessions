@@ -10,7 +10,7 @@
 
 ## The Hook — Why This Is Session 3, Not Session 1
 
-**Deck:** [Slides 10–11](slides.html#s10)
+**Deck:** [Slides 1–4](slides.html#s1)
 
 Session 1 gave you history and branches as a safety net — any change, however
 bad, is one `git revert` away from gone. Session 2 gave you a second safety
@@ -43,7 +43,7 @@ the workflow is the real thing.
 
 ## 1. What Vibe Coding Means, and When It's Appropriate
 
-**Deck:** [Slides 12–13](slides.html#s12)
+**Deck:** [Slides 5–6](slides.html#s11)
 
 **Vibe coding** — the term, coined by Andrej Karpathy in early 2025 — means
 driving development through natural-language prompts and fast iteration,
@@ -52,30 +52,30 @@ Claude writes it, you run it, you course-correct. The "vibe" is trusting the
 loop enough to move fast — not skipping review, which is a different thing
 entirely and the subject of Section 4.
 
-**When it's a good fit:**
-- Prototypes, first drafts, throwaway scripts
-- Small, well-scoped tools where "does it work" is easy to verify by running it
-- Anything where you'd otherwise spend most of your time on boilerplate,
-  not on a hard decision
+**Claude can work across the whole range.** The old version of this session
+split work into "good fit" and "needs extra scrutiny." That understates what
+the tool can do. The useful distinction is now the strength of evidence the
+result needs:
 
-**When it needs extra scrutiny (not "don't," just "look closer"):**
-- Anything touching real people's data — attendee info, payment details,
-  contact lists
-- Security-sensitive logic — auth checks, permission rules, anything that
-  decides who can see or do what
-- Code you can't easily test or verify just by running it
+- With fast-feedback work, prototype, run focused tests, and review the visible
+  behavior.
+- With real people's data, add privacy and access tests.
+- With auth or payments, add adversarial review. For systems that are difficult
+  to exercise locally, use evals and production monitoring.
 
-**The one thing this is not:** "no review." Sessions 1 and 2's discipline —
-read the diff, require a passing check, get a second set of eyes — applies
-exactly the same to Claude's output as it does to your own. What changes
-today is *volume*, not *standards*. You'll review more code, faster, than
-you're used to — which is exactly why Section 4 below exists.
+The stakes change the proof, not whether Claude belongs in the workflow.
+
+**Separate the author from the reviewer.** Claude can write the change and
+perform an adversarial pass over its own work. Then use a different model,
+such as Gemini in GitHub, to review the PR independently. The models can find
+different failure modes, but neither owns the decision: read their findings,
+require passing checks, and keep the merge with a human.
 
 ---
 
 ## 2. Starting a Project With Claude's Help
 
-**Deck:** [Slides 14–16](slides.html#s14)
+**Deck:** [Slides 7–8](slides.html#s13)
 
 Two starting points, and they call for different first moves:
 
@@ -161,7 +161,7 @@ of your mind for now.
 
 ## 3. Iterating on Prompts vs. Iterating on Code
 
-**Deck:** [Slide 17](slides.html#s17)
+**Deck:** [Slide 9](slides.html#s16)
 
 Once Claude has written something, you have two ways to fix what's wrong —
 knowing which is faster is the actual skill:
@@ -190,7 +190,7 @@ wrong (Session 1's whole point).
 
 ## 4. Reviewing AI-Generated Code Before Accepting It
 
-**Deck:** [Slides 18–19](slides.html#s18)
+**Deck:** [Slide 10](slides.html#s17)
 
 This is Session 1's diff-review discipline, applied to a much higher volume
 of generated code than a human typing by hand would ever produce in the same
@@ -216,7 +216,7 @@ way you would (or should) with your own code before opening a PR.
 
 ## 5. Committing, Pushing, and Letting CI + Branch Protection Do Their Job
 
-**Deck:** [Slide 20](slides.html#s20)
+**Deck:** [Slide 11](slides.html#s19)
 
 This is the loop closing — Session 1's mechanics and Session 2's required
 check, exercised on a real PR from work you did today, with Claude doing
@@ -248,7 +248,7 @@ keyboard or Claude's.
 
 ## 6. Common Failure Modes
 
-**Deck:** [Slide 21](slides.html#s21)
+**Deck:** [Slide 12](slides.html#s20)
 
 Set expectations before they hit one, not after:
 
@@ -262,7 +262,7 @@ Set expectations before they hit one, not after:
 
 ## Hands-On Lab
 
-**Deck:** [Slides 22–23](slides.html#s22)
+**Deck:** [Slides 13–14](slides.html#s21)
 
 **The default task: a volunteer sign-up page.** Everyone builds the same
 thing unless they'd rather not — a shared task means a pair that gets stuck
@@ -311,7 +311,7 @@ nobody starts from a blank prompt next time.
 
 ## Beyond the One-Off Loop (Act II)
 
-**Deck:** [Slide 24](slides.html#s24)
+**Deck:** [Slide 15](slides.html#s23)
 
 The loop in Sections 1–5 works every time — but it forgets you the moment the
 session ends. Every new session, you re-explain the stack, the conventions,
@@ -330,7 +330,7 @@ description of one.
 
 ## 7. Making Claude Fit How You Work (Skills)
 
-**Deck:** [Slide 25](slides.html#s25)
+**Deck:** reference notes only
 
 A **skill** is a small folder of knowledge — a `SKILL.md` file — that Claude
 picks up **only when it's relevant**, and ignores the rest of the time. That
@@ -374,7 +374,7 @@ control instead of in one person's head.
 
 ## 8. Keeping Your Skills Sharp (the Feedback Loop)
 
-**Deck:** [Slide 26](slides.html#s26)
+**Deck:** reference notes only
 
 A skill is never right the first time, and that's expected. The skill that
 matters is not writing one — it's **improving it when it misfires**, the same
@@ -402,7 +402,7 @@ is the point. Just know the tooling exists for when a skill earns it.
 
 ## 9. Work That Runs Without You (Routines)
 
-**Deck:** [Slides 27–28](slides.html#s27)
+**Deck:** [Slides 15–16](slides.html#s23)
 
 A **routine** is the whole loop from today, running with **nobody at the
 keyboard**. It's a saved prompt plus the repositories, cloud environment, and
@@ -446,9 +446,10 @@ safely operate without boundaries:
 3. An hourly routine reads production incidents and judges whether one is a
    breaking or blocking failure. Non-urgent verdicts are recorded so the next
    run does not pay to judge the same incident again.
-4. For one eligible incident, one fixer produces the smallest repair and runs
-   the repository's full verification gate. One adversarial reviewer tries to
-   break the diff and may send it back for one revision.
+4. For one eligible incident, one Claude fixer produces the smallest repair
+   and runs the repository's full verification gate. A separate Claude pass
+   tries to break the diff and may send it back for one revision. Gemini then
+   reviews the resulting PR independently in GitHub.
 5. If the repair survives, the routine opens one hotfix PR and stops. It never
    merges and never deploys; a human keeps both decisions.
 
@@ -474,13 +475,15 @@ list [`low`, `medium`, `high`, `xhigh`, `max`, and `auto` as Claude Code effort
 choices](https://support.claude.com/en/articles/14554000-claude-code-power-user-tips),
 and advise checking the account's Usage page because
 [limits vary by plan](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work).
+On the current Max (20x) account, that page shows three meters: the rolling
+5-hour limit, **Weekly · all models**, and a separate **Weekly · Fable** meter.
 Recheck these screens before presenting a later session.
 
 ---
 
 ## Hands-On Lab — Act II: Make a Skill, Then Improve It
 
-**Deck:** [Slide 29](slides.html#s29)
+**Deck:** reference notes only
 
 Everyone, on their own machine, in their sandbox fork:
 
@@ -554,7 +557,7 @@ a routine   -> the loop with nobody at the keyboard
 
 ## Session Retrospective — Treat the Session Like a Sprint
 
-**Deck:** [Slide 30](slides.html#s30)
+**Deck:** [Slide 18](slides.html#s29)
 
 Borrowed straight from Agile: a sprint doesn't end when the work ships — it
 ends with a **retrospective**, a few minutes where the team looks at *how it
@@ -590,7 +593,7 @@ time — an evaporated retro improves nothing.
 
 ## Homework Before Next Session
 
-**Deck:** [Slide 31](slides.html#s31)
+**Deck:** [Slide 19](slides.html#s30)
 
 - [ ] Extend the tool built in-session with one more small feature, same PR discipline (branch → Claude → review → PR → CI → merge)
 - [ ] Deliberately spot-check one Claude-authored diff for a hallucinated API/method before running it

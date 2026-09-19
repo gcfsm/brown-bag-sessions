@@ -474,7 +474,7 @@
     <div class="rail__dots" id="railDots"></div>
   </nav>
 
-  <div class="hud" id="hud">01 / 31 · title</div>
+  <div class="hud" id="hud">01 / 30 · title</div>
 
   <main class="deck" id="deck">
 
@@ -510,204 +510,98 @@
 
 
     <!-- 2 -->
-    <section class="slide" id="s2" data-label="three kinds of work" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
-      <p class="eyebrow">One Claude, different kinds of work</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Choose the interaction that fits the job</h2>
+    <section class="slide" id="s2" data-label="how we're using Claude" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+      <p class="eyebrow">A quick starting point</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">How we're using Claude today</h2>
       <div class="table-wrap">
         <table style="max-width:66rem;">
-          <thead><tr><th></th><th>What it is</th><th>Reach for it when</th></tr></thead>
+          <thead><tr><th>Mode</th><th>What happens</th><th>Good for</th></tr></thead>
           <tbody>
             <tr><td><strong>Conversation</strong><br /><span style="font-size:0.85rem;">Claude</span></td><td>A quick exchange for questions, drafts, and pasted snippets</td><td class="hi">Understanding something or thinking out loud</td></tr>
-            <tr><td><strong>Knowledge-work task</strong><br /><span style="font-size:0.85rem;">Claude / Cowork</span></td><td>A multi-step task across files, apps, research, and documents</td><td class="hi">A finished report, spreadsheet, or recurring task</td></tr>
-            <tr><td><strong>Coding agent</strong><br /><span style="font-size:0.85rem;">Claude Code</span></td><td>Reads your repo, edits files, runs commands, and commits</td><td class="hi">Actually building. This is today's tool</td></tr>
+            <tr><td><strong>Task</strong><br /><span style="font-size:0.85rem;">Claude / Cowork</span></td><td>Works across files and apps</td><td class="hi">Finishing a report or repeatable job</td></tr>
+            <tr><td><strong>Coding agent</strong><br /><span style="font-size:0.85rem;">Claude Code</span></td><td>Reads the repo, edits files, and runs commands</td><td class="hi">Building together. This is today's mode</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lede">Key difference: a conversation answers; <strong style="color:var(--parchment)">an agent can act with the tools and access you grant.</strong></p>
-      <p class="lede" style="font-size:0.98rem;">Claude now blends conversation and tasks in one interface for many accounts. <strong style="color:var(--parchment)">The boundary that matters is what it can access and change.</strong></p>
-    </section>
-
-    <!-- 3 -->
-    <section class="slide" id="s3" data-label="four ways in" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
-      <p class="eyebrow">Same engine behind all four</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Four doors into Claude Code</h2>
-      <div class="table-wrap">
-        <table style="max-width:66rem;">
-          <thead><tr><th>Door</th><th>Runs</th><th>Start here if&hellip;</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Terminal (CLI)</strong></td><td>Your machine</td><td class="hi">You're already comfortable in a terminal</td></tr>
-            <tr><td><strong>VS Code / JetBrains</strong></td><td>Your machine</td><td class="hi">You live in an editor and want inline diffs</td></tr>
-            <tr><td><strong>Desktop app</strong></td><td>Your machine</td><td class="hi">You want to see diffs visually, no terminal</td></tr>
-            <tr><td><strong>Web</strong><br /><span style="font-size:0.85rem;">claude.ai/code</span></td><td class="hi">Anthropic's cloud</td><td class="hi">Nothing installed, or you're on a phone</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="lede">One engine &mdash; your <code>CLAUDE.md</code> and settings follow you between doors. <strong style="color:var(--parchment)">Picking one isn't a commitment.</strong></p>
-    </section>
-
-    <!-- 4 -->
-    <section class="slide" id="s4" data-label="tokens">
-      <p class="eyebrow">The unit everything else is measured in</p>
-      <h2 class="headline">It all runs on tokens</h2>
-      <ul class="ledger">
-        <li><span class="mark">01</span><span><strong>A token is a chunk of text</strong> &mdash; <span class="note">roughly three quarters of a word. <code>volunteer</code> is one token; <code>localStorage</code> is three</span></span></li>
-        <li><span class="mark">02</span><span><strong>Everything in the exchange counts</strong> &mdash; <span class="note">your prompt, every file Claude opens, every command's output, its thinking, its reply</span></span></li>
-        <li><span class="mark">03</span><span><strong>Tokens are the meter</strong> &mdash; <span class="note">your context window, your plan limits, and your bill are all counted in the same unit</span></span></li>
-      </ul>
-      <p class="lede">Models, context, limits, effort &mdash; <strong style="color:var(--parchment)">four ways of spending tokens.</strong> Coming up next.</p>
+      <p class="lede">The important question is simple: <strong style="color:var(--parchment)">what can it see, and what can it change?</strong></p>
     </section>
 
     <!-- 5 -->
-    <section class="slide" id="s5" data-label="context window">
-      <p class="eyebrow">How much Claude can hold at once</p>
-      <h2 class="headline">The context window is a desk, not a filing cabinet</h2>
+    <section class="slide" id="s5" data-label="three useful controls">
+      <p class="eyebrow">Enough setup to avoid surprises</p>
+      <h2 class="headline">Three controls worth knowing</h2>
       <ul class="ledger">
-        <li><span class="mark">01</span><span><strong>What's on the desk</strong> &mdash; <span class="note">the conversation so far, your <code>CLAUDE.md</code>, every file read, every command's output</span></span></li>
-        <li><span class="mark">02</span><span><strong>It isn't memory</strong> &mdash; <span class="note">every message re-sends the whole desk. A one-line question in a session you've had open all day still pays for the whole conversation</span></span></li>
-        <li><span class="mark">03</span><span><strong>When it fills, it compacts</strong> &mdash; <span class="note">Claude Code summarizes the older history so the session survives. You lose detail, not the thread</span></span></li>
+        <li><span class="mark">01</span><span><strong>Context</strong> &mdash; <span class="note">the conversation, files, and command output Claude is holding right now. Use <code>/clear</code> when the job changes</span></span></li>
+        <li><span class="mark">02</span><span><strong>Model</strong> &mdash; <span class="note">Sonnet for daily work, Opus for hard problems, Fable 5.1 for work that may run beyond one sitting</span></span></li>
+        <li><span class="mark">03</span><span><strong>Effort</strong> &mdash; <span class="note">more thinking costs more time and usage. High is a good default; try xhigh before max</span></span></li>
       </ul>
-      <p class="lede">Run <code>/context</code> anytime to see what's on the desk &mdash; and how full it is.</p>
-    </section>
-
-    <!-- 6 -->
-    <section class="slide" id="s6" data-label="clear or continue">
-      <p class="eyebrow">The habit that saves the most usage</p>
-      <h2 class="headline">Keep going, or start fresh?</h2>
-      <div class="two-col">
-        <div>
-          <h3>Keep the session</h3>
-          <ul>
-            <li>Still the same piece of work</li>
-            <li>Claude already knows these files &mdash; that history is earning its cost</li>
-            <li>You'd only have to re-explain it</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Run <code>/clear</code></h3>
-          <ul>
-            <li>Moving to unrelated work</li>
-            <li>Old context is crowding out what you need now</li>
-            <li>You're talking around assumptions from an hour ago</li>
-          </ul>
-        </div>
-      </div>
-      <p class="lede"><strong style="color:var(--parchment)">Clearing is free; compacting isn't.</strong> <code>/rename</code> before you clear, so <code>/resume</code> can find it later.</p>
-    </section>
-
-    <!-- 7 -->
-    <section class="slide" id="s7" data-label="which model" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
-      <p class="eyebrow">Switch any time with <code>/model</code> &mdash; even mid-session</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Four models, four jobs</h2>
-      <div class="table-wrap">
-        <table style="max-width:64rem;">
-          <thead><tr><th>Model</th><th>Context window</th><th>Reach for it when</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Haiku 4.5</strong></td><td>200K tokens</td><td class="hi">Small, repetitive, mechanical. Fastest and cheapest</td></tr>
-            <tr><td><strong>Sonnet 5</strong></td><td>1M tokens</td><td class="hi">Daily coding. Where most of your work belongs</td></tr>
-            <tr><td><strong>Opus 5</strong></td><td>1M tokens</td><td class="hi">Hard reasoning &mdash; architecture, a bug you can't corner</td></tr>
-            <tr><td><strong>Fable 5</strong></td><td>1M tokens</td><td class="hi">Work bigger than one sitting. Never the default &mdash; you pick it, with <code>/model fable</code></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="lede">Bigger model, more tokens per answer. <strong style="color:var(--parchment)">Leaving Opus on for everything</strong> is the most common way people burn through a limit without noticing.</p>
-    </section>
-
-    <!-- 8 -->
-    <section class="slide" id="s8" data-label="effort" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
-      <p class="eyebrow">How hard it thinks before it answers</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Effort is the second dial</h2>
-      <div class="table-wrap">
-        <table style="max-width:58rem;">
-          <thead><tr><th>Level</th><th>When</th></tr></thead>
-          <tbody>
-            <tr><td><strong>low</strong></td><td class="hi">Short, scoped work where speed matters more than depth</td></tr>
-            <tr><td><strong>medium</strong></td><td class="hi">Cost-sensitive work that can trade away some depth</td></tr>
-            <tr><td><strong>high</strong></td><td class="hi">The default. Balances tokens against intelligence</td></tr>
-            <tr><td><strong>xhigh</strong></td><td class="hi">Deeper reasoning, higher token spend</td></tr>
-            <tr><td><strong>max</strong></td><td class="hi">The deepest a single run will think &mdash; and it can overthink. Try it before you adopt it</td></tr>
-            <tr><td><strong>auto</strong></td><td class="hi">Claude chooses the effort per request. Useful when one session mixes routine and difficult work</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="lede">Higher effort takes longer and uses more tokens. Use <code>/effort</code> to choose; <strong style="color:var(--parchment)">try xhigh before max</strong> for complex coding and agentic work.</p>
+      <p class="lede">You do not need to memorize the settings. <strong style="color:var(--parchment)">Know what the three controls change, then adjust when the work calls for it.</strong></p>
     </section>
 
     <!-- 9 -->
-    <section class="slide" id="s9" data-label="usage windows" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
+    <section class="slide" id="s9" data-label="three usage meters" style="padding-top:4rem; padding-bottom:2.5rem; gap:1.1rem;">
       <p class="eyebrow">Where your subscription actually runs out</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Your plan may track more than one usage window</h2>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Three usage meters are running</h2>
       <div class="table-wrap">
         <table style="max-width:68rem;">
-          <thead><tr><th>Limit</th><th>What it means</th><th>What helps</th></tr></thead>
+          <thead><tr><th>Meter</th><th>Window</th><th>What it controls</th></tr></thead>
           <tbody>
-            <tr><td><strong>Short window</strong></td><td>Your included usage replenishes after the reset shown for your account</td><td class="hi">Lower effort and a lighter model stretch what remains</td></tr>
-            <tr><td><strong>Long window</strong></td><td>Some plans also cap usage across a week or billing period</td><td class="hi">Check Settings &gt; Usage before a heavy session</td></tr>
+            <tr><td><strong>5-hour limit</strong></td><td>Rolling short window</td><td class="hi">Your near-term usage across models</td></tr>
+            <tr><td><strong>Weekly &middot; all models</strong></td><td>Resets weekly</td><td class="hi">The main weekly allowance shared by your models</td></tr>
+            <tr><td><strong>Weekly &middot; Fable</strong></td><td>Resets weekly</td><td class="hi">A separate weekly meter for Fable usage</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="lede">One heavy afternoon can consume a large share of the longer window. Usage is shared across Claude surfaces; <strong style="color:var(--parchment)">your account's Usage page is the source of truth.</strong></p>
+      <p class="lede">Switching to Fable does not make usage unlimited. Watch both weekly meters; <strong style="color:var(--parchment)">your account's <code>/usage</code> view is the source of truth.</strong></p>
     </section>
 
     <!-- 10 -->
-    <section class="slide" id="s10" data-label="before you touch a keyboard">
-      <p class="eyebrow">Before you touch a keyboard</p>
-      <p class="pull">You're about to let Claude make sweeping, fast changes — <em>on purpose</em>. That's safe, not reckless, only because your two safety nets from Sessions 1 and 2 are already up.</p>
+    <section class="slide" id="s10" data-label="what we're doing">
+      <p class="eyebrow">What we're doing today</p>
+      <h2 class="headline">Ship one small thing</h2>
       <div class="flow">
-        <span class="step">s1 · history &amp; branches</span><span class="arrow">+</span>
-        <span class="step">s2 · required check</span><span class="arrow">=</span>
-        <span class="step hi">today isn't a gamble</span>
+        <span class="step">clear prompt</span><span class="arrow">&rarr;</span>
+        <span class="step">review + run</span><span class="arrow">&rarr;</span>
+        <span class="step hi">PR + passing CI</span>
       </div>
+      <p class="lede"><strong style="color:var(--gold)">You'll build it in the lab.</strong> Plain HTML/JS, no framework; React starts in Session 4.</p>
     </section>
 
     <!-- 11 -->
-    <section class="slide" id="s11" data-label="what today is">
-      <p class="eyebrow">Where the next hour is going</p>
-      <h2 class="headline">Today &mdash; ship one small thing</h2>
-      <div class="flow">
-        <span class="step">write a clear prompt</span><span class="arrow">&rarr;</span>
-        <span class="step">review the diff</span><span class="arrow">&rarr;</span>
-        <span class="step">run it</span><span class="arrow">&rarr;</span>
-        <span class="step hi">ship it through CI</span>
+    <section class="slide" id="s11" data-label="vibe coding">
+      <p class="eyebrow">What we mean by vibe coding</p>
+      <h2 class="headline">What is vibe coding?</h2>
+      <p class="lede">Driving development through prompts and fast iteration, not hand-typing every line. Claude can work across both columns; <strong style="color:var(--parchment)">the proof changes with the stakes.</strong></p>
+      <div class="two-col">
+        <div class="good">
+          <h3>Fast feedback</h3>
+          <ul>
+            <li>Prototype and run it immediately</li>
+            <li>Use focused tests for routine features</li>
+            <li>Review the visible behavior, then ship</li>
+          </ul>
+        </div>
+        <div class="good">
+          <h3>Stronger proof</h3>
+          <ul>
+            <li>Real data: privacy and access tests</li>
+            <li>Auth or payments: adversarial review</li>
+            <li>Hard-to-run systems: evals and monitoring</li>
+          </ul>
+        </div>
       </div>
-      <p class="lede"><strong style="color:var(--gold)">You'll run this loop yourself in the lab.</strong> Everything before that is a walkthrough.</p>
-      <p class="lede">No frameworks today &mdash; just a CLI script or a single-file page. (React is Session 4.)</p>
     </section>
 
     <!-- 12 -->
-    <section class="slide" id="s12" data-label="1 · what vibe coding means">
-      <p class="eyebrow">Step 1 of 6 &middot; Coined by Andrej Karpathy, early 2025</p>
-      <h2 class="headline">What is vibe coding?</h2>
-      <p class="lede">Driving development through prompts and fast iteration, not hand-typing every line &mdash; you describe what you want, Claude writes it, you run it and course-correct.</p>
-      <div class="two-col">
-        <div class="good">
-          <h3>Good fit</h3>
-          <ul>
-            <li>Prototypes, first drafts, throwaway scripts</li>
-            <li>Small, well-scoped tools — "does it work" is easy to verify by running it</li>
-            <li>Anything mostly boilerplate, not a hard decision</li>
-          </ul>
-        </div>
-        <div class="bad">
-          <h3>Needs extra scrutiny</h3>
-          <ul>
-            <li>Anything touching real people's data</li>
-            <li>Security-sensitive logic — auth, permissions</li>
-            <li>Code you can't easily test by running it</li>
-          </ul>
-        </div>
-      </div>
+    <section class="slide" id="s12" data-label="a second opinion">
+      <p class="eyebrow">Separate the author from the reviewer</p>
+      <p class="pull">Use a <em>different model</em> for the second opinion.</p>
+      <p class="lede">Claude writes the change and performs an adversarial pass. <strong style="color:var(--parchment)">Gemini reviews the PR independently in GitHub.</strong> You read the findings, require passing checks, and own the merge.</p>
     </section>
 
     <!-- 13 -->
-    <section class="slide" id="s13" data-label="review still applies">
-      <p class="eyebrow">What today is not</p>
-      <p class="pull">Vibe coding doesn't mean <em>skipping</em> review. It means <em>more</em> review.</p>
-      <p class="lede">More code, faster, means <strong style="color:var(--parchment)">more to read, not less.</strong> Same bar as Sessions 1 and 2 &mdash; read the diff, require a passing check, get a second pair of eyes.</p>
-    </section>
-
-    <!-- 14 -->
-    <section class="slide" id="s14" data-label="2 · starting a project">
-      <p class="eyebrow">Step 2 of 6 &middot; Two starting points, two first moves</p>
+    <section class="slide" id="s13" data-label="starting a project">
+      <p class="eyebrow">Starting from scratch or joining a repo</p>
       <h2 class="headline">Starting a project with Claude's help</h2>
       <div class="table-wrap">
         <table style="max-width:56rem;">
@@ -721,8 +615,8 @@
       <p class="lede">For anything beyond a few lines: ask Claude to outline its <strong style="color:var(--parchment)">plan</strong> before it writes code. One extra exchange, catches a misunderstanding while it's still a sentence, not a diff.</p>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" id="s15" data-label="the good prompt">
+    <!-- 14 -->
+    <section class="slide" id="s14" data-label="the good prompt">
       <p class="eyebrow">States the what and the constraints — not the how</p>
       <h2 class="headline">A good prompt vs. a vague one</h2>
       <div class="term" style="max-width:44rem;">
@@ -741,33 +635,8 @@
     </section>
 
     <!-- 16 -->
-    <section class="slide" id="s16" data-label="reuse beats reinventing" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
-      <p class="eyebrow">Part of the skill is knowing what not to build</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Don't hand-roll what already exists</h2>
-      <div class="two-col">
-        <div class="bad">
-          <h3>Reinventing it</h3>
-          <ul>
-            <li>&ldquo;Build an accessible dropdown from scratch&rdquo;</li>
-            <li>Date pickers, modals, form-validation UI — hand-rolled</li>
-            <li>Subtly broken where a glance won't catch it: keyboard nav, focus traps, screen-reader labels</li>
-          </ul>
-        </div>
-        <div class="good">
-          <h3>Reusing one</h3>
-          <ul>
-            <li>&ldquo;Use a battle-tested component library&rdquo;</li>
-            <li>Someone already hardened the edge cases you'd miss</li>
-            <li>Less code to review — and the accessibility comes with it</li>
-          </ul>
-        </div>
-      </div>
-      <p class="lede">For React, reach for <a href="https://ui.shadcn.com" target="_blank" rel="noopener"><strong style="color:var(--parchment)">shadcn/ui</strong></a> &mdash; accessible components you copy straight in (hands-on in <strong style="color:var(--gold)">Session 4</strong>). Starts now: <strong style="color:var(--parchment)">before building a component, check if a good one already exists.</strong></p>
-    </section>
-
-    <!-- 17 -->
-    <section class="slide" id="s17" data-label="3 · when it's wrong">
-      <p class="eyebrow">Step 3 of 6 &middot; When the output is wrong</p>
+    <section class="slide" id="s16" data-label="when it's wrong">
+      <p class="eyebrow">When the output is wrong</p>
       <h2 class="headline">Claude got it wrong &mdash; now what?</h2>
       <ul class="ledger">
         <li><span class="mark">01</span><span><strong>Redirect</strong> &mdash; <span class="note">close, one thing off &rarr; tell Claude <em>why</em>, not &ldquo;fix it&rdquo;</span></span></li>
@@ -776,28 +645,21 @@
       </ul>
     </section>
 
-    <!-- 18 -->
-    <section class="slide" id="s18" data-label="4 · reviewing ai diffs" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
-      <p class="eyebrow">Step 4 of 6 &middot; Reviewing what Claude wrote</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">Reviewing a Claude diff, in three passes</h2>
+    <!-- 17 -->
+    <section class="slide" id="s17" data-label="reviewing the diff" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
+      <p class="eyebrow">Reviewing what Claude wrote</p>
+      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">How I review a Claude diff</h2>
       <ul class="ledger">
         <li><span class="mark">01</span><span><strong>Get a summary</strong> &mdash; <span class="note">&ldquo;what changed, and why?&rdquo; &rarr; how you keep up at volume</span></span></li>
         <li><span class="mark">02</span><span><strong>Loud bugs &rarr; let CI catch them</strong> &mdash; <span class="note">a made-up import crashes on run; Session 2's check flags it, not you</span></span></li>
-        <li><span class="mark">03</span><span><strong>Silent bugs &rarr; read closely</strong> &mdash; <span class="note">wrong logic, real data, auth. Runs fine, still wrong &mdash; nothing turns red</span></span></li>
+        <li><span class="mark">03</span><span><strong>Ask for evidence</strong> &mdash; <span class="note">the code ran, the tests passed, and a different model reviewed the PR</span></span></li>
       </ul>
-      <p class="lede">The summary only helps if you can judge it &mdash; <strong style="color:var(--parchment)">read diffs until you can.</strong></p>
+      <p class="lede">&ldquo;This should work&rdquo; is still a guess. <strong style="color:var(--parchment)">Ask what actually ran and what the result was.</strong></p>
     </section>
 
     <!-- 19 -->
-    <section class="slide" id="s19" data-label="evidence, not confidence">
-      <p class="eyebrow">The check that actually matters</p>
-      <p class="pull">Claude's confidence is <em>not</em> evidence.</p>
-      <p class="lede">&ldquo;This should work&rdquo; is a guess; &ldquo;I ran it &mdash; here's the output&rdquo; is proof. Have Claude run the code and show you the result &mdash; <strong style="color:var(--parchment)">don't accept anything that hasn't actually run.</strong></p>
-    </section>
-
-    <!-- 20 -->
-    <section class="slide" id="s20" data-label="5 · shipping it">
-      <p class="eyebrow">Step 5 of 6 &middot; Claude typing, you still driving</p>
+    <section class="slide" id="s19" data-label="shipping it">
+      <p class="eyebrow">Claude types, you still drive</p>
       <h2 class="headline">Commit, push, let CI do its job</h2>
       <div class="term" style="max-width:38rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
@@ -811,9 +673,9 @@ git push -u origin add-volunteer-signup
       <p class="lede"><strong style="color:var(--parchment)">Small, frequent commits still apply</strong> &mdash; a whole-feature commit is just as hard to revert whether Claude wrote it or you did. The check doesn't care who wrote the diff.</p>
     </section>
 
-    <!-- 21 -->
-    <section class="slide" id="s21" data-label="6 · failure modes">
-      <p class="eyebrow">Step 6 of 6 &middot; Set expectations before they hit one</p>
+    <!-- 20 -->
+    <section class="slide" id="s20" data-label="what goes wrong">
+      <p class="eyebrow">What usually goes wrong</p>
       <h2 class="headline">Common failure modes</h2>
       <div class="table-wrap">
         <table style="max-width:70rem;">
@@ -827,9 +689,9 @@ git push -u origin add-volunteer-signup
       </div>
     </section>
 
-    <!-- 22 -->
-    <section class="slide" id="s22" data-label="hands-on lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
-      <p class="eyebrow">Act I lab &middot; in pairs, in your sandbox fork</p>
+    <!-- 21 -->
+    <section class="slide" id="s21" data-label="build one together" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
+      <p class="eyebrow">Let's build one together</p>
       <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Build the volunteer sign-up page</h2>
       <div class="term" style="max-width:46rem;">
         <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;terminal</div>
@@ -844,9 +706,9 @@ claude
       <p class="lede">Rather build something else? An RSVP tally or a roster formatter works the same. <strong style="color:var(--parchment)">Same size, same rules.</strong></p>
     </section>
 
-    <!-- 23 -->
-    <section class="slide" id="s23" data-label="lab flow">
-      <p class="eyebrow">Do it in this order</p>
+    <!-- 22 -->
+    <section class="slide" id="s22" data-label="the small loop">
+      <p class="eyebrow">Keep the loop small</p>
       <h2 class="headline">Five steps, same loop every time</h2>
       <div class="flow">
         <span class="step">pick it, write the prompt together</span><span class="arrow">→</span>
@@ -857,131 +719,51 @@ claude
       </div>
     </section>
 
-    <!-- 24 -->
-    <section class="slide" id="s24" data-label="act ii · make claude yours">
-      <p class="eyebrow">Now make the loop repeatable</p>
-      <p class="pull">Every new session, Claude starts fresh &mdash; it doesn't remember how <em>you</em> work.</p>
+    <!-- 23 -->
+    <section class="slide" id="s23" data-label="make the loop repeatable">
+      <p class="eyebrow">A quick look beyond today's lab</p>
+      <p class="pull">Good instructions can become something Claude <em>reuses.</em></p>
       <div class="flow">
-        <span class="step">the one-off loop</span><span class="arrow">&rarr;</span>
-        <span class="step">a skill it remembers</span><span class="arrow">&rarr;</span>
-        <span class="step hi">a routine that starts itself</span>
+        <span class="step">one useful prompt</span><span class="arrow">&rarr;</span>
+        <span class="step">a skill for next time</span><span class="arrow">&rarr;</span>
+        <span class="step hi">a routine that can start itself</span>
       </div>
-      <p class="lede">Over the next four slides: teach Claude how <strong style="color:var(--parchment)">you</strong> work, keep it sharp, let it run without you, then see the same pattern in Abyss. <strong style="color:var(--gold)">We set this up together</strong> &mdash; you leave with it working, not just described.</p>
-    </section>
-
-    <!-- 25 -->
-    <section class="slide" id="s25" data-label="skills" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
-      <p class="eyebrow">Teach it once, not every session</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">A skill is knowledge Claude picks up only when it's needed</h2>
-      <div class="two-col">
-        <div>
-          <h3>CLAUDE.md &mdash; always on the desk</h3>
-          <ul>
-            <li>Read every session &mdash; it takes up context on every message</li>
-            <li>For the few things always true: the stack, how to run it</li>
-          </ul>
-        </div>
-        <div>
-          <h3>A skill &mdash; loaded only when relevant</h3>
-          <ul>
-            <li>Sits unread until its <em>description</em> matches what you're doing</li>
-            <li>For knowledge you need sometimes: &ldquo;how we build for the church&rdquo;</li>
-          </ul>
-        </div>
-      </div>
-      <div class="term" style="max-width:46rem;">
-        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;.claude/skills/church-conventions/SKILL.md</div>
-        <pre><span class="cmt">---</span>
-name: church-conventions
-<span class="key">description</span>: How we build GCF apps &mdash; stack, naming,
-             review rules. Use for any church project.
-<span class="cmt">---</span>
-Firestore for data. No frameworks in single-file tools.
-Every PR needs a passing check and a second reviewer&hellip;</pre>
-      </div>
-      <p class="lede">Make one with <code>/skills</code>, or just ask Claude to write it. The <strong style="color:var(--gold)">description is the trigger</strong> &mdash; it's what tells Claude when to use the skill.</p>
-    </section>
-
-    <!-- 26 -->
-    <section class="slide" id="s26" data-label="the feedback loop">
-      <p class="eyebrow">Skills get better the way prompts do</p>
-      <h2 class="headline">When a skill misfires, fix the skill &mdash; not just this session</h2>
-      <ul class="ledger">
-        <li><span class="mark">01</span><span><strong>Didn't trigger &rarr; fix the <em>description</em></strong> &mdash; <span class="note">it didn't match how you asked</span></span></li>
-        <li><span class="mark">02</span><span><strong>Wrong result &rarr; fix the instructions</strong> &mdash; <span class="note">say <em>why</em> it was wrong, then edit the skill</span></span></li>
-        <li><span class="mark">03</span><span><strong>Every fix compounds</strong> &mdash; <span class="note">banked for everyone, for good &mdash; not lost on <code>/clear</code> like a one-off correction</span></span></li>
-      </ul>
-      <p class="lede">Power tools come in <strong style="color:var(--gold)">Session 11</strong> (<code>skill-creator</code>, <code>/skill-doctor</code>). Today the loop is enough: <strong style="color:var(--parchment)">use it, watch it miss, tighten it.</strong></p>
+      <p class="lede">We will build these properly in <strong style="color:var(--gold)">Session 11.</strong> For now, Abyss shows what the idea looks like in a real project.</p>
     </section>
 
     <!-- 27 -->
-    <section class="slide" id="s27" data-label="routines" style="padding-top:4rem; padding-bottom:2.6rem; gap:1.1rem;">
-      <p class="eyebrow">The last step &mdash; it starts itself</p>
-      <h2 class="headline" style="font-size:clamp(1.7rem, 3vw, 2.4rem);">A routine is the loop, running with nobody at the keyboard</h2>
-      <ul class="ledger" style="max-width:54rem;">
-        <li><span class="mark">01</span><span><strong>What it is</strong> &mdash; <span class="note">a saved prompt + the repos and connectors it may touch &mdash; runs on Anthropic's servers, your laptop shut</span></span></li>
-        <li><span class="mark">02</span><span><strong>Acts as you, no prompts &rarr; <span style="color:var(--parchment)">scope it tight</span></strong> &mdash; <span class="note">its commits and PRs carry <em>your</em> name; give it only what it needs</span></span></li>
-        <li><span class="mark">03</span><span><strong>Proposes, never decides</strong> &mdash; <span class="note">it suggests (a weekly triage, a security scan) &mdash; Session 2's check is still the gate</span></span></li>
-      </ul>
-      <p class="lede">We'll set a simple one up together &mdash; the deeper, tool-calling version is <strong style="color:var(--gold)">Session 11</strong>, once Claude has real tools to run.</p>
-    </section>
-
-    <!-- 28 -->
-    <section class="slide" id="s28" data-label="abyss self-healing" style="padding-top:3.5rem; padding-bottom:2.4rem; gap:0.75rem;">
+    <section class="slide" id="s27" data-label="abyss self-healing" style="padding-top:3.5rem; padding-bottom:2.4rem; gap:0.75rem;">
       <p class="eyebrow">A real routine we built this week</p>
       <h2 class="headline" style="font-size:clamp(1.55rem, 2.8vw, 2.2rem);">Abyss turns one production error into one reviewed hotfix PR</h2>
       <ol class="ledger" style="max-width:68rem; gap:0.35rem;">
         <li style="padding-bottom:0.6rem;"><span class="mark">01</span><span><strong>Detect and group</strong> &mdash; <span class="note">fingerprint repeated runtime errors as one incident</span></span></li>
         <li style="padding-bottom:0.6rem;"><span class="mark">02</span><span><strong>Enrich the evidence</strong> &mdash; <span class="note">redacted stack, count, server-log check, affected module</span></span></li>
         <li style="padding-bottom:0.6rem;"><span class="mark">03</span><span><strong>Judge urgency</strong> &mdash; <span class="note">act only on a production blocker</span></span></li>
-        <li style="padding-bottom:0.6rem;"><span class="mark">04</span><span><strong>Fix and challenge</strong> &mdash; <span class="note">one fixer, one adversarial reviewer, full verification</span></span></li>
-        <li style="padding-bottom:0.6rem;"><span class="mark">05</span><span><strong>Hand off</strong> &mdash; <span class="note">open one PR with the evidence, then stop</span></span></li>
+        <li style="padding-bottom:0.6rem;"><span class="mark">04</span><span><strong>Fix and challenge</strong> &mdash; <span class="note">Claude writes the repair, then attacks its own diff</span></span></li>
+        <li style="padding-bottom:0.6rem;"><span class="mark">05</span><span><strong>Get another opinion</strong> &mdash; <span class="note">Gemini reviews the GitHub PR, then the automation stops</span></span></li>
       </ol>
       <p class="pull" style="font-size:clamp(1.25rem, 2.2vw, 1.75rem); max-width:38ch;">The agent can propose a repair. <em>A human still merges and deploys.</em></p>
       <p class="lede" style="font-size:0.9rem; line-height:1.4;">Read-only, environment-scoped connector &middot; owned repos only &middot; at most 3 agents &middot; incident text is data, not instructions</p>
     </section>
 
     <!-- 29 -->
-    <section class="slide" id="s29" data-label="act ii lab" style="padding-top:3.8rem; padding-bottom:2.6rem; gap:1rem;">
-      <p class="eyebrow">Act II lab &middot; on your own machine, in your sandbox fork</p>
-      <h2 class="headline" style="font-size:clamp(1.6rem, 2.9vw, 2.2rem);">Make one skill, then make it better</h2>
-      <div class="term" style="max-width:46rem;">
-        <div class="term__bar"><span class="p"></span><span class="p"></span><span class="p"></span>&nbsp;claude</div>
-        <pre>/skills
-<span class="cmt"># 1. create a small skill for your sandbox &mdash; e.g. "commit-style":</span>
-<span class="cmt">#    how you want commit messages written</span>
-
-<span class="cmt"># 2. use it on a real change; watch whether it triggers on its own</span>
-
-<span class="cmt"># 3. it missed, or got it wrong? tighten the description and the</span>
-<span class="cmt">#    instructions, then run it again</span></pre>
-      </div>
-      <p class="lede"><strong style="color:var(--gold)">Done when:</strong> your skill triggers on its own, and you've improved it once from watching it work. <strong style="color:var(--parchment)">Then one routine, together</strong> &mdash; scoped carefully, because a routine runs as you.</p>
+    <section class="slide" id="s29" data-label="compare notes">
+      <p class="eyebrow">Before we finish</p>
+      <h2 class="headline">What did we notice?</h2>
+      <ul class="ledger" style="max-width:52rem;">
+        <li><span class="mark">01</span><span><strong>Where did Claude surprise you?</strong></span></li>
+        <li><span class="mark">02</span><span><strong>Where did it need your help?</strong></span></li>
+        <li><span class="mark">03</span><span><strong>What would you try on a real project?</strong></span></li>
+      </ul>
+      <p class="lede">No formal retro. <strong style="color:var(--parchment)">Just compare notes while the experience is fresh.</strong></p>
     </section>
 
     <!-- 30 -->
-    <section class="slide" id="s30" data-label="the retro">
-      <p class="eyebrow">Borrowed from Agile &mdash; the same loop, pointed at us</p>
-      <h2 class="headline">Treat the session like a sprint &mdash; close it with a retrospective</h2>
-      <ul class="ledger" style="max-width:52rem;">
-        <li><span class="mark">01</span><span><strong>What went wrong?</strong> &mdash; <span class="note">where we got stuck or lost time &mdash; named plainly, no blame</span></span></li>
-        <li><span class="mark">02</span><span><strong>What do we keep?</strong> &mdash; <span class="note">what worked &mdash; name it so it survives next time</span></span></li>
-        <li><span class="mark">03</span><span><strong>What do we stop?</strong> &mdash; <span class="note">the habit that cost more than it gave &mdash; drop it on purpose</span></span></li>
-      </ul>
-      <p class="lede">Same as fixing a skill, but for the room &mdash; <strong style="color:var(--parchment)">what we agree here carries into the next session.</strong></p>
-    </section>
-
-    <!-- 31 -->
-    <section class="slide" id="s31" data-label="homework">
-      <p class="eyebrow">Before next session</p>
-      <h2 class="headline">Homework</h2>
-      <ul class="ledger" style="max-width:52rem;">
-        <li><span class="mark">□</span><span>Extend today's tool with one more small feature, same PR discipline</span></li>
-        <li><span class="mark">□</span><span>Spot-check one Claude-authored diff for a hallucinated API/method before running it</span></li>
-        <li><span class="mark">□</span><span class="note">Write one vague prompt and one good prompt for the same task — notice the difference in what comes back</span></li>
-        <li><span class="mark">□</span><span>Find one thing your tool hand-rolled and name a library that already solves it</span></li>
-        <li><span class="mark">□</span><span><strong style="color:var(--parchment)">Use the skill you made</strong> on a real task — when it misfires, tighten its description and note what changed</span></li>
-      </ul>
+    <section class="slide" id="s30" data-label="one more challenge">
+      <p class="eyebrow">If you want to keep playing</p>
+      <h2 class="headline">One small challenge</h2>
+      <p class="pull">Add one useful feature to today's tool and open another PR.</p>
+      <p class="lede">Keep the change small. Let Claude implement it, ask for evidence, and use another model for the PR review. <strong style="color:var(--parchment)">Bring back anything surprising next time.</strong></p>
       <p class="footline">Next — Session 4: React / Vite / Next.js Basics</p>
     </section>
 
