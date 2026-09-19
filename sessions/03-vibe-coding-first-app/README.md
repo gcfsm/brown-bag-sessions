@@ -263,7 +263,8 @@ Set expectations before they hit one, not after:
 thing unless they'd rather not — a shared task means a pair that gets stuck
 can look sideways, and it makes the review step comparable across the room.
 
-Start Claude in your sandbox fork:
+Pair up and use one person's sandbox fork. That person shares their screen;
+both people shape the prompt and review the result. Start Claude in the fork:
 
 ```bash
 claude
@@ -290,12 +291,12 @@ formatter that reads a CSV and prints a sign-up sheet. Same rules: no
 framework, no backend, ships as a PR.
 
 **Suggested flow for the lab:**
-1. Pick the tool, write the initial prompt together as a pair (Section 2)
-2. Let Claude propose a plan, then build it in small, checkpointed asks (Section 3)
-3. Review the diff together before committing (Section 4) — deliberately
-   look for at least one thing to question, even if it turns out fine
-4. Ask Claude to run the checks and open the PR (Section 5)
-5. Review the evidence and findings, then decide whether to merge
+1. **You + partner:** choose the outcome and agree on the constraints.
+2. **Claude:** propose a plan and build in small checkpoints.
+3. **You + partner:** review progress, ask questions, and redirect.
+4. **Claude:** run the checks, commit, push, and open the PR.
+5. **You + partner:** consider Gemini's review, inspect the evidence, and
+   decide whether to merge.
 
 **That's Act I — the one-off loop, shipped once.** Once the room has done it
 end to end, move to Act II below: the same partnership, but made durable so
